@@ -6,16 +6,20 @@ import Swal from 'sweetalert2'
 export default function OfertaCard({ offer }) {
 	function connectAgregarAPostulaciones() {
 		Swal.fire({
-			title: 'Agregada',
-			text: 'La oferta fue agregada a postulaciones pendientes',
+			title: 'Oferta agregada',
+			text: `${offer.cargo} en escuela ${offer.escuela} fue agregada a postulacionse pendientes`,
 			icon: 'success',
-			confirmButtonText: 'Aceptar'
+			timer: 4500,
+			showConfirmButton: false,
+			toast: true,
+			position: 'top-end'
 		})
 	}
 
 	return (
 		<div className={styles.card}>
 			<Encabezado3>{offer.cargo}</Encabezado3>
+			<p>Escuela: {offer.escuela}</p>
 			<p>Distrito: {offer.descdistrito}</p>
 			<p>Turno: {offer.turno}</p>
 			<p>Modulos: {offer.hsmodulos}</p>
