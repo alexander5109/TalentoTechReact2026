@@ -1,7 +1,7 @@
 import Encabezado1 from './components/Encabezado1'
 import Encabezado2 from './components/Encabezado2'
 import LayoutGeneral from './components/LayoutGeneral'
-import OfertaListContainer from './components/OfertaListContainer'
+import OfertaListContainer from './components/OfertaListContainer/OfertaListContainer'
 
 import './App.css'
 
