@@ -1,0 +1,40 @@
+.navbar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 1rem 2rem;
+	background-color: #214c3d;
+	color: white;
+}
+
+.logo {
+	font-size: 1.5rem;
+	font-weight: bold;
+	text-decoration: none;
+	color: white;
+}
+
+.links {
+	display: flex;
+	gap: 1.5rem;
+}
+
+.link {
+	text-decoration: none;
+	color: white;
+	font-weight: 500;
+	transition: color 0.2s ease;
+}
+
+.link:hover {
+	color: #9fe0cb;
+}
+
+.pendingWidget {
+	text-decoration: none;
+	background-color: #79d4e0;
+	color: black;
+	padding: 0.5rem 1rem;
+	border-radius: 10px;
+	font-weight: bold;
+}
