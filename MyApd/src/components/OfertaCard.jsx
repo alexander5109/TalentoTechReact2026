@@ -16,6 +16,7 @@ export default function OfertaCard({ offer }) {
 			<p>Distrito: {offer.descdistrito}</p>
 			<p>Turno: {offer.turno}</p>
 			<p>Modulos: {offer.hsmodulos}</p>
+			<button> Postularse</button>
 		</div>
 	)
 }

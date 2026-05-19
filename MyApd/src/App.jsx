@@ -13,7 +13,7 @@ function App() {
 				<Encabezado1>Home</Encabezado1>
 				<Encabezado2>"Like the zulus they had spears and bows and arrows"</Encabezado2>
 
-				<OfertaListContainer> Ofertas disponibles </OfertaListContainer>
+				<OfertaListContainer mensaje="Ofertas disponibles"> </OfertaListContainer>
 			</LayoutGeneral>
 		</>
 	)

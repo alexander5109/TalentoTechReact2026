@@ -4,6 +4,7 @@ export default function Header(){
 		color: "#1d1818",
 		padding: "10px",
 		backgroundColor: "#2e6e56",
+		margin: "10px",
 		// border: "1px solid grey",
 		// margin: "16px 124px",
 	};

@@ -1,4 +1,7 @@
 export default function Encabezado3({children}) {
-	return <h3>{children}</h3>
+	const estilo = {
+		margin: "10px",
+	};
+	return <h3 style={estilo}>{children}</h3>
 }
 
