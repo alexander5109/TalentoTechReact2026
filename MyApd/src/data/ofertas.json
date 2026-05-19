@@ -1,0 +1,23 @@
+[
+	{
+		"idoferta": 1,
+		"cargo": "BIOLOGIA",
+		"descdistrito": "LA MATANZA",
+		"turno": "M",
+		"hsmodulos": 2
+	},
+	{
+		"idoferta": 2,
+		"cargo": "HISTORIA",
+		"descdistrito": "LA MATANZA",
+		"turno": "T",
+		"hsmodulos": 2
+	},
+	{
+		"idoferta": 3,
+		"cargo": "SOCIOLOGIA",
+		"descdistrito": "LA MATANZA",
+		"turno": "D",
+		"hsmodulos": 4
+	}
+]

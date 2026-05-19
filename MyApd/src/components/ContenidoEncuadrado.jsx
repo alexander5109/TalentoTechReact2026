@@ -1,9 +1,10 @@
 function ContenidoEncuadrado({children}) {
 
 	const estilo = {
-		border: "1px solid #ccc",
+		// borderRadius: "15px",
+		border: "1px solid grey",
 		padding: "16px",
-		margin: "16px 0",
+		margin: "16px 64px",
 		backgroundColor: "green"
 	}
 	return <div style={estilo}>{children} </div >
