@@ -1,3 +1,4 @@
-export default function Encabezado1(props) {
-	return <h1>{props.content}</h1>
+export default function Encabezado1({children}) {
+	return <h1>{children}</h1>
 }
+

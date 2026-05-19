@@ -1,3 +1,4 @@
+import Encabezado3 from "./Encabezado3"
 export default function OfferCard({ offer }) {
 	
 	const estilo = {
@@ -11,7 +12,7 @@ export default function OfferCard({ offer }) {
 
 	return (
 		<div style={estilo}>
-			<h3>{offer.cargo}</h3>
+			<Encabezado3>{offer.cargo}</Encabezado3>
 			<p>Distrito: {offer.descdistrito}</p>
 			<p>Turno: {offer.turno}</p>
 			<p>Modulos: {offer.hsmodulos}</p>
