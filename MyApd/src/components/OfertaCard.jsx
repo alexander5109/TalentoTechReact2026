@@ -1,5 +1,5 @@
 import Encabezado3 from "./Encabezado3"
-export default function OfferCard({ offer }) {
+export default function OfertaCard({ offer }) {
 	
 	const estilo = {
 		borderRadius: "15px",
