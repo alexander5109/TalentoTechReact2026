@@ -38,12 +38,14 @@ export default function OfertaCard({ offer }) {
 			{
 				agregada ? (
 					<button
+						className={`${styles.button} ${styles.buttonDanger}`}
 						onClick={connectEliminarPostulacion}
 					>
 						Quitar de postulaciones
 					</button>
 				) : (
 					<button
+						className={`${styles.button} ${styles.buttonPrimary}`}
 						onClick={connectAgregarAPostulaciones}
 					>
 						Agregar a postulaciones

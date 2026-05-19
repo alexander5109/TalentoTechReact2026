@@ -1,9 +1,38 @@
 .card {
-	border-radius: 15px;
+	border-radius: 16px;
 	color: black;
-	border: 1px solid grey;
-	padding: 12px;
-	background-color: #79d4e0;
-
+	border: 1px solid #b9c8cc;
+	padding: 16px;
+	background-color: #dff5f8;
 	width: 260px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.button {
+	color: white;
+	border: none;
+	padding: 0.7rem 1rem;
+	margin: 1rem;
+	border-radius: 12px;
+	font-weight: 600;
+	cursor: pointer;
+	transition:
+		background-color 0.2s ease,
+		transform 0.1s ease;
+}
+
+.buttonPrimary {
+	background-color: #2e8b72;
+}
+
+.buttonPrimary:hover {
+	background-color: #256d59;
+}
+
+.buttonDanger {
+	background-color: #d9534f;
+}
+
+.buttonDanger:hover {
+	background-color: #b94441;
 }
