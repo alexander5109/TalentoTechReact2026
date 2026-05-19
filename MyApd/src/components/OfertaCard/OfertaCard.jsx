@@ -1,17 +1,9 @@
 import Encabezado3 from "../Encabezado3"
-export default function OfertaCard({ offer }) {
-	
-	const estilo = {
-		borderRadius: "15px",
-		color: "black",
-		border: "1px solid grey",
-		padding: "4px",
-		margin: "16px",
-		backgroundColor: "#79d4e0"
-	}
+import styles from './OfertaCard.module.css'
 
+export default function OfertaCard({ offer }) {
 	return (
-		<div style={estilo}>
+		<div className={styles.card}>
 			<Encabezado3>{offer.cargo}</Encabezado3>
 			<p>Distrito: {offer.descdistrito}</p>
 			<p>Turno: {offer.turno}</p>

@@ -1,14 +1,10 @@
 import OfertaCard from '../OfertaCard/OfertaCard'
+import styles from './OfertaList.module.css'
 
 export default function OfertaList({ofertas}) {
 	
-	const estilo = {
-		display: "flex",
-		gap: "20px",
-	}
-
 	return (
-		<div style={estilo}>
+		<div className={styles.list}>
 			{ofertas.map(oferta => (
 				<OfertaCard
 					key={oferta.idoferta}

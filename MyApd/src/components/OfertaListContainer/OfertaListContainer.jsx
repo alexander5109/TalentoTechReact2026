@@ -7,7 +7,7 @@ export default function OfertaListContainer({ mensaje }) {
 	return (
 		<div>
 			<Encabezado1>{mensaje}</Encabezado1>
-			<div className={styles.ofertas}>
+			<div className={styles.container}>
 				<OfertaList ofertas={ofertas} />
 			</div>
 		</div>
