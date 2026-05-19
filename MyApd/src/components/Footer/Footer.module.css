@@ -1,0 +1,14 @@
+.footer {
+	margin-top: 3rem;
+	padding: 1.25rem;
+	text-align: center;
+	background-color: #2e6e56;
+	color: white;
+	border-top: 3px solid #214c3d;
+}
+
+.author {
+	margin-top: 0.5rem;
+	font-size: 0.9rem;
+	color: #d7ebe2;
+}
