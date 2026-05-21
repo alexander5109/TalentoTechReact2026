@@ -6,25 +6,32 @@ import { useEffect, useState } from 'react'
 
 export default function OfertaListContainer({ mensaje }) {
 
+	const [isLoading, setLoading] = useState(true)
 	const [ofertas, setOfertas] = useState([])
 	useEffect(() => {
 
-		// setTimeout(() => {
+		setLoading(true)
+		setTimeout(() => {
 			fetch('../../data/ofertas.json')
 				.then(response => response.json())
 				.then(data => {
 					setOfertas(data)
+					setLoading(false)
 				})
-		// }, 1000)
-		
+		}, 1000)
+
 	}, [])
 
 	return (
 		<div>
 			<Encabezado1>{mensaje}</Encabezado1>
-			<div className={styles.container}>
-				<OfertaList ofertas={ofertas} />
-			</div>
+			{isLoading ? (
+				<p>Cargando ofertas...</p>
+			) : (
+				<div className={styles.container}>
+					<OfertaList ofertas={ofertas} />
+				</div>
+			)}
 		</div>
 	)
 }
