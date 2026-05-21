@@ -3,7 +3,7 @@ import Encabezado3 from "../Encabezado3"
 import styles from './OfertaCard.module.css'
 import Swal from 'sweetalert2'
 export default function OfertaCard({ offer }) {
-	const [agregada, setAgregada] = useState(false)
+	const [isAgregada, setAgregada] = useState(false)
 	function connectAgregarAPostulaciones() {
 		setAgregada(true)
 		Swal.fire({
@@ -36,7 +36,7 @@ export default function OfertaCard({ offer }) {
 			<p>Turno: {offer.turno}</p>
 			<p>Modulos: {offer.hsmodulos}</p>
 			{
-				agregada ? (
+				isAgregada ? (
 					<button
 						className={`${styles.button} ${styles.buttonDanger}`}
 						onClick={connectEliminarPostulacion}
