@@ -1,5 +1,4 @@
 import OfertaList from '../OfertaList/OfertaList'
-// import ofertas from "../../data/ofertas.json"
 import Encabezado1 from '../Encabezado1'
 import styles from './OfertaListContainer.module.css'
 import { useEffect, useState } from 'react'
@@ -14,8 +13,13 @@ export default function OfertaListContainer({ mensaje }) {
 		setError(null)
 		setCargando(true)
 		setTimeout(() => {
-			fetch('../../data/ofertas.json')
-				.then(response => response.json())
+			fetch('/data/ofertas.json')
+				.then((respuesta) => {
+					if (!respuesta.ok) {
+						throw new Error('No se pudo encontrar ofertas en el servidor');
+					}
+					return respuesta.json()
+				})
 				.then(data => {
 					setOfertas(data)
 				})
@@ -23,9 +27,9 @@ export default function OfertaListContainer({ mensaje }) {
 					console.error("Ups. Hubo un error: ", error)
 					setError(error)
 				})
-				.finally(
+				.finally(() => {
 					setCargando(false)
-				)
+				})
 		}, 1000)
 
 	}, [])
@@ -39,8 +43,8 @@ export default function OfertaListContainer({ mensaje }) {
 				</div>
 			) : errorExcept ? (
 				<div>
-					<h3>Hubo un error. No se cargaran items</h3>
-					<p>El error es este: {errorExcept}</p>
+					<h3>Ocurrio un error: </h3>
+					<p className={styles.error}>{errorExcept.message}</p>
 				</div>
 			) : (
 				<div className={styles.container}>
