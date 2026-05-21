@@ -28,13 +28,22 @@ export default function OfertaCard({ offer }) {
 			position: 'top-end'
 		})
 	}
+	const cargoImage = `/images/${offer.cargo.trim().split(" ")[0].toLowerCase()}.jpg`
+	console.log(cargoImage)
 	return (
+
 		<div className={styles.card}>
 			<Encabezado3>{offer.cargo}</Encabezado3>
 			<p>Escuela: {offer.escuela}</p>
 			<p>Distrito: {offer.descdistrito}</p>
 			<p>Turno: {offer.turno}</p>
 			<p>Modulos: {offer.hsmodulos}</p>
+			<img
+				src={cargoImage}
+				onError={(e) => {
+					e.target.src = "/images/docente.jpg"
+				}}
+				alt={offer.cargo} width="150" height="150" ></img>
 			{
 				isAgregada ? (
 					<button
