@@ -1,6 +1,6 @@
 import { useState } from "react"
 import OfertaListContainer from "../components/OfertaListContainer/OfertaListContainer"
-// import FiltrosOfertas from "../components/FiltrosOfertas/FiltrosOfertas"
+import FiltrosOfertas from "../components/FiltrosOfertas/FiltrosOfertas"
 
 export default function OfertasPage() {
 	const [filtros, setFiltros] = useState({
@@ -10,10 +10,10 @@ export default function OfertasPage() {
 	})
 	return (
 		<>
-			{/* <FiltrosOfertas
+			<FiltrosOfertas
 				filtros={filtros}
 				setFiltros={setFiltros}
-			/> */}
+			/>
 			<OfertaListContainer
 				filtros={filtros}
 			/>

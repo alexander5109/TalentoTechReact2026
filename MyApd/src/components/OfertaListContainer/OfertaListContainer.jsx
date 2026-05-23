@@ -4,6 +4,7 @@ import styles from './OfertaListContainer.module.css'
 import { useEffect, useState } from 'react'
 
 export default function OfertaListContainer({ filtros }) {
+	console.log(filtros)
 
 	const [errorExcept, setError] = useState(null)
 	const [isLoading, setCargando] = useState(true)
