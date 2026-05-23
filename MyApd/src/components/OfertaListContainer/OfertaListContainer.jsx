@@ -3,7 +3,7 @@ import Encabezado1 from '../Encabezado1'
 import styles from './OfertaListContainer.module.css'
 import { useEffect, useState } from 'react'
 
-export default function OfertaListContainer({ mensaje }) {
+export default function OfertaListContainer({ filtros }) {
 
 	const [errorExcept, setError] = useState(null)
 	const [isLoading, setCargando] = useState(true)
@@ -21,7 +21,7 @@ export default function OfertaListContainer({ mensaje }) {
 					return respuesta.json()
 				})
 				.then(data => {
-					setOfertas(data)
+					setOfertas(data);
 				})
 				.catch(error => {
 					console.error("Ups. Hubo un error: ", error)
@@ -34,9 +34,33 @@ export default function OfertaListContainer({ mensaje }) {
 
 	}, [])
 
+	const ofertasFiltradas = ofertas.filter((oferta) => {
+		const coincideCargo = !filtros.cargo ||
+			oferta.cargo
+				.toLowerCase()
+				.includes(
+					filtros.cargo.toLowerCase()
+				)
+
+		const coincideDistrito =
+			!filtros.distrito ||
+			oferta.descdistrito === filtros.distrito
+
+		const coincideTurno =
+			!filtros.turno ||
+			oferta.turno === filtros.turno
+
+		return (
+			coincideCargo &&
+			coincideDistrito &&
+			coincideTurno
+		)
+	})
+
+
 	return (
 		<div>
-			<Encabezado1>{mensaje}</Encabezado1>
+			<Encabezado1>Ofertas encontradas:</Encabezado1>
 			{isLoading ? (
 				<div>
 					<h3>Cargando ofertas...</h3>
@@ -48,7 +72,7 @@ export default function OfertaListContainer({ mensaje }) {
 				</div>
 			) : (
 				<div className={styles.container}>
-					<OfertaList ofertas={ofertas} />
+					<OfertaList ofertas={ofertasFiltradas} />
 				</div>
 			)}
 		</div>
