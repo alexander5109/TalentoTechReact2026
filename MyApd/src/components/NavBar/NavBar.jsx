@@ -4,7 +4,7 @@ import { usePendingPostulations } from "../../context/PendingPostulationsContext
 import PendingPostulationsWidget from "../PendingPostulationsWidget/PendingPostulationsWidget"
 
 export default function NavBar() {
-	const { getPendingCount } = usePendingPostulations()
+	const { pendingPostulations } = usePendingPostulations()
 	return (
 		<nav className={styles.navbar}>
 			<div className={styles.logoSection}>
@@ -19,7 +19,7 @@ export default function NavBar() {
 			</div>
 			<div className={styles.widget}>
 				<Link to="/pendingPostulations">
-					<PendingPostulationsWidget pendingCount={getPendingCount()} />
+					<PendingPostulationsWidget pendingCount={pendingPostulations.length} />
 				</Link>
 			</div>
 		</nav>

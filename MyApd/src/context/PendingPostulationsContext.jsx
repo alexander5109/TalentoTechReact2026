@@ -11,10 +11,7 @@ export function usePendingPostulations() {
 }
 
 export function PendingPostulationsProvider({ children }) {
-	const [
-		pendingPostulations,
-		setPendingPostulations
-	] = useState([])
+	const [pendingPostulations,setPendingPostulations] = useState([])
 
 	function addToPendingPostulations(offer) {
 		const alreadyExists = pendingPostulations.some(item => item.idoferta === offer.idoferta)
@@ -27,7 +24,6 @@ export function PendingPostulationsProvider({ children }) {
 	}
 
 	function removeFromPendingPostulations(idOferta) {
-
 		setPendingPostulations((prev) =>
 			prev.filter(
 				item =>
@@ -40,10 +36,6 @@ export function PendingPostulationsProvider({ children }) {
 		setPendingPostulations([])
 	}
 
-	function getPendingCount() {
-		return pendingPostulations.length
-	}
-
 	return (
 		<PendingPostulationsContext.Provider
 			value={{
@@ -51,7 +43,6 @@ export function PendingPostulationsProvider({ children }) {
 				addToPendingPostulations,
 				removeFromPendingPostulations,
 				clearPendingPostulations,
-				getPendingCount
 			}}
 		>
 			{children}
