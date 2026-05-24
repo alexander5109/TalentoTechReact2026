@@ -11,8 +11,6 @@ export default function FiltrosOfertas({
 			[name]: value
 		})
 	}
-
-
 	return (
 		<form className={styles.form}>
 			<h3 >Filtrar Ofertas</h3>
@@ -26,7 +24,6 @@ export default function FiltrosOfertas({
 					onChange={manejarCambio}
 				/>
 			</div>
-
 			<div className={styles.field} >
 				<label>Distrito:</label>
 				<select name="distrito" value={filtros.distrito} onChange={manejarCambio} >
@@ -35,7 +32,6 @@ export default function FiltrosOfertas({
 					<option value="MORON"> Morón </option>
 				</select>
 			</div>
-
 			<div className={styles.field} >
 				<label>Turno:</label>
 				<select name="turno" value={filtros.turno} onChange={manejarCambio}>

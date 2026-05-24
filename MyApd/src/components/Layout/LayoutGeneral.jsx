@@ -2,13 +2,15 @@ import Header from './Header/Header'
 import Footer from './Footer/Footer'
 import NavBar from './NavBar/NavBar'
 
-export default function LayoutGeneral({ children }) {
+import { Outlet } from 'react-router-dom'
+
+export default function LayoutGeneral() {
 	return (
 		<>
 			<Header />
 			<NavBar />
 			<main>
-				{children}
+				<Outlet />
 			</main>
 			<Footer />
 		</>
