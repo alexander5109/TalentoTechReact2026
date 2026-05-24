@@ -1,11 +1,10 @@
-import LayoutGeneral from './components/LayoutGeneral'
-
-import HomePage from './pages/HomePage'
+import LayoutGeneral from './components/layout/LayoutGeneral'
+// import HomePage from './components/HomePage/HomePage'
+import OfertasPage from './components/OfertasPage/OfertasPage'
 
 import './App.css'
-import OfertasPage from './pages/OfertasPage'
 
-function App() {
+export default function App() {
 	return (
 		<LayoutGeneral>
 			{/* <HomePage /> */}
@@ -13,5 +12,3 @@ function App() {
 		</LayoutGeneral>
 	)
 }
-
-export default App

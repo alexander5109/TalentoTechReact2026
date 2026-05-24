@@ -29,12 +29,3 @@
 .link:hover {
 	color: #9fe0cb;
 }
-
-.pendingWidget {
-	text-decoration: none;
-	background-color: #79d4e0;
-	color: black;
-	padding: 0.5rem 1rem;
-	border-radius: 10px;
-	font-weight: bold;
-}

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import styles from "./NavBar.module.css"
+import styles from "./PendingPostulationsWidget.module.css"
 
 export default function PendingPostulationsWidget() {
 

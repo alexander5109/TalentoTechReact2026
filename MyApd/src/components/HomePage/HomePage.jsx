@@ -1,5 +1,5 @@
-import Encabezado1 from "../components/Encabezado1"
-import Encabezado2 from "../components/Encabezado2"
+import Encabezado1 from "../common/Encabezado1"
+import Encabezado2 from "../Common/Encabezado2"
 
 export default function HomePage() {
 	return (

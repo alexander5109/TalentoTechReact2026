@@ -1,11 +1,10 @@
 import OfertaList from '../OfertaList/OfertaList'
-import Encabezado1 from '../Encabezado1'
+import Encabezado1 from "../../common/Encabezado1"
 import styles from './OfertaListContainer.module.css'
 import { useEffect, useState } from 'react'
 
 export default function OfertaListContainer({ filtros }) {
 	console.log(filtros)
-
 	const [errorExcept, setError] = useState(null)
 	const [isLoading, setCargando] = useState(true)
 	const [ofertas, setOfertas] = useState([])

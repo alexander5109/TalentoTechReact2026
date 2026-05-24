@@ -1,6 +1,6 @@
 import { useState } from "react"
-import OfertaListContainer from "../components/OfertaListContainer/OfertaListContainer"
-import FiltrosOfertas from "../components/FiltrosOfertas/FiltrosOfertas"
+import OfertaListContainer from "./OfertaListContainer/OfertaListContainer"
+import FiltrosOfertas from "./FiltrosOfertas/FiltrosOfertas"
 
 export default function OfertasPage() {
 	const [filtros, setFiltros] = useState({

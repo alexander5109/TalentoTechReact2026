@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import Encabezado3 from "../Encabezado3"
+import Encabezado3 from "../../common/Encabezado3"
 import styles from './OfertaCard.module.css'
 import Swal from 'sweetalert2'
 export default function OfertaCard({ offer }) {
@@ -29,7 +29,7 @@ export default function OfertaCard({ offer }) {
 		})
 	}
 	const cargoImage = `/images/${offer.cargo.trim().split(" ")[0].toLowerCase()}.jpg`
-	console.log(cargoImage)
+	// console.log(cargoImage)
 	return (
 
 		<div className={styles.card}>
