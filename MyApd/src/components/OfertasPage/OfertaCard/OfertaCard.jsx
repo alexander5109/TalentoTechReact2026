@@ -2,6 +2,8 @@ import { useState } from 'react'
 import Encabezado3 from "../../common/Encabezado3"
 import styles from './OfertaCard.module.css'
 import Swal from 'sweetalert2'
+import { Link } from 'react-router-dom'
+
 export default function OfertaCard({ offer }) {
 	const [isAgregada, setAgregada] = useState(false)
 	function connectAgregarAPostulaciones() {
@@ -40,23 +42,19 @@ export default function OfertaCard({ offer }) {
 			<p>Modulos: {offer.hsmodulos}</p>
 			<img
 				src={cargoImage}
-				onError={(e) => {
-					e.target.src = "/images/docente.jpg"
-				}}
-				alt={offer.cargo} width="150" height="150" ></img>
+				onError={(e) => { e.target.src = "/images/docente.jpg" }}
+				alt={offer.cargo} width="150" height="150">
+			</img>
+			<Link to={`/ofertas/${offer.idoferta}`} className={`${styles.button} ${styles.buttonSecondary}`} >
+				Ver detalles...
+			</Link>
 			{
 				isAgregada ? (
-					<button
-						className={`${styles.button} ${styles.buttonDanger}`}
-						onClick={connectEliminarPostulacion}
-					>
+					<button className={`${styles.button} ${styles.buttonDanger}`} onClick={connectEliminarPostulacion} >
 						Quitar de postulaciones
 					</button>
 				) : (
-					<button
-						className={`${styles.button} ${styles.buttonPrimary}`}
-						onClick={connectAgregarAPostulaciones}
-					>
+					<button className={`${styles.button} ${styles.buttonPrimary}`} onClick={connectAgregarAPostulaciones} >
 						Agregar a postulaciones
 					</button>
 				)

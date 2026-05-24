@@ -12,6 +12,9 @@ export default function OfertaListContainer({ filtros }) {
 
 		setError(null)
 		setCargando(true)
+		//TIMEOUT PARA SIMULAR FETCHEO PESADO...
+		const fakeDelay = 350;
+
 		setTimeout(() => {
 			fetch('/data/ofertas.json')
 				.then((respuesta) => {
@@ -30,7 +33,7 @@ export default function OfertaListContainer({ filtros }) {
 				.finally(() => {
 					setCargando(false)
 				})
-		}, 1000)
+		}, fakeDelay)
 
 	}, [])
 

@@ -7,8 +7,10 @@
 	width: 260px;
 	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
-
 .button {
+	display: inline-block;
+	text-decoration: none;
+	text-align: center;
 	color: white;
 	border: none;
 	padding: 0.7rem 1rem;
@@ -23,6 +25,13 @@
 
 .buttonPrimary {
 	background-color: #2e8b72;
+}
+
+.buttonSecondary {
+	background-color: #afa123;
+}
+.buttonSecondary:hover {
+	background-color: #d8db26;
 }
 
 .buttonPrimary:hover {
