@@ -7,9 +7,7 @@ export default function NavBar() {
 	return (
 		<nav className={styles.navbar}>
 			<div className={styles.logoSection}>
-				<Link to="/" className={styles.logo}>
-					APD Finder
-				</Link>
+				<Link to="/" className={styles.logo}> APD Finder </Link>
 			</div>
 			<div className={styles.links}>
 				<Link to="/" className={styles.link}> Inicio </Link>
@@ -19,7 +17,9 @@ export default function NavBar() {
 				<Link to="/miPerfil" className={styles.link}> Mi Perfil </Link>
 			</div>
 			<div className={styles.widget}>
-				<PendingPostulationsWidget />
+				<Link to="/pendingPostulations">
+					<PendingPostulationsWidget pendingCount="3"></PendingPostulationsWidget>
+				</Link>
 			</div>
 		</nav>
 	)
