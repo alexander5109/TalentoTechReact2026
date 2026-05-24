@@ -1,0 +1,23 @@
+.card {
+	width: 140px;
+	padding: 1rem;
+	border-radius: 10px;
+	background-color: #3d8067;
+	text-align: center;
+}
+
+.image {
+	width: 80px;
+	height: 80px;
+	object-fit: cover;
+	border-radius: 50%;
+}
+
+.card h4 {
+	margin: 0.5rem 0 0.2rem 0;
+}
+
+.card p {
+	margin: 0;
+	font-size: 0.9rem;
+}
