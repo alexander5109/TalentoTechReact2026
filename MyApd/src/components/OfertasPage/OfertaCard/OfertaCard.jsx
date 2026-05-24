@@ -1,13 +1,18 @@
-import { useState } from 'react'
+import { usePendingPostulations } from "../../../context/PendingPostulationsContext.jsx"
 import Encabezado3 from "../../common/Encabezado3"
 import styles from './OfertaCard.module.css'
 import Swal from 'sweetalert2'
 import { Link } from 'react-router-dom'
 
 export default function OfertaCard({ offer }) {
-	const [isAgregada, setAgregada] = useState(false)
+	const {
+		pendingPostulations,
+		addToPendingPostulations,
+		removeFromPendingPostulations
+	} = usePendingPostulations()
+	const isAgregada = pendingPostulations.some(item => item.idoferta === offer.idoferta)
 	function connectAgregarAPostulaciones() {
-		setAgregada(true)
+		addToPendingPostulations(offer)
 		Swal.fire({
 			title: 'Oferta agregada',
 			text: `${offer.cargo} en escuela ${offer.escuela} fue agregada a postulaciones pendientes`,
@@ -19,7 +24,7 @@ export default function OfertaCard({ offer }) {
 		})
 	}
 	function connectEliminarPostulacion() {
-		setAgregada(false)
+		removeFromPendingPostulations(offer.idoferta)
 		Swal.fire({
 			title: 'Oferta eliminada',
 			text: `${offer.cargo} fue eliminada de postulaciones pendientes`,

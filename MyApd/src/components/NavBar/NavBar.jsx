@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom"
 import styles from "./NavBar.module.css"
-
+import { usePendingPostulations } from "../../context/PendingPostulationsContext"
 import PendingPostulationsWidget from "../PendingPostulationsWidget/PendingPostulationsWidget"
 
 export default function NavBar() {
+	const { getPendingCount } = usePendingPostulations()
 	return (
 		<nav className={styles.navbar}>
 			<div className={styles.logoSection}>
-				<Link to="/" className={styles.logo}> APD Finder </Link>
+				<Link to="/" className={styles.logo} > APD Finder </Link>
 			</div>
 			<div className={styles.links}>
 				<Link to="/" className={styles.link}> Inicio </Link>
@@ -18,7 +19,7 @@ export default function NavBar() {
 			</div>
 			<div className={styles.widget}>
 				<Link to="/pendingPostulations">
-					<PendingPostulationsWidget pendingCount="3"></PendingPostulationsWidget>
+					<PendingPostulationsWidget pendingCount={getPendingCount()} />
 				</Link>
 			</div>
 		</nav>
