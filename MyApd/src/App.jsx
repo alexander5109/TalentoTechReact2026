@@ -5,7 +5,7 @@ import OfertasPage from './components/OfertasPage/OfertasPage'
 import AboutPage from './components/AboutPage/AboutPage'
 import ContactoPage from './components/ContactoPage/ContactoPage'
 import MiPerfilPage from './components/MiPerfilPage/MiPerfilPage'
-import PendingPostulations from './components/PendingPostulations/PendingPostulations'
+import PendingPostulationsPage from './components/PendingPostulationsPage/PendingPostulationsPage'
 import OfertaDetallePage from './components/OfertaDetallePage/OfertaDetallePage'
 import './App.css'
 
@@ -19,7 +19,7 @@ export default function App() {
 				<Route path="/about" element={<AboutPage />} />
 				<Route path="/contacto" element={<ContactoPage />} />
 				<Route path="/miPerfil" element={<MiPerfilPage />} />
-				<Route path="/pendingPostulations" element={<PendingPostulations />} />
+				<Route path="/pendingPostulations" element={<PendingPostulationsPage />} />
 			</Route>
 		</Routes>
 	)

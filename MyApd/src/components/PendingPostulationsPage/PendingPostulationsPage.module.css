@@ -1,0 +1,61 @@
+.container {
+	padding: 2rem;
+}
+
+.list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1.5rem;
+	justify-content: center;
+}
+
+.card {
+	border-radius: 16px;
+	color: black;
+	border: 1px solid #b9c8cc;
+	padding: 16px;
+	background-color: #dff5f8;
+	width: 260px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.checkoutBox {
+	margin-top: 2rem;
+	padding: 1.5rem;
+	border-radius: 16px;
+	background-color: #eef8fa;
+	text-align: center;
+	border: 1px solid #c7dadd;
+}
+
+.button {
+	display: inline-block;
+	text-decoration: none;
+	text-align: center;
+	color: white;
+	border: none;
+	padding: 0.7rem 1rem;
+	margin: 1rem;
+	border-radius: 12px;
+	font-weight: 600;
+	cursor: pointer;
+	transition:
+		background-color 0.2s ease,
+		transform 0.1s ease;
+}
+
+.buttonPrimary {
+	background-color: #2e8b72;
+}
+
+.buttonPrimary:hover {
+	background-color: #256d59;
+}
+
+.buttonDanger {
+	background-color: #d9534f;
+}
+
+.buttonDanger:hover {
+	background-color: #b94441;
+}
