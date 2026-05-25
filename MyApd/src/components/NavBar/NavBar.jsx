@@ -12,10 +12,10 @@ export default function NavBar() {
 			</div>
 			<div className={styles.links}>
 				<Link to="/" className={styles.link}> Inicio </Link>
-				<Link to="/ofertas" className={styles.link}> Ofertas </Link>
 				<Link to="/about" className={styles.link}> About us </Link>
 				<Link to="/contacto" className={styles.link}> Contacto </Link>
-				<Link to="/miPerfil" className={styles.link}> Mi Perfil </Link>
+				<Link to="/ofertas" className={styles.link}> Ofertas </Link>
+				{/* <Link to="/miPerfil" className={styles.link}> Mi Perfil </Link> */}
 			</div>
 			<div className={styles.widget}>
 				<Link to="/pendingPostulations">
