@@ -1,54 +1,41 @@
 .container {
 	display: flex;
 	flex-direction: column;
-
 	gap: 0.5rem;
 }
 
 .groupLabel {
 	font-family: "Albertus", serif;
-
 	font-size: 0.95rem;
-
 	color: #214c3d;
 }
 
 .radioGroup {
 	display: flex;
 	flex-direction: column;
-
 	gap: 0.55rem;
 }
 
 .radioOption {
 	display: flex;
 	align-items: center;
-
 	gap: 0.6rem;
-
 	cursor: pointer;
-
 	font-size: 0.92rem;
-
 	color: #214c3d;
 }
 
 .radioOption input[type="radio"] {
 	accent-color: #2e6e56;
-
 	cursor: pointer;
 }
 
 .radioOption span {
 	padding: 0.32rem 0.72rem;
-
 	border-radius: 999px;
-
 	font-size: 0.84rem;
-
 	background:
 		rgba(255, 255, 255, 0.35);
-
 	transition:
 		transform 0.15s ease,
 		background 0.2s ease;

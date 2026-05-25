@@ -2,21 +2,6 @@
 	display: flex;
 	align-items: center;
 	gap: 2rem;
-
-	max-width: 950px;
-
-	margin: 2rem auto;
-
-	padding: 2rem;
-
-	background: #f5f7fa;
-
-	border-radius: 18px;
-
-	border: 1px solid #d7dee3;
-
-	box-shadow:
-		0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .reverse {
@@ -29,13 +14,9 @@
 
 .image {
 	width: 100%;
-
 	height: 220px;
-
 	object-fit: cover;
-
 	border-radius: 14px;
-
 	box-shadow:
 		0 3px 10px rgba(0, 0, 0, 0.12);
 }

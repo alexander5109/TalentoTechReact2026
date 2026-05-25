@@ -1,11 +1,11 @@
-import styles from "./TextContainer.module.css"
+import Surface from "../Surface/Surface"
 
 export default function TextContainer({
 	children
 }) {
 	return (
-		<div className={styles.container}>
+		<Surface>
 			{children}
-		</div>
+		</Surface>
 	)
 }

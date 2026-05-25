@@ -13,7 +13,6 @@ export default function OfertaListContainer({ filtros }) {
 		setCargando(true)
 		//TIMEOUT PARA SIMULAR FETCHEO PESADO...
 		const fakeDelay = 0; // 350; // 1500;
-
 		setTimeout(() => {
 			fetch('/data/ofertas.json')
 				.then((respuesta) => {

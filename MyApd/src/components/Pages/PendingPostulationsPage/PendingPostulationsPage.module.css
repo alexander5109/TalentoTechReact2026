@@ -1,36 +1,24 @@
 .list {
 	display: flex;
-
 	flex-wrap: wrap;
-
 	justify-content: center;
-
 	gap: 1.5rem;
 }
 
 .checkoutBox {
 	margin-top: 3rem;
-
 	padding-top: 2rem;
-
 	border-top: 1px solid #ccd7db;
-
 	text-align: center;
 }
 
 .confirmButton {
 	border: none;
-
 	padding: 0.9rem 1.4rem;
-
 	border-radius: 12px;
-
 	background-color: #2e8b72;
-
 	color: white;
-
 	font-weight: 700;
-
 	cursor: pointer;
 }
 
@@ -40,8 +28,6 @@
 
 .empty {
 	text-align: center;
-
 	font-size: 1.1rem;
-
 	color: #555;
 }
