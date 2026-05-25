@@ -7,7 +7,8 @@ export default function OfertasPage() {
 	const [filtros, setFiltros] = useState({
 		cargo: '',
 		distrito: '',
-		turno: ''
+		turno: '',
+		estado: ''
 	})
 
 	return (

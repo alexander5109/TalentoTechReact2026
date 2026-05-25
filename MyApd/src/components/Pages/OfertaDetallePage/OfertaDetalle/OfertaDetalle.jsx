@@ -1,91 +1,198 @@
-import styles from './OfertaDetalle.module.css'
+import { Link } from "react-router-dom"
+import SectionTitleH3 from "../../../common/SectionTitleH3/SectionTitleH3";
+
+import Swal from "sweetalert2"
+
+import {
+	usePendingPostulations
+} from "../../../../context/PendingPostulationsContext.jsx"
+
+import styles from "./OfertaDetalle.module.css"
 
 export default function OfertaDetalle({ offer }) {
+	const estadoClase = (
+		offer.estado === "Publicada"
+			? styles.estadoPublicada
+			: offer.estado === "Anulada"
+				? styles.estadoAnulada
+				: styles.estadoDesignada
+	)
+	const {
+		pendingPostulations,
+		addToPendingPostulations,
+		removeFromPendingPostulations
+	} = usePendingPostulations()
+
+	const isAgregada =
+		pendingPostulations.some(
+			item => item.idoferta === offer.idoferta
+		)
+
+	function connectAgregarAPostulaciones() {
+
+		addToPendingPostulations(offer)
+
+		Swal.fire({
+			title: "Oferta agregada",
+			text:
+				`${offer.cargo} agregada a postulaciones`,
+			icon: "success",
+			timer: 2500,
+			showConfirmButton: false,
+			toast: true,
+			position: "top-end"
+		})
+	}
+
+	function connectEliminarPostulacion() {
+
+		removeFromPendingPostulations(
+			offer.idoferta
+		)
+
+		Swal.fire({
+			title: "Oferta eliminada",
+			text: `${offer.cargo} eliminada`,
+			icon: "info",
+			timer: 2500,
+			showConfirmButton: false,
+			toast: true,
+			position: "top-end"
+		})
+	}
 
 	return (
+
 		<div className={styles.container}>
-			<h1>{offer.cargo}</h1>
-			<h3>{offer.descripcioncargo}</h3>
-			<hr />
+			<div className={styles.header}>
+				<SectionTitleH3
+					upper={offer.cargo}
+					lower={offer.descripcioncargo}
+				/>
+			</div>
 
-			<p>
-				<strong>Distrito:</strong>
-				{offer.descdistrito}
-			</p>
 
-			<p>
-				<strong>Escuela:</strong>
-				{offer.escuela}
-			</p>
+			<div className={styles.detailsGrid}>
 
-			<p>
-				<strong>Turno:</strong>
-				{offer.turno}
-			</p>
+				<div>
+					<strong>Escuela</strong>
+					<p>{offer.escuela}</p>
+				</div>
 
-			<p>
-				<strong>Módulos:</strong>
-				{offer.hsmodulos}
-			</p>
+				<div>
+					<strong>Curso</strong>
+					<p>{offer.cursodivision}</p>
+				</div>
 
-			<p>
-				<strong>Curso:</strong>
-				{offer.cursodivision}
-			</p>
+				<div>
+					<strong>Nivel</strong>
+					<p>{offer.descnivelmodalidad}</p>
+				</div>
 
-			<p>
-				<strong>Nivel:</strong>
-				{offer.descnivelmodalidad}
-			</p>
+				<div className={estadoClase}>
+					<strong>Estado</strong>
+					<p>{offer.estado}</p>
+				</div>
 
-			<p>
-				<strong>Estado:</strong>
-				{offer.estado}
-			</p>
+				<div>
+					<strong>Inicio oferta</strong>
+					<p>{offer.iniciooferta}</p>
+				</div>
 
-			<p>
-				<strong>Inicio oferta:</strong>
-				{offer.iniciooferta}
-			</p>
+				<div>
+					<strong>Fin oferta</strong>
+					<p>{offer.finoferta}</p>
+				</div>
 
-			<p>
-				<strong>Fin oferta:</strong>
-				{offer.finoferta}
-			</p>
+				<div>
+					<strong>Toma de posesión</strong>
+					<p>{offer.tomaposesion}</p>
+				</div>
 
-			<p>
-				<strong>Toma de posesión:</strong>
-				{offer.tomaposesion}
-			</p>
+				<div>
+					<strong>Suplencia desde</strong>
+					<p>{offer.supl_desde}</p>
+				</div>
 
-			<p>
-				<strong>Suplencia desde:</strong>
-				{offer.supl_desde}
-			</p>
+				<div>
+					<strong>Suplencia hasta</strong>
+					<p>{offer.supl_hasta}</p>
+				</div>
 
-			<p>
-				<strong>Suplencia hasta:</strong>
-				{offer.supl_hasta}
-			</p>
+				<div>
+					<strong>Reemplaza a</strong>
+					<p>{offer.reemp_apeynom}</p>
+				</div>
 
-			<p>
-				<strong>Reemplaza a:</strong>
-				{offer.reemp_apeynom}
-			</p>
+				<div>
+					<strong>Motivo</strong>
+					<p>{offer.reemp_motivo}</p>
+				</div>
+			</div>
 
-			<p>
-				<strong>Motivo:</strong>
-				{offer.reemp_motivo}
-			</p>
+
 
 			{
 				offer.observaciones && (
-					<p>
-						<strong>Observaciones:</strong>
-						{offer.observaciones}
-					</p>
+
+					<div className={styles.section}>
+
+						<h3>Observaciones</h3>
+
+						<p>
+							{offer.observaciones}
+						</p>
+
+					</div>
 				)
 			}
+
+
+			<div className={styles.actions}>
+
+				<Link
+					to="/ofertas"
+					className={
+						`${styles.button}
+						${styles.secondary}`
+					}
+				>
+					Volver
+				</Link>
+
+				{
+					isAgregada ? (
+
+						<button
+							className={
+								`${styles.button}
+								${styles.danger}`
+							}
+							onClick={
+								connectEliminarPostulacion
+							}
+						>
+							Quitar postulación
+						</button>
+
+					) : (
+
+						<button
+							className={
+								`${styles.button}
+								${styles.primary}`
+							}
+							onClick={
+								connectAgregarAPostulaciones
+							}
+						>
+							Agregar postulación
+						</button>
+
+					)
+				}
+
+			</div>
 
 		</div>
 	)
