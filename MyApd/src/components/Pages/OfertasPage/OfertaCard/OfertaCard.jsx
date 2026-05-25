@@ -10,6 +10,16 @@ import styles from './OfertaCard.module.css'
 
 export default function OfertaCard({ offer }) {
 
+	const estadoClase = (
+		offer.estado === "Publicada"
+			? styles.estadoPublicada
+			: offer.estado === "Anulada"
+				? styles.estadoAnulada
+				: styles.estadoDesignada
+	)
+	// console.log("estadoClase")
+	// console.log(estadoClase)
+
 	const {
 		pendingPostulations,
 		addToPendingPostulations,
@@ -83,8 +93,8 @@ export default function OfertaCard({ offer }) {
 				</h3>
 
 				<div className={styles.meta}>
-					<span>
-						{offer.escuela}
+					<span className={estadoClase}>
+						{offer.estado}
 					</span>
 
 					<span>

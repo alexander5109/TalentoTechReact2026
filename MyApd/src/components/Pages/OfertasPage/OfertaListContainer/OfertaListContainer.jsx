@@ -1,12 +1,9 @@
 import OfertaList from '../OfertaList/OfertaList'
 import styles from './OfertaListContainer.module.css'
-import TextContainer from "../../../common/TextContainer/TextContainer"
-import PrettyText from "../../../common/PrettyText/PrettyText"
-import SectionTitleH3 from "../../../common/SectionTitleH3/SectionTitleH3"
 import { useEffect, useState } from 'react'
 
 export default function OfertaListContainer({ filtros }) {
-	console.log(filtros)
+	// console.log(filtros)
 	const [errorExcept, setError] = useState(null)
 	const [isLoading, setCargando] = useState(true)
 	const [ofertas, setOfertas] = useState([])
@@ -55,9 +52,14 @@ export default function OfertaListContainer({ filtros }) {
 			!filtros.turno ||
 			oferta.turno === filtros.turno
 
+		const coincideEstado =
+			!filtros.estado ||
+			oferta.estado === filtros.estado
+
 		return (
 			coincideCargo &&
 			coincideDistrito &&
+			coincideEstado &&
 			coincideTurno
 		)
 	})

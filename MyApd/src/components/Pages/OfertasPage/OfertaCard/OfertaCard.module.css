@@ -9,16 +9,14 @@
 	border-radius: 18px;
 
 	background:
-		linear-gradient(
-			to bottom,
+		linear-gradient(to bottom,
 			#f8efdd,
-			#ead8b8
-		);
+			#ead8b8);
 
 	border: 1px solid #cfb894;
 
 	box-shadow:
-		0 3px 10px rgba(0,0,0,0.08);
+		0 3px 10px rgba(0, 0, 0, 0.08);
 
 	transition:
 		transform 0.15s ease,
@@ -29,7 +27,7 @@
 	transform: translateY(-2px);
 
 	box-shadow:
-		0 6px 18px rgba(0,0,0,0.12);
+		0 6px 18px rgba(0, 0, 0, 0.12);
 }
 
 .image {
@@ -40,7 +38,7 @@
 
 	border-radius: 12px;
 
-	border: 2px solid rgba(255,255,255,0.4);
+	border: 2px solid rgba(255, 255, 255, 0.4);
 
 	flex-shrink: 0;
 }
@@ -76,7 +74,7 @@
 	color: #355d4f;
 
 	background:
-		rgba(255,255,255,0.45);
+		rgba(255, 255, 255, 0.45);
 
 	border-radius: 999px;
 }
@@ -124,27 +122,54 @@
 
 .primary {
 	background:
-		linear-gradient(
-			to bottom,
+		linear-gradient(to bottom,
 			#3b8467,
-			#2e6e56
-		);
+			#2e6e56);
 }
 
 .secondary {
 	background:
-		linear-gradient(
-			to bottom,
+		linear-gradient(to bottom,
 			#b29a3c,
-			#9a8530
-		);
+			#9a8530);
 }
 
 .danger {
 	background:
-		linear-gradient(
-			to bottom,
+		linear-gradient(to bottom,
 			#cf5b56,
-			#b54844
-		);
+			#b54844);
+}
+
+
+
+
+.estadoPublicada {
+	background:
+		linear-gradient(to bottom,
+			rgba(70, 140, 100, 0.28),
+			rgba(55, 115, 80, 0.22)) !important;
+
+	border:
+		1px solid rgba(50, 100, 70, 0.25) !important;
+}
+
+.estadoAnulada {
+	background:
+		linear-gradient(to bottom,
+			rgba(180, 70, 70, 0.26),
+			rgba(150, 55, 55, 0.2)) !important;
+
+	border:
+		1px solid rgba(120, 40, 40, 0.22) !important;
+}
+
+.estadoDesignada {
+	background:
+		linear-gradient(to bottom,
+			rgba(120, 95, 170, 0.24),
+			rgba(95, 75, 145, 0.18)) !important;
+
+	border:
+		1px solid rgba(90, 70, 130, 0.2) !important;
 }

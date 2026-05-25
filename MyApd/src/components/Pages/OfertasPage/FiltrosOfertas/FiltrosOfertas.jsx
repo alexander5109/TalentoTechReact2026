@@ -11,6 +11,8 @@ export default function FiltrosOfertas({
 			...filtros,
 			[name]: value
 		})
+		// console.log("cambia o no cambia?")
+		// console.log(filtros)
 	}
 	return (
 		<form className={styles.form}>
