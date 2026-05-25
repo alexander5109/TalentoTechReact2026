@@ -1,12 +1,12 @@
 import { Routes, Route } from "react-router-dom"
 import LayoutGeneral from './components/LayoutGeneral'
-import HomePage from './components/HomePage/HomePage'
-import OfertasPage from './components/OfertasPage/OfertasPage'
-import AboutPage from './components/AboutPage/AboutPage'
-import ContactoPage from './components/ContactoPage/ContactoPage'
-import MiPerfilPage from './components/MiPerfilPage/MiPerfilPage'
-import PendingPostulationsPage from './components/PendingPostulationsPage/PendingPostulationsPage'
-import OfertaDetallePage from './components/OfertaDetallePage/OfertaDetallePage'
+import HomePage from './components/Pages/HomePage/HomePage'
+import OfertasPage from './components/Pages/OfertasPage/OfertasPage'
+import AboutPage from './components/Pages/AboutPage/AboutPage'
+import ContactoPage from './components/Pages/ContactoPage/ContactoPage'
+import MiPerfilPage from './components/Pages/MiPerfilPage/MiPerfilPage'
+import PendingPostulationsPage from './components/Pages/PendingPostulationsPage/PendingPostulationsPage'
+import OfertaDetallePage from './components/Pages/OfertaDetallePage/OfertaDetallePage'
 import './App.css'
 
 export default function App() {

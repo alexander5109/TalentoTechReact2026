@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import styles from "./NavBar.module.css"
 import { usePendingPostulations } from "../../context/PendingPostulationsContext"
-import PendingPostulationsWidget from "../PendingPostulationsWidget/PendingPostulationsWidget"
+import PendingPostulationsWidget from "./PendingPostulationsWidget/PendingPostulationsWidget"
 
 export default function NavBar() {
 	const { pendingPostulations } = usePendingPostulations()
