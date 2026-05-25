@@ -1,47 +1,81 @@
 import { usePendingPostulations } from "../../../context/PendingPostulationsContext"
+
+import OfertaCard from "../OfertasPage/OfertaCard/OfertaCard"
+
+import SectionTitle from "../../common/SectionTitle/SectionTitle"
+import TextContainer from "../../common/TextContainer/TextContainer"
+
 import styles from "./PendingPostulationsPage.module.css"
 
 export default function PendingPostulationsPage() {
+
 	const {
 		pendingPostulations,
-		removeFromPendingPostulations,
 		clearPendingPostulations
 	} = usePendingPostulations()
+
 	return (
-		<div className={styles.container}>
-			<h1> Postulaciones pendientes </h1> {
-				pendingPostulations.length === 0 ? (<p> No hay ofertas agregadas. </p>) : (
-					<> <div className={styles.list}> {
-						pendingPostulations.map((offer) => (
-							<div key={offer.idoferta} className={styles.card} >
-								<h3>{offer.cargo}</h3>
-								<p>Escuela: {offer.escuela}</p>
-								<p>Distrito: {offer.descdistrito}</p>
-								<p> Turno: {offer.turno} </p>
-								<p> Módulos: {offer.hsmodulos} </p>
-								<button
-									className={`${styles.button} ${styles.buttonDanger}`}
-									onClick={() =>
-										removeFromPendingPostulations(
-											offer.idoferta
-										)
-									} > Quitar </button>
+		<>
+
+			<TextContainer>
+				<SectionTitle
+					upper="Gestión de ofertas"
+					lower="Postulaciones Pendientes"
+				/>
+				{
+					pendingPostulations.length === 0 ? (
+
+						<p className={styles.empty}>
+							No hay ofertas agregadas.
+						</p>
+
+					) : (
+
+						<>
+
+							<div className={styles.list}>
+
+								{
+									pendingPostulations.map((offer) => (
+										<OfertaCard
+											key={offer.idoferta}
+											offer={offer}
+										/>
+									))
+								}
+
 							</div>
-						))
-					} </div>
-						<div className={styles.checkoutBox}>
-							<p> Total de postulaciones: {" "} <strong> {pendingPostulations.length} </strong> </p>
-							<button
-								className={`${styles.button} ${styles.buttonPrimary}`}
-								onClick={() => {
-									alert("Postulaciones enviadas")
-									clearPendingPostulations()
-								}}
-							> Confirmar postulaciones </button>
-						</div>
-					</>
-				)
-			}
-		</div>
+
+							<div className={styles.checkoutBox}>
+
+								<p>
+									Total de postulaciones:
+									{" "}
+									<strong>
+										{pendingPostulations.length}
+									</strong>
+								</p>
+
+								<button
+									className={styles.confirmButton}
+
+									onClick={() => {
+										alert("Postulaciones enviadas")
+										clearPendingPostulations()
+									}}
+								>
+									Confirmar postulaciones
+								</button>
+
+							</div>
+
+						</>
+
+					)
+				}
+
+			</TextContainer>
+
+		</>
 	)
 }

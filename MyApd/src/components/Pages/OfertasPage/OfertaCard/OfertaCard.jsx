@@ -1,15 +1,9 @@
 import { Link } from 'react-router-dom'
-
 import Swal from 'sweetalert2'
-
-import {
-	usePendingPostulations
-} from "../../../../context/PendingPostulationsContext.jsx"
-
+import { usePendingPostulations } from "../../../../context/PendingPostulationsContext.jsx"
 import styles from './OfertaCard.module.css'
 
 export default function OfertaCard({ offer }) {
-
 	const estadoClase = (
 		offer.estado === "Publicada"
 			? styles.estadoPublicada
@@ -147,7 +141,7 @@ export default function OfertaCard({ offer }) {
 								connectAgregarAPostulaciones
 							}
 						>
-							Postular
+							Agregar
 						</button>
 					)
 				}

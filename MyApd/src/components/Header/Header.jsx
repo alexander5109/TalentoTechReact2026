@@ -18,6 +18,9 @@ export default function Header() {
 	else if (location.pathname === "/contacto") {
 		subtitle = "Contacto"
 	}
+	else if (location.pathname === "/pendingPostulations") {
+		subtitle = "Mis postulaciones"
+	}
 	else if (location.pathname === "/miPerfil") {
 		subtitle = "Mi perfil"
 	}
@@ -28,7 +31,8 @@ export default function Header() {
 	return (
 		<header className={styles.header}>
 			<SectionTitle
-				upper="Mis Actos Públicos Digitales"
+				upper="Buscador de Actos Públicos Digitales"
+				// upper="Mis Actos Públicos Digitales"
 				lower={subtitle}
 			/>
 		</header>
