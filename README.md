@@ -105,7 +105,7 @@ Implementado mediante Context API:
 Clonar el repositorio:
 
 ```bash
-git clone <url-del-repo>
+git clone https://github.com/alexander5109/TalentoTechReact2026
 ```
 
 Instalar dependencias:
