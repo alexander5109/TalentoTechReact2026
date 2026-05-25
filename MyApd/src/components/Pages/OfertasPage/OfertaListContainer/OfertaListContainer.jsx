@@ -1,5 +1,8 @@
 import OfertaList from '../OfertaList/OfertaList'
 import styles from './OfertaListContainer.module.css'
+import TextContainer from "../../../common/TextContainer/TextContainer"
+import PrettyText from "../../../common/PrettyText/PrettyText"
+import SectionTitleH3 from "../../../common/SectionTitleH3/SectionTitleH3"
 import { useEffect, useState } from 'react'
 
 export default function OfertaListContainer({ filtros }) {
@@ -61,8 +64,7 @@ export default function OfertaListContainer({ filtros }) {
 
 
 	return (
-		<div>
-			<h1>Ofertas encontradas:</h1>
+		<>
 			{isLoading ? (
 				<div>
 					<h3>Cargando ofertas...</h3>
@@ -77,6 +79,6 @@ export default function OfertaListContainer({ filtros }) {
 					<OfertaList ofertas={ofertasFiltradas} />
 				</div>
 			)}
-		</div>
+		</>
 	)
 }

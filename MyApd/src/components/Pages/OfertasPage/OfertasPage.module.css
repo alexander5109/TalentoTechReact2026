@@ -1,0 +1,42 @@
+.layout {
+	display: flex;
+	gap: 2rem;
+
+	max-width: 1500px;
+
+	margin: 2rem auto;
+
+	padding: 0 1rem;
+
+	align-items: flex-start;
+}
+
+.sidebar {
+	position: sticky;
+	top: 1rem;
+
+	flex: 0 0 320px;
+}
+
+.content {
+	flex: 1;
+}
+
+/* mobile */
+
+@media (max-width: 900px) {
+
+	.layout {
+		flex-direction: column;
+	}
+
+	.sidebar {
+		position: static;
+
+		width: 100%;
+	}
+
+	.content {
+		width: 100%;
+	}
+}
