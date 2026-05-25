@@ -7,7 +7,6 @@ import ContactoPage from './components/Pages/ContactoPage/ContactoPage'
 import MiPerfilPage from './components/Pages/MiPerfilPage/MiPerfilPage'
 import PendingPostulationsPage from './components/Pages/PendingPostulationsPage/PendingPostulationsPage'
 import OfertaDetallePage from './components/Pages/OfertaDetallePage/OfertaDetallePage'
-import './App.css'
 
 export default function App() {
 	return (

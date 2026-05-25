@@ -1,0 +1,15 @@
+.appLayout {
+	max-width: 1280px;
+	margin: 0 auto;
+	min-height: 100vh;
+	background:
+		linear-gradient(180deg,
+			#f8f2e7,
+			#efe5d1);
+	box-shadow:
+		0 0 30px rgba(0, 0, 0, 0.25);
+}
+
+.mainContent {
+	padding-bottom: 3rem;
+}

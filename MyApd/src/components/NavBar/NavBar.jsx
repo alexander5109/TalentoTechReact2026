@@ -8,80 +8,64 @@ export default function NavBar() {
 
 	const { pendingPostulations } = usePendingPostulations()
 
+	function navClass(isActive) {
+		return isActive
+			? `${styles.link} ${styles.active}`
+			: styles.link
+	}
+
 	return (
 		<nav className={styles.navbar}>
 
-			<div className={styles.logoSection}>
-				<NavLink
-					to="/"
-					className={styles.logo}
-				>
-					APD Finder
-				</NavLink>
-			</div>
+			<NavLink
+				to="/"
+				className={styles.logo}
+			>
+				APD Finder
+			</NavLink>
 
 			<div className={styles.links}>
 
 				<NavLink
 					to="/"
-					className={({ isActive }) =>
-						isActive
-							? `${styles.link} ${styles.active}`
-							: styles.link
-					}
+					className={({ isActive }) => navClass(isActive)}
 				>
 					Inicio
 				</NavLink>
 
 				<NavLink
 					to="/about"
-					className={({ isActive }) =>
-						isActive
-							? `${styles.link} ${styles.active}`
-							: styles.link
-					}
+					className={({ isActive }) => navClass(isActive)}
 				>
 					About us
 				</NavLink>
 
 				<NavLink
 					to="/contacto"
-					className={({ isActive }) =>
-						isActive
-							? `${styles.link} ${styles.active}`
-							: styles.link
-					}
+					className={({ isActive }) => navClass(isActive)}
 				>
 					Contacto
 				</NavLink>
 
 				<NavLink
 					to="/ofertas"
-					className={({ isActive }) =>
-						isActive
-							? `${styles.link} ${styles.active}`
-							: styles.link
-					}
+					className={({ isActive }) => navClass(isActive)}
 				>
 					Ofertas
 				</NavLink>
 
 			</div>
 
-			<div className={styles.rightSection}>
-
-				<NavLink
-					to="/pendingPostulations"
-					className={({ isActive }) =>
-						isActive
-							? `${styles.pendingButton} ${styles.activePending}`
-							: styles.pendingButton
-					}
-				>
-					📝 Postulaciones ({pendingPostulations.length})
-				</NavLink>
-
-			</div>
+			<NavLink
+				to="/pendingPostulations"
+				className={({ isActive }) =>
+					isActive
+						? `${styles.pendingButton} ${styles.activePending}`
+						: styles.pendingButton
+				}
+			>
+				📝 Postulaciones ({pendingPostulations.length})
+			</NavLink>
 
 		</nav>
 	)
