@@ -1,17 +1,11 @@
 .footer {
 	position: relative;
 	overflow: hidden;
-	margin-top: 2rem;
+	margin-top: var(--space-2xl);
 	padding: 1.2rem 1rem 0.8rem;
 	text-align: center;
-	background: linear-gradient(
-		to top,
-		#b08a63 0%,
-		#c9ab84 20%,
-		#e7d6bb 55%,
-		#f5ecd9 100%
-	);
-	color: #214c3d;
+	background: var(--bg-footer);
+	color: var(--green-800);
 	border-top: 2px solid rgba(80, 50, 20, 0.2);
 }
 

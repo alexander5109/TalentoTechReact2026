@@ -1,73 +1,65 @@
 .container {
-	max-width: 1100px;
-	margin: 2rem auto;
-	padding: 2rem;
-	border-radius: 22px;
-	background:
-		linear-gradient(to bottom,
-			#f8efdd,
-			#ead8b8);
-	border: 1px solid #cfb894;
-	box-shadow:
-		0 5px 16px rgba(0, 0, 0, 0.08);
+	max-width: var(--content-width);
+	margin: var(--space-2xl) auto;
+	padding: var(--space-2xl);
+	border-radius: var(--radius-xl);
+	background: var(--bg-panel);
+	border: 1px solid var(--border-panel);
+	box-shadow: 0 5px 16px rgba(0, 0, 0, 0.08);
 }
 
 .header {
 	padding-bottom: 1.5rem;
 	margin-bottom: 1.5rem;
-	border-bottom:
-		1px solid rgba(33, 76, 61, 0.15);
+	border-bottom: 1px solid rgba(33, 76, 61, 0.15);
 }
 
 .detailsGrid {
 	display: grid;
-	grid-template-columns:
-		repeat(auto-fit, minmax(240px, 1fr));
-	gap: 1rem;
-	margin-bottom: 2rem;
+	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+	gap: var(--space-md);
+	margin-bottom: var(--space-2xl);
 }
 
 .detailsGrid div {
-	padding: 1rem;
-	border-radius: 14px;
-	background:
-		rgba(255, 255, 255, 0.28);
-	border:
-		1px solid rgba(255, 255, 255, 0.2);
+	padding: var(--space-md);
+	border-radius: var(--radius-md);
+	background: rgba(255, 255, 255, 0.28);
+	border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .detailsGrid strong {
 	display: block;
 	margin-bottom: 0.4rem;
-	font-family: "Albertus", serif;
-	color: #214c3d;
+	font-family: var(--font-heading);
+	color: var(--green-800);
 }
 
 .detailsGrid p {
 	margin: 0;
-	color: #355d4f;
+	color: var(--text-muted);
 	line-height: 1.4;
 }
 
 .section {
-	margin-top: 2rem;
+	margin-top: var(--space-2xl);
 }
 
 .section h3 {
 	margin-bottom: 0.6rem;
-	font-family: "Albertus", serif;
-	color: #214c3d;
+	font-family: var(--font-heading);
+	color: var(--green-800);
 }
 
 .section p {
 	line-height: 1.7;
-	color: #355d4f;
+	color: var(--text-muted);
 }
 
 .actions {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 1rem;
+	gap: var(--space-lg);
 	margin-top: 2.5rem;
 }
 
@@ -75,14 +67,12 @@
 	text-decoration: none;
 	border: none;
 	padding: 0.9rem 1.3rem;
-	border-radius: 12px;
-	font-family: "Albertus", serif;
+	border-radius: var(--radius-sm);
+	font-family: var(--font-heading);
 	font-size: 0.95rem;
 	cursor: pointer;
 	color: white;
-	transition:
-		transform 0.15s ease,
-		filter 0.2s ease;
+	transition: transform 0.15s ease, filter 0.2s ease;
 }
 
 .button:hover {
@@ -91,24 +81,15 @@
 }
 
 .primary {
-	background:
-		linear-gradient(to bottom,
-			#3b8467,
-			#2e6e56);
+	background: var(--bg-button-primary);
 }
 
 .secondary {
-	background:
-		linear-gradient(to bottom,
-			#9c8a46,
-			#84733a);
+	background: var(--bg-button-secondary);
 }
 
 .danger {
-	background:
-		linear-gradient(to bottom,
-			#cf5b56,
-			#b54844);
+	background: var(--bg-button-danger);
 }
 
 

@@ -3,25 +3,20 @@
 	flex-direction: column;
 	gap: 1.25rem;
 	padding: 1.4rem;
-	border-radius: 18px;
-	background:
-		linear-gradient(to bottom,
-			#f8efdd,
-			#ead8b8);
-	border: 1px solid #cfb894;
-	box-shadow:
-		0 4px 12px rgba(0, 0, 0, 0.08);
+	border-radius: var(--radius-lg);
+	background: var(--bg-panel);
+	border: 1px solid var(--border-panel);
+	box-shadow: var(--shadow-soft);
 }
 
 .form h3 {
 	margin: 0;
-	font-family: "Albertus", serif;
+	font-family: var(--font-heading);
 	font-size: 1.35rem;
-	color: #214c3d;
+	color: var(--green-800);
 	text-align: center;
 	padding-bottom: 0.8rem;
-	border-bottom:
-		1px solid rgba(33, 76, 61, 0.15);
+	border-bottom: 1px solid rgba(33, 76, 61, 0.15);
 }
 
 .field {
@@ -31,37 +26,29 @@
 }
 
 .field label {
-	font-family: "Albertus", serif;
+	font-family: var(--font-heading);
 	font-size: 0.95rem;
-	color: #214c3d;
+	color: var(--green-800);
 }
 
 .field input,
 .field select {
 	padding: 0.75rem 0.9rem;
 	font-size: 0.95rem;
-	color: #214c3d;
-	background:
-		linear-gradient(to bottom,
-			#fffaf2,
-			#f3e6cf);
-	border: 1px solid #c7b08a;
-	border-radius: 10px;
-	box-shadow:
-		inset 0 1px 2px rgba(0, 0, 0, 0.06);
-	transition:
-		border-color 0.2s ease,
-		box-shadow 0.2s ease;
+	color: var(--green-800);
+	background: var(--bg-panel-soft);
+	border: 1px solid var(--border-input);
+	border-radius: var(--radius-sm);
+	box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.06);
+	transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .field input:focus,
 .field select:focus {
 	outline: none;
-	border-color: #2e6e56;
-	box-shadow:
-		0 0 0 3px rgba(46, 110, 86, 0.14);
+	border-color: var(--green-600);
+	box-shadow: 0 0 0 3px rgba(46, 110, 86, 0.14);
 }
-
 
 .radioGroup {
 	display: flex;
@@ -75,11 +62,11 @@
 	gap: 0.6rem;
 	cursor: pointer;
 	font-size: 0.92rem;
-	color: #214c3d;
+	color: var(--green-800);
 }
 
 .radioOption input[type="radio"] {
-	accent-color: #2e6e56;
+	accent-color: var(--green-600);
 	cursor: pointer;
 }
 
@@ -87,8 +74,7 @@
 	padding: 0.3rem 0.7rem;
 	border-radius: 999px;
 	font-size: 0.85rem;
-	background:
-		rgba(255, 255, 255, 0.35);
+	background: rgba(255, 255, 255, 0.35);
 }
 
 .publicada {

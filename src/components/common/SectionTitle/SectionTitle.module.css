@@ -1,15 +1,10 @@
-@font-face {
-	font-family: "Albertus";
-	src: url("/fonts/albertusmt.otf") format("opentype");
-}
-
 .sectionHeading {
 	display: block;
-	font-family: "Albertus", serif;
+	font-family: var(--font-heading);
 	text-transform: uppercase;
 	text-align: center;
 	margin-bottom: 0.77rem;
-	color: #214c3d;
+	color: var(--green-800);
 }
 
 .upper {
@@ -17,7 +12,7 @@
 	font-size: 1rem;
 	font-weight: 200;
 	letter-spacing: 3px;
-	color: #2e6e56;
+	color: var(--green-700);
 	padding-bottom: 0.7rem;
 }
 

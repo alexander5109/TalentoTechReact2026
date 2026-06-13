@@ -4,29 +4,73 @@
 }
 
 :root {
-
-  --green-dark: #18392d;
-  --green-main: #214c3d;
-  --green-soft: #2f6a55;
-
-  --parchment: #f5ecd9;
-  --parchment-light: #f8f3e8;
-  --parchment-dark: #dbc8a0;
-
-  --text-dark: #2d2418;
+  /* Palette */
+  --green-900: #18392d;
+  --green-800: #214c3d;
+  --green-700: #2f6a55;
+  --green-600: #3b8467;
+  --green-500: #53796f;
+  --gold-700: #b29a3c;
+  --gold-600: #9a8530;
+  --gold-500: #c9b38b;
+  --parchment-100: #f8f3e8;
+  --parchment-200: #f5ecd9;
+  --parchment-300: #f4ecd8;
+  --parchment-400: #efe5d1;
+  --parchment-500: #efe4c9;
+  --parchment-600: #f3e6cf;
+  --parchment-700: #f8efdd;
+  --text-900: #2d2418;
+  --text-700: #355d4f;
+  --text-600: #24503a;
+  --text-500: #1f2f28;
+  --text-muted: #55796b;
   --text-soft: #5b5145;
 
-  --shadow:
-    0 4px 12px rgba(0, 0, 0, 0.08);
+  /* Typography */
+  --font-body: system-ui, Segoe UI, sans-serif;
+  --font-heading: "Albertus", serif;
 
-  --font-body:
-    system-ui,
-    Segoe UI,
-    sans-serif;
+  /* Layout */
+  --container-width: 1280px;
+  --content-width: 1100px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 18px;
+  --radius-xl: 22px;
 
-  --font-heading:
-    "Albertus",
-    serif;
+  --space-xxs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+
+  --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-card: 0 3px 10px rgba(0, 0, 0, 0.08);
+  --shadow-strong: 0 2px 10px rgba(0, 0, 0, 0.18);
+  --shadow-hover: 0 6px 18px rgba(0, 0, 0, 0.12);
+
+  --bg-main: linear-gradient(180deg, #1b2f28, #243d33);
+  --bg-panel: linear-gradient(to bottom, var(--parchment-700), #ead8b8);
+  --bg-panel-soft: linear-gradient(to bottom, #fffaf2, var(--parchment-600));
+  --bg-surface: linear-gradient(135deg, var(--parchment-300) 0%, var(--parchment-500) 45%, var(--parchment-100) 100%);
+  --bg-navbar: linear-gradient(90deg, var(--green-900), var(--green-800), #2a5c49);
+  --bg-navbar-active: linear-gradient(180deg, var(--gold-500), #c9b38b);
+  --bg-button-primary: linear-gradient(to bottom, var(--green-600), var(--green-700));
+  --bg-button-secondary: linear-gradient(to bottom, var(--gold-700), var(--gold-600));
+  --bg-button-danger: linear-gradient(to bottom, #cf5b56, #b54844);
+  --bg-footer: linear-gradient(to top, #b08a63 0%, #c9ab84 20%, #e7d6bb 55%, var(--parchment-200) 100%);
+  --bg-header: linear-gradient(to bottom, #b08a63 0%, #c9ab84 25%, #e7d6bb 60%, var(--parchment-200) 100%);
+
+  --border-panel: #cfb894;
+  --border-input: #c7b08a;
+  --border-surface: #d2c2a2;
+  --border-soft: rgba(255, 255, 255, 0.35);
+
+  --breakpoint-sm: 820px;
+  --breakpoint-md: 900px;
 }
 
 * {
@@ -43,10 +87,7 @@ body,
 body {
   font-family: var(--font-body);
 
-  color: var(--text-dark);
+  color: var(--text-900);
 
-  background:
-    linear-gradient(180deg,
-      #1b2f28,
-      #243d33);
+  background: var(--bg-main);
 }

@@ -6,7 +6,7 @@
 	padding: 0.55rem 0.8rem;
 	border-radius: 12px;
 	background: rgba(46, 110, 86, 0.48);
-	color: #f5ecd9;
+	color: var(--parchment-200);
 	border: 1px solid rgba(255, 255, 255, 0.12);
 	box-shadow:
 		0 2px 6px rgba(0, 0, 0, 0.12),
@@ -18,7 +18,7 @@
 	height: 48px;
 	object-fit: cover;
 	border-radius: 50%;
-	border: 2px solid #e7d6bb;
+	border: 2px solid var(--parchment-200);
 	flex-shrink: 0;
 }
 
@@ -30,11 +30,11 @@
 	margin: 0;
 	font-size: 0.9rem;
 	line-height: 1.1;
-	color: #fff8ec;
+	color: var(--parchment-100);
 }
 
 .info p {
 	margin: 0.15rem 0 0;
 	font-size: 0.75rem;
-	color: #d9eadf;
+	color: var(--parchment-100);
 }
