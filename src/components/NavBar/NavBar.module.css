@@ -23,12 +23,6 @@
 	opacity: 0.85;
 }
 
-.links {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 0.7rem;
-}
-
 .link {
 	font-family: var(--font-heading);
 	text-decoration: none;
@@ -48,9 +42,16 @@
 	color: var(--text-500);
 }
 
-.rightSection {
+.centralLinks {
 	display: flex;
-	align-items: center;
+	flex-wrap: wrap;
+	gap: 0.7rem;
+}
+
+.rightLinks {
+	display: flex;
+	align-items: right;
+	gap: 0.7rem;
 }
 
 .pendingButton {

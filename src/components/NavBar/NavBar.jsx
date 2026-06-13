@@ -24,7 +24,7 @@ export default function NavBar() {
 				APD Finder
 			</NavLink>
 
-			<div className={styles.links}>
+			<div className={styles.centralLinks}>
 
 				<NavLink
 					to="/"
@@ -55,17 +55,28 @@ export default function NavBar() {
 				</NavLink>
 
 			</div>
-
-			<NavLink
-				to="/pendingPostulations"
-				className={({ isActive }) =>
-					isActive
-						? `${styles.pendingButton} ${styles.activePending}`
-						: styles.pendingButton
-				}
-			>
-				📝 Postulaciones ({pendingPostulations.length})
-			</NavLink>
+			<div className={styles.rightLinks}>
+				<NavLink
+					to="/myProfile"
+					className={({ isActive }) =>
+						isActive
+							? `${styles.pendingButton} ${styles.activePending}`
+							: styles.pendingButton
+					}
+				>
+					👤 Mi Perfil
+				</NavLink>
+				<NavLink
+					to="/pendingPostulations"
+					className={({ isActive }) =>
+						isActive
+							? `${styles.pendingButton} ${styles.activePending}`
+							: styles.pendingButton
+					}
+				>
+					📝 Postulaciones ({pendingPostulations.length})
+				</NavLink>
+			</div>
 
 		</nav>
 	)

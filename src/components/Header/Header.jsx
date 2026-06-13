@@ -21,8 +21,8 @@ export default function Header() {
 	else if (location.pathname === "/pendingPostulations") {
 		subtitle = "Mis postulaciones"
 	}
-	else if (location.pathname === "/miPerfil") {
-		subtitle = "Mi perfil"
+	else if (location.pathname === "/myProfile") {
+		subtitle = "Mi perfil docente"
 	}
 	else {
 		subtitle = "Ruta sin cabecera"

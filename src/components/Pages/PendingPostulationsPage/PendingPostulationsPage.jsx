@@ -7,6 +7,8 @@ import TextContainer from "../../common/TextContainer/TextContainer"
 
 import styles from "./PendingPostulationsPage.module.css"
 
+import Swal from "sweetalert2"
+
 export default function PendingPostulationsPage() {
 
 	const {
@@ -60,7 +62,18 @@ export default function PendingPostulationsPage() {
 									className={styles.confirmButton}
 
 									onClick={() => {
-										alert("Postulaciones enviadas")
+
+										Swal.fire({
+											title: "Exito",
+											text:
+												`Postulaciones enviadas`,
+											icon: "success",
+											timer: 1000,
+											showConfirmButton: false,
+											toast: true,
+											position: "center"
+										})
+
 										clearPendingPostulations()
 									}}
 								>

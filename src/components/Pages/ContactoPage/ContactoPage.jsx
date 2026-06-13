@@ -4,11 +4,22 @@ import PrettyText from "../../common/PrettyText/PrettyText";
 
 import styles from "./ContactoPage.module.css"
 
+import Swal from "sweetalert2"
+
 export default function ContactoPage() {
 
 	function manejarSubmit(e) {
 		e.preventDefault()
-		alert("Mensaje enviado")
+		Swal.fire({
+			title: "Mensaje enviado",
+			text:
+				`Mentira. No se envió nada. \n Salu2`,
+			icon: "success",
+			timer: 1000,
+			showConfirmButton: false,
+			toast: true,
+			position: "center"
+		})
 	}
 
 	return (
