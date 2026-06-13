@@ -110,23 +110,26 @@ export default function MyProfilePage() {
 
 		return (
 			<div className={styles.field}>
-				<label>Distritos</label>
+				<label className={styles.fieldTitle}>
+					Distritos
+				</label>
+				<div className={styles.checkboxGroup}>
+					{
+						options.map(distrito => (
+							<label key={distrito}>
+								<input
+									type="checkbox"
+									checked={selected.includes(distrito)}
+									onChange={() =>
+										toggleDistrito(distrito)
+									}
+								/>
 
-				{
-					options.map(distrito => (
-						<label key={distrito}>
-							<input
-								type="checkbox"
-								checked={selected.includes(distrito)}
-								onChange={() =>
-									toggleDistrito(distrito)
-								}
-							/>
-
-							{distrito}
-						</label>
-					))
-				}
+								{distrito}
+							</label>
+						))
+					}
+				</div>
 			</div>
 		);
 	}
@@ -138,8 +141,9 @@ export default function MyProfilePage() {
 
 		return (
 			<div className={styles.field}>
-				<label>Nivel o modalidad</label>
-
+				<label className={styles.fieldTitle}>
+					Niveles
+				</label>
 				<select
 					value={value}
 					onChange={e => onChange(e.target.value)}
@@ -148,16 +152,18 @@ export default function MyProfilePage() {
 						Seleccionar...
 					</option>
 
-					{
-						options.map(option => (
-							<option
-								key={option}
-								value={option}
-							>
-								{option}
-							</option>
-						))
-					}
+					<div className={styles.checkboxGroup}>
+						{
+							options.map(option => (
+								<option
+									key={option}
+									value={option}
+								>
+									{option}
+								</option>
+							))
+						}
+					</div>
 				</select>
 			</div>
 		);
@@ -186,24 +192,27 @@ export default function MyProfilePage() {
 
 		return (
 			<div className={styles.field}>
-				<label>Cargos</label>
+				<label className={styles.fieldTitle}>
+					Cargos
+				</label>
+				<div className={styles.checkboxGroup}>
+					{
+						options.map(cargo => (
+							<label key={cargo}>
+								<input
+									type="checkbox"
+									checked={selected.includes(cargo)}
+									onChange={() =>
+										toggleCargo(cargo)
+									}
+								/>
 
-				{
-					options.map(cargo => (
-						<label key={cargo}>
-							<input
-								type="checkbox"
-								checked={selected.includes(cargo)}
-								onChange={() =>
-									toggleCargo(cargo)
-								}
-							/>
-
-							{cargo}
-						</label>
-					))
-				}
-			</div>
+								{cargo}
+							</label>
+						))
+					}
+				</div >
+			</div >
 		);
 	}
 
@@ -240,13 +249,11 @@ export default function MyProfilePage() {
 		}
 
 		return (
-			<div>
-
-				<label className={styles.field}>
-					Escuelas favoritas
+			<div className={styles.field}>
+				<label className={styles.fieldTitle}>
+					Escuelas Favoritas
 				</label>
-
-				<div>
+				<div className={styles.field}>
 
 					<input
 						type="text"
@@ -266,10 +273,11 @@ export default function MyProfilePage() {
 
 				</div>
 
-				<ul>
+				<ul className={styles.schoolList}>
 					{
 						schools.map(codigo => (
-							<li key={codigo}>
+							<li key={codigo}
+								className={styles.schoolItem}>
 
 								{codigo}
 
