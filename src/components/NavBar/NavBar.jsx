@@ -57,14 +57,14 @@ export default function NavBar() {
 			</div>
 			<div className={styles.rightLinks}>
 				<NavLink
-					to="/myProfile"
+					to="/myProfiles"
 					className={({ isActive }) =>
 						isActive
 							? `${styles.pendingButton} ${styles.activePending}`
 							: styles.pendingButton
 					}
 				>
-					👤 Mi Perfil
+					👤 Mis Perfiles
 				</NavLink>
 				<NavLink
 					to="/pendingPostulations"

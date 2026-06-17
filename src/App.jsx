@@ -4,7 +4,7 @@ import HomePage from './components/Pages/HomePage/HomePage'
 import OfertasPage from './components/Pages/OfertasPage/OfertasPage'
 import AboutPage from './components/Pages/AboutPage/AboutPage'
 import ContactoPage from './components/Pages/ContactoPage/ContactoPage'
-import MyProfilePage from './components/Pages/MyProfilePage/MyProfilePage'
+import MyProfilesPage from './components/Pages/MyProfilesPage/MyProfilesPage'
 import PendingPostulationsPage from './components/Pages/PendingPostulationsPage/PendingPostulationsPage'
 import OfertaDetallePage from './components/Pages/OfertaDetallePage/OfertaDetallePage'
 
@@ -17,7 +17,7 @@ export default function App() {
 				<Route path="/ofertas/:idOferta" element={<OfertaDetallePage />} />
 				<Route path="/about" element={<AboutPage />} />
 				<Route path="/contacto" element={<ContactoPage />} />
-				<Route path="/myProfile" element={<MyProfilePage />} />
+				<Route path="/myProfiles" element={<MyProfilesPage />} />
 				<Route path="/pendingPostulations" element={<PendingPostulationsPage />} />
 			</Route>
 		</Routes>

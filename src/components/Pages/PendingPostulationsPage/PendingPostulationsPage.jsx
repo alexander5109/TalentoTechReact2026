@@ -17,78 +17,58 @@ export default function PendingPostulationsPage() {
 	} = usePendingPostulations()
 
 	return (
-		<>
+		<TextContainer>
+			<SectionTitle upper="Gestión de ofertas" lower="Postulaciones Pendientes" />
+			{
+				pendingPostulations.length === 0 ? (
+					<p className={styles.empty}>
+						No hay ofertas agregadas.
+					</p>
+				) : (
+					<>
+						<div className={styles.list}>
+							{
+								pendingPostulations.map((offer) => (
+									<OfertaCard
+										key={offer.idoferta}
+										offer={offer}
+									/>
+								))
+							}
 
-			<TextContainer>
-				<SectionTitle
-					upper="Gestión de ofertas"
-					lower="Postulaciones Pendientes"
-				/>
-				{
-					pendingPostulations.length === 0 ? (
+						</div>
+						<div className={styles.checkoutBox}>
+							<p>
+								Total de postulaciones:
+								{" "}
+								<strong>
+									{pendingPostulations.length}
+								</strong>
+							</p>
+							<button
+								className={styles.confirmButton}
+								onClick={() => {
+									Swal.fire({
+										title: "Exito",
+										text: `Postulaciones enviadas`,
+										icon: "success",
+										timer: 1000,
+										showConfirmButton: false,
+										toast: true,
+										position: "center"
+									})
+									clearPendingPostulations()
+								}}
+							>
+								Confirmar postulaciones
+							</button>
 
-						<p className={styles.empty}>
-							No hay ofertas agregadas.
-						</p>
+						</div>
 
-					) : (
+					</>
 
-						<>
-
-							<div className={styles.list}>
-
-								{
-									pendingPostulations.map((offer) => (
-										<OfertaCard
-											key={offer.idoferta}
-											offer={offer}
-										/>
-									))
-								}
-
-							</div>
-
-							<div className={styles.checkoutBox}>
-
-								<p>
-									Total de postulaciones:
-									{" "}
-									<strong>
-										{pendingPostulations.length}
-									</strong>
-								</p>
-
-								<button
-									className={styles.confirmButton}
-
-									onClick={() => {
-
-										Swal.fire({
-											title: "Exito",
-											text:
-												`Postulaciones enviadas`,
-											icon: "success",
-											timer: 1000,
-											showConfirmButton: false,
-											toast: true,
-											position: "center"
-										})
-
-										clearPendingPostulations()
-									}}
-								>
-									Confirmar postulaciones
-								</button>
-
-							</div>
-
-						</>
-
-					)
-				}
-
-			</TextContainer>
-
-		</>
+				)
+			}
+		</TextContainer>
 	)
 }
