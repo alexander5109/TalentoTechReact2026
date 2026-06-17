@@ -1,17 +1,19 @@
 import TextContainer from "../../common/TextContainer/TextContainer";
 import SectionTitleH3 from "../../common/SectionTitleH3/SectionTitleH3";
 import PrettyText from "../../common/PrettyText/PrettyText";
-import CargosSelector from "./components/NivelesSelector"
-import DistritosSelector from "./components/NivelesSelector"
-import EscuelasSelector from "./components/NivelesSelector"
+import CargosSelector from "./components/CargosSelector"
+import DistritosSelector from "./components/DistritosSelector"
+import EscuelasSelector from "./components/EscuelasSelector"
 import NivelesSelector from "./components/NivelesSelector"
 
 import styles from "./MyProfilesPage.module.css"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-import Swal from "sweetalert2"
+// import Swal from "sweetalert2"
+
 
 const DISTRITOS = [
+	"La Matanza",
 	"Avellaneda",
 	"Lanús",
 	"Quilmes",
@@ -32,96 +34,221 @@ const CARGOS = [
 	"PR",
 	"EMATP",
 	"Bibliotecario",
-	"Preceptor"
+	"Preceptor",
+	"Historia",
+	"Ciencias Sociales",
+	"Trabajo y ciudadanía",
 ];
 
 const STORAGE_KEY = "apd-profile";
 
-
-export function createTeacherProfile() {
+function createSearchProfile() {
 	return {
+		id: crypto.randomUUID(),
+		nombre: "Nuevo perfil",
 		distritos: [],
-		nivel: "",
+		niveles: [],
 		cargos: [],
 		escuelas: []
 	};
 }
 
+function createDefaultProfiles() {
+	return [
+		{
+			id: crypto.randomUUID(),
+			nombre: "Secundaria",
+			distritos: ["Morón"],
+			niveles: ["Secundaria"],
+			cargos: ["EMATP"],
+			escuelas: []
+		}
+	];
+}
+
+
 export default function MyProfilesPage() {
-	const [profile, setProfile] = useState(() => {
+	const [profiles, setProfiles] = useState(() => {
 		const saved = localStorage.getItem(STORAGE_KEY);
-		return saved
-			? JSON.parse(saved)
-			: createTeacherProfile();
+		return saved ? JSON.parse(saved) : createDefaultProfiles();
 	});
-	function manejarSubmit(e) {
-		e.preventDefault();
+	useEffect(() => {
 		localStorage.setItem(
 			STORAGE_KEY,
-			JSON.stringify(profile)
+			JSON.stringify(profiles)
 		);
-		Swal.fire({
-			title: "Perfil guardado",
-			text: `Cambios guardados en local storage`,
-			icon: "success",
-			timer: 1000,
-			showConfirmButton: false,
-			toast: true,
-			position: "center"
-		})
+
+	}, [profiles]);
+	const [selectedProfileId, setSelectedProfileId] = useState(
+		profiles.length > 0
+			? profiles[0].id
+			: null
+	);
+
+	const selectedProfile = profiles.find(p => p.id === selectedProfileId) ?? profiles[0];
+
+	if (!selectedProfile) {
+		return (
+			<TextContainer>
+				<button
+					type="button"
+					onClick={createProfile}>
+					Crear primer perfil
+				</button>
+			</TextContainer>
+		);
+	}
+
+	function updateSelectedProfile(changes) {
+		setProfiles(prev =>
+			prev.map(profile =>
+				profile.id === selectedProfileId
+					? {
+						...profile,
+						...changes
+					}
+					: profile
+			)
+		);
+	}
+	function createProfile() {
+
+		const newProfile = createSearchProfile();
+		setProfiles(prev => [
+			...prev,
+			newProfile
+		]);
+
+		setSelectedProfileId(
+			newProfile.id
+		);
+	}
+	function deleteProfile(id) {
+
+		const remaining =
+			profiles.filter(
+				p => p.id !== id
+			);
+
+		setProfiles(remaining);
+
+		if (remaining.length > 0) {
+			setSelectedProfileId(
+				remaining[0].id
+			);
+		}
 	}
 
 	return <TextContainer>
+
 		<SectionTitleH3
-			upper="Mis Perfiles de búsqueda"
-			lower="Agiliza tus búsquedas"
+			upper="Mis perfiles"
+			lower="Búsquedas guardadas"
 		/>
-		<PrettyText>
-			La idea es poner un superformulario acá que permita configurar todas mis filtros de busqueda.
-		</PrettyText>
-		<form className={styles.form} onSubmit={manejarSubmit} >
-			<DistritosSelector
-				options={DISTRITOS}
-				selected={profile.distritos}
-				onChange={(newDistritos) =>
-					setProfile(prev => ({
-						...prev,
-						distritos: newDistritos
-					}))
+
+		<div className={styles.layout}>
+
+			<aside className={styles.sidebar}>
+
+				<button
+					onClick={createProfile}
+				>
+					+ Nuevo perfil
+				</button>
+
+				{
+					profiles.map(profile => (
+						<div
+							key={profile.id}
+							className={
+								profile.id === selectedProfileId
+									? styles.activeCard
+									: styles.card
+							}
+							onClick={() =>
+								setSelectedProfileId(
+									profile.id
+								)
+							}
+						>
+							<h4>{profile.nombre}</h4>
+
+							<button
+								type="button"
+								onClick={(e) => {
+									e.stopPropagation();
+									deleteProfile(
+										profile.id
+									);
+								}}
+							>
+								Eliminar
+							</button>
+						</div>
+					))
 				}
-			/>
-			<NivelesSelector
-				options={NIVELES}
-				value={profile.niveles}
-				onChange={(newDistritos) =>
-					setProfile(prev => ({
-						...prev,
-						niveles: newDistritos
-					}))
-				}
-			/>
-			<CargosSelector
-				options={CARGOS}
-				selected={profile.cargos}
-				onChange={(newCargos) =>
-					setProfile(prev => ({
-						...prev,
-						cargos: newCargos
-					}))
-				}
-			/>
-			<EscuelasSelector
-				schools={profile.escuelas}
-				onChange={(newEscuelas) =>
-					setProfile(prev => ({
-						...prev,
-						escuelas: newEscuelas
-					}))
-				}
-			/>
-			<button type="submit">
-				Guardar Perfil
-			</button>
-		</form>
+
+			</aside>
+
+			<section className={styles.editor}>
+
+				<input
+					value={selectedProfile.nombre}
+					onChange={(e) =>
+						updateSelectedProfile({
+							nombre:
+								e.target.value
+						})
+					}
+				/>
+				<PrettyText>
+					La idea es poner un superformulario acá que permita configurar todas mis filtros de busqueda.
+				</PrettyText>
+				<form
+					className={styles.form}
+				>
+					<DistritosSelector
+						opciones={DISTRITOS}
+						selected={selectedProfile.distritos}
+						onChange={(newDistritos) =>
+							updateSelectedProfile({
+								distritos: newDistritos
+							})
+						}
+					/>
+					<NivelesSelector
+						opciones={NIVELES}
+						selected={selectedProfile.niveles}
+						onChange={(newNiveles) =>
+							updateSelectedProfile({
+								niveles: newNiveles
+							})
+						}
+					/>
+					<CargosSelector
+						opciones={CARGOS}
+						selected={selectedProfile.cargos}
+						onChange={(newCargos) =>
+							updateSelectedProfile({
+								cargos: newCargos
+							})
+						}
+					/>
+					<EscuelasSelector
+						schools={selectedProfile.escuelas}
+						onChange={(newEscuelas) =>
+							updateSelectedProfile({
+								escuelas: newEscuelas
+							})
+						}
+					/>
+					{/* <button type="submit">
+						Guardar Perfil
+					</button> */}
+				</form>
+			</section>
+
+		</div>
+
 	</TextContainer>
 }

@@ -1,26 +1,57 @@
+import styles from "../MyProfilesPage.module.css"
 
-export default function NivelesSelector(opciones, value, onChange) {
+export default function NivelesSelector({
+	opciones,
+	selected,
+	onChange
+}) {
+
+	function toggleNivel(nivel) {
+
+		if (selected.includes(nivel)) {
+
+			onChange(
+				selected.filter(x => x !== nivel)
+			);
+
+			return;
+		}
+
+		onChange([
+			...selected,
+			nivel
+		]);
+	}
+
 	return (
 		<div className={styles.field}>
+
 			<label className={styles.fieldTitle}>
 				Niveles
 			</label>
-			<select value={value} onChange={e => onChange(e.target.value)} >
-				<option value="">
-					Seleccionar...
-				</option>
-				<div className={styles.checkboxGroup}> {
-					opciones.map(option => (
-						<option
-							key={option}
-							value={option}
-						>
-							{option}
-						</option>
+
+			<div className={styles.checkboxGroup}>
+
+				{
+					opciones.map(nivel => (
+						<label key={nivel}>
+
+							<input
+								type="checkbox"
+								checked={selected.includes(nivel)}
+								onChange={() =>
+									toggleNivel(nivel)
+								}
+							/>
+
+							{nivel}
+
+						</label>
 					))
 				}
-				</div>
-			</select>
+
+			</div>
+
 		</div>
 	);
 }
