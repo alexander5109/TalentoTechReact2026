@@ -1,4 +1,4 @@
-import styles from "../MyProfilesPage.module.css"
+import styles from "../common.module.css"
 
 export default function CargosSelector({
 	opciones,

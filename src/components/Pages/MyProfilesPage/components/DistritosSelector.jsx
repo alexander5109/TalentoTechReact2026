@@ -1,5 +1,5 @@
 import Swal from "sweetalert2";
-import styles from "../MyProfilesPage.module.css";
+import styles from "../common.module.css";
 
 export default function DistritosSelector({
 	opciones,

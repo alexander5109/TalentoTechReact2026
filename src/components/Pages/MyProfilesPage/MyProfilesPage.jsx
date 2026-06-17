@@ -150,9 +150,7 @@ export default function MyProfilesPage() {
 
 			<aside className={styles.sidebar}>
 
-				<button
-					onClick={createProfile}
-				>
+				<button className={styles.newProfileButton} onClick={createProfile} >
 					+ Nuevo perfil
 				</button>
 
@@ -173,7 +171,7 @@ export default function MyProfilesPage() {
 						>
 							<h4>{profile.nombre}</h4>
 
-							<button
+							<button className={styles.newProfileButton}
 								type="button"
 								onClick={(e) => {
 									e.stopPropagation();
@@ -193,6 +191,7 @@ export default function MyProfilesPage() {
 			<section className={styles.editor}>
 
 				<input
+					className={styles.profileName}
 					value={selectedProfile.nombre}
 					onChange={(e) =>
 						updateSelectedProfile({
