@@ -7,6 +7,7 @@ import ContactoPage from './components/Pages/ContactoPage/ContactoPage'
 import MyProfilesPage from './components/Pages/MyProfilesPage/MyProfilesPage'
 import PendingPostulationsPage from './components/Pages/PendingPostulationsPage/PendingPostulationsPage'
 import OfertaDetallePage from './components/Pages/OfertaDetallePage/OfertaDetallePage'
+import Login from "./components/Login/Login"
 
 export default function App() {
 	return (
@@ -19,6 +20,7 @@ export default function App() {
 				<Route path="/contacto" element={<ContactoPage />} />
 				<Route path="/myProfiles" element={<MyProfilesPage />} />
 				<Route path="/pendingPostulations" element={<PendingPostulationsPage />} />
+				<Route path="/login" element={<Login />} />
 			</Route>
 		</Routes>
 	)
