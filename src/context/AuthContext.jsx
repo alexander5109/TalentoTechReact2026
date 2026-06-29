@@ -43,14 +43,14 @@ export const AuthProvider = ({ children }) => {
 				// Si hay un usuario, buscamos su rol en Firestore.
 				const userDocRef = doc(db, "usuarios", currentUser.uid);
 				const userDocSnap = await getDoc(userDocRef);
-				if (userDocSnap.exists() && userDocSnap.data().rol ===
+				if (userDocSnap.exists() && userDocSnap.data().role ===
 					'admin') {
 					// Si el documento existe y tiene rol de admin, lo asignamos.
-					setUser({ ...currentUser, rol: 'admin' });
+					setUser({ ...currentUser, role: 'admin' });
 
 				} else {
 					// Para cualquier otro caso, es un usuario regular.
-					setUser({ ...currentUser, rol: 'user' });
+					setUser({ ...currentUser, role: 'user' });
 				}
 
 			} else {

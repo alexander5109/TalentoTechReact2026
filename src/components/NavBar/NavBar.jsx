@@ -7,11 +7,13 @@ import { usePendingPostulations } from "../../context/PendingPostulationsContext
 import { useAuth } from "../../context/AuthContext";
 
 
-
 export default function NavBar() {
 
 
 	const { user, login, logout } = useAuth();
+
+	const isAdmin = user?.role === "admin";
+
 
 	const { pendingPostulations } = usePendingPostulations()
 
@@ -23,14 +25,88 @@ export default function NavBar() {
 			: styles.link
 	}
 
+
+	function renderRightLinks() {
+
+		if (!user) {
+			return (
+				<>
+					<NavLink
+						to="/login"
+						className={({ isActive }) => navClass(isActive)}
+					>
+						Iniciar sesión
+					</NavLink>
+
+					<NavLink
+						to="/register"
+						className={({ isActive }) => navClass(isActive)}
+					>
+						Crear usuario
+					</NavLink>
+				</>
+			);
+		}
+
+		if (isAdmin) {
+			return (
+				<>
+					<NavLink
+						to="/admin"
+						className={({ isActive }) => navClass(isActive)}
+					>
+						Panel Admin
+					</NavLink>
+
+					<NavLink
+						to=""
+						onClick={logout}
+						className={styles.pendingButton}
+					>
+						Cerrar sesión
+					</NavLink>
+				</>
+			);
+		}
+
+		return (
+			<>
+				<NavLink
+					to="/myProfiles"
+					className={({ isActive }) =>
+						isActive
+							? `${styles.pendingButton} ${styles.activePending}`
+							: styles.pendingButton
+					}
+				>
+					👤 Mis perfiles
+				</NavLink>
+
+				<NavLink
+					to="/pendingPostulations"
+					className={({ isActive }) =>
+						isActive
+							? `${styles.pendingButton} ${styles.activePending}`
+							: styles.pendingButton
+					}
+				>
+					📝 Postulaciones ({pendingPostulations.length})
+				</NavLink>
+
+
+				<NavLink
+					to=""
+					onClick={logout}
+					className={styles.pendingButton}
+				>
+					Cerrar sesión
+				</NavLink>
+			</>
+		);
+	}
+
 	return (
 		<nav className={styles.navbar}>
-
-
-
-
-
-
 			<NavLink
 				to="/"
 				className={styles.logo}
@@ -73,56 +149,10 @@ export default function NavBar() {
 
 
 			<div className={styles.rightLinks}>
-				{user ? (
-					<>
-						<NavLink
-							to="/myProfiles"
-							className={({ isActive }) =>
-								isActive
-									? `${styles.pendingButton} ${styles.activePending}`
-									: styles.pendingButton
-							}
-						>
-							👤 Mis Perfiles
-						</NavLink>
-						<NavLink
-							to="/pendingPostulations"
-							className={({ isActive }) =>
-								isActive
-									? `${styles.pendingButton} ${styles.activePending}`
-									: styles.pendingButton
-							}
-						>
-							📝 Postulaciones ({pendingPostulations.length})
-						</NavLink>
-
-						<NavLink
-							to="/"
-							className={({ isActive }) => navClass(isActive)}
-						>
-							Cerrar sesión
-						</NavLink>
-					</>
-
-				) : (
-					<>
-						<NavLink
-							to="/login"
-							className={({ isActive }) => navClass(isActive)}
-						>
-							Iniciar sesión
-						</NavLink>
-						<NavLink
-							to="/login"
-							className={({ isActive }) => navClass(isActive)}
-						>
-							Crear usuario
-						</NavLink>
-					</>
-				)
-				}
+				{renderRightLinks()}
 			</div>
 
-		</nav>
+
+		</nav >
 	)
 }
