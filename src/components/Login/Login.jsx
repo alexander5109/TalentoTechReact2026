@@ -1,7 +1,7 @@
 import { useState } from 'react';
+import { NavLink } from "react-router-dom"
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
-
 const Login = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
@@ -26,6 +26,7 @@ const Login = () => {
 	return (
 		<div>
 			<h2>Iniciar Sesión</h2>
+			<p>¿No tenés una cuenta? <NavLink to="/registro">Registrate aquí</NavLink></p>
 			<form onSubmit={handleLogin}>
 				<input
 					type="email"
@@ -41,6 +42,7 @@ const Login = () => {
 				<button type="submit">Ingresar</button>
 			</form>
 		</div>
+
 	);
 };
 export default Login;

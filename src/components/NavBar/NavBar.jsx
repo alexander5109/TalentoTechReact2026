@@ -52,7 +52,7 @@ export default function NavBar() {
 			return (
 				<>
 					<NavLink
-						to="/admin"
+						to="/adminPanel"
 						className={({ isActive }) => navClass(isActive)}
 					>
 						Panel Admin
