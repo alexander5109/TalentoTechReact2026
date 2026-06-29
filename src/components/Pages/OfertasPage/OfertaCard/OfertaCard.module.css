@@ -1,18 +1,25 @@
 .card {
 	display: flex;
 	align-items: center;
-	gap: var(--space-md);
-	padding: var(--space-md);
-	border-radius: var(--radius-lg);
-	background: var(--bg-panel);
-	border: 1px solid var(--border-panel);
-	box-shadow: var(--shadow-card);
-	transition: transform 0.15s ease, box-shadow 0.2s ease;
+	gap: 1rem;
+	padding: 1rem;
+	border-radius: 18px;
+	background:
+		linear-gradient(to bottom,
+			#f8efdd,
+			#ead8b8);
+	border: 1px solid #cfb894;
+	box-shadow:
+		0 3px 10px rgba(0, 0, 0, 0.08);
+	transition:
+		transform 0.15s ease,
+		box-shadow 0.2s ease;
 }
 
 .card:hover {
 	transform: translateY(-2px);
-	box-shadow: var(--shadow-hover);
+	box-shadow:
+		0 6px 18px rgba(0, 0, 0, 0.12);
 }
 
 .image {
@@ -30,30 +37,31 @@
 }
 
 .mainInfo h3 {
-	margin: 0 0 var(--space-xs);
-	font-family: var(--font-heading);
+	margin: 0 0 0.45rem;
+	font-family: "Albertus", serif;
 	font-size: 1.15rem;
-	color: var(--green-800);
+	color: #214c3d;
 }
 
 .meta {
 	display: flex;
 	flex-wrap: wrap;
-	gap: var(--space-xs);
+	gap: 0.5rem;
 }
 
 .meta span {
 	padding: 0.35rem 0.6rem;
 	font-size: 0.82rem;
-	color: var(--text-muted);
-	background: rgba(255, 255, 255, 0.45);
+	color: #355d4f;
+	background:
+		rgba(255, 255, 255, 0.45);
 	border-radius: 999px;
 }
 
 .actions {
 	display: flex;
 	flex-direction: column;
-	gap: var(--space-xs);
+	gap: 0.5rem;
 	flex-shrink: 0;
 }
 
@@ -62,13 +70,15 @@
 	text-align: center;
 	padding: 0.65rem 0.9rem;
 	border: none;
-	border-radius: var(--radius-sm);
+	border-radius: 10px;
 	font-size: 0.85rem;
-	font-family: var(--font-heading);
+	font-family: "Albertus", serif;
 	cursor: pointer;
 	color: white;
 	min-width: 110px;
-	transition: transform 0.15s ease, filter 0.2s ease;
+	transition:
+		transform 0.15s ease,
+		filter 0.2s ease;
 }
 
 .button:hover {
@@ -77,15 +87,24 @@
 }
 
 .primary {
-	background: var(--bg-button-primary);
+	background:
+		linear-gradient(to bottom,
+			#3b8467,
+			#2e6e56);
 }
 
 .secondary {
-	background: var(--bg-button-secondary);
+	background:
+		linear-gradient(to bottom,
+			#b29a3c,
+			#9a8530);
 }
 
 .danger {
-	background: var(--bg-button-danger);
+	background:
+		linear-gradient(to bottom,
+			#cf5b56,
+			#b54844);
 }
 
 

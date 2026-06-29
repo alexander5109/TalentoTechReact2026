@@ -1,6 +1,6 @@
 /* components/OfertaListContainer/OfertaListContainer.module.css */
 .container {
-	padding: var(--space-2xl);
+	padding: 2rem;
 }
 .error {
 	font-family: "Consoles";

@@ -1,3 +1,8 @@
+@font-face {
+	font-family: "Albertus";
+	src: url("/fonts/albertusmt.otf") format("opentype");
+}
+
 .navbar {
 	display: flex;
 	flex-wrap: wrap;
@@ -5,17 +10,21 @@
 	align-items: center;
 	gap: 0.8rem;
 	padding: 0.6rem 1.5rem;
-	background: var(--bg-navbar);
+	background: linear-gradient(90deg,
+			#18392d,
+			#214c3d,
+			#2a5c49);
 	border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-	box-shadow: var(--shadow-strong);
+	box-shadow:
+		0 2px 10px rgba(0, 0, 0, 0.18);
 }
 
 .logo {
-	font-family: var(--font-heading);
+	font-family: "Albertus", serif;
 	font-size: 1.6rem;
 	letter-spacing: 1px;
 	text-decoration: none;
-	color: var(--parchment-200);
+	color: #f5ecd9;
 	transition: opacity 0.2s ease;
 }
 
@@ -23,13 +32,21 @@
 	opacity: 0.85;
 }
 
+.links {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.7rem;
+}
+
 .link {
-	font-family: var(--font-heading);
+	font-family: "Albertus", serif;
 	text-decoration: none;
-	color: var(--link-color);
+	color: #e8dcc2;
 	padding: 0.5rem 1rem;
-	border-radius: var(--radius-sm);
-	transition: background-color 0.2s ease, color 0.2s ease;
+	border-radius: 10px;
+	transition:
+		background-color 0.2s ease,
+		color 0.2s ease;
 }
 
 .link:hover {
@@ -38,8 +55,10 @@
 }
 
 .active {
-	background: var(--bg-navbar-active);
-	color: var(--text-500);
+	background: linear-gradient(180deg,
+			#d8c7a2,
+			#c9b38b);
+	color: #1f2f28;
 }
 
 .centralLinks {
@@ -55,13 +74,17 @@
 }
 
 .pendingButton {
-	font-family: var(--font-heading);
+	font-family: "Albertus", serif;
 	text-decoration: none;
-	color: var(--parchment-100);
+	color: #f7f0df;
 	padding: 0.55rem 1rem;
-	border-radius: var(--radius-xl);
-	background: linear-gradient(180deg, #6d9d91, #53796f);
-	transition: transform 0.15s ease, filter 0.2s ease;
+	border-radius: 12px;
+	background: linear-gradient(180deg,
+			#6d9d91,
+			#53796f);
+	transition:
+		transform 0.15s ease,
+		filter 0.2s ease;
 }
 
 .pendingButton:hover {
@@ -70,8 +93,10 @@
 }
 
 .activePending {
-	background: linear-gradient(180deg, var(--parchment-200), #c4ad7f);
-	color: var(--text-500);
+	background: linear-gradient(180deg,
+			#dbc8a0,
+			#c4ad7f);
+	color: #1d2a25;
 }
 
 /* Responsive */

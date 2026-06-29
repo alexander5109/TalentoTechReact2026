@@ -1,9 +1,14 @@
 .surface {
 	max-width: 950px;
-	margin: var(--space-2xl) auto;
-	padding: var(--space-2xl);
-	background: var(--bg-surface);
-	border-radius: var(--radius-lg);
-	border: 1px solid var(--border-surface);
-	box-shadow: var(--shadow-soft);
+	margin: 2rem auto;
+	padding: 2rem;
+	background:
+		linear-gradient(135deg,
+			#f4ecd8 0%,
+			#efe4c9 45%,
+			#f8f1df 100%);
+	border-radius: 18px;
+	border: 1px solid #d2c2a2;
+	box-shadow:
+		0 4px 12px rgba(0, 0, 0, 0.08);
 }

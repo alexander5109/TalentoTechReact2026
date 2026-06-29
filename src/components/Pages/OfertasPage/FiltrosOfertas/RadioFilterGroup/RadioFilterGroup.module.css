@@ -5,9 +5,9 @@
 }
 
 .groupLabel {
-	font-family: var(--font-heading);
+	font-family: "Albertus", serif;
 	font-size: 0.95rem;
-	color: var(--green-800);
+	color: #214c3d;
 }
 
 .radioGroup {
@@ -22,11 +22,11 @@
 	gap: 0.6rem;
 	cursor: pointer;
 	font-size: 0.92rem;
-	color: var(--green-800);
+	color: #214c3d;
 }
 
 .radioOption input[type="radio"] {
-	accent-color: var(--green-600);
+	accent-color: #2e6e56;
 	cursor: pointer;
 }
 
