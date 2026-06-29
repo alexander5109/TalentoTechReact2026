@@ -32,14 +32,14 @@ export default function NavBar() {
 			return (
 				<>
 					<NavLink
-						to="/login"
+						to="/iniciarSesion"
 						className={({ isActive }) => navClass(isActive)}
 					>
 						Iniciar sesión
 					</NavLink>
 
 					<NavLink
-						to="/register"
+						to="/registro"
 						className={({ isActive }) => navClass(isActive)}
 					>
 						Crear usuario

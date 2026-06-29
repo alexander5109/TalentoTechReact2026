@@ -8,6 +8,7 @@ import MyProfilesPage from './components/Pages/MyProfilesPage/MyProfilesPage'
 import PendingPostulationsPage from './components/Pages/PendingPostulationsPage/PendingPostulationsPage'
 import OfertaDetallePage from './components/Pages/OfertaDetallePage/OfertaDetallePage'
 import Login from "./components/Login/Login"
+import Registro from "./components/Registro/Registro"
 
 export default function App() {
 	return (
@@ -20,7 +21,8 @@ export default function App() {
 				<Route path="/contacto" element={<ContactoPage />} />
 				<Route path="/myProfiles" element={<MyProfilesPage />} />
 				<Route path="/pendingPostulations" element={<PendingPostulationsPage />} />
-				<Route path="/login" element={<Login />} />
+				<Route path="/iniciarSesion" element={<Login />} />
+				<Route path="/registro" element={<Registro />} />
 			</Route>
 		</Routes>
 	)
