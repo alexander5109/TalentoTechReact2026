@@ -12,11 +12,23 @@
 		0 5px 16px rgba(0, 0, 0, 0.08);
 }
 
+.image {
+	width: 255px;
+	height: 255px;
+	object-fit: cover;
+	border-radius: 12px;
+	border: 2px solid rgba(255, 255, 255, .4);
+}
+
 .header {
 	padding-bottom: 1.5rem;
 	margin-bottom: 1.5rem;
 	border-bottom:
 		1px solid rgba(33, 76, 61, 0.15);
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .detailsGrid {

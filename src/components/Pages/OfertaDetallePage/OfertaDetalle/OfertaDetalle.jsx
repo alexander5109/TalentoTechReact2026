@@ -10,6 +10,15 @@ import {
 import styles from "./OfertaDetalle.module.css"
 
 export default function OfertaDetalle({ offer }) {
+
+
+	const cargoImage = `/images/${offer.cargo
+		.trim()
+		.split(" ")[0]
+		.toLowerCase()
+		}.jpg`
+
+
 	const estadoClase = (
 		offer.estado === "Publicada"
 			? styles.estadoPublicada
@@ -68,6 +77,14 @@ export default function OfertaDetalle({ offer }) {
 				<SectionTitleH3
 					upper={offer.cargo}
 					lower={offer.descripcioncargo}
+				/>
+				< img
+					src={cargoImage}
+					onError={
+						(e) => { e.target.src = "/images/docente.jpg" }
+					}
+					alt={offer.cargo}
+					className={styles.image}
 				/>
 			</div>
 
