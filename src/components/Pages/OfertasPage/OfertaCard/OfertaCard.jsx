@@ -128,7 +128,7 @@ export default function OfertaCard({ offer }) {
 							Quitar
 						</button>
 					) : (
-						<button className={`${styles.button}${styles.primary}`}
+						<button className={`${styles.button} ${styles.primary}`}
 							onClick={
 								connectAgregarAPostulaciones
 							}

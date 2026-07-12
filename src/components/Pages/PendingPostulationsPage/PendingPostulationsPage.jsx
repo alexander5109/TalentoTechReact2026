@@ -45,7 +45,7 @@ export default function PendingPostulationsPage() {
 									{pendingPostulations.length}
 								</strong>
 							</p>
-							<button className={`${styles.button}${styles.primary}`}
+							<button className={`${styles.button} ${styles.primary}`}
 								onClick={() => {
 									Swal.fire({
 										title: "Exito",

@@ -5,53 +5,66 @@ import SearchProfilesPanel from "./SearchProfilesPanel/SearchProfilesPanel";
 import styles from "./MyProfilesPage.module.css"
 import { useState, useEffect } from "react";
 import { useAuth } from "../../../context/AuthContext";
-import {
-	getProfiles,
-	createProfile,
-	updateProfile,
-	deleteProfile
-} from "../../../firebase/ProfileService";
+import { getProfiles, createProfile, updateProfile, deleteProfile } from "../../../firebase/ProfileService";
 
 
 
 export default function MyProfilesPage() {
-
+	// -------------------------- state------------------------------- //
 	const { user } = useAuth();
 	const [profiles, setProfiles] = useState([]);
 	const [loading, setLoading] = useState(true);
+	const [selectedProfileId, setSelectedProfileId] = useState(null);
+	const [editingProfile, setEditingProfile] = useState(null);
 
+	const selectedProfile = profiles.find(p => p.id === selectedProfileId) ?? profiles[0];
+	const hasChanges = editingProfile && JSON.stringify(editingProfile) != JSON.stringify(selectedProfile);
+
+	// -------------------------- effects------------------------------- //
+	useEffect(() => {
+		if (selectedProfile) {
+			setEditingProfile({
+				...selectedProfile
+			});
+		}
+	}, [selectedProfile]);
 	useEffect(() => {
 		async function loadProfiles() {
-
 			if (!user) {
 				setProfiles([]);
 				setLoading(false);
 				return;
 			}
-
-			const profiles =
-				await getProfiles(user.uid);
-
+			const profiles = await getProfiles(user.uid);
 			setProfiles(profiles);
-
 			if (profiles.length > 0) {
 				setSelectedProfileId(
 					profiles[0].id
 				);
 			}
-
 			setLoading(false);
 		}
-
 		loadProfiles();
-
 	}, [user]);
 
-	const [selectedProfileId, setSelectedProfileId] = useState(profiles.length > 0 ? profiles[0].id : null);
-	const selectedProfile = profiles.find(p => p.id === selectedProfileId) ?? profiles[0];
+
+	// -------------------------- handlers------------------------------- //
+	async function handleSaveProfile() {
+		await updateProfile(
+			user.uid,
+			editingProfile.id,
+			editingProfile
+		);
+		setProfiles(prev =>
+			prev.map(profile =>
+				profile.id === editingProfile.id
+					? editingProfile
+					: profile
+			)
+		);
+	}
 
 	async function handleCreateProfile() {
-
 		const profile = {
 			nombre: "Nuevo perfil",
 			distritos: [],
@@ -59,63 +72,38 @@ export default function MyProfilesPage() {
 			cargos: [],
 			escuelas: []
 		};
-
 		const created =
 			await createProfile(
 				user.uid,
 				profile
 			);
-
 		setProfiles(prev => [
 			...prev,
 			created
 		]);
-
 		setSelectedProfileId(created.id);
 	}
-	async function handleDeleteProfile(id) {
 
+
+	async function handleDeleteProfile(id) {
 		await deleteProfile(
 			user.uid,
 			id
 		);
-
 		const remaining =
 			profiles.filter(
 				p => p.id !== id
 			);
-
 		setProfiles(remaining);
-
 		if (remaining.length > 0) {
 			setSelectedProfileId(
 				remaining[0].id
 			);
 		}
 	}
-	async function updateSelectedProfile(changes) {
-
-		await updateProfile(
-			user.uid,
-			selectedProfileId,
-			changes
-		);
-
-		setProfiles(prev =>
-			prev.map(profile =>
-				profile.id === selectedProfileId
-					? {
-						...profile,
-						...changes
-					}
-					: profile
-			)
-		);
-	}
 
 
-
-
+	// -------------------------- ok content------------------------------- //
 	if (loading) {
 		return (
 			<TextContainer>
@@ -123,17 +111,14 @@ export default function MyProfilesPage() {
 			</TextContainer>
 		);
 	}
-
 	if (!selectedProfile) {
 		return <TextContainer>
-			<button className={`${styles.button}${styles.primary}`}
+			<button className={`${styles.button} ${styles.primary}`}
 				type="button" onClick={handleCreateProfile}>
 				Crear primer perfil
 			</button>
 		</TextContainer>
 	}
-
-
 	return <TextContainer>
 		<SectionTitleH3
 			upper="Mis perfiles"
@@ -141,7 +126,7 @@ export default function MyProfilesPage() {
 		/>
 		<div className={styles.layout}>
 			<aside className={styles.sidebar}>
-				<button className={`${styles.button}${styles.primary}`}
+				<button className={`${styles.button} ${styles.primary}`}
 					onClick={handleCreateProfile}>
 					+ Nuevo perfil
 				</button>
@@ -153,10 +138,20 @@ export default function MyProfilesPage() {
 				/>
 			</aside>
 			<section className={styles.editor}>
-				<SearchProfileForm
-					selectedProfile={selectedProfile}
-					updateSelectedProfile={updateSelectedProfile}
-				/>
+				{editingProfile && (
+					<SearchProfileForm
+						profile={editingProfile}
+						onChange={(changes) =>
+							setEditingProfile(prev => ({ ...prev, ...changes }))
+						}
+					/>
+				)}
+				<button className={`${styles.button} ${styles.primary}`}
+					disabled={!hasChanges}
+					onClick={handleSaveProfile}
+				>
+					Guardar cambios
+				</button>
 			</section>
 		</div>
 	</TextContainer>

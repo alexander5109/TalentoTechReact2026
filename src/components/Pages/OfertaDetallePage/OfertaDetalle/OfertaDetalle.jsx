@@ -190,7 +190,7 @@ export default function OfertaDetalle({ offer }) {
 
 					) : (
 
-						<button className={`${styles.button}${styles.primary}`}
+						<button className={`${styles.button} ${styles.primary}`}
 							onClick={
 								connectAgregarAPostulaciones
 							}

@@ -2,7 +2,6 @@ import styles from "./SearchProfileCard.module.css"
 
 export default function SearchProfileCard({
 	profile,
-	selected,
 	onSelect,
 	onDelete
 }) {
@@ -12,7 +11,7 @@ export default function SearchProfileCard({
 		>
 			<h4>{profile.nombre}</h4>
 
-			<button className={`${styles.button}${styles.primary}`}
+			<button className={`${styles.button} ${styles.primary}`}
 				type="button"
 				onClick={(e) => {
 					e.stopPropagation();

@@ -32,54 +32,51 @@ const NIVELES = [
 	"Adultos"
 ];
 
-export default function SearchProfileForm({
-	selectedProfile,
-	updateSelectedProfile
-}) {
+export default function SearchProfileForm({ profile, onChange }) {
 	return <form className={styles.form} >
 		<PrettyText>
 			Configurar perfil.
 		</PrettyText>
 		<input
 			className={styles.profileName}
-			value={selectedProfile.nombre}
+			value={profile.nombre}
 			onChange={(e) =>
-				updateSelectedProfile({
+				onChange({
 					nombre: e.target.value
 				})
 			}
 		/>
 		<DistritosSelector
 			opciones={DISTRITOS}
-			selected={selectedProfile.distritos}
+			selected={profile.distritos}
 			onChange={(newDistritos) =>
-				updateSelectedProfile({
+				onChange({
 					distritos: newDistritos
 				})
 			}
 		/>
 		<NivelesSelector
 			opciones={NIVELES}
-			selected={selectedProfile.niveles}
+			selected={profile.niveles}
 			onChange={(newNiveles) =>
-				updateSelectedProfile({
+				onChange({
 					niveles: newNiveles
 				})
 			}
 		/>
 		<CargosSelector
 			opciones={CARGOS}
-			selected={selectedProfile.cargos}
+			selected={profile.cargos}
 			onChange={(newCargos) =>
-				updateSelectedProfile({
+				onChange({
 					cargos: newCargos
 				})
 			}
 		/>
 		<EscuelasSelector
-			schools={selectedProfile.escuelas}
+			schools={profile.escuelas}
 			onChange={(newEscuelas) =>
-				updateSelectedProfile({
+				onChange({
 					escuelas: newEscuelas
 				})
 			}
