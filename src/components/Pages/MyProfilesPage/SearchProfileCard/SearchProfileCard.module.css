@@ -1,0 +1,45 @@
+/* ---------------------------------Botones------------------------------- */
+
+.button {
+	text-decoration: none;
+	text-align: center;
+	padding: 0.65rem 0.9rem;
+	border: none;
+	border-radius: 10px;
+	font-size: 0.85rem;
+	font-family: "Albertus", serif;
+	cursor: pointer;
+	color: white;
+	min-width: 110px;
+	transition:
+		transform 0.15s ease,
+		filter 0.2s ease;
+}
+
+.button:hover {
+	transform: translateY(-1px);
+	filter: brightness(1.05);
+}
+
+.primary {
+	background:
+		linear-gradient(to bottom,
+			#3b8467,
+			#2e6e56);
+}
+
+.secondary {
+	background:
+		linear-gradient(to bottom,
+			#b29a3c,
+			#9a8530);
+}
+
+.danger {
+	background:
+		linear-gradient(to bottom,
+			#cf5b56,
+			#b54844);
+}
+
+/* ---------------------------------Botones------------------------------- */

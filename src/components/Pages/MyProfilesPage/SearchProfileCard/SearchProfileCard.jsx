@@ -1,3 +1,5 @@
+import styles from "./SearchProfileCard.module.css"
+
 export default function SearchProfileCard({
 	profile,
 	selected,

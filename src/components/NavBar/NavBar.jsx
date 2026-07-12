@@ -59,6 +59,16 @@ export default function NavBar() {
 					</NavLink>
 
 					<NavLink
+						to="/myProfiles"
+						className={({ isActive }) =>
+							isActive
+								? `${styles.pendingButton} ${styles.activePending}`
+								: styles.pendingButton
+						}
+					>
+						👤 Mis perfiles
+					</NavLink>
+					<NavLink
 						to=""
 						onClick={logout}
 						className={styles.pendingButton}
@@ -71,16 +81,6 @@ export default function NavBar() {
 
 		return (
 			<>
-				<NavLink
-					to="/myProfiles"
-					className={({ isActive }) =>
-						isActive
-							? `${styles.pendingButton} ${styles.activePending}`
-							: styles.pendingButton
-					}
-				>
-					👤 Mis perfiles
-				</NavLink>
 
 				<NavLink
 					to="/pendingPostulations"
@@ -94,6 +94,16 @@ export default function NavBar() {
 				</NavLink>
 
 
+				<NavLink
+					to="/myProfiles"
+					className={({ isActive }) =>
+						isActive
+							? `${styles.pendingButton} ${styles.activePending}`
+							: styles.pendingButton
+					}
+				>
+					👤 Mis perfiles
+				</NavLink>
 				<NavLink
 					to=""
 					onClick={logout}

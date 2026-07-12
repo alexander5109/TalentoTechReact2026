@@ -130,9 +130,7 @@ npm run build
 
 ## Estado del proyecto
 
-Proyecto académico funcional desarrollado como pre-entrega/final integrador del curso de React.
-
-Actualmente el estado global se mantiene únicamente en memoria (sin persistencia en localStorage o backend).
+Proyecto académico funcional desarrollado como entrega final integrador del curso de React.
 
 ---
 
