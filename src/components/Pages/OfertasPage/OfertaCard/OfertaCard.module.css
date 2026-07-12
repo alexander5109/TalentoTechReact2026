@@ -65,6 +65,38 @@
 	flex-shrink: 0;
 }
 
+
+
+
+.estadoPublicada {
+	background:
+		linear-gradient(to bottom,
+			rgba(70, 140, 100, 0.28),
+			rgba(55, 115, 80, 0.22)) !important;
+	border:
+		1px solid rgba(50, 100, 70, 0.25) !important;
+}
+
+.estadoAnulada {
+	background:
+		linear-gradient(to bottom,
+			rgba(180, 70, 70, 0.26),
+			rgba(150, 55, 55, 0.2)) !important;
+	border:
+		1px solid rgba(120, 40, 40, 0.22) !important;
+}
+
+.estadoDesignada {
+	background:
+		linear-gradient(to bottom,
+			rgba(120, 95, 170, 0.24),
+			rgba(95, 75, 145, 0.18)) !important;
+	border:
+		1px solid rgba(90, 70, 130, 0.2) !important;
+}
+
+/* ---------------------------------Botones------------------------------- */
+
 .button {
 	text-decoration: none;
 	text-align: center;
@@ -107,32 +139,4 @@
 			#b54844);
 }
 
-
-
-
-.estadoPublicada {
-	background:
-		linear-gradient(to bottom,
-			rgba(70, 140, 100, 0.28),
-			rgba(55, 115, 80, 0.22)) !important;
-	border:
-		1px solid rgba(50, 100, 70, 0.25) !important;
-}
-
-.estadoAnulada {
-	background:
-		linear-gradient(to bottom,
-			rgba(180, 70, 70, 0.26),
-			rgba(150, 55, 55, 0.2)) !important;
-	border:
-		1px solid rgba(120, 40, 40, 0.22) !important;
-}
-
-.estadoDesignada {
-	background:
-		linear-gradient(to bottom,
-			rgba(120, 95, 170, 0.24),
-			rgba(95, 75, 145, 0.18)) !important;
-	border:
-		1px solid rgba(90, 70, 130, 0.2) !important;
-}
+/* ---------------------------------Botones------------------------------- */

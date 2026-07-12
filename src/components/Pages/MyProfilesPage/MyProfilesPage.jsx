@@ -45,7 +45,8 @@ export default function MyProfilesPage() {
 
 	if (!selectedProfile) {
 		return <TextContainer>
-			<button type="button" onClick={createProfile}>
+			<button className={`${styles.button}${styles.primary}`}
+				type="button" onClick={createProfile}>
 				Crear primer perfil
 			</button>
 		</TextContainer>
@@ -80,7 +81,8 @@ export default function MyProfilesPage() {
 		/>
 		<div className={styles.layout}>
 			<aside className={styles.sidebar}>
-				<button className={styles.newProfileButton} onClick={createProfile}>
+				<button className={`${styles.button}${styles.primary}`}
+					onClick={createProfile}>
 					+ Nuevo perfil
 				</button>
 				<SearchProfilesPanel

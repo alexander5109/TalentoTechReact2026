@@ -28,7 +28,8 @@ export default function EscuelasSelector({
 				value={userInput}
 				onChange={(e) => setUserInput(e.target.value)}
 			/>
-			<button type="button" onClick={agregarEscuela}>
+			<button className={`${styles.button}${styles.primary}`}
+				type="button" onClick={agregarEscuela}>
 				Agregar
 			</button>
 		</div>
@@ -36,7 +37,8 @@ export default function EscuelasSelector({
 			schools.map(codigo => (
 				<li key={codigo} className={styles.schoolItem} >
 					{codigo}
-					<button type="button" onClick={() => eliminarEscuela(codigo)}>
+					<button className={`${styles.button}${styles.primary}`}
+						type="button" onClick={() => eliminarEscuela(codigo)}>
 						X
 					</button>
 				</li>

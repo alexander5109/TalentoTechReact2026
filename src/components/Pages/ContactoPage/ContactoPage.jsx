@@ -84,7 +84,8 @@ export default function ContactoPage() {
 						/>
 					</div>
 
-					<button type="submit">
+					<button className={`${styles.button}${styles.primary}`}
+						type="submit" >
 						Enviar mensaje
 					</button>
 

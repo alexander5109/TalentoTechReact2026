@@ -180,11 +180,7 @@ export default function OfertaDetalle({ offer }) {
 				{
 					isAgregada ? (
 
-						<button
-							className={
-								`${styles.button}
-								${styles.danger}`
-							}
+						<button className={`${styles.button}${styles.danger}`}
 							onClick={
 								connectEliminarPostulacion
 							}
@@ -194,11 +190,7 @@ export default function OfertaDetalle({ offer }) {
 
 					) : (
 
-						<button
-							className={
-								`${styles.button}
-								${styles.primary}`
-							}
+						<button className={`${styles.button}${styles.primary}`}
 							onClick={
 								connectAgregarAPostulaciones
 							}

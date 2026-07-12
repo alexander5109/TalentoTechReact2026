@@ -5,7 +5,6 @@ import EscuelasSelector from "./EscuelasSelector"
 import NivelesSelector from "./NivelesSelector"
 import PrettyText from "../../../common/PrettyText/PrettyText";
 
-
 const CARGOS = [
 	"MG",
 	"PR",

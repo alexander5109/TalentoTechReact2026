@@ -69,7 +69,8 @@ const Registro = () => {
 					/>
 				</div>
 				{error && <p className="error-message">{error}</p>}
-				<button type="submit">Registrarse</button>
+				<button className={`${styles.button}${styles.primary}`}
+					type="submit">Registrarse</button>
 
 			</form>
 

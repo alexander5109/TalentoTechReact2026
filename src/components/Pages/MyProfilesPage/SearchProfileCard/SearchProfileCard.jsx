@@ -10,7 +10,7 @@ export default function SearchProfileCard({
 		>
 			<h4>{profile.nombre}</h4>
 
-			<button
+			<button className={`${styles.button}${styles.primary}`}
 				type="button"
 				onClick={(e) => {
 					e.stopPropagation();
