@@ -11,24 +11,18 @@ export function usePendingPostulations() {
 }
 
 export function PendingPostulationsProvider({ children }) {
-	const [pendingPostulations,setPendingPostulations] = useState([])
+	const [pendingPostulations, setPendingPostulations] = useState([])
 
 	function addToPendingPostulations(offer) {
 		const alreadyExists = pendingPostulations.some(item => item.idoferta === offer.idoferta)
 		if (!alreadyExists) {
-			setPendingPostulations((prev) => [
-				...prev,
-				offer
-			])
+			setPendingPostulations((prev) => [...prev, offer])
 		}
 	}
 
 	function removeFromPendingPostulations(idOferta) {
 		setPendingPostulations((prev) =>
-			prev.filter(
-				item =>
-					item.idoferta !== idOferta
-			)
+			prev.filter(item => item.idoferta !== idOferta)
 		)
 	}
 

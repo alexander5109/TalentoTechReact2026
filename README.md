@@ -137,3 +137,15 @@ Proyecto académico funcional desarrollado como entrega final integrador del cur
 ## Observaciones
 
 El proyecto toma como inspiración los sistemas reales de Actos Públicos Digitales utilizados en educación pública bonaerense, reinterpretando varias funcionalidades tradicionales de e-commerce hacia una lógica orientada a postulaciones docentes.
+
+
+
+
+#CUENTAS DE PRUEBA:
+ADMIN:
+contraseñas:
+correo: alexanderseling@outlook.com
+pass: 123456
+
+correo: admin@gmail.com
+pass: admin1234
