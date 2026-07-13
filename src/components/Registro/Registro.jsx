@@ -49,11 +49,12 @@ const Registro = () => {
 		}
 		try {
 			// Intentamos crear el nuevo usuario en Firebase
-			createUserWithEmailAndPassword(
-				auth,
-				formData.email,
-				formData.password
-			);
+			const userCredential =
+				await createUserWithEmailAndPassword(
+					auth,
+					formData.email,
+					formData.password
+				);
 			await setDoc(doc(db, "usuarios", userCredential.user.uid), {
 
 				email: userCredential.user.email,
@@ -125,6 +126,7 @@ const Registro = () => {
 				<div className={styles.formGroup}>
 					<label>Correo electrónico</label>
 					<input
+						name="email"
 						type="email"
 						value={formData.email}
 						onChange={handleChange}
@@ -135,6 +137,7 @@ const Registro = () => {
 				<div className={styles.formGroup}>
 					<label>Nombre</label>
 					<input
+						name="nombre"
 						type="text"
 						value={formData.nombre}
 						onChange={handleChange}
@@ -145,6 +148,7 @@ const Registro = () => {
 				<div className={styles.formGroup}>
 					<label>Apellido</label>
 					<input
+						name="apellido"
 						type="text"
 						value={formData.apellido}
 						onChange={handleChange}
@@ -155,6 +159,7 @@ const Registro = () => {
 				<div className={styles.formGroup}>
 					<label>Contraseña</label>
 					<input
+						name="password"
 						type="password"
 						value={formData.password}
 						onChange={handleChange}
@@ -166,6 +171,7 @@ const Registro = () => {
 				<div className={styles.formGroup}>
 					<label>Confirmar Contraseña</label>
 					<input
+						name="confirmPassword"
 						type="password"
 						value={formData.confirmPassword}
 						onChange={handleChange}
@@ -177,6 +183,7 @@ const Registro = () => {
 				<div className={styles.formGroup}>
 					<label>Título</label>
 					<input
+						name="titulo"
 						type="text"
 						value={formData.titulo}
 						onChange={handleChange}
@@ -186,6 +193,7 @@ const Registro = () => {
 				<div className={styles.formGroup}>
 					<label>Año de Egreso</label>
 					<input
+						name="anioEgreso"
 						type="text"
 						value={formData.anioEgreso}
 						onChange={handleChange}
@@ -195,6 +203,7 @@ const Registro = () => {
 				<div className={styles.formGroup}>
 					<label>Distrito local</label>
 					<input
+						name="distrito"
 						type="text"
 						value={formData.distrito}
 						onChange={handleChange}
@@ -205,7 +214,7 @@ const Registro = () => {
 					<label>Avatar</label>
 					<input
 						type="file"
-						value={formData.avatar}
+						accept="image/png,image/jpeg,image/webp,image/jpg"
 						onChange={handleImage}
 					/>
 				</div>
