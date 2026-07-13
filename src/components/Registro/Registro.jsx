@@ -5,26 +5,75 @@ import styles from "./Registro.module.css"
 
 
 const Registro = () => {
-	const [email, setEmail] = useState('');
-	const [password, setPassword] = useState('');
+
+	const [formData, setFormData] = useState({
+		email: "",
+		password: "",
+		confirmPassword: "",
+		nombre: "",
+		apellido: "",
+		titulo: "",
+		anioEgreso: "",
+		distrito: "",
+		avatar: null
+	});
+
+	const handleChange = (e) => {
+		const { name, value } = e.target;
+
+		setFormData(prev => ({
+			...prev,
+			[name]: value
+		}));
+	};
+	const handleImage = (e) => {
+		const file = e.target.files[0];
+		setFormData(prev => ({
+			...prev,
+			avatar: file
+
+		}));
+	};
+
 	const [error, setError] = useState(null);
 	const navigate = useNavigate();
 	const auth = getAuth();
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		setError(null); // Reseteamos cualquier error previo
+		if (formData.password !== formData.confirmPassword) {
+
+			setError("Las contraseñas no coinciden.");
+
+			return;
+		}
 		try {
 			// Intentamos crear el nuevo usuario en Firebase
-			const userCredential = await createUserWithEmailAndPassword(
+			createUserWithEmailAndPassword(
 				auth,
-				email,
-				password
+				formData.email,
+				formData.password
 			);
-
 			await setDoc(doc(db, "usuarios", userCredential.user.uid), {
+
 				email: userCredential.user.email,
+
+				nombre: formData.nombre,
+
+				apellido: formData.apellido,
+
+				titulo: formData.titulo,
+
+				anioEgreso: Number(formData.anioEgreso),
+
+				distrito: formData.distrito,
+
+				avatar: "",
+
 				role: "user",
+
 				createdAt: serverTimestamp()
+
 			});
 			navigate("/");
 		}
@@ -77,8 +126,8 @@ const Registro = () => {
 					<label>Correo electrónico</label>
 					<input
 						type="email"
-						value={email}
-						onChange={(e) => setEmail(e.target.value)}
+						value={formData.email}
+						onChange={handleChange}
 						required
 					/>
 				</div>
@@ -87,8 +136,18 @@ const Registro = () => {
 					<label>Nombre</label>
 					<input
 						type="text"
-						value={email}
-						onChange={(e) => setEmail(e.target.value)}
+						value={formData.nombre}
+						onChange={handleChange}
+						required
+					/>
+				</div>
+
+				<div className={styles.formGroup}>
+					<label>Apellido</label>
+					<input
+						type="text"
+						value={formData.apellido}
+						onChange={handleChange}
 						required
 					/>
 				</div>
@@ -97,10 +156,57 @@ const Registro = () => {
 					<label>Contraseña</label>
 					<input
 						type="password"
-						value={password}
-						onChange={(e) => setPassword(e.target.value)}
+						value={formData.password}
+						onChange={handleChange}
 						required
 						placeholder="Mínimo 6 caracteres"
+					/>
+				</div>
+
+				<div className={styles.formGroup}>
+					<label>Confirmar Contraseña</label>
+					<input
+						type="password"
+						value={formData.confirmPassword}
+						onChange={handleChange}
+						required
+						placeholder="Mínimo 6 caracteres"
+					/>
+				</div>
+
+				<div className={styles.formGroup}>
+					<label>Título</label>
+					<input
+						type="text"
+						value={formData.titulo}
+						onChange={handleChange}
+					/>
+				</div>
+
+				<div className={styles.formGroup}>
+					<label>Año de Egreso</label>
+					<input
+						type="text"
+						value={formData.anioEgreso}
+						onChange={handleChange}
+					/>
+				</div>
+
+				<div className={styles.formGroup}>
+					<label>Distrito local</label>
+					<input
+						type="text"
+						value={formData.distrito}
+						onChange={handleChange}
+					/>
+				</div>
+
+				<div className={styles.formGroup}>
+					<label>Avatar</label>
+					<input
+						type="file"
+						value={formData.avatar}
+						onChange={handleImage}
 					/>
 				</div>
 
