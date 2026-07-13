@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import styles from "./Registro.module.css"
+import { registrarUsuario } from "../../services/authService";
+
 
 
 const Registro = () => {
-
+	const [loading, setLoading] = useState(false);
 	const [formData, setFormData] = useState({
 		email: "",
 		password: "",
@@ -17,6 +18,26 @@ const Registro = () => {
 		distrito: "",
 		avatar: null
 	});
+
+
+	const [avatarPreview, setAvatarPreview] = useState(null);
+
+	useEffect(() => {
+
+		if (!formData.avatar) {
+
+			setAvatarPreview(null);
+			return;
+		}
+
+		const preview = URL.createObjectURL(formData.avatar);
+
+		setAvatarPreview(preview);
+
+		return () => URL.revokeObjectURL(preview);
+
+	}, [formData.avatar]);
+
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
@@ -37,27 +58,24 @@ const Registro = () => {
 
 	const [error, setError] = useState(null);
 	const navigate = useNavigate();
-	const auth = getAuth();
+
+
+
 	const handleSubmit = async (e) => {
+
+
 		e.preventDefault();
-		setError(null); // Reseteamos cualquier error previo
+		setError(null);
 		if (formData.password !== formData.confirmPassword) {
-
 			setError("Las contraseñas no coinciden.");
-
 			return;
 		}
 		try {
-			// Intentamos crear el nuevo usuario en Firebase
-			const userCredential =
-				await createUserWithEmailAndPassword(
-					auth,
-					formData.email,
-					formData.password
-				);
-			await setDoc(doc(db, "usuarios", userCredential.user.uid), {
+			setLoading(true); await registrarUsuario({
 
-				email: userCredential.user.email,
+				email: formData.email,
+
+				password: formData.password,
 
 				nombre: formData.nombre,
 
@@ -65,34 +83,30 @@ const Registro = () => {
 
 				titulo: formData.titulo,
 
-				anioEgreso: Number(formData.anioEgreso),
+				anioEgreso: formData.anioEgreso,
 
 				distrito: formData.distrito,
 
-				avatar: "",
-
-				role: "user",
-
-				createdAt: serverTimestamp()
+				avatar: formData.avatar
 
 			});
 			navigate("/");
 		}
-
-
 		catch (error) {
 			// Aquí es donde manejamos el caso específico que nos interesa
 			if (error.code === 'auth/email-already-in-use') {
 				// Usamos window.confirm para hacer la pregunta al usuario
 				const quiereLoguearse = window.confirm(
-					'Este correo electrónico ya está registrado. ¿Deseaintentar iniciar sesión ? '
+					'Este correo electrónico ya está registrado. ¿Desea intentar iniciar sesión ? '
 				);
 				if (quiereLoguearse) {
 					// Si el usuario confirma, lo redirigimos a la página de login
 					navigate('/iniciarSesion');
-				} else {
+				}
+				else {
 					// Si el usuario cancela, lo redirigimos a la página de inicio
-					navigate('/');
+					// navigate('/');
+					// dejame en paz
 
 				}
 
@@ -113,6 +127,9 @@ const Registro = () => {
 
 			}
 
+		}
+		finally {
+			setLoading(false);
 		}
 
 	};
@@ -209,12 +226,31 @@ const Registro = () => {
 						onChange={handleChange}
 					/>
 				</div>
-
 				<div className={styles.formGroup}>
-					<label>Avatar</label>
+					<label htmlFor="avatar">
+
+						{
+							avatarPreview ? (
+								<img
+									className={styles.avatarPreview}
+									src={avatarPreview}
+									alt="Vista previa del avatar"
+								/>
+							) : (
+								<div className={styles.avatarPlaceholder}>
+									<span className={styles.avatarIcon}>👤</span>
+									<small>Seleccionar avatar</small>
+								</div>
+							)
+						}
+
+					</label>
+
 					<input
+						id="avatar"
 						type="file"
 						accept="image/png,image/jpeg,image/webp,image/jpg"
+						hidden
 						onChange={handleImage}
 					/>
 				</div>
@@ -226,10 +262,12 @@ const Registro = () => {
 				)}
 
 				<button
-					type="submit"
+					disabled={loading}
 					className={`${styles.button} ${styles.primary}`}
 				>
-					Registrarse
+					{
+						loading ? "Creando cuenta..." : "Registrarse"
+					}
 				</button>
 
 			</form>
