@@ -24,10 +24,42 @@ export default function NavBar() {
 			? `${styles.link} ${styles.active}`
 			: styles.link
 	}
+	function renderCentralLinks() {
+
+		return <>
+			<NavLink
+				to="/"
+				className={({ isActive }) => navClass(isActive)}
+			>
+				Inicio
+			</NavLink>
+
+			<NavLink
+				to="/about"
+				className={({ isActive }) => navClass(isActive)}
+			>
+				About us
+			</NavLink>
+
+			<NavLink
+				to="/contacto"
+				className={({ isActive }) => navClass(isActive)}
+			>
+				Contacto
+			</NavLink>
+
+			<NavLink
+				to="/ofertas"
+				className={({ isActive }) => navClass(isActive)}
+			>
+				Ofertas
+			</NavLink>
+
+		</>
+	}
 
 
 	function renderRightLinks() {
-
 		if (!user) {
 			return (
 				<>
@@ -46,17 +78,20 @@ export default function NavBar() {
 					</NavLink>
 				</>
 			);
-		}
-
-		if (isAdmin) {
+		} else {
 			return (
 				<>
 					<NavLink
-						to="/adminPanel"
-						className={({ isActive }) => navClass(isActive)}
+						to="/pendingPostulations"
+						className={({ isActive }) =>
+							isActive
+								? `${styles.pendingButton} ${styles.activePending}`
+								: styles.pendingButton
+						}
 					>
-						Panel Admin
+						📝 Postulaciones ({pendingPostulations.length})
 					</NavLink>
+
 
 					<NavLink
 						to="/myProfiles"
@@ -68,6 +103,32 @@ export default function NavBar() {
 					>
 						👤 Mis perfiles
 					</NavLink>
+
+
+					<NavLink
+						to="/myProfiles"
+						className={({ isActive }) =>
+							isActive
+								? `${styles.pendingButton} ${styles.activePending}`
+								: styles.pendingButton
+						}
+					>
+						⚙️ Mi cuenta
+					</NavLink>
+
+
+
+
+					{isAdmin && (
+						<NavLink
+							to="/adminPanel"
+							className={({ isActive }) => navClass(isActive)}
+						>
+							Panel Admin
+						</NavLink>)
+					}
+
+
 					<NavLink
 						to=""
 						onClick={logout}
@@ -78,41 +139,6 @@ export default function NavBar() {
 				</>
 			);
 		}
-
-		return (
-			<>
-
-				<NavLink
-					to="/pendingPostulations"
-					className={({ isActive }) =>
-						isActive
-							? `${styles.pendingButton} ${styles.activePending}`
-							: styles.pendingButton
-					}
-				>
-					📝 Postulaciones ({pendingPostulations.length})
-				</NavLink>
-
-
-				<NavLink
-					to="/myProfiles"
-					className={({ isActive }) =>
-						isActive
-							? `${styles.pendingButton} ${styles.activePending}`
-							: styles.pendingButton
-					}
-				>
-					👤 Mis perfiles
-				</NavLink>
-				<NavLink
-					to=""
-					onClick={logout}
-					className={styles.pendingButton}
-				>
-					Cerrar sesión
-				</NavLink>
-			</>
-		);
 	}
 
 	return (
@@ -125,38 +151,8 @@ export default function NavBar() {
 			</NavLink>
 
 			<div className={styles.centralLinks}>
-
-				<NavLink
-					to="/"
-					className={({ isActive }) => navClass(isActive)}
-				>
-					Inicio
-				</NavLink>
-
-				<NavLink
-					to="/about"
-					className={({ isActive }) => navClass(isActive)}
-				>
-					About us
-				</NavLink>
-
-				<NavLink
-					to="/contacto"
-					className={({ isActive }) => navClass(isActive)}
-				>
-					Contacto
-				</NavLink>
-
-				<NavLink
-					to="/ofertas"
-					className={({ isActive }) => navClass(isActive)}
-				>
-					Ofertas
-				</NavLink>
-
+				{renderCentralLinks()}
 			</div>
-
-
 
 			<div className={styles.rightLinks}>
 				{renderRightLinks()}
