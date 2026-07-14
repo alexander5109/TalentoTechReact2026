@@ -34,6 +34,11 @@
 	cursor: not-allowed;
 }
 
+.formGroup input:disabled:focus {
+	box-shadow: none;
+	border-color: #d0d0d0;
+}
+
 .formGroup input:focus {
 	outline: none;
 

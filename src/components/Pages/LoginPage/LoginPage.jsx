@@ -1,49 +1,138 @@
-import { useState } from 'react';
-import { NavLink } from "react-router-dom"
+import { useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { useNavigate } from 'react-router-dom';
-import APDButton from '../../common/APDButton/APDButton';
+
+import TextContainer from "../../common/TextContainer/TextContainer";
+import SectionTitleH3 from "../../common/SectionTitleH3/SectionTitleH3";
+import PrettyText from "../../common/PrettyText/PrettyText";
+import APDButton from "../../common/APDButton/APDButton";
+import APDFormField from "../../common/APDFormField/APDFormField";
+import ApdNavLink from "../../common/ApdNavLink/ApdNavLink";
+
+import styles from "./LoginPage.module.css";
 
 export default function LoginPage() {
+
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+
+	const [loading, setLoading] = useState(false);
+	const [error, setError] = useState(null);
+
 	const navigate = useNavigate();
-	const handleLogin = (e) => {
+
+	async function handleLogin(e) {
+
 		e.preventDefault();
-		const auth = getAuth();
-		signInWithEmailAndPassword(auth, email, password)
-			.then((userCredential) => {
-				const user = userCredential.user;
-				console.log("Usuario logueado:", user);
-				alert("¡Inicio de sesión exitoso!");
-				navigate('/'); //
-			})
-			.catch((error) => {
-				const errorCode = error.code;
-				const errorMessage = error.message;
-				console.error("Error en el login:", errorCode, errorMessage);
-				alert("Error: " + errorMessage);
-			});
-	};
+
+		setLoading(true);
+		setError(null);
+
+		try {
+
+			const auth = getAuth();
+
+			await signInWithEmailAndPassword(
+				auth,
+				email,
+				password
+			);
+
+			navigate("/");
+
+		}
+		catch (err) {
+
+			switch (err.code) {
+
+				case "auth/invalid-credential":
+				case "auth/wrong-password":
+				case "auth/user-not-found":
+					setError("Correo electrónico o contraseña incorrectos.");
+					break;
+
+				case "auth/invalid-email":
+					setError("El correo electrónico no es válido.");
+					break;
+
+				case "auth/too-many-requests":
+					setError("Demasiados intentos. Intente nuevamente más tarde.");
+					break;
+
+				default:
+					setError("No fue posible iniciar sesión.");
+					console.error(err);
+
+			}
+
+		}
+		finally {
+
+			setLoading(false);
+
+		}
+
+	}
+
 	return (
-		<div>
-			<h2>Iniciar Sesión</h2>
-			<p>¿No tenés una cuenta? <NavLink to="/crearUsuario">Registrate aquí</NavLink></p>
-			<form onSubmit={handleLogin}>
-				<input
+
+		<TextContainer>
+
+			<SectionTitleH3>
+				Iniciar sesión
+			</SectionTitleH3>
+
+			<PrettyText>
+				¿Todavía no tenés una cuenta?{" "}
+				<ApdNavLink variant="accent" to="/crearUsuario">
+					Crear usuario
+				</ApdNavLink>
+			</PrettyText>
+
+			<form
+				className={styles.form}
+				onSubmit={handleLogin}
+			>
+
+				<APDFormField
+					label="Correo electrónico"
+					name="email"
 					type="email"
-					placeholder="Correo electrónico"
+					autoComplete="email"
 					value={email}
 					onChange={(e) => setEmail(e.target.value)}
-				/><input
+					required
+				/>
+
+				<APDFormField
+					label="Contraseña"
+					name="password"
 					type="password"
-					placeholder="Contraseña"
+					autoComplete="current-password"
 					value={password}
 					onChange={(e) => setPassword(e.target.value)}
+					required
 				/>
-				<APDButton type="submit">Ingresar</APDButton>
+
+				{error && (
+					<div className={styles.error}>
+						{error}
+					</div>
+				)}
+
+				<APDButton
+					type="submit"
+					disabled={loading}
+				>
+					{loading
+						? "Ingresando..."
+						: "Ingresar"}
+				</APDButton>
+
 			</form>
-		</div>
+
+		</TextContainer>
 
 	);
-};
+
+}
