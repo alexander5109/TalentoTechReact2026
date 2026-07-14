@@ -1,0 +1,54 @@
+.feedback {
+	padding: .75rem 1rem;
+	border-radius: 8px;
+	border: 1px solid;
+}
+
+.message {
+	margin: 0;
+	display: flex;
+	align-items: center;
+	gap: .5rem;
+	font-weight: 600;
+}
+
+.icon {
+	font-size: 1.1rem;
+	flex-shrink: 0;
+}
+
+.details {
+	margin-top: .75rem;
+	font-size: .85rem;
+	opacity: .8;
+}
+
+.details summary {
+	cursor: pointer;
+	user-select: none;
+	margin-bottom: .35rem;
+}
+
+.error {
+	background: #ffe4e4;
+	color: #8a1f1f;
+	border-color: #d9a0a0;
+}
+
+.warning {
+	background: #fff8dc;
+	color: #8a6d1f;
+	border-color: #e7c96a;
+}
+
+.success {
+	background: #e8f7ea;
+	color: #216e39;
+	border-color: #9fd5ac;
+}
+
+.info {
+	background: #e7f2ff;
+	color: #205d99;
+	border-color: #9fc5e8;
+}

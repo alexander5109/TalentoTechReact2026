@@ -5,24 +5,18 @@ import { registrarUsuario } from "../../services/authService";
 import APDButton from '../common/APDButton/APDButton';
 import AvatarPicker from "../AvatarPicker/AvatarPicker"
 import APDFormField from '../common/APDFormField/APDFormField';
+import APDFeedback from '../common/APDFeedback/APDFeedback';
 
 
 export default function FormUserAccount({
-
 	title,
 	submitText,
-
 	initialData,
-
 	showPasswordFields = true,
-
 	loading = false,
-
 	error = null,
-	editableEmail = false,
-
+	editableEmailAndPassword = false,
 	onSubmit
-
 }) {
 	console.log("Form render", initialData);
 
@@ -74,9 +68,13 @@ export default function FormUserAccount({
 
 
 	}, [initialData, initialized]);
-
 	const handleChange = (e) => {
+
 		const { name, value } = e.target;
+
+		if (formError) {
+			setFormError(null);
+		}
 
 		setFormData(prev => ({
 			...prev,
@@ -97,9 +95,13 @@ export default function FormUserAccount({
 	const handleSubmit = (e) => {
 
 		e.preventDefault();
+		setFormError(null);
 
-		if (showPasswordFields && formData.password !== formData.confirmPassword) {
-			alert("Las contraseñas no coinciden.");
+		if (
+			showPasswordFields &&
+			formData.password !== formData.confirmPassword
+		) {
+			setFormError("Las contraseñas no coinciden.");
 			return;
 		}
 		onSubmit(formData);
@@ -115,7 +117,7 @@ export default function FormUserAccount({
 					label="Correo electrónico"
 					name="email"
 					type="email"
-					disabled={!editableEmail}
+					disabled={!editableEmailAndPassword}
 					value={formData.email}
 					onChange={handleChange}
 					required
@@ -145,6 +147,7 @@ export default function FormUserAccount({
 					placeholder="Mínimo 6 caracteres"
 					value={formData.password}
 					onChange={handleChange}
+					disabled={!editableEmailAndPassword}
 					required
 				/>
 				<APDFormField
@@ -155,6 +158,7 @@ export default function FormUserAccount({
 					placeholder="Mínimo 6 caracteres"
 					value={formData.confirmPassword}
 					onChange={handleChange}
+					disabled={!editableEmailAndPassword}
 					required
 				/>
 				<APDFormField
@@ -185,12 +189,9 @@ export default function FormUserAccount({
 					onChange={handleImage}
 				/>
 
-
-				{(formError || error) && (
-					<div className={styles.error}>
-						{formError ?? error}
-					</div>
-				)}
+				<APDFeedback type="warning"
+					message={formError ?? error}
+				/>
 
 				<APDButton type="submit" disabled={loading} >
 					{loading ? "Procesando..." : submitText}

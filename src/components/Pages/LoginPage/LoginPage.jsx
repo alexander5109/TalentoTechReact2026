@@ -10,6 +10,7 @@ import APDFormField from "../../common/APDFormField/APDFormField";
 import ApdNavLink from "../../common/ApdNavLink/ApdNavLink";
 
 import styles from "./LoginPage.module.css";
+import APDFeedback from "../../common/APDFeedback/APDFeedback";
 
 export default function LoginPage() {
 
@@ -61,7 +62,6 @@ export default function LoginPage() {
 
 				default:
 					setError("No fue posible iniciar sesión.");
-					console.error(err);
 
 			}
 
@@ -114,11 +114,9 @@ export default function LoginPage() {
 					required
 				/>
 
-				{error && (
-					<div className={styles.error}>
-						{error}
-					</div>
-				)}
+				<APDFeedback type="error">
+					{error}
+				</APDFeedback>
 
 				<APDButton
 					type="submit"

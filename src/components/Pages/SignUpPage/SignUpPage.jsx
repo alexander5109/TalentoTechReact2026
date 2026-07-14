@@ -24,34 +24,21 @@ export default function SignUpPage() {
 
 		}
 		catch (err) {
-
 			switch (err.code) {
-
 				case "auth/email-already-in-use":
-
-					if (window.confirm(
-						"Este correo ya está registrado. ¿Desea iniciar sesión?"
-					)) {
-						navigate("/iniciarSesion");
-					}
-
+					setError("El correo electrónico ya está en uso");
 					break;
 
 				case "auth/weak-password":
-
 					setError("La contraseña debe tener al menos 6 caracteres.");
 					break;
 
 				case "auth/invalid-email":
-
 					setError("El correo electrónico no es válido.");
 					break;
 
 				default:
-
 					setError("Ocurrió un error al registrar el usuario.");
-					console.error(err);
-
 			}
 
 		}
@@ -72,7 +59,7 @@ export default function SignUpPage() {
 			showPasswordFields={true}
 			loading={loading}
 			error={error}
-			editableEmail={true}
+			editableEmailAndPassword={true}
 			onSubmit={handleRegister}
 
 		/>

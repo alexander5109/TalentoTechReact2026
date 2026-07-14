@@ -41,10 +41,7 @@ export default function UserAccountSettingsPage() {
 			console.log("Datos recibidos tras actualizar:", actualizado);
 			setUsuario(actualizado);
 		} catch (err) {
-			console.error("Error actualizando usuario:", err);
-			setError(
-				`No fue posible guardar los cambios.\nCódigo: ${err.code}\nMensaje: ${err.message}`
-			);
+			setError(err);
 		}
 		finally {
 			setSaving(false);
@@ -67,7 +64,7 @@ export default function UserAccountSettingsPage() {
 			showPasswordFields={false}
 			loading={saving}
 			error={error}
-			editableEmail={false}
+			editableEmailAndPassword={false}
 			onSubmit={handleUpdate}
 
 		/>

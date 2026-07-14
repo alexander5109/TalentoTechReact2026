@@ -1,3 +1,4 @@
+import APDFeedback from '../../../common/APDFeedback/APDFeedback'
 import OfertaList from '../OfertaList/OfertaList'
 import styles from './OfertaListContainer.module.css'
 import { useEffect, useState } from 'react'
@@ -25,7 +26,6 @@ export default function OfertaListContainer({ filtros }) {
 					setOfertas(data);
 				})
 				.catch(error => {
-					console.error("Ups. Hubo un error: ", error)
 					setError(error)
 				})
 				.finally(() => {
@@ -62,8 +62,6 @@ export default function OfertaListContainer({ filtros }) {
 			coincideTurno
 		)
 	})
-
-
 	return (
 		<>
 			{isLoading ? (
@@ -71,15 +69,15 @@ export default function OfertaListContainer({ filtros }) {
 					<h3>Cargando ofertas...</h3>
 				</div>
 			) : errorExcept ? (
-				<div>
-					<h3>Ocurrio un error: </h3>
-					<p className={styles.error}>{errorExcept.message}</p>
-				</div>
+				<APDFeedback type="error"
+					message="No fue posible obtener las ofertas."
+					error={errorExcept}
+				/>
 			) : (
 				<div className={styles.container}>
 					<OfertaList ofertas={ofertasFiltradas} />
 				</div>
 			)}
 		</>
-	)
+	);
 }

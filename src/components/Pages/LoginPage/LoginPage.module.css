@@ -3,14 +3,3 @@
 	flex-direction: column;
 	gap: 1.25rem;
 }
-
-.error {
-	padding: .75rem;
-
-	border-radius: 8px;
-
-	background: #ffe4e4;
-	color: #8a1f1f;
-
-	border: 1px solid #d9a0a0;
-}
