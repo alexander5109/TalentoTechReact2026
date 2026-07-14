@@ -4,6 +4,7 @@ import styles from "./FormUserAccount.module.css"
 import { registrarUsuario } from "../../services/authService";
 import APDButton from '../common/APDButton/APDButton';
 import AvatarPicker from "../AvatarPicker/AvatarPicker"
+import APDFormField from '../common/APDFormField/APDFormField';
 
 
 export default function FormUserAccount({
@@ -110,107 +111,78 @@ export default function FormUserAccount({
 				{title}
 			</h2>
 			<form className={styles.form} onSubmit={handleSubmit}>
+				<APDFormField
+					label="Correo electrónico"
+					name="email"
+					type="email"
+					disabled={!editableEmail}
+					value={formData.email}
+					onChange={handleChange}
+					required
+					autoComplete="email"
+				/>
 
-				<div className={styles.formGroup}>
-					<label htmlFor="email">
-						Correo electrónico
-					</label>
-					<input
-						disabled={!editableEmail}
-						name="email"
-						type="email"
-						autoComplete="email"
-						value={formData.email}
-						onChange={handleChange}
-						required
-					/>
-				</div>
+				<APDFormField
+					label="Nombre"
+					name="nombre"
+					value={formData.nombre}
+					onChange={handleChange}
+					required
+				/>
 
-				<div className={styles.formGroup}>
-					<label htmlFor="nombre">Nombre</label>
-					<input
-						name="nombre"
-						type="text"
-						value={formData.nombre}
-						onChange={handleChange}
-						required
-					/>
-				</div>
+				<APDFormField
+					label="Apellido"
+					name="apellido"
+					value={formData.apellido}
+					onChange={handleChange}
+					required
+				/>
+				<APDFormField
+					label="Contraseña"
+					name="password"
+					type="password"
+					autoComplete="new-password"
+					placeholder="Mínimo 6 caracteres"
+					value={formData.password}
+					onChange={handleChange}
+					required
+				/>
+				<APDFormField
+					label="Confirmar Contraseña"
+					name="confirmPassword"
+					type="password"
+					autoComplete="new-password"
+					placeholder="Mínimo 6 caracteres"
+					value={formData.confirmPassword}
+					onChange={handleChange}
+					required
+				/>
+				<APDFormField
+					label="Título"
+					name="titulo"
+					value={formData.titulo}
+					onChange={handleChange}
+				/>
 
-				<div className={styles.formGroup}>
-					<label htmlFor="apellido">Apellido</label>
-					<input
-						name="apellido"
-						type="text"
-						value={formData.apellido}
-						onChange={handleChange}
-						required
-					/>
-				</div>
+				<APDFormField
+					label="Año de Egreso"
+					name="anioEgreso"
+					value={formData.anioEgreso}
+					onChange={handleChange}
+				/>
 
-				<div className={styles.formGroup}>
-					<label htmlFor="password">Contraseña</label>
-					<input
-						name="password"
-						type="password"
-						autoComplete="new-password"
-						value={formData.password}
-						onChange={handleChange}
-						required
-						placeholder="Mínimo 6 caracteres"
-					/>
-				</div>
+				<APDFormField
+					label="Distrito local"
+					name="distrito"
+					value={formData.distrito}
+					onChange={handleChange}
+				/>
 
-				<div className={styles.formGroup}>
-					<label htmlFor="confirmPassword">Confirmar Contraseña</label>
-					<input
-						name="confirmPassword"
-						type="password"
-						autoComplete="new-password"
-						value={formData.confirmPassword}
-						onChange={handleChange}
-						required
-						placeholder="Mínimo 6 caracteres"
-					/>
-				</div>
 
-				<div className={styles.formGroup}>
-					<label htmlFor="titulo">Título</label>
-					<input
-						name="titulo"
-						type="text"
-						value={formData.titulo}
-						onChange={handleChange}
-					/>
-				</div>
-
-				<div className={styles.formGroup}>
-					<label htmlFor="anioEgreso">Año de Egreso</label>
-					<input
-						name="anioEgreso"
-						type="text"
-						value={formData.anioEgreso}
-						onChange={handleChange}
-					/>
-				</div>
-
-				<div className={styles.formGroup}>
-					<label htmlFor="distrito">Distrito local</label>
-					<input
-						name="distrito"
-						type="text"
-						value={formData.distrito}
-						onChange={handleChange}
-					/>
-				</div>
 				<AvatarPicker
-
 					file={formData.archivo}
-
 					currentImage={initialData.avatarUrl}
-
 					onChange={handleImage}
-
 				/>
 
 
@@ -225,7 +197,7 @@ export default function FormUserAccount({
 				</APDButton>
 
 			</form>
-		</div>
+		</div >
 
 	);
 };

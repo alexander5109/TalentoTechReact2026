@@ -17,7 +17,6 @@
 .title {
 	margin: 0 0 2rem;
 	text-align: center;
-
 	font-family: var(--font-heading);
 	font-size: 2rem;
 	font-weight: normal;
@@ -30,45 +29,6 @@
 	gap: 1.25rem;
 }
 
-.formGroup {
-	display: flex;
-	flex-direction: column;
-}
-
-.formGroup label {
-	margin-bottom: .4rem;
-
-	font-weight: 600;
-	color: var(--text-soft);
-}
-
-.formGroup input {
-	padding: .8rem 1rem;
-
-	font-size: 1rem;
-	font-family: inherit;
-
-	color: var(--text-dark);
-
-	background: white;
-
-	border: 1px solid var(--parchment-dark);
-	border-radius: 8px;
-
-	transition:
-		border-color .2s,
-		box-shadow .2s;
-}
-
-.formGroup input:focus {
-	outline: none;
-
-	border-color: var(--green-soft);
-
-	box-shadow:
-		0 0 0 3px rgba(47, 106, 85, .20);
-}
-
 .error {
 	padding: .75rem;
 
@@ -78,9 +38,4 @@
 	color: #8a1f1f;
 
 	border: 1px solid #d9a0a0;
-}
-
-.button {
-	margin-top: .5rem;
-	width: 100%;
 }
