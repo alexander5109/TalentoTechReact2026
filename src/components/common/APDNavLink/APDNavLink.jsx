@@ -4,13 +4,18 @@ import styles from "./APDNavLink.module.css";
 export default function APDNavLink({
 	to,
 	children,
-	variant = "default",
+	variant,
 	onClick
 }) {
 
 	function getClass(isActive) {
 
 		const classes = [styles.link];
+
+		if (variant == "logo" || variant == "danger") {
+			classes.push(styles[variant]);
+			return classes.join(" ");
+		}
 
 		if (variant) {
 			classes.push(styles[variant]);
@@ -23,9 +28,13 @@ export default function APDNavLink({
 		return classes.join(" ");
 	}
 
-	return (<NavLink to={to}
-		onClick={onClick}
-		className={({ isActive }) => getClass(isActive)}>
-		{children}
-	</NavLink>);
+	return (
+		<NavLink
+			to={to}
+			onClick={onClick}
+			className={({ isActive }) => getClass(isActive)}
+		>
+			{children}
+		</NavLink>
+	);
 }
