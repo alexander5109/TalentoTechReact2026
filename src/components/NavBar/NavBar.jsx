@@ -101,12 +101,12 @@ export default function NavBar() {
 								: styles.pendingButton
 						}
 					>
-						👤 Mis perfiles
+						🔎 Mis búsquedas
 					</NavLink>
 
 
 					<NavLink
-						to="/myProfiles"
+						to="/myAccount"
 						className={({ isActive }) =>
 							isActive
 								? `${styles.pendingButton} ${styles.activePending}`

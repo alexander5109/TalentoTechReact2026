@@ -7,10 +7,11 @@ import ContactoPage from './components/Pages/ContactoPage/ContactoPage'
 import MyProfilesPage from './components/Pages/MyProfilesPage/MyProfilesPage'
 import PendingPostulationsPage from './components/Pages/PendingPostulationsPage/PendingPostulationsPage'
 import OfertaDetallePage from './components/Pages/OfertaDetallePage/OfertaDetallePage'
-import Login from "./components/Login/Login"
-import Registro from "./components/Registro/Registro"
+import Login from "./components/UserFormPages/LoginPage"
+import UserForm from "./components/UserFormPages/BaseUserForm"
 import AdminPanel from "./components/Pages/AdminPanel/AdminPanel"
 import RutaProtegida from "./components/common/RutaProtegida/RutaProtegida"
+import SignUp from
 
 export default function App() {
 	return (
@@ -24,7 +25,7 @@ export default function App() {
 				<Route path="/myProfiles" element={<MyProfilesPage />} />
 				<Route path="/pendingPostulations" element={<PendingPostulationsPage />} />
 				<Route path="/iniciarSesion" element={<Login />} />
-				<Route path="/registro" element={<Registro />} />
+				<Route path="/registro" element={<SignUp />} />
 				<Route path="/adminPanel" element={
 					<RutaProtegida rolesPermitidos={['admin']}>
 						<AdminPanel />

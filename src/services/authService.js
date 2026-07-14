@@ -16,13 +16,13 @@ export async function registrarUsuario({
 	titulo,
 	anioEgreso,
 	distrito,
-	avatar
+	archivo
 }) {
 
-	let avatarUrl = "";
+	let url = "";
 
-	if (avatar) {
-		avatarUrl = await subirAvatar(avatar);
+	if (archivo) {
+		url = await subirAvatar(archivo);
 	}
 
 	const userCredential =
@@ -48,7 +48,7 @@ export async function registrarUsuario({
 
 			distrito,
 
-			avatar: avatarUrl,
+			avatarUrl: url,
 
 			role: "user",
 

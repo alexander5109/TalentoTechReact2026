@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import styles from "./Registro.module.css"
+import styles from "./UserForm.css"
 import { registrarUsuario } from "../../services/authService";
 
 
 
-const Registro = () => {
+const UserForm = () => {
 	const [loading, setLoading] = useState(false);
 	const [formData, setFormData] = useState({
 		email: "",
@@ -16,27 +16,8 @@ const Registro = () => {
 		titulo: "",
 		anioEgreso: "",
 		distrito: "",
-		avatar: null
+		archivo: null
 	});
-
-
-	const [avatarPreview, setAvatarPreview] = useState(null);
-
-	useEffect(() => {
-
-		if (!formData.avatar) {
-
-			setAvatarPreview(null);
-			return;
-		}
-
-		const preview = URL.createObjectURL(formData.avatar);
-
-		setAvatarPreview(preview);
-
-		return () => URL.revokeObjectURL(preview);
-
-	}, [formData.avatar]);
 
 
 	const handleChange = (e) => {
@@ -51,7 +32,7 @@ const Registro = () => {
 		const file = e.target.files[0];
 		setFormData(prev => ({
 			...prev,
-			avatar: file
+			archivo: file
 
 		}));
 	};
@@ -87,7 +68,7 @@ const Registro = () => {
 
 				distrito: formData.distrito,
 
-				avatar: formData.avatar
+				archivo: formData.archivo
 
 			});
 			navigate("/");
@@ -226,34 +207,14 @@ const Registro = () => {
 						onChange={handleChange}
 					/>
 				</div>
-				<div className={styles.formGroup}>
-					<label htmlFor="avatar">
+				<AvatarPicker
+					archivo={formData.archivo}
+					onChange={handleImage}
 
-						{
-							avatarPreview ? (
-								<img
-									className={styles.avatarPreview}
-									src={avatarPreview}
-									alt="Vista previa del avatar"
-								/>
-							) : (
-								<div className={styles.avatarPlaceholder}>
-									<span className={styles.avatarIcon}>👤</span>
-									<small>Seleccionar avatar</small>
-								</div>
-							)
-						}
 
-					</label>
+				/>
 
-					<input
-						id="avatar"
-						type="file"
-						accept="image/png,image/jpeg,image/webp,image/jpg"
-						hidden
-						onChange={handleImage}
-					/>
-				</div>
+
 
 				{error && (
 					<div className={styles.error}>
@@ -275,4 +236,4 @@ const Registro = () => {
 
 	);
 };
-export default Registro;
+export default UserForm;

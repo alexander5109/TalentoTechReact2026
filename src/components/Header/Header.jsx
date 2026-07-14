@@ -24,6 +24,9 @@ export default function Header() {
 	else if (location.pathname === "/myProfiles") {
 		subtitle = "Mis perfiles"
 	}
+	else if (location.pathname === "/myAccount") {
+		subtitle = "Mi cuenta"
+	}
 	else {
 		subtitle = "Ruta sin cabecera"
 	}
