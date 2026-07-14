@@ -42,7 +42,7 @@ export default function NavBar() {
 					<APDNavLink to="/userPendingPostulations" variant="accent"> 📝 Postulaciones ({pendingPostulations.length})</APDNavLink>
 					<APDNavLink to="/userSearchProfiles" variant="accent">🔎 Mis búsquedas</APDNavLink>
 					<APDNavLink to="/userAccountSettings" variant="accent">⚙️ Mi cuenta</APDNavLink>
-					{isAdmin && (<APDNavLink to="/userAdminPanel" variant="accent">Panel Admin</APDNavLink>)}
+					{isAdmin && (<APDNavLink to="/userAdminPanel" variant="accent">🛠️ Admin Panel</APDNavLink>)}
 					<APDNavLink to="" variant="danger" onClick={logout}  >Cerrar sesión</APDNavLink>
 				</>
 			);

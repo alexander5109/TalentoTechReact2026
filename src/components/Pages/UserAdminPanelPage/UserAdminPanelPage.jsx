@@ -1,7 +1,7 @@
 import TextContainer from "../../common/TextContainer/TextContainer";
 import SectionTitleH3 from "../../common/SectionTitleH3/SectionTitleH3";
 import PrettyText from "../../common/PrettyText/PrettyText";
-import APDAdminStatCard from "./APDAdminStatCard/APDAdminStatCard"
+import APDDataCard from "../../common/APDDataCard/APDDataCard"
 import APDPanel from "../../common/APDPanel/APDPanel"
 import styles from "./UserAdminPanelPage.module.css";
 
@@ -22,25 +22,25 @@ export default function UserAdminPanelPage() {
 
 			<div className={styles.grid}>
 
-				<APDAdminStatCard
+				<APDDataCard
 					icon="👥"
 					title="Usuarios registrados"
 					value="128"
 				/>
 
-				<APDAdminStatCard
+				<APDDataCard
 					icon="📁"
 					title="Perfiles de búsqueda"
 					value="354"
 				/>
 
-				<APDAdminStatCard
+				<APDDataCard
 					icon="🔔"
 					title="Alertas activas"
 					value="91"
 				/>
 
-				<APDAdminStatCard
+				<APDDataCard
 					icon="📄"
 					title="Postulaciones guardadas"
 					value="2.184"
