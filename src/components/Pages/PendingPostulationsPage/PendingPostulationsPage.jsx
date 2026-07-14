@@ -8,6 +8,7 @@ import TextContainer from "../../common/TextContainer/TextContainer"
 import styles from "./PendingPostulationsPage.module.css"
 
 import Swal from "sweetalert2"
+import APDButton from "../../common/APDButton/APDButton"
 
 export default function PendingPostulationsPage() {
 
@@ -45,7 +46,7 @@ export default function PendingPostulationsPage() {
 									{pendingPostulations.length}
 								</strong>
 							</p>
-							<button className={`${styles.button} ${styles.primary}`}
+							<APDButton
 								onClick={() => {
 									Swal.fire({
 										title: "Exito",
@@ -60,7 +61,7 @@ export default function PendingPostulationsPage() {
 								}}
 							>
 								Confirmar postulaciones
-							</button>
+							</APDButton>
 
 						</div>
 

@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom"
 import SectionTitleH3 from "../../../common/SectionTitleH3/SectionTitleH3";
 
 import Swal from "sweetalert2"
@@ -8,6 +7,8 @@ import {
 } from "../../../../context/PendingPostulationsContext.jsx"
 
 import styles from "./OfertaDetalle.module.css"
+import APDLink from "../../../common/APDLink/APDLink.jsx";
+import APDButton from "../../../common/APDButton/APDButton.jsx";
 
 export default function OfertaDetalle({ offer }) {
 
@@ -167,42 +168,28 @@ export default function OfertaDetalle({ offer }) {
 
 			<div className={styles.actions}>
 
-				<Link
-					to="/ofertas"
-					className={
-						`${styles.button}
-						${styles.secondary}`
-					}
-				>
+				<APDLink to="/ofertas" >
 					Volver
-				</Link>
+				</APDLink>
 
 				{
 					isAgregada ? (
 
-						<button className={`${styles.button}${styles.danger}`}
-							onClick={
-								connectEliminarPostulacion
-							}
-						>
+						<APDButton variant="danger" onClick={connectEliminarPostulacion}>
 							Quitar postulación
-						</button>
+						</APDButton>
 
 					) : (
 
-						<button className={`${styles.button} ${styles.primary}`}
-							onClick={
-								connectAgregarAPostulaciones
-							}
-						>
+						<APDButton onClick={connectAgregarAPostulaciones} >
 							Agregar postulación
-						</button>
+						</APDButton>
 
 					)
 				}
 
 			</div>
 
-		</div>
+		</div >
 	)
 }

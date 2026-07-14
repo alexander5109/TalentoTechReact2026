@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styles from "./SearchProfileForm.module.css";
+import APDButton from "../../../common/APDButton/APDButton";
 
 export default function EscuelasSelector({
 	schools,
@@ -28,19 +29,17 @@ export default function EscuelasSelector({
 				value={userInput}
 				onChange={(e) => setUserInput(e.target.value)}
 			/>
-			<button className={`${styles.button} ${styles.primary}`}
-				type="button" onClick={agregarEscuela}>
+			<APDButton onClick={agregarEscuela}>
 				Agregar
-			</button>
+			</APDButton>
 		</div>
 		<ul className={styles.schoolList}>{
 			schools.map(codigo => (
 				<li key={codigo} className={styles.schoolItem} >
 					{codigo}
-					<button className={`${styles.button} ${styles.primary}`}
-						type="button" onClick={() => eliminarEscuela(codigo)}>
+					<APDButton onClick={() => eliminarEscuela(codigo)}>
 						X
-					</button>
+					</APDButton>
 				</li>
 			))
 		}</ul>

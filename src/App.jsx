@@ -7,11 +7,11 @@ import ContactoPage from './components/Pages/ContactoPage/ContactoPage'
 import MyProfilesPage from './components/Pages/MyProfilesPage/MyProfilesPage'
 import PendingPostulationsPage from './components/Pages/PendingPostulationsPage/PendingPostulationsPage'
 import OfertaDetallePage from './components/Pages/OfertaDetallePage/OfertaDetallePage'
-import Login from "./components/UserFormPages/LoginPage"
-import UserForm from "./components/UserFormPages/BaseUserForm"
+import LoginPage from "./components/UserFormPages/LoginPage.jsx"
+// import BaseUserForm from "./components/UserFormPages/BaseUserForm"
 import AdminPanel from "./components/Pages/AdminPanel/AdminPanel"
 import RutaProtegida from "./components/common/RutaProtegida/RutaProtegida"
-import SignUp from
+// import SignUp from
 
 export default function App() {
 	return (
@@ -24,8 +24,8 @@ export default function App() {
 				<Route path="/contacto" element={<ContactoPage />} />
 				<Route path="/myProfiles" element={<MyProfilesPage />} />
 				<Route path="/pendingPostulations" element={<PendingPostulationsPage />} />
-				<Route path="/iniciarSesion" element={<Login />} />
-				<Route path="/registro" element={<SignUp />} />
+				<Route path="/iniciarSesion" element={<LoginPage />} />
+				{/* <Route path="/registro" element={<SignUp />} /> */}
 				<Route path="/adminPanel" element={
 					<RutaProtegida rolesPermitidos={['admin']}>
 						<AdminPanel />

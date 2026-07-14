@@ -2,9 +2,10 @@ import { useState } from 'react';
 import { NavLink } from "react-router-dom"
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
-import styles from "./BaseUserForm.css"
+import APDButton from '../common/APDButton/APDButton';
+// import styles from "./BaseUserForm.css"
 
-const Login = () => {
+export default function LoginPage() {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const navigate = useNavigate();
@@ -41,11 +42,9 @@ const Login = () => {
 					value={password}
 					onChange={(e) => setPassword(e.target.value)}
 				/>
-				<button className={`${styles.button} ${styles.primary}`}
-					type="submit">Ingresar</button>
+				<APDButton type="submit">Ingresar</APDButton>
 			</form>
 		</div>
 
 	);
 };
-export default Login;

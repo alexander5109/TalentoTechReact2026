@@ -1,7 +1,8 @@
-import { Link } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import { usePendingPostulations } from "../../../../context/PendingPostulationsContext.jsx"
 import styles from './OfertaCard.module.css'
+import APDButton from '../../../common/APDButton/APDButton.jsx'
+import APDLink from '../../../common/APDLink/APDLink.jsx'
 
 export default function OfertaCard({ offer }) {
 	const estadoClase = (
@@ -108,38 +109,24 @@ export default function OfertaCard({ offer }) {
 
 			<div className={styles.actions}>
 
-				<Link
-					to={`/ofertas/${offer.idoferta}`}
-					className={
-						`${styles.button}
-						${styles.secondary}`
-					}
-				>
+				<APDLink to={`/ofertas/${offer.idoferta}`}>
 					Detalles
-				</Link>
+				</APDLink>
 
 				{
 					isAgregada ? (
-						<button className={`${styles.button}${styles.danger}`}
-							onClick={
-								connectEliminarPostulacion
-							}
-						>
+						<APDButton variant="danger" onClick={connectEliminarPostulacion} >
 							Quitar
-						</button>
+						</APDButton>
 					) : (
-						<button className={`${styles.button} ${styles.primary}`}
-							onClick={
-								connectAgregarAPostulaciones
-							}
-						>
+						<APDButton onClick={connectAgregarAPostulaciones}>
 							Agregar
-						</button>
+						</APDButton>
 					)
 				}
 
 			</div>
 
-		</article>
+		</article >
 	)
 }

@@ -3,8 +3,8 @@ import SectionTitleH3 from "../../common/SectionTitleH3/SectionTitleH3";
 import PrettyText from "../../common/PrettyText/PrettyText";
 
 import styles from "./ContactoPage.module.css"
-
 import Swal from "sweetalert2"
+import APDButton from "../../common/APDButton/APDButton";
 
 export default function ContactoPage() {
 
@@ -83,11 +83,7 @@ export default function ContactoPage() {
 							placeholder="Escribe tu mensaje..."
 						/>
 					</div>
-
-					<button className={`${styles.button} ${styles.primary}`}
-						type="submit" >
-						Enviar mensaje
-					</button>
+					<APDButton >Enviar mensaje</APDButton>
 
 				</form>
 

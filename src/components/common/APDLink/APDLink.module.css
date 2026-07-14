@@ -1,0 +1,47 @@
+.link {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+
+	padding: 0.65rem 0.9rem;
+
+	min-width: 110px;
+
+	text-decoration: none;
+	font-family: "Albertus", serif;
+	font-size: 0.85rem;
+
+	color: #1d5fa8;
+
+	background: #eef5ff;
+
+	border: 1px solid #7ea8d8;
+	border-radius: 10px;
+
+	cursor: pointer;
+
+	transition:
+		background-color .18s ease,
+		border-color .18s ease,
+		color .18s ease,
+		transform .15s ease,
+		box-shadow .18s ease;
+}
+
+.link:hover {
+	transform: translateY(-1px);
+
+	background: #dcecff;
+
+	border-color: #4d84c7;
+
+	box-shadow: 0 2px 8px rgba(0, 0, 0, .15);
+}
+
+.link:active {
+	transform: translateY(0);
+}
+
+.link:visited {
+	color: #6c53b4;
+}

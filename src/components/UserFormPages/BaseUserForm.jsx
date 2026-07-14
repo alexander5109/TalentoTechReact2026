@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import styles from "./UserForm.css"
+import styles from "./BaseUserForm.css"
 import { registrarUsuario } from "../../services/authService";
+import APDButton from '../common/APDButton/APDButton';
 
 
 
-const UserForm = () => {
+export default function BaseUserForm() {
 	const [loading, setLoading] = useState(false);
 	const [formData, setFormData] = useState({
 		email: "",
@@ -222,18 +223,10 @@ const UserForm = () => {
 					</div>
 				)}
 
-				<button
-					disabled={loading}
-					className={`${styles.button} ${styles.primary}`}
-				>
-					{
-						loading ? "Creando cuenta..." : "Registrarse"
-					}
-				</button>
+				<APDButton disabled={loading} > {loading ? "Creando cuenta..." : "Registrarse"} </APDButton>
 
 			</form>
 		</div>
 
 	);
 };
-export default UserForm;

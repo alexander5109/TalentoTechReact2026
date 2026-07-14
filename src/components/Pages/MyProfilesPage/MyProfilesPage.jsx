@@ -6,6 +6,7 @@ import styles from "./MyProfilesPage.module.css"
 import { useState, useEffect } from "react";
 import { useAuth } from "../../../context/AuthContext";
 import { getProfiles, createProfile, updateProfile, deleteProfile } from "../../../firebase/ProfileService";
+import APDButton from "../../common/APDButton/APDButton";
 
 
 
@@ -113,10 +114,9 @@ export default function MyProfilesPage() {
 	}
 	if (!selectedProfile) {
 		return <TextContainer>
-			<button className={`${styles.button} ${styles.primary}`}
-				type="button" onClick={handleCreateProfile}>
+			<APDButton onClick={handleCreateProfile}>
 				Crear primer perfil
-			</button>
+			</APDButton>
 		</TextContainer>
 	}
 	return <TextContainer>
@@ -126,10 +126,9 @@ export default function MyProfilesPage() {
 		/>
 		<div className={styles.layout}>
 			<aside className={styles.sidebar}>
-				<button className={`${styles.button} ${styles.primary}`}
-					onClick={handleCreateProfile}>
+				<APDButton onClick={handleCreateProfile}>
 					+ Nuevo perfil
-				</button>
+				</APDButton>
 				<SearchProfilesPanel
 					profiles={profiles}
 					selectedProfileId={selectedProfileId}
@@ -146,12 +145,9 @@ export default function MyProfilesPage() {
 						}
 					/>
 				)}
-				<button className={`${styles.button} ${styles.primary}`}
-					disabled={!hasChanges}
-					onClick={handleSaveProfile}
-				>
+				<APDButton disabled={!hasChanges} onClick={handleSaveProfile}>
 					Guardar cambios
-				</button>
+				</APDButton>
 			</section>
 		</div>
 	</TextContainer>

@@ -1,4 +1,4 @@
-import styles from "./SearchProfileCard.module.css"
+import APDButton from "../../../common/APDButton/APDButton";
 
 export default function SearchProfileCard({
 	profile,
@@ -11,15 +11,11 @@ export default function SearchProfileCard({
 		>
 			<h4>{profile.nombre}</h4>
 
-			<button className={`${styles.button} ${styles.primary}`}
-				type="button"
-				onClick={(e) => {
-					e.stopPropagation();
-					onDelete(profile.id);
-				}}
-			>
-				Eliminar
-			</button>
+			<APDButton onClick={(e) => {
+				e.stopPropagation();
+				onDelete(profile.id);
+			}} >
+			</APDButton>
 		</div>
 	);
 }
