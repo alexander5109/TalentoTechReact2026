@@ -11,29 +11,35 @@ const ICONS = {
 };
 
 APDFeedback.propTypes = {
-	type: PropTypes.oneOf([
-		"error",
-		"warning",
-		"success",
-		"info"
-	]),
-	message: PropTypes.string.isRequired,
-	error: PropTypes.object,
-	children: PropTypes.node
+	feedback: PropTypes.shape({
+
+		type: PropTypes.oneOf([
+			"error",
+			"warning",
+			"success",
+			"info"
+		]),
+
+		message: PropTypes.string,
+
+		error: PropTypes.object
+
+	})
 };
 
 export default function APDFeedback({
-	children,
-	message,
-	type = "error",
-	error = null
+	feedback = null
 }) {
-	if (!message && !children)
-		return null;
+
+	const type = feedback?.type ?? "error";
+	const message = feedback?.message ?? "";
+	const error = feedback?.error ?? null;
+
 
 	useEffect(() => {
 
-		if (!error) return;
+		if (!error)
+			return;
 
 		switch (type) {
 
@@ -51,21 +57,29 @@ export default function APDFeedback({
 		}
 
 	}, [error, type]);
+
+
+	if (!feedback)
+		return null;
+
+
 	return (
 
 		<div className={`${styles.feedback} ${styles[type]}`}>
 
 			<p className={styles.message}>
+
 				<span className={styles.icon}>
 					{ICONS[type]}
 				</span>
 
 				{message}
+
 			</p>
 
-			{children}
 
 			{error && (
+
 				<details className={styles.details}>
 
 					<summary>
@@ -85,9 +99,11 @@ export default function APDFeedback({
 					</small>
 
 				</details>
+
 			)}
 
 		</div>
 
 	);
+
 }

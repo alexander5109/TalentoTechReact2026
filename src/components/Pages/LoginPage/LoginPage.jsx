@@ -18,7 +18,7 @@ export default function LoginPage() {
 	const [password, setPassword] = useState("");
 
 	const [loading, setLoading] = useState(false);
-	const [error, setError] = useState(null);
+	const [feedback, setFeedback] = useState(null);
 
 	const navigate = useNavigate();
 
@@ -27,7 +27,7 @@ export default function LoginPage() {
 		e.preventDefault();
 
 		setLoading(true);
-		setError(null);
+		setFeedback(null);
 
 		try {
 
@@ -49,20 +49,32 @@ export default function LoginPage() {
 				case "auth/invalid-credential":
 				case "auth/wrong-password":
 				case "auth/user-not-found":
-					setError("Correo electrónico o contraseña incorrectos.");
+					setFeedback({
+						type: "warning",
+						message: "Correo electrónico o contraseña incorrectos."
+					});
 					break;
 
 				case "auth/invalid-email":
-					setError("El correo electrónico no es válido.");
+					setFeedback({
+						type: "warning",
+						message: "El correo electrónico no es válido."
+					});
 					break;
 
 				case "auth/too-many-requests":
-					setError("Demasiados intentos. Intente nuevamente más tarde.");
+					setFeedback({
+						type: "error",
+						message: "Demasiados intentos. Intente nuevamente más tarde."
+					});
 					break;
 
 				default:
-					setError("No fue posible iniciar sesión.");
-
+					setFeedback({
+						type: "error",
+						message: "No fue posible iniciar sesión.",
+						error: err
+					});
 			}
 
 		}
@@ -114,9 +126,7 @@ export default function LoginPage() {
 					required
 				/>
 
-				<APDFeedback type="error">
-					{error}
-				</APDFeedback>
+				<APDFeedback feedback={feedback} />
 
 				<APDButton
 					type="submit"

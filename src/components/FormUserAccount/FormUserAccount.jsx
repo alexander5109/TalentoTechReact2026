@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import styles from "./FormUserAccount.module.css"
-import { registrarUsuario } from "../../services/authService";
 import APDButton from '../common/APDButton/APDButton';
 import AvatarPicker from "../AvatarPicker/AvatarPicker"
 import APDFormField from '../common/APDFormField/APDFormField';
@@ -11,37 +9,30 @@ import APDFeedback from '../common/APDFeedback/APDFeedback';
 export default function FormUserAccount({
 	title,
 	submitText,
-	initialData,
+	initialData = {},
 	showPasswordFields = true,
-	loading = false,
-	error = null,
+	loading,
+	feedback,
+	onFeedbackClear,
 	editableEmailAndPassword = false,
 	onSubmit
 }) {
 	console.log("Form render", initialData);
 
 	const [formData, setFormData] = useState({
-
 		email: initialData.email ?? "",
-
 		password: "",
-
 		confirmPassword: "",
-
 		nombre: initialData.nombre ?? "",
-
 		apellido: initialData.apellido ?? "",
-
 		titulo: initialData.titulo ?? "",
-
 		anioEgreso: initialData.anioEgreso ?? "",
-
 		distrito: initialData.distrito ?? "",
-
 		archivo: null
 
 	});
-	const [formError, setFormError] = useState(null);
+	const [feedbackLocal, setFeedbackLocal] = useState(null);
+
 	const [initialized, setInitialized] = useState(false);
 
 
@@ -50,18 +41,14 @@ export default function FormUserAccount({
 		if (!initialData || initialized)
 			return;
 
-
 		setFormData(prev => ({
-
 			...prev,
-
 			email: initialData.email ?? "",
 			nombre: initialData.nombre ?? "",
 			apellido: initialData.apellido ?? "",
 			titulo: initialData.titulo ?? "",
 			anioEgreso: initialData.anioEgreso ?? "",
 			distrito: initialData.distrito ?? ""
-
 		}));
 
 		setInitialized(true);
@@ -69,11 +56,14 @@ export default function FormUserAccount({
 
 	}, [initialData, initialized]);
 	const handleChange = (e) => {
-
 		const { name, value } = e.target;
 
-		if (formError) {
-			setFormError(null);
+		if (feedbackLocal) {
+			setFeedbackLocal(null);
+		}
+
+		if (feedback) {
+			onFeedbackClear();
 		}
 
 		setFormData(prev => ({
@@ -90,18 +80,14 @@ export default function FormUserAccount({
 		}));
 	};
 
-	const navigate = useNavigate();
-
 	const handleSubmit = (e) => {
-
 		e.preventDefault();
-		setFormError(null);
-
-		if (
-			showPasswordFields &&
-			formData.password !== formData.confirmPassword
-		) {
-			setFormError("Las contraseñas no coinciden.");
+		setFeedbackLocal(null);
+		if (showPasswordFields && formData.password !== formData.confirmPassword) {
+			setFeedbackLocal({
+				type: "warning",
+				message: "Las contraseñas no coinciden.",
+			});
 			return;
 		}
 		onSubmit(formData);
@@ -189,9 +175,7 @@ export default function FormUserAccount({
 					onChange={handleImage}
 				/>
 
-				<APDFeedback type="warning"
-					message={formError ?? error}
-				/>
+				<APDFeedback feedback={feedbackLocal ?? feedback} />
 
 				<APDButton type="submit" disabled={loading} >
 					{loading ? "Procesando..." : submitText}

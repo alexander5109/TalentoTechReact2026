@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import FormUserAccount from "../../FormUserAccount/FormUserAccount";
 
 import { obtenerUsuarioActual, actualizarUsuario } from "../../../services/userService";
+import APDFeedback from "../../common/APDFeedback/APDFeedback";
 
 export default function UserAccountSettingsPage() {
 
@@ -12,7 +13,7 @@ export default function UserAccountSettingsPage() {
 
 	const [saving, setSaving] = useState(false);
 
-	const [error, setError] = useState(null);
+	const [feedback, setFeedback] = useState(null);
 
 	useEffect(() => {
 		async function cargarUsuario() {
@@ -21,7 +22,10 @@ export default function UserAccountSettingsPage() {
 				setUsuario(data);
 			}
 			catch (err) {
-				setError("No fue posible cargar los datos del usuario.");
+				setFeedback({
+					type: "error",
+					message: "No fue posible cargar los datos del usuario."
+				});
 			}
 			finally {
 				setLoading(false);
@@ -32,16 +36,23 @@ export default function UserAccountSettingsPage() {
 
 	async function handleUpdate(data) {
 		setSaving(true);
-		setError(null);
+		setFeedback(null);
 		try {
 			console.log("Datos enviados a actualizar:", data);
 			await actualizarUsuario(data);
 
 			const actualizado = await obtenerUsuarioActual();
-			console.log("Datos recibidos tras actualizar:", actualizado);
 			setUsuario(actualizado);
+			setFeedback({
+				type: "success",
+				message: "Cambios guardados."
+			});
 		} catch (err) {
-			setError(err);
+			setFeedback({
+				type: "error",
+				message: "No fue posible cambiar los datos.",
+				error: err
+			});
 		}
 		finally {
 			setSaving(false);
@@ -52,8 +63,8 @@ export default function UserAccountSettingsPage() {
 	if (loading)
 		return <p>Cargando...</p>;
 
-	if (error && !usuario)
-		return <p>{error}</p>;
+	if (!usuario && feedback)
+		return <APDFeedback feedback={feedback}></APDFeedback>;
 
 	return (
 
@@ -63,7 +74,8 @@ export default function UserAccountSettingsPage() {
 			initialData={usuario}
 			showPasswordFields={false}
 			loading={saving}
-			error={error}
+			feedback={feedback}
+			onFeedbackClear={() => setFeedback(null)}
 			editableEmailAndPassword={false}
 			onSubmit={handleUpdate}
 

@@ -69,9 +69,11 @@ export default function OfertaListContainer({ filtros }) {
 					<h3>Cargando ofertas...</h3>
 				</div>
 			) : errorExcept ? (
-				<APDFeedback type="error"
-					message="No fue posible obtener las ofertas."
-					error={errorExcept}
+				<APDFeedback feedback={{
+					type: "error",
+					message: "No fue posible obtener las ofertas.",
+					error: errorExcept
+				}}
 				/>
 			) : (
 				<div className={styles.container}>

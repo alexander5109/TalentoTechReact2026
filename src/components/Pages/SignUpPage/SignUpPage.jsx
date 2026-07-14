@@ -9,11 +9,11 @@ export default function SignUpPage() {
 	const navigate = useNavigate();
 
 	const [loading, setLoading] = useState(false);
-	const [error, setError] = useState(null);
+	const [feedback, setFeedback] = useState(null);
 
 	async function handleRegister(data) {
 
-		setError(null);
+		setFeedback(null);
 		setLoading(true);
 
 		try {
@@ -26,19 +26,32 @@ export default function SignUpPage() {
 		catch (err) {
 			switch (err.code) {
 				case "auth/email-already-in-use":
-					setError("El correo electrónico ya está en uso");
+					setFeedback({
+						type: "warning",
+						message: "El correo electrónico ya está en uso"
+					});
 					break;
 
 				case "auth/weak-password":
-					setError("La contraseña debe tener al menos 6 caracteres.");
+					setFeedback({
+						type: "warning",
+						message: "La contraseña debe tener al menos 6 caracteres."
+					});
 					break;
 
 				case "auth/invalid-email":
-					setError("El correo electrónico no es válido.");
+					setFeedback({
+						type: "warning",
+						message: "El correo electrónico no es válido."
+					});
 					break;
 
 				default:
-					setError("Ocurrió un error al registrar el usuario.");
+					setFeedback({
+						type: "error",
+						message: "Ocurrió un error al registrar el usuario.",
+						errror: err
+					});
 			}
 
 		}
@@ -58,7 +71,8 @@ export default function SignUpPage() {
 			initialData={{}}
 			showPasswordFields={true}
 			loading={loading}
-			error={error}
+			feedback={feedback}
+			onFeedbackClear={() => setFeedback(null)}
 			editableEmailAndPassword={true}
 			onSubmit={handleRegister}
 
