@@ -1,38 +1,41 @@
 import { useEffect, useState } from "react";
 import styles from "./AvatarPicker.module.css";
 
-export default function AvatarPicker({ archivo, onChange }) {
 
-	const [avatarPreview, setAvatarPreview] = useState(null);
+export default function AvatarPicker({
+	currentImage = null,
+	file = null,
+	onChange
+}) {
 
+
+	const [avatarPreview, setPreview] = useState(currentImage);
 	useEffect(() => {
-
-		if (!archivo) {
-			setAvatarPreview(null);
+		if (!file) {
+			setPreview(currentImage);
 			return;
 		}
 
-		const preview = URL.createObjectURL(archivo);
+		const objectUrl = URL.createObjectURL(file);
+		setPreview(objectUrl);
 
-		setAvatarPreview(preview);
+		return () => URL.revokeObjectURL(objectUrl);
+	}, [file, currentImage]);
 
-		return () => URL.revokeObjectURL(preview);
 
-	}, [archivo]);
 
 	return (
 
 		<div className={styles.formGroup}>
 
 			<label htmlFor="avatar">
-
 				{
 					avatarPreview
 						? (
 							<img
 								className={styles.avatarPreview}
 								src={avatarPreview}
-								alt="Vista previa"
+								alt="Avatar"
 							/>
 						)
 						: (

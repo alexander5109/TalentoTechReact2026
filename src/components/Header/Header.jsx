@@ -18,13 +18,13 @@ export default function Header() {
 	else if (location.pathname === "/contacto") {
 		subtitle = "Contacto"
 	}
-	else if (location.pathname === "/pendingPostulations") {
+	else if (location.pathname === "/userPendingPostulations") {
 		subtitle = "Mis postulaciones"
 	}
-	else if (location.pathname === "/myProfiles") {
+	else if (location.pathname === "/userSearchProfiles") {
 		subtitle = "Mis perfiles"
 	}
-	else if (location.pathname === "/myAccount") {
+	else if (location.pathname === "/userAccountSettings") {
 		subtitle = "Mi cuenta"
 	}
 	else {

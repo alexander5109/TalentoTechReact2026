@@ -1,25 +1,78 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import styles from "./BaseUserForm.css"
+import styles from "./FormUserAccount.module.css"
 import { registrarUsuario } from "../../services/authService";
 import APDButton from '../common/APDButton/APDButton';
+import AvatarPicker from "../AvatarPicker/AvatarPicker"
 
 
+export default function FormUserAccount({
 
-export default function BaseUserForm() {
-	const [loading, setLoading] = useState(false);
+	title,
+	submitText,
+
+	initialData,
+
+	showPasswordFields = true,
+
+	loading = false,
+
+	error = null,
+	editableEmail = false,
+
+	onSubmit
+
+}) {
+	console.log("Form render", initialData);
+
 	const [formData, setFormData] = useState({
-		email: "",
-		password: "",
-		confirmPassword: "",
-		nombre: "",
-		apellido: "",
-		titulo: "",
-		anioEgreso: "",
-		distrito: "",
-		archivo: null
-	});
 
+		email: initialData.email ?? "",
+
+		password: "",
+
+		confirmPassword: "",
+
+		nombre: initialData.nombre ?? "",
+
+		apellido: initialData.apellido ?? "",
+
+		titulo: initialData.titulo ?? "",
+
+		anioEgreso: initialData.anioEgreso ?? "",
+
+		distrito: initialData.distrito ?? "",
+
+		archivo: null
+
+	});
+	const [formError, setFormError] = useState(null);
+	const [initialized, setInitialized] = useState(false);
+
+
+	useEffect(() => {
+
+		if (!initialData || initialized)
+			return;
+
+
+		setFormData(prev => ({
+
+			...prev,
+
+			email: initialData.email ?? "",
+			nombre: initialData.nombre ?? "",
+			apellido: initialData.apellido ?? "",
+			titulo: initialData.titulo ?? "",
+			anioEgreso: initialData.anioEgreso ?? "",
+			distrito: initialData.distrito ?? ""
+
+		}));
+
+		setInitialized(true);
+
+
+	}, [initialData, initialized]);
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
@@ -38,93 +91,30 @@ export default function BaseUserForm() {
 		}));
 	};
 
-	const [error, setError] = useState(null);
 	const navigate = useNavigate();
 
-
-
-	const handleSubmit = async (e) => {
-
+	const handleSubmit = (e) => {
 
 		e.preventDefault();
-		setError(null);
-		if (formData.password !== formData.confirmPassword) {
-			setError("Las contraseñas no coinciden.");
+
+		if (showPasswordFields && formData.password !== formData.confirmPassword) {
+			alert("Las contraseñas no coinciden.");
 			return;
 		}
-		try {
-			setLoading(true); await registrarUsuario({
-
-				email: formData.email,
-
-				password: formData.password,
-
-				nombre: formData.nombre,
-
-				apellido: formData.apellido,
-
-				titulo: formData.titulo,
-
-				anioEgreso: formData.anioEgreso,
-
-				distrito: formData.distrito,
-
-				archivo: formData.archivo
-
-			});
-			navigate("/");
-		}
-		catch (error) {
-			// Aquí es donde manejamos el caso específico que nos interesa
-			if (error.code === 'auth/email-already-in-use') {
-				// Usamos window.confirm para hacer la pregunta al usuario
-				const quiereLoguearse = window.confirm(
-					'Este correo electrónico ya está registrado. ¿Desea intentar iniciar sesión ? '
-				);
-				if (quiereLoguearse) {
-					// Si el usuario confirma, lo redirigimos a la página de login
-					navigate('/iniciarSesion');
-				}
-				else {
-					// Si el usuario cancela, lo redirigimos a la página de inicio
-					// navigate('/');
-					// dejame en paz
-
-				}
-
-			}
-			else if (error.code === "auth/weak-password") {
-
-				setError("La contraseña debe tener al menos 6 caracteres.");
-
-			} else if (error.code === "auth/invalid-email") {
-
-				setError("El correo electrónico no es válido.");
-
-			}
-			else {
-				// Para cualquier otro error (contraseña débil, email inválido, etc.) mostramos un mensaje genérico.
-				setError('Ocurrió un error al registrar el usuario. Verifique los datos e intente nuevamente.');
-				console.error("Error en el registro:", error.message);
-
-			}
-
-		}
-		finally {
-			setLoading(false);
-		}
+		onSubmit(formData);
 
 	};
-
 	return (
 		<div className={styles.container}>
-			<h2 className={styles.title}>Crear una nueva cuenta</h2>
-
+			<h2 className={styles.title}>
+				{title}
+			</h2>
 			<form className={styles.form} onSubmit={handleSubmit}>
 
 				<div className={styles.formGroup}>
 					<label>Correo electrónico</label>
 					<input
+						disabled={!editableEmail}
 						name="email"
 						type="email"
 						value={formData.email}
@@ -209,21 +199,25 @@ export default function BaseUserForm() {
 					/>
 				</div>
 				<AvatarPicker
-					archivo={formData.archivo}
-					onChange={handleImage}
 
+					file={formData.archivo}
+
+					currentImage={initialData.avatarUrl}
+
+					onChange={handleImage}
 
 				/>
 
 
-
-				{error && (
+				{(formError || error) && (
 					<div className={styles.error}>
-						{error}
+						{formError ?? error}
 					</div>
 				)}
 
-				<APDButton disabled={loading} > {loading ? "Creando cuenta..." : "Registrarse"} </APDButton>
+				<APDButton type="submit" disabled={loading} >
+					{loading ? "Procesando..." : submitText}
+				</APDButton>
 
 			</form>
 		</div>

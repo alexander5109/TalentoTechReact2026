@@ -5,12 +5,12 @@ import OfertaCard from "../OfertasPage/OfertaCard/OfertaCard"
 import SectionTitle from "../../common/SectionTitle/SectionTitle"
 import TextContainer from "../../common/TextContainer/TextContainer"
 
-import styles from "./PendingPostulationsPage.module.css"
+import styles from "./UserPendingPostulationsPage.module.css"
 
 import Swal from "sweetalert2"
 import APDButton from "../../common/APDButton/APDButton"
 
-export default function PendingPostulationsPage() {
+export default function UserPendingPostulationsPage() {
 
 	const {
 		pendingPostulations,
@@ -46,19 +46,18 @@ export default function PendingPostulationsPage() {
 									{pendingPostulations.length}
 								</strong>
 							</p>
-							<APDButton
-								onClick={() => {
-									Swal.fire({
-										title: "Exito",
-										text: `Postulaciones enviadas`,
-										icon: "success",
-										timer: 1000,
-										showConfirmButton: false,
-										toast: true,
-										position: "center"
-									})
-									clearPendingPostulations()
-								}}
+							<APDButton onClick={() => {
+								Swal.fire({
+									title: "Exito",
+									text: `Postulaciones enviadas`,
+									icon: "success",
+									timer: 1000,
+									showConfirmButton: false,
+									toast: true,
+									position: "center"
+								})
+								clearPendingPostulations()
+							}}
 							>
 								Confirmar postulaciones
 							</APDButton>

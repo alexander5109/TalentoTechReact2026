@@ -2,9 +2,9 @@ import TextContainer from "../../common/TextContainer/TextContainer";
 import SectionTitleH3 from "../../common/SectionTitleH3/SectionTitleH3";
 import PrettyText from "../../common/PrettyText/PrettyText";
 
-import styles from "./AdminPanel.module.css";
+import styles from "./UserAdminPanel.module.css";
 
-export default function AdminPanel() {
+export default function UserAdminPanel() {
 	return (
 		<TextContainer>
 

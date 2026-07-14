@@ -2,8 +2,7 @@ import { useState } from 'react';
 import { NavLink } from "react-router-dom"
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
-import APDButton from '../common/APDButton/APDButton';
-// import styles from "./BaseUserForm.css"
+import APDButton from '../../common/APDButton/APDButton';
 
 export default function LoginPage() {
 	const [email, setEmail] = useState("");
@@ -29,7 +28,7 @@ export default function LoginPage() {
 	return (
 		<div>
 			<h2>Iniciar Sesión</h2>
-			<p>¿No tenés una cuenta? <NavLink to="/registro">Registrate aquí</NavLink></p>
+			<p>¿No tenés una cuenta? <NavLink to="/crearUsuario">Registrate aquí</NavLink></p>
 			<form onSubmit={handleLogin}>
 				<input
 					type="email"

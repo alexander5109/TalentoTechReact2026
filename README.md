@@ -80,7 +80,7 @@ Rutas implementadas:
 - `/ofertas/:id`
 - `/about`
 - `/contacto`
-- `/pendingPostulations`
+- `/userPendingPostulations`
 
 ### Estado global
 

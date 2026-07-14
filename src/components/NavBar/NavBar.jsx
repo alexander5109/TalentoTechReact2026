@@ -33,15 +33,15 @@ export default function NavBar() {
 			return (
 				<>
 					<APDNavLink to="/iniciarSesion" >Iniciar sesión </APDNavLink>
-					<APDNavLink to="/registro" > Crear usuario </APDNavLink>
+					<APDNavLink to="/crearUsuario" > Crear usuario </APDNavLink>
 				</>
 			);
 		} else {
 			return (
 				<>
-					<APDNavLink to="/pendingPostulations" variant="accent"> 📝 Postulaciones ({pendingPostulations.length})</APDNavLink>
-					<APDNavLink to="/myProfiles" variant="accent">🔎 Mis búsquedas</APDNavLink>
-					<APDNavLink to="/myAccount" variant="accent">⚙️ Mi cuenta</APDNavLink>
+					<APDNavLink to="/userPendingPostulations" variant="accent"> 📝 Postulaciones ({pendingPostulations.length})</APDNavLink>
+					<APDNavLink to="/userSearchProfiles" variant="accent">🔎 Mis búsquedas</APDNavLink>
+					<APDNavLink to="/userAccountSettings" variant="accent">⚙️ Mi cuenta</APDNavLink>
 					{isAdmin && (<APDNavLink to="/adminPanel" variant="accent">Panel Admin</APDNavLink>)}
 					<APDNavLink to="" variant="danger" onClick={logout}  >Cerrar sesión</APDNavLink>
 				</>

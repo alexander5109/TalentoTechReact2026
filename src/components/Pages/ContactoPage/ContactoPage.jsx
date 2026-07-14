@@ -83,7 +83,7 @@ export default function ContactoPage() {
 							placeholder="Escribe tu mensaje..."
 						/>
 					</div>
-					<APDButton >Enviar mensaje</APDButton>
+					<APDButton type="submit">Enviar mensaje</APDButton>
 
 				</form>
 

@@ -1,17 +1,20 @@
 import { Routes, Route } from "react-router-dom"
 import LayoutGeneral from './components/LayoutGeneral'
+import RutaProtegida from "./components/common/RutaProtegida/RutaProtegida"
+// public pages
 import HomePage from './components/Pages/HomePage/HomePage'
 import OfertasPage from './components/Pages/OfertasPage/OfertasPage'
 import AboutPage from './components/Pages/AboutPage/AboutPage'
 import ContactoPage from './components/Pages/ContactoPage/ContactoPage'
-import MyProfilesPage from './components/Pages/MyProfilesPage/MyProfilesPage'
-import PendingPostulationsPage from './components/Pages/PendingPostulationsPage/PendingPostulationsPage'
 import OfertaDetallePage from './components/Pages/OfertaDetallePage/OfertaDetallePage'
-import LoginPage from "./components/UserFormPages/LoginPage.jsx"
-// import BaseUserForm from "./components/UserFormPages/BaseUserForm"
-import AdminPanel from "./components/Pages/AdminPanel/AdminPanel"
-import RutaProtegida from "./components/common/RutaProtegida/RutaProtegida"
-// import SignUp from
+import LoginPage from "./components/Pages/LoginPage/LoginPage.jsx"
+import SignUpPage from "./components/Pages/SignUpPage/SignUpPage.jsx"
+// user pages
+import UserSearchProfilesPage from './components/Pages/UserSearchProfilesPage/UserSearchProfilesPage'
+import UserPendingPostulationsPage from './components/Pages/UserPendingPostulationsPage/UserPendingPostulationsPage'
+import UserAccountSettingsPage from './components/Pages/UserAccountSettingsPage/UserAccountSettingsPage.jsx'
+import UserAdminPanel from "./components/Pages/UserAdminPanel/UserAdminPanel"
+
 
 export default function App() {
 	return (
@@ -22,13 +25,14 @@ export default function App() {
 				<Route path="/ofertas/:idOferta" element={<OfertaDetallePage />} />
 				<Route path="/about" element={<AboutPage />} />
 				<Route path="/contacto" element={<ContactoPage />} />
-				<Route path="/myProfiles" element={<MyProfilesPage />} />
-				<Route path="/pendingPostulations" element={<PendingPostulationsPage />} />
+				<Route path="/userSearchProfiles" element={<UserSearchProfilesPage />} />
+				<Route path="/userPendingPostulations" element={<UserPendingPostulationsPage />} />
 				<Route path="/iniciarSesion" element={<LoginPage />} />
-				{/* <Route path="/registro" element={<SignUp />} /> */}
-				<Route path="/adminPanel" element={
+				<Route path="/crearUsuario" element={<SignUpPage />} />
+				<Route path="/userAccountSettings" element={<UserAccountSettingsPage />} />
+				<Route path="/userAdminPanel" element={
 					<RutaProtegida rolesPermitidos={['admin']}>
-						<AdminPanel />
+						<UserAdminPanel />
 					</RutaProtegida>
 				} />
 			</Route>

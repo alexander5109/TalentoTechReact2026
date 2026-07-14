@@ -2,7 +2,7 @@ import TextContainer from "../../common/TextContainer/TextContainer";
 import SectionTitleH3 from "../../common/SectionTitleH3/SectionTitleH3";
 import SearchProfileForm from "./SearchProfileForm/SearchProfileForm";
 import SearchProfilesPanel from "./SearchProfilesPanel/SearchProfilesPanel";
-import styles from "./MyProfilesPage.module.css"
+import styles from "./UserSearchProfilesPage.module.css"
 import { useState, useEffect } from "react";
 import { useAuth } from "../../../context/AuthContext";
 import { getProfiles, createProfile, updateProfile, deleteProfile } from "../../../firebase/ProfileService";
@@ -10,7 +10,7 @@ import APDButton from "../../common/APDButton/APDButton";
 
 
 
-export default function MyProfilesPage() {
+export default function UserSearchProfilesPage() {
 	// -------------------------- state------------------------------- //
 	const { user } = useAuth();
 	const [profiles, setProfiles] = useState([]);
@@ -146,7 +146,7 @@ export default function MyProfilesPage() {
 					/>
 				)}
 				<APDButton disabled={!hasChanges} onClick={handleSaveProfile}>
-					Guardar cambios
+					Guardar perfil de busqueda
 				</APDButton>
 			</section>
 		</div>

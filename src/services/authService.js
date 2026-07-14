@@ -33,28 +33,17 @@ export async function registrarUsuario({
 		);
 
 	await setDoc(
-		doc(db, "usuarios", userCredential.user.uid),
-		{
-
-			email: userCredential.user.email,
-
-			nombre,
-
-			apellido,
-
-			titulo,
-
-			anioEgreso: Number(anioEgreso),
-
-			distrito,
-
-			avatarUrl: url,
-
-			role: "user",
-
-			createdAt: serverTimestamp()
-
-		}
+		doc(db, "usuarios", userCredential.user.uid), {
+		email: userCredential.user.email,
+		nombre,
+		apellido,
+		titulo,
+		anioEgreso: Number(anioEgreso),
+		distrito,
+		avatarUrl: url,
+		role: "user",
+		createdAt: serverTimestamp()
+	}
 	);
 
 	return userCredential.user;
