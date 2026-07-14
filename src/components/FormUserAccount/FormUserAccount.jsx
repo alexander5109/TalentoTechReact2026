@@ -112,11 +112,14 @@ export default function FormUserAccount({
 			<form className={styles.form} onSubmit={handleSubmit}>
 
 				<div className={styles.formGroup}>
-					<label>Correo electrónico</label>
+					<label htmlFor="email">
+						Correo electrónico
+					</label>
 					<input
 						disabled={!editableEmail}
 						name="email"
 						type="email"
+						autoComplete="email"
 						value={formData.email}
 						onChange={handleChange}
 						required
@@ -124,7 +127,7 @@ export default function FormUserAccount({
 				</div>
 
 				<div className={styles.formGroup}>
-					<label>Nombre</label>
+					<label htmlFor="nombre">Nombre</label>
 					<input
 						name="nombre"
 						type="text"
@@ -135,7 +138,7 @@ export default function FormUserAccount({
 				</div>
 
 				<div className={styles.formGroup}>
-					<label>Apellido</label>
+					<label htmlFor="apellido">Apellido</label>
 					<input
 						name="apellido"
 						type="text"
@@ -146,10 +149,11 @@ export default function FormUserAccount({
 				</div>
 
 				<div className={styles.formGroup}>
-					<label>Contraseña</label>
+					<label htmlFor="password">Contraseña</label>
 					<input
 						name="password"
 						type="password"
+						autoComplete="new-password"
 						value={formData.password}
 						onChange={handleChange}
 						required
@@ -158,10 +162,11 @@ export default function FormUserAccount({
 				</div>
 
 				<div className={styles.formGroup}>
-					<label>Confirmar Contraseña</label>
+					<label htmlFor="confirmPassword">Confirmar Contraseña</label>
 					<input
 						name="confirmPassword"
 						type="password"
+						autoComplete="new-password"
 						value={formData.confirmPassword}
 						onChange={handleChange}
 						required
@@ -170,7 +175,7 @@ export default function FormUserAccount({
 				</div>
 
 				<div className={styles.formGroup}>
-					<label>Título</label>
+					<label htmlFor="titulo">Título</label>
 					<input
 						name="titulo"
 						type="text"
@@ -180,7 +185,7 @@ export default function FormUserAccount({
 				</div>
 
 				<div className={styles.formGroup}>
-					<label>Año de Egreso</label>
+					<label htmlFor="anioEgreso">Año de Egreso</label>
 					<input
 						name="anioEgreso"
 						type="text"
@@ -190,7 +195,7 @@ export default function FormUserAccount({
 				</div>
 
 				<div className={styles.formGroup}>
-					<label>Distrito local</label>
+					<label htmlFor="distrito">Distrito local</label>
 					<input
 						name="distrito"
 						type="text"
