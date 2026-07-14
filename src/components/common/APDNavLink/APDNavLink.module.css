@@ -1,0 +1,96 @@
+@font-face {
+	font-family: "Albertus";
+	src: url("/fonts/albertusmt.otf") format("opentype");
+}
+
+
+.link {
+	font-family: "Albertus", serif;
+	text-decoration: none;
+	padding: .55rem 1rem;
+	border-radius: 12px;
+
+	transition:
+		transform .15s ease,
+		filter .2s ease,
+		background-color .2s ease,
+		color .2s ease;
+}
+
+
+
+.active {
+	background: linear-gradient(180deg,
+			#d8c7a2,
+			#c9b38b);
+	color: #1f2f28;
+}
+
+
+
+.logo {
+	font-family: "Albertus", serif;
+	font-size: 1.6rem;
+	letter-spacing: 1px;
+	text-decoration: none;
+	color: #f5ecd9;
+	transition: opacity 0.2s ease;
+}
+
+.logo:hover {
+	opacity: 0.85;
+}
+
+
+
+
+.default {
+	color: #e8dcc2;
+}
+
+.default:hover {
+	background: rgba(255, 255, 255, .08);
+	color: white;
+}
+
+
+
+
+
+.accent {
+	color: #f7f0df;
+
+	background:
+		linear-gradient(180deg,
+			#6d9d91,
+			#53796f);
+}
+
+.accent:hover {
+	filter: brightness(1.08);
+	transform: translateY(-1px);
+}
+
+
+
+
+
+
+.danger {
+
+	color: white;
+
+	background:
+		linear-gradient(180deg,
+			#cf5b56,
+			#b54844);
+
+}
+
+.danger:hover {
+
+	filter: brightness(1.08);
+
+	transform: translateY(-1px);
+
+}

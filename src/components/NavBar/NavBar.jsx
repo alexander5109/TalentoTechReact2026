@@ -5,10 +5,10 @@ import styles from "./NavBar.module.css"
 import { usePendingPostulations } from "../../context/PendingPostulationsContext"
 
 import { useAuth } from "../../context/AuthContext";
+import APDNavLink from "../common/APDNavLink/APDNavLink";
 
 
 export default function NavBar() {
-
 
 	const { user, login, logout } = useAuth();
 
@@ -17,43 +17,12 @@ export default function NavBar() {
 
 	const { pendingPostulations } = usePendingPostulations()
 
-	// console.log(user);
-
-	function navClass(isActive) {
-		return isActive
-			? `${styles.link} ${styles.active}`
-			: styles.link
-	}
 	function renderCentralLinks() {
-
 		return <>
-			<NavLink
-				to="/"
-				className={({ isActive }) => navClass(isActive)}
-			>
-				Inicio
-			</NavLink>
-
-			<NavLink
-				to="/about"
-				className={({ isActive }) => navClass(isActive)}
-			>
-				About us
-			</NavLink>
-
-			<NavLink
-				to="/contacto"
-				className={({ isActive }) => navClass(isActive)}
-			>
-				Contacto
-			</NavLink>
-
-			<NavLink
-				to="/ofertas"
-				className={({ isActive }) => navClass(isActive)}
-			>
-				Ofertas
-			</NavLink>
+			<APDNavLink to="/"> Inicio </APDNavLink >
+			<APDNavLink to="/about"> About us </APDNavLink>
+			<APDNavLink to="/contacto"> Contacto </APDNavLink>
+			<APDNavLink to="/ofertas"> Ofertas </APDNavLink>
 
 		</>
 	}
@@ -63,79 +32,18 @@ export default function NavBar() {
 		if (!user) {
 			return (
 				<>
-					<NavLink
-						to="/iniciarSesion"
-						className={({ isActive }) => navClass(isActive)}
-					>
-						Iniciar sesión
-					</NavLink>
-
-					<NavLink
-						to="/registro"
-						className={({ isActive }) => navClass(isActive)}
-					>
-						Crear usuario
-					</NavLink>
+					<APDNavLink to="/iniciarSesion" >Iniciar sesión </APDNavLink>
+					<APDNavLink to="/registro" > Crear usuario </APDNavLink>
 				</>
 			);
 		} else {
 			return (
 				<>
-					<NavLink
-						to="/pendingPostulations"
-						className={({ isActive }) =>
-							isActive
-								? `${styles.pendingButton} ${styles.activePending}`
-								: styles.pendingButton
-						}
-					>
-						📝 Postulaciones ({pendingPostulations.length})
-					</NavLink>
-
-
-					<NavLink
-						to="/myProfiles"
-						className={({ isActive }) =>
-							isActive
-								? `${styles.pendingButton} ${styles.activePending}`
-								: styles.pendingButton
-						}
-					>
-						🔎 Mis búsquedas
-					</NavLink>
-
-
-					<NavLink
-						to="/myAccount"
-						className={({ isActive }) =>
-							isActive
-								? `${styles.pendingButton} ${styles.activePending}`
-								: styles.pendingButton
-						}
-					>
-						⚙️ Mi cuenta
-					</NavLink>
-
-
-
-
-					{isAdmin && (
-						<NavLink
-							to="/adminPanel"
-							className={({ isActive }) => navClass(isActive)}
-						>
-							Panel Admin
-						</NavLink>)
-					}
-
-
-					<NavLink
-						to=""
-						onClick={logout}
-						className={styles.pendingButton}
-					>
-						Cerrar sesión
-					</NavLink>
+					<APDNavLink to="/pendingPostulations" variant="accent"> 📝 Postulaciones ({pendingPostulations.length})</APDNavLink>
+					<APDNavLink to="/myProfiles" variant="accent">🔎 Mis búsquedas</APDNavLink>
+					<APDNavLink to="/myAccount" variant="accent">⚙️ Mi cuenta</APDNavLink>
+					{isAdmin && (<APDNavLink to="/adminPanel" variant="accent">Panel Admin</APDNavLink>)}
+					<APDNavLink to="" variant="danger" onClick={logout}  >Cerrar sesión</APDNavLink>
 				</>
 			);
 		}
@@ -143,22 +51,9 @@ export default function NavBar() {
 
 	return (
 		<nav className={styles.navbar}>
-			<NavLink
-				to="/"
-				className={styles.logo}
-			>
-				APD Finder
-			</NavLink>
-
-			<div className={styles.centralLinks}>
-				{renderCentralLinks()}
-			</div>
-
-			<div className={styles.rightLinks}>
-				{renderRightLinks()}
-			</div>
-
-
+			<APDNavLink to="/" variant="logo" >APD Finder</APDNavLink>
+			<div className={styles.centralLinks}>{renderCentralLinks()}</div>
+			<div className={styles.rightLinks}>{renderRightLinks()}</div>
 		</nav >
 	)
 }
