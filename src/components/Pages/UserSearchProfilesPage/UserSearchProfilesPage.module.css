@@ -27,125 +27,14 @@
 }
 
 
-.newProfileButton {
-	padding: 0.8rem 1rem;
-
-	font-family: "Albertus", serif;
-
-	background:
-		linear-gradient(180deg,
-			#2a5c49,
-			#214c3d);
-
-	color: white;
-
-	border: none;
-	border-radius: 12px;
-
-	cursor: pointer;
-
-	transition:
-		transform .15s ease,
-		filter .2s ease;
-}
-
-.newProfileButton:hover {
-	transform: translateY(-2px);
-	filter: brightness(1.05);
-}
-
-
-.card {
-	background:
-		linear-gradient(180deg,
-			#f5ecd9,
-			#ebdfc6);
-
-	border: 1px solid #d3bea0;
-}
-
-.activeCard {
-	background:
-		linear-gradient(180deg,
-			#d8c7a2,
-			#c9b38b);
-
-	border: 2px solid #214c3d;
-
-	box-shadow:
-		0 4px 12px rgba(0, 0, 0, .15);
-}
-
-.card:hover,
-.activeCard:hover {
-	transform: translateY(-2px);
-}
-
-.profileName {
-	width: 100%;
-
-	font-size: 1.2rem;
-
-	font-family: "Albertus", serif;
-
-	padding: .8rem 1rem;
-
-	margin-bottom: 1rem;
-
-	border-radius: 12px;
-
-	border: 1px solid #cdb792;
-
-	background: #fffdf8;
-}
-
 
 .editor {
 	flex: 1;
-
 	padding: 1.5rem;
-
 	border-radius: 18px;
-
 	background:
 		linear-gradient(180deg,
 			#f9f1df,
 			#efe1c2);
-
 	border: 1px solid #d8c6a4;
-}
-
-
-.checkboxGroup {
-	display: flex;
-	flex-wrap: wrap;
-	gap: .75rem 1rem;
-}
-
-.checkboxGroup label {
-	padding: .35rem .6rem;
-
-	background: rgba(255, 255, 255, .4);
-
-	border-radius: 8px;
-}
-
-
-
-
-.schoolItem {
-	display: flex;
-	align-items: center;
-	gap: .5rem;
-
-	padding: .4rem .8rem;
-
-	background:
-		linear-gradient(180deg,
-			#f5ecd9,
-			#e8d7b7);
-
-	border: 1px solid #d2bc94;
-
-	border-radius: 999px;
 }

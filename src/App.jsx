@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom"
-import LayoutGeneral from './components/LayoutGeneral'
+import LayoutGeneral from './components/LayoutGeneral/LayoutGeneral'
 import RutaProtegida from "./components/common/RutaProtegida/RutaProtegida"
 // public pages
 import HomePage from './components/Pages/HomePage/HomePage'
@@ -13,7 +13,7 @@ import SignUpPage from "./components/Pages/SignUpPage/SignUpPage.jsx"
 import UserSearchProfilesPage from './components/Pages/UserSearchProfilesPage/UserSearchProfilesPage'
 import UserPendingPostulationsPage from './components/Pages/UserPendingPostulationsPage/UserPendingPostulationsPage'
 import UserAccountSettingsPage from './components/Pages/UserAccountSettingsPage/UserAccountSettingsPage.jsx'
-import UserAdminPanel from "./components/Pages/UserAdminPanel/UserAdminPanel"
+import UserAdminPanelPage from "./components/Pages/UserAdminPanelPage/UserAdminPanelPage.jsx"
 
 
 export default function App() {
@@ -32,7 +32,7 @@ export default function App() {
 				<Route path="/userAccountSettings" element={<UserAccountSettingsPage />} />
 				<Route path="/userAdminPanel" element={
 					<RutaProtegida rolesPermitidos={['admin']}>
-						<UserAdminPanel />
+						<UserAdminPanelPage />
 					</RutaProtegida>
 				} />
 			</Route>

@@ -1,10 +1,11 @@
 import TextContainer from "../../common/TextContainer/TextContainer";
 import SectionTitleH3 from "../../common/SectionTitleH3/SectionTitleH3";
 import PrettyText from "../../common/PrettyText/PrettyText";
+import APDAdminStatCard from "./APDAdminStatCard/APDAdminStatCard"
+import APDPanel from "../../common/APDPanel/APDPanel"
+import styles from "./UserAdminPanelPage.module.css";
 
-import styles from "./UserAdminPanel.module.css";
-
-export default function UserAdminPanel() {
+export default function UserAdminPanelPage() {
 	return (
 		<TextContainer>
 
@@ -21,29 +22,33 @@ export default function UserAdminPanel() {
 
 			<div className={styles.grid}>
 
-				<div className={styles.card}>
-					<h3>👥 Usuarios registrados</h3>
-					<p className={styles.value}>128</p>
-				</div>
+				<APDAdminStatCard
+					icon="👥"
+					title="Usuarios registrados"
+					value="128"
+				/>
 
-				<div className={styles.card}>
-					<h3>📁 Perfiles de búsqueda</h3>
-					<p className={styles.value}>354</p>
-				</div>
+				<APDAdminStatCard
+					icon="📁"
+					title="Perfiles de búsqueda"
+					value="354"
+				/>
 
-				<div className={styles.card}>
-					<h3>🔔 Alertas activas</h3>
-					<p className={styles.value}>91</p>
-				</div>
+				<APDAdminStatCard
+					icon="🔔"
+					title="Alertas activas"
+					value="91"
+				/>
 
-				<div className={styles.card}>
-					<h3>📄 Postulaciones guardadas</h3>
-					<p className={styles.value}>2.184</p>
-				</div>
+				<APDAdminStatCard
+					icon="📄"
+					title="Postulaciones guardadas"
+					value="2.184"
+				/>
 
 			</div>
 
-			<section className={styles.section}>
+			<APDPanel>
 
 				<h3>Funciones previstas</h3>
 
@@ -55,7 +60,7 @@ export default function UserAdminPanel() {
 					<li>Analizar distritos, cargos y niveles más buscados.</li>
 				</ul>
 
-			</section>
+			</APDPanel>
 
 		</TextContainer>
 	);

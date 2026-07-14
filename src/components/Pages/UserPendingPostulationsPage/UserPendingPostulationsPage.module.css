@@ -12,20 +12,6 @@
 	text-align: center;
 }
 
-.confirmButton {
-	border: none;
-	padding: 0.9rem 1.4rem;
-	border-radius: 12px;
-	background-color: #2e8b72;
-	color: white;
-	font-weight: 700;
-	cursor: pointer;
-}
-
-.confirmButton:hover {
-	background-color: #256d59;
-}
-
 .empty {
 	text-align: center;
 	font-size: 1.1rem;
