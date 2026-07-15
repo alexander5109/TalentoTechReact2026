@@ -2,8 +2,8 @@ import { usePendingPostulations } from "../../../context/PendingPostulationsCont
 
 import OfertaCard from "../OfertasPage/OfertaCard/OfertaCard"
 
-import SectionTitle from "../../common/SectionTitle/SectionTitle"
-import TextContainer from "../../common/TextContainer/TextContainer"
+import APDLabelH1 from "../../common/APDLabelH1/APDLabelH1"
+import APDSection from "../../common/APDSection/APDSection"
 
 import styles from "./UserPendingPostulationsPage.module.css"
 
@@ -18,8 +18,8 @@ export default function UserPendingPostulationsPage() {
 	} = usePendingPostulations()
 
 	return (
-		<TextContainer>
-			<SectionTitle upper="Gestión de ofertas" lower="Postulaciones Pendientes" />
+		<APDSection>
+			<APDLabelH1 upper="Gestión de ofertas" lower="Postulaciones Pendientes" />
 			{
 				pendingPostulations.length === 0 ? (
 					<p className={styles.empty}>
@@ -68,6 +68,6 @@ export default function UserPendingPostulationsPage() {
 
 				)
 			}
-		</TextContainer>
+		</APDSection>
 	)
 }

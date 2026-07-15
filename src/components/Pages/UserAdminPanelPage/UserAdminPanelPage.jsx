@@ -1,6 +1,6 @@
-import TextContainer from "../../common/TextContainer/TextContainer";
-import SectionTitleH3 from "../../common/SectionTitleH3/SectionTitleH3";
-import PrettyText from "../../common/PrettyText/PrettyText";
+import APDSection from "../../common/APDSection/APDSection";
+import APDLabelH3 from "../../common/APDLabelH3/APDLabelH3";
+import ApdPrettyP from "../../common/ApdPrettyP/ApdPrettyP";
 import APDDetailItem from "../../common/APDDetailItem/APDDetailItem"
 import APDButton from "../../common/APDButton/APDButton";
 import APDGrilla from "../../common/APDGrilla/APDGrilla";
@@ -45,17 +45,17 @@ export default function UserAdminPanelPage() {
 	return (
 		<>
 
-			<TextContainer>
-				<SectionTitleH3
+			<APDSection>
+				<APDLabelH3
 					upper="Panel de administración"
 					lower="Estadísticas generales"
 				/>
 
-				<PrettyText>
+				<ApdPrettyP>
 					Este panel reúne información general sobre el uso de la
 					plataforma. En futuras versiones permitirá administrar
 					usuarios, perfiles de búsqueda y alertas.
-				</PrettyText>
+				</ApdPrettyP>
 				<APDGrilla>
 					{estadisticas.map(([header, value]) => (
 						<APDDetailItem key={header}>
@@ -69,11 +69,11 @@ export default function UserAdminPanelPage() {
 
 					))}
 				</APDGrilla>
-			</TextContainer>
+			</APDSection>
 
 
-			<TextContainer>
-				<SectionTitleH3
+			<APDSection>
+				<APDLabelH3
 					upper="Gestión comercial"
 					lower="Promociones"
 				/>
@@ -84,7 +84,7 @@ export default function UserAdminPanelPage() {
 							<APDDetailHeader>
 								{promotionName}
 							</APDDetailHeader>
-							<PrettyText>{feature}</PrettyText>
+							<ApdPrettyP>{feature}</ApdPrettyP>
 							<p className={styles.bigNumber}>
 								{duration} días
 							</p>
@@ -104,7 +104,7 @@ export default function UserAdminPanelPage() {
 					Nueva promoción
 				</APDButton>
 
-			</TextContainer>
+			</APDSection>
 		</>
 	);
 }

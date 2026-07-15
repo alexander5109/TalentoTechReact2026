@@ -1,6 +1,6 @@
-import TextContainer from "../../common/TextContainer/TextContainer";
-import SectionTitleH3 from "../../common/SectionTitleH3/SectionTitleH3";
-import PrettyText from "../../common/PrettyText/PrettyText";
+import APDSection from "../../common/APDSection/APDSection";
+import APDLabelH3 from "../../common/APDLabelH3/APDLabelH3";
+import ApdPrettyP from "../../common/ApdPrettyP/ApdPrettyP";
 
 import styles from "./ContactoPage.module.css"
 import Swal from "sweetalert2"
@@ -24,14 +24,14 @@ export default function ContactoPage() {
 
 	return (
 		<>
-			<TextContainer>
+			<APDSection>
 
-				<SectionTitleH3
+				<APDLabelH3
 					upper="Contacto"
 					lower="Realiza tu consulta"
 				/>
 
-				<PrettyText>
+				<ApdPrettyP>
 					Este proyecto se encuentra en desarrollo
 					constante y toda devolución resulta útil
 					para seguir mejorándolo. Si deseas realizar
@@ -40,15 +40,15 @@ export default function ContactoPage() {
 					tu experiencia utilizando APD Finder,
 					puedes hacerlo a través del siguiente
 					formulario.
-				</PrettyText>
+				</ApdPrettyP>
 
-				<PrettyText>
+				<ApdPrettyP>
 					El objetivo de esta herramienta es ayudar
 					a docentes a encontrar cargos de forma
 					más cómoda y eficiente, por lo que las
 					opiniones y sugerencias de la comunidad
 					resultan especialmente valiosas.
-				</PrettyText>
+				</ApdPrettyP>
 
 				<form
 					className={styles.form}
@@ -87,7 +87,7 @@ export default function ContactoPage() {
 
 				</form>
 
-			</TextContainer>
+			</APDSection>
 		</>
 	)
 }

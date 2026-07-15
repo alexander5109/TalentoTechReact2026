@@ -3,7 +3,7 @@ import CargosSelector from "./CargosSelector"
 import DistritosSelector from "./DistritosSelector"
 import EscuelasSelector from "./EscuelasSelector"
 import NivelesSelector from "./NivelesSelector"
-import PrettyText from "../../../common/PrettyText/PrettyText";
+import ApdPrettyP from "../../../common/ApdPrettyP/ApdPrettyP";
 
 const CARGOS = [
 	"MG",
@@ -34,9 +34,9 @@ const NIVELES = [
 
 export default function SearchProfileForm({ profile, onChange }) {
 	return <form className={styles.form} >
-		<PrettyText>
+		<ApdPrettyP>
 			Configurar perfil.
-		</PrettyText>
+		</ApdPrettyP>
 		<input
 			className={styles.profileName}
 			value={profile.nombre}

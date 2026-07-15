@@ -1,5 +1,5 @@
-import TextContainer from "../../common/TextContainer/TextContainer";
-import SectionTitleH3 from "../../common/SectionTitleH3/SectionTitleH3";
+import APDSection from "../../common/APDSection/APDSection";
+import APDLabelH3 from "../../common/APDLabelH3/APDLabelH3";
 import SearchProfileForm from "./SearchProfileForm/SearchProfileForm";
 import SearchProfilesPanel from "./SearchProfilesPanel/SearchProfilesPanel";
 import styles from "./UserSearchProfilesPage.module.css"
@@ -107,20 +107,28 @@ export default function UserSearchProfilesPage() {
 	// -------------------------- ok content------------------------------- //
 	if (loading) {
 		return (
-			<TextContainer>
+			<APDSection>
+				<APDLabelH3
+					upper="Mis perfiles"
+					lower="Búsquedas guardadas"
+				/>
 				Cargando perfiles...
-			</TextContainer>
+			</APDSection>
 		);
 	}
 	if (!selectedProfile) {
-		return <TextContainer>
+		return <APDSection>
+			<APDLabelH3
+				upper="Mis perfiles"
+				lower="Búsquedas guardadas"
+			/>
 			<APDButton onClick={handleCreateProfile}>
 				Crear primer perfil
 			</APDButton>
-		</TextContainer>
+		</APDSection>
 	}
-	return <TextContainer>
-		<SectionTitleH3
+	return <APDSection>
+		<APDLabelH3
 			upper="Mis perfiles"
 			lower="Búsquedas guardadas"
 		/>
@@ -150,5 +158,5 @@ export default function UserSearchProfilesPage() {
 				</APDButton>
 			</section>
 		</div>
-	</TextContainer>
+	</APDSection>
 }

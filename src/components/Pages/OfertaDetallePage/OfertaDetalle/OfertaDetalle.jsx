@@ -1,4 +1,4 @@
-import SectionTitleH3 from "../../../common/SectionTitleH3/SectionTitleH3";
+import APDLabelH3 from "../../../common/APDLabelH3/APDLabelH3";
 
 import Swal from "sweetalert2"
 
@@ -12,7 +12,7 @@ import APDButton from "../../../common/APDButton/APDButton.jsx";
 import APDDetailItem from "../../../common/APDDetailItem/APDDetailItem.jsx";
 import APDDetailHeader from "../../../common/APDDetailHeader/APDDetailHeader.jsx";
 import APDGrilla from "../../../common/APDGrilla/APDGrilla.jsx";
-import PrettyText from "../../../common/PrettyText/PrettyText.jsx";
+import ApdPrettyP from "../../../common/ApdPrettyP/ApdPrettyP.jsx";
 
 export default function OfertaDetalle({ offer }) {
 
@@ -93,7 +93,7 @@ export default function OfertaDetalle({ offer }) {
 
 		<div className={styles.container}>
 			<div className={styles.header}>
-				<SectionTitleH3
+				<APDLabelH3
 					upper={offer.cargo}
 					lower={offer.descripcioncargo}
 				/>
@@ -113,7 +113,7 @@ export default function OfertaDetalle({ offer }) {
 						variantClassName={variantClassName}
 					>
 						<APDDetailHeader>{header}</APDDetailHeader>
-						<PrettyText>{value}</PrettyText>
+						<ApdPrettyP>{value}</ApdPrettyP>
 					</APDDetailItem>
 				))}
 			</APDGrilla>

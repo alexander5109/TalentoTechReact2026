@@ -1,6 +1,6 @@
-import styles from "./Surface.module.css"
+import styles from "./APDSurface.module.css"
 
-export default function Surface({
+export default function APDSurface({
 	children,
 	className = ""
 }) {

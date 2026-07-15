@@ -2,9 +2,9 @@ import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
-import TextContainer from "../../common/TextContainer/TextContainer";
-import SectionTitleH3 from "../../common/SectionTitleH3/SectionTitleH3";
-import PrettyText from "../../common/PrettyText/PrettyText";
+import APDSection from "../../common/APDSection/APDSection";
+import APDLabelH3 from "../../common/APDLabelH3/APDLabelH3";
+import ApdPrettyP from "../../common/ApdPrettyP/ApdPrettyP";
 import APDButton from "../../common/APDButton/APDButton";
 import APDFormField from "../../common/APDFormField/APDFormField";
 import ApdNavLink from "../../common/ApdNavLink/ApdNavLink";
@@ -88,18 +88,17 @@ export default function LoginPage() {
 
 	return (
 
-		<TextContainer>
-
-			<SectionTitleH3>
+		<APDSection>
+			<APDLabelH3>
 				Iniciar sesión
-			</SectionTitleH3>
+			</APDLabelH3>
 
-			<PrettyText>
+			<ApdPrettyP>
 				¿Todavía no tenés una cuenta?{" "}
 				<ApdNavLink variant="accent" to="/crearUsuario">
 					Crear usuario
 				</ApdNavLink>
-			</PrettyText>
+			</ApdPrettyP>
 
 			<form
 				className={styles.form}
@@ -139,7 +138,7 @@ export default function LoginPage() {
 
 			</form>
 
-		</TextContainer>
+		</APDSection>
 
 	);
 

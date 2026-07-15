@@ -1,6 +1,5 @@
 import styles from './FiltrosOfertas.module.css'
-// import RadioFilterGroup from './RadioFilterGroup/RadioFilterGroup'
-import RadioFilterGroup from '../../../common/RadioFilterGroup/RadioFilterGroup';
+import RadioFilterGroup from './RadioFilterGroup/RadioFilterGroup';
 
 export default function FiltrosOfertas({
 	filtros,

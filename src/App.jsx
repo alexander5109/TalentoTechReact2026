@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom"
 import LayoutGeneral from './components/LayoutGeneral/LayoutGeneral'
-import RutaProtegida from "./components/common/RutaProtegida/RutaProtegida"
+import RutaProtegida from "./components/RutaProtegida/RutaProtegida"
 // public pages
 import HomePage from './components/Pages/HomePage/HomePage'
 import OfertasPage from './components/Pages/OfertasPage/OfertasPage'
