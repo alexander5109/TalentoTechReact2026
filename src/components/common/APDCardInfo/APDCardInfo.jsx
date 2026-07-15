@@ -1,7 +1,7 @@
 import APDPanel from "../APDPanel/APDPanel";
-import styles from "./APDDataCard.module.css";
+import styles from "./APDCardInfo.module.css";
 
-export default function APDDataCard({
+export default function APDCardInfo({
 	icon,
 	title,
 	value,

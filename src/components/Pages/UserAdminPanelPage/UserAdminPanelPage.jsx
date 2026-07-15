@@ -1,13 +1,35 @@
 import TextContainer from "../../common/TextContainer/TextContainer";
 import SectionTitleH3 from "../../common/SectionTitleH3/SectionTitleH3";
 import PrettyText from "../../common/PrettyText/PrettyText";
-import APDDataCard from "../../common/APDDataCard/APDDataCard"
+import APDCardInfo from "../../common/APDCardInfo/APDCardInfo"
+import APDCardPromotion from "../../common/APDCardPromotion/APDCardPromotion"
 import APDPanel from "../../common/APDPanel/APDPanel"
-import styles from "./UserAdminPanelPage.module.css";
+import APDButton from "../../common/APDButton/APDButton";
+import APDGrilla from "../../common/APDGrilla/APDGrilla";
 
 export default function UserAdminPanelPage() {
 	return (
 		<TextContainer>
+			<SectionTitleH3
+				upper="Gestión comercial"
+				lower="Promociones"
+			/>
+
+			<APDButton>
+				Nueva promoción
+			</APDButton>
+
+
+			<APDGrilla>
+
+				<APDCardPromotion
+					name="Alertas extendidas"
+					type="Límite de alertas"
+					duration="30 días"
+				/>
+
+			</APDGrilla>
+
 
 			<SectionTitleH3
 				upper="Panel de administración"
@@ -20,33 +42,33 @@ export default function UserAdminPanelPage() {
 				usuarios, perfiles de búsqueda y alertas.
 			</PrettyText>
 
-			<div className={styles.grid}>
+			<APDGrilla>
 
-				<APDDataCard
+				<APDCardInfo
 					icon="👥"
 					title="Usuarios registrados"
 					value="128"
 				/>
 
-				<APDDataCard
+				<APDCardInfo
 					icon="📁"
 					title="Perfiles de búsqueda"
 					value="354"
 				/>
 
-				<APDDataCard
+				<APDCardInfo
 					icon="🔔"
 					title="Alertas activas"
 					value="91"
 				/>
 
-				<APDDataCard
+				<APDCardInfo
 					icon="📄"
 					title="Postulaciones guardadas"
 					value="2.184"
 				/>
 
-			</div>
+			</APDGrilla>
 
 			<APDPanel>
 
