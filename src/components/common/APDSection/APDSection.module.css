@@ -1,3 +1,20 @@
+@media (max-width: 768px) {
+
+	.container,
+	.reverse {
+		flex-direction: column;
+	}
+
+	.imageContainer {
+		width: 100%;
+		flex: unset;
+	}
+
+	.image {
+		height: 200px;
+	}
+}
+
 .container {
 	display: flex;
 	align-items: center;
@@ -23,21 +40,4 @@
 
 .content {
 	flex: 1;
-}
-
-@media (max-width: 768px) {
-
-	.container,
-	.reverse {
-		flex-direction: column;
-	}
-
-	.imageContainer {
-		width: 100%;
-		flex: unset;
-	}
-
-	.image {
-		height: 200px;
-	}
 }
