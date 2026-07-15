@@ -4,6 +4,8 @@ import FormUserAccount from "../../FormUserAccount/FormUserAccount";
 
 import { obtenerUsuarioActual, actualizarUsuario } from "../../../services/userService";
 import APDFeedback from "../../common/APDFeedback/APDFeedback";
+import APDSection from "../../common/APDSection/APDSection";
+import APDLabelH3 from "../../common/APDLabelH3/APDLabelH3";
 
 export default function UserAccountSettingsPage() {
 
@@ -68,19 +70,25 @@ export default function UserAccountSettingsPage() {
 
 	return (
 
-		<FormUserAccount
-			title="Mi cuenta"
-			submitText="Guardar cambios"
-			initialData={usuario}
-			showPasswordFields={false}
-			loading={saving}
-			feedback={feedback}
-			onFeedbackClear={() => setFeedback(null)}
-			editableEmailAndPassword={false}
-			onSubmit={handleUpdate}
+		<APDSection>
+			<APDLabelH3
+				upper="Cuenta de Usuario"
+				lower="Mi cuenta"
+			></APDLabelH3>
+			<FormUserAccount
+				title="Mi cuenta"
+				submitText="Guardar cambios"
+				initialData={usuario}
+				showPasswordFields={false}
+				loading={saving}
+				feedback={feedback}
+				onFeedbackClear={() => setFeedback(null)}
+				editableEmailAndPassword={false}
+				onSubmit={handleUpdate}
 
-		/>
+			/>
 
+		</APDSection>
 	);
 
 }

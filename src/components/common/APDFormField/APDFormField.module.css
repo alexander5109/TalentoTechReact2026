@@ -1,49 +1,12 @@
 .formGroup {
 	display: flex;
 	flex-direction: column;
+	gap: .45rem;
 }
 
 .formGroup label {
-	margin-bottom: .4rem;
-
-	font-weight: 600;
-	color: var(--text-soft);
-}
-
-.formGroup input {
-	padding: .8rem 1rem;
-
+	font-family: "Albertus", serif;
 	font-size: 1rem;
-	font-family: inherit;
-
-	color: var(--text-dark);
-
-	background: white;
-
-	border: 1px solid var(--parchment-dark);
-	border-radius: 8px;
-
-	transition:
-		border-color .2s,
-		box-shadow .2s;
-}
-
-.formGroup input:disabled {
-	background: #f2f2f2;
-	color: #7a7a7a;
-	cursor: not-allowed;
-}
-
-.formGroup input:disabled:focus {
-	box-shadow: none;
-	border-color: #d0d0d0;
-}
-
-.formGroup input:focus {
-	outline: none;
-
-	border-color: var(--green-soft);
-
-	box-shadow:
-		0 0 0 3px rgba(47, 106, 85, .20);
+	color: #214c3d;
+	letter-spacing: .5px;
 }

@@ -2,8 +2,12 @@ import React, { useEffect, useState } from 'react';
 import styles from "./FormUserAccount.module.css"
 import APDButton from '../common/APDButton/APDButton';
 import AvatarPicker from "./AvatarPicker/AvatarPicker"
+import APDInput from '../common/APDInput/APDInput';
+import APDForm from '../common/APDForm/APDForm';
 import APDFormField from '../common/APDFormField/APDFormField';
 import APDFeedback from '../common/APDFeedback/APDFeedback';
+import APDSection from '../common/APDSection/APDSection';
+import APDLabelH3 from '../common/APDLabelH3/APDLabelH3';
 
 
 export default function FormUserAccount({
@@ -94,13 +98,14 @@ export default function FormUserAccount({
 
 	};
 	return (
-		<div className={styles.container}>
-			<h2 className={styles.title}>
-				{title}
-			</h2>
-			<form className={styles.form} onSubmit={handleSubmit}>
-				<APDFormField
-					label="Correo electrónico"
+		<APDForm onSubmit={handleSubmit}>
+
+			<APDFormField
+				label="Correo electrónico"
+				htmlFor="email"
+			>
+				<APDInput
+					id="email"
 					name="email"
 					type="email"
 					disabled={!editableEmailAndPassword}
@@ -109,24 +114,40 @@ export default function FormUserAccount({
 					required
 					autoComplete="email"
 				/>
+			</APDFormField>
 
-				<APDFormField
-					label="Nombre"
+			<APDFormField
+				label="Nombre"
+				htmlFor="nombre"
+			>
+				<APDInput
+					id="nombre"
 					name="nombre"
 					value={formData.nombre}
 					onChange={handleChange}
 					required
 				/>
+			</APDFormField>
 
-				<APDFormField
-					label="Apellido"
+			<APDFormField
+				label="Apellido"
+				htmlFor="apellido"
+			>
+				<APDInput
+					id="apellido"
 					name="apellido"
 					value={formData.apellido}
 					onChange={handleChange}
 					required
 				/>
-				<APDFormField
-					label="Contraseña"
+			</APDFormField>
+
+			<APDFormField
+				label="Contraseña"
+				htmlFor="password"
+			>
+				<APDInput
+					id="password"
 					name="password"
 					type="password"
 					autoComplete="new-password"
@@ -136,8 +157,14 @@ export default function FormUserAccount({
 					disabled={!editableEmailAndPassword}
 					required
 				/>
-				<APDFormField
-					label="Confirmar Contraseña"
+			</APDFormField>
+
+			<APDFormField
+				label="Confirmar Contraseña"
+				htmlFor="confirmPassword"
+			>
+				<APDInput
+					id="confirmPassword"
 					name="confirmPassword"
 					type="password"
 					autoComplete="new-password"
@@ -147,42 +174,59 @@ export default function FormUserAccount({
 					disabled={!editableEmailAndPassword}
 					required
 				/>
-				<APDFormField
-					label="Título"
+			</APDFormField>
+
+			<APDFormField
+				label="Título"
+				htmlFor="titulo"
+			>
+				<APDInput
+					id="titulo"
 					name="titulo"
 					value={formData.titulo}
 					onChange={handleChange}
 				/>
+			</APDFormField>
 
-				<APDFormField
-					label="Año de Egreso"
+			<APDFormField
+				label="Año de Egreso"
+				htmlFor="anioEgreso"
+			>
+				<APDInput
+					id="anioEgreso"
 					name="anioEgreso"
 					value={formData.anioEgreso}
 					onChange={handleChange}
 				/>
+			</APDFormField>
 
-				<APDFormField
-					label="Distrito local"
+			<APDFormField
+				label="Distrito local"
+				htmlFor="distrito"
+			>
+				<APDInput
+					id="distrito"
 					name="distrito"
 					value={formData.distrito}
 					onChange={handleChange}
 				/>
+			</APDFormField>
 
+			<AvatarPicker
+				file={formData.archivo}
+				currentImage={initialData.avatarUrl}
+				onChange={handleImage}
+			/>
 
-				<AvatarPicker
-					file={formData.archivo}
-					currentImage={initialData.avatarUrl}
-					onChange={handleImage}
-				/>
+			<APDFeedback feedback={feedbackLocal ?? feedback} />
 
-				<APDFeedback feedback={feedbackLocal ?? feedback} />
+			<APDButton
+				type="submit"
+				disabled={loading}
+			>
+				{loading ? "Procesando..." : submitText}
+			</APDButton>
 
-				<APDButton type="submit" disabled={loading} >
-					{loading ? "Procesando..." : submitText}
-				</APDButton>
-
-			</form>
-		</div >
-
+		</APDForm>
 	);
 };

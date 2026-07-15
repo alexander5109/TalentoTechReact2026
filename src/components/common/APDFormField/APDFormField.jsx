@@ -2,30 +2,23 @@ import styles from "./APDFormField.module.css";
 
 export default function APDFormField({
 	label,
-	id,
-	name,
-	type = "text",
-	className = "",
-	...props
+	htmlFor,
+	children,
+	className = ""
 }) {
 
-	const inputId = id ?? name;
-
 	return (
+
 		<div className={`${styles.formGroup} ${className}`}>
 
-			<label htmlFor={inputId}>
+			<label htmlFor={htmlFor}>
 				{label}
 			</label>
 
-			<input
-				id={inputId}
-				name={name}
-				type={type}
-				{...props}
-			/>
+			{children}
 
 		</div>
+
 	);
 
 }

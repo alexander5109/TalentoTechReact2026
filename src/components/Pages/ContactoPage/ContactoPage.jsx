@@ -5,6 +5,9 @@ import ApdPrettyP from "../../common/ApdPrettyP/ApdPrettyP";
 import styles from "./ContactoPage.module.css"
 import Swal from "sweetalert2"
 import APDButton from "../../common/APDButton/APDButton";
+import APDFormField from "../../common/APDFormField/APDFormField";
+import APDForm from "../../common/APDForm/APDForm";
+import APDInput from "../../common/APDInput/APDInput";
 
 export default function ContactoPage() {
 
@@ -50,42 +53,54 @@ export default function ContactoPage() {
 					resultan especialmente valiosas.
 				</ApdPrettyP>
 
-				<form
-					className={styles.form}
-					onSubmit={manejarSubmit}
-				>
 
-					<div className={styles.field}>
-						<label>Nombre</label>
+				<APDForm onSubmit={manejarSubmit}>
 
-						<input
-							type="text"
+					<APDFormField
+						label="Nombre"
+						htmlFor="nombre"
+					>
+
+						<APDInput
+							id="nombre"
 							placeholder="Tu nombre"
 						/>
-					</div>
 
+					</APDFormField>
 
-					<div className={styles.field}>
-						<label>Email</label>
+					<APDFormField
+						label="Email"
+						htmlFor="email"
+					>
 
-						<input
+						<APDInput
+							id="email"
 							type="email"
 							placeholder="tuemail@gmail.com"
 						/>
-					</div>
 
+					</APDFormField>
 
-					<div className={styles.field}>
-						<label>Mensaje</label>
+					<APDFormField
+						label="Mensaje"
+						htmlFor="mensaje"
+					>
 
-						<textarea
-							rows="6"
+						<APDInput
+							as="textarea"
+							id="mensaje"
+							rows={6}
 							placeholder="Escribe tu mensaje..."
 						/>
-					</div>
-					<APDButton type="submit">Enviar mensaje</APDButton>
 
-				</form>
+					</APDFormField>
+
+					<APDButton type="submit">
+						Enviar mensaje
+					</APDButton>
+
+				</APDForm>
+
 
 			</APDSection>
 		</>

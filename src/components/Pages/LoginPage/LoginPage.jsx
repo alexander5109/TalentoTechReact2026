@@ -99,31 +99,37 @@ export default function LoginPage() {
 					Crear usuario
 				</ApdNavLink>
 			</ApdPrettyP>
-
-			<form
-				className={styles.form}
-				onSubmit={handleLogin}
-			>
+			<APDForm onSubmit={handleLogin}>
 
 				<APDFormField
 					label="Correo electrónico"
-					name="email"
-					type="email"
-					autoComplete="email"
-					value={email}
-					onChange={(e) => setEmail(e.target.value)}
-					required
-				/>
+					htmlFor="email"
+				>
+					<APDInput
+						id="email"
+						name="email"
+						type="email"
+						autoComplete="email"
+						value={email}
+						onChange={(e) => setEmail(e.target.value)}
+						required
+					/>
+				</APDFormField>
 
 				<APDFormField
 					label="Contraseña"
-					name="password"
-					type="password"
-					autoComplete="current-password"
-					value={password}
-					onChange={(e) => setPassword(e.target.value)}
-					required
-				/>
+					htmlFor="password"
+				>
+					<APDInput
+						id="password"
+						name="password"
+						type="password"
+						autoComplete="current-password"
+						value={password}
+						onChange={(e) => setPassword(e.target.value)}
+						required
+					/>
+				</APDFormField>
 
 				<APDFeedback feedback={feedback} />
 
@@ -136,7 +142,7 @@ export default function LoginPage() {
 						: "Ingresar"}
 				</APDButton>
 
-			</form>
+			</APDForm>
 
 		</APDSection>
 

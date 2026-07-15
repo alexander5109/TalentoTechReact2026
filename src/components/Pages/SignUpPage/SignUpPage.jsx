@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import FormUserAccount from "../../FormUserAccount/FormUserAccount";
 import { registrarUsuario } from "../../../services/authService";
+import APDSection from "../../common/APDSection/APDSection";
 
 export default function SignUpPage() {
 
@@ -65,19 +66,24 @@ export default function SignUpPage() {
 
 	return (
 
-		<FormUserAccount
-			title="Crear cuenta"
-			submitText="Registrarse"
-			initialData={{}}
-			showPasswordFields={true}
-			loading={loading}
-			feedback={feedback}
-			onFeedbackClear={() => setFeedback(null)}
-			editableEmailAndPassword={true}
-			onSubmit={handleRegister}
+		<APDSection>
+			<APDLabelH3
+				upper="Cuenta de Usuario"
+				lower="Registrar nuevo"
+			></APDLabelH3>
+			<FormUserAccount
+				title="Crear cuenta"
+				submitText="Registrarse"
+				initialData={{}}
+				showPasswordFields={true}
+				loading={loading}
+				feedback={feedback}
+				onFeedbackClear={() => setFeedback(null)}
+				editableEmailAndPassword={true}
+				onSubmit={handleRegister}
 
-		/>
+			/>
 
+		</APDSection>
 	);
-
 }
