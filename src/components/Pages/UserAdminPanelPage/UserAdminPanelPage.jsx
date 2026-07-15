@@ -1,89 +1,110 @@
 import TextContainer from "../../common/TextContainer/TextContainer";
 import SectionTitleH3 from "../../common/SectionTitleH3/SectionTitleH3";
 import PrettyText from "../../common/PrettyText/PrettyText";
-import APDCardInfo from "../../common/APDCardInfo/APDCardInfo"
-import APDCardPromotion from "../../common/APDCardPromotion/APDCardPromotion"
-import APDPanel from "../../common/APDPanel/APDPanel"
+import APDDetailItem from "../../common/APDDetailItem/APDDetailItem"
 import APDButton from "../../common/APDButton/APDButton";
 import APDGrilla from "../../common/APDGrilla/APDGrilla";
+import APDDetailHeader from "../../common/APDDetailHeader/APDDetailHeader";
+import styles from "./UserAdminPanelPage.module.css";
+
+
+const PROMOTION_TYPES = {
+	ALERT_LIMIT: "Más alertas",
+	PROFILE_FEATURE: "Perfil destacado",
+	SAVED_POSTS_LIMIT: "Más postulaciones guardadas"
+}
+function puedeCrearAlerta(usuario) {
+
+	if (usuario.promociones.includes("ALERT_LIMIT"))
+		return usuario.alertas < 5;
+
+	return usuario.alertas < 1;
+}
 
 export default function UserAdminPanelPage() {
+
+	// feature: nombre promocion, feature, duration
+	const features = [
+		["Alertas extendidas", "Límite de alertas", 30],
+		["Alertas extendidas", "Límite de alertas", 30],
+		["Alertas extendidas", "Límite de alertas", 30],
+		["Alertas extendidas", "Límite de alertas", 30],
+		["Alertas extendidas", "Límite de alertas", 30],
+		["Alertas extendidas", "Límite de alertas", 30],
+	];
+
+	const estadisticas = [
+		["👥 Usuarios registrados", 128],
+		["🔔 Alertas activas", 91],
+		["📄 Postulaciones guardadas", "2.184"],
+		["📁 Perfiles de búsqueda", 354],
+		["📊 Peticiones por minuto", 5354],
+		["💸 Cupones aplicados", 63],
+	];
+
 	return (
-		<TextContainer>
-			<SectionTitleH3
-				upper="Gestión comercial"
-				lower="Promociones"
-			/>
+		<>
 
-			<APDButton>
-				Nueva promoción
-			</APDButton>
-
-
-			<APDGrilla>
-
-				<APDCardPromotion
-					name="Alertas extendidas"
-					type="Límite de alertas"
-					duration="30 días"
+			<TextContainer>
+				<SectionTitleH3
+					upper="Panel de administración"
+					lower="Estadísticas generales"
 				/>
 
-			</APDGrilla>
+				<PrettyText>
+					Este panel reúne información general sobre el uso de la
+					plataforma. En futuras versiones permitirá administrar
+					usuarios, perfiles de búsqueda y alertas.
+				</PrettyText>
+				<APDGrilla>
+					{estadisticas.map(([header, value]) => (
+						<APDDetailItem key={header}>
+							<APDDetailHeader>
+								{header}
+							</APDDetailHeader>
+							<p className={styles.bigNumber}>
+								{value}
+							</p>
+						</APDDetailItem>
+
+					))}
+				</APDGrilla>
+			</TextContainer>
 
 
-			<SectionTitleH3
-				upper="Panel de administración"
-				lower="Estadísticas generales"
-			/>
-
-			<PrettyText>
-				Este panel reúne información general sobre el uso de la
-				plataforma. En futuras versiones permitirá administrar
-				usuarios, perfiles de búsqueda y alertas.
-			</PrettyText>
-
-			<APDGrilla>
-
-				<APDCardInfo
-					icon="👥"
-					title="Usuarios registrados"
-					value="128"
+			<TextContainer>
+				<SectionTitleH3
+					upper="Gestión comercial"
+					lower="Promociones"
 				/>
 
-				<APDCardInfo
-					icon="📁"
-					title="Perfiles de búsqueda"
-					value="354"
-				/>
+				<APDGrilla>
+					{features.map(([promotionName, feature, duration]) => (
+						<APDDetailItem key={promotionName}>
+							<APDDetailHeader>
+								{promotionName}
+							</APDDetailHeader>
+							<PrettyText>{feature}</PrettyText>
+							<p className={styles.bigNumber}>
+								{duration} días
+							</p>
+							<p><APDButton variant="secondary">
+								Editar
+							</APDButton></p>
+							<p>
+								<APDButton variant="danger">
+									Desactivar
+								</APDButton>
+							</p>
+						</APDDetailItem>
 
-				<APDCardInfo
-					icon="🔔"
-					title="Alertas activas"
-					value="91"
-				/>
+					))}
+				</APDGrilla>
+				<APDButton>
+					Nueva promoción
+				</APDButton>
 
-				<APDCardInfo
-					icon="📄"
-					title="Postulaciones guardadas"
-					value="2.184"
-				/>
-
-			</APDGrilla>
-
-			<APDPanel>
-
-				<h3>Funciones previstas</h3>
-
-				<ul>
-					<li>Administrar usuarios.</li>
-					<li>Visualizar perfiles de búsqueda.</li>
-					<li>Gestionar alertas automáticas.</li>
-					<li>Consultar estadísticas de utilización.</li>
-					<li>Analizar distritos, cargos y niveles más buscados.</li>
-				</ul>
-
-			</APDPanel>
-
-		</TextContainer>
+			</TextContainer>
+		</>
 	);
 }

@@ -9,9 +9,34 @@ import {
 import styles from "./OfertaDetalle.module.css"
 import APDLink from "../../../common/APDLink/APDLink.jsx";
 import APDButton from "../../../common/APDButton/APDButton.jsx";
+import APDDetailItem from "../../../common/APDDetailItem/APDDetailItem.jsx";
+import APDDetailHeader from "../../../common/APDDetailHeader/APDDetailHeader.jsx";
+import APDGrilla from "../../../common/APDGrilla/APDGrilla.jsx";
+import PrettyText from "../../../common/PrettyText/PrettyText.jsx";
 
 export default function OfertaDetalle({ offer }) {
 
+	const backgroundClassEstado = (
+		offer.estado === "Publicada"
+			? styles.backgroundPrimary
+			: offer.estado === "Anulada"
+				? styles.backgroundDanger
+				: styles.backgroundSecondary
+	)
+
+	const detalles = [
+		["Escuela", offer.escuela],
+		["Estado", offer.estado, backgroundClassEstado],
+		["Curso", offer.cursodivision],
+		["Nivel", offer.descnivelmodalidad],
+		["Inicio oferta", offer.iniciooferta],
+		["Fin oferta", offer.finoferta],
+		["Toma de posesión", offer.tomaposesion],
+		["Suplencia desde", offer.supl_desde],
+		["Suplencia hasta", offer.supl_hasta],
+		["Reemplaza a", offer.reemp_apeynom ?? "-"],
+		["Motivo", offer.reemp_motivo ?? "-"],
+	];
 
 	const cargoImage = `/images/${offer.cargo
 		.trim()
@@ -20,13 +45,6 @@ export default function OfertaDetalle({ offer }) {
 		}.jpg`
 
 
-	const estadoClase = (
-		offer.estado === "Publicada"
-			? styles.estadoPublicada
-			: offer.estado === "Anulada"
-				? styles.estadoAnulada
-				: styles.estadoDesignada
-	)
 	const {
 		pendingPostulations,
 		addToPendingPostulations,
@@ -88,66 +106,17 @@ export default function OfertaDetalle({ offer }) {
 					className={styles.image}
 				/>
 			</div>
-
-
-			<div className={styles.detailsGrid}>
-
-				<div>
-					<strong>Escuela</strong>
-					<p>{offer.escuela}</p>
-				</div>
-
-				<div>
-					<strong>Curso</strong>
-					<p>{offer.cursodivision}</p>
-				</div>
-
-				<div>
-					<strong>Nivel</strong>
-					<p>{offer.descnivelmodalidad}</p>
-				</div>
-
-				<div className={estadoClase}>
-					<strong>Estado</strong>
-					<p>{offer.estado}</p>
-				</div>
-
-				<div>
-					<strong>Inicio oferta</strong>
-					<p>{offer.iniciooferta}</p>
-				</div>
-
-				<div>
-					<strong>Fin oferta</strong>
-					<p>{offer.finoferta}</p>
-				</div>
-
-				<div>
-					<strong>Toma de posesión</strong>
-					<p>{offer.tomaposesion}</p>
-				</div>
-
-				<div>
-					<strong>Suplencia desde</strong>
-					<p>{offer.supl_desde}</p>
-				</div>
-
-				<div>
-					<strong>Suplencia hasta</strong>
-					<p>{offer.supl_hasta}</p>
-				</div>
-
-				<div>
-					<strong>Reemplaza a</strong>
-					<p>{offer.reemp_apeynom}</p>
-				</div>
-
-				<div>
-					<strong>Motivo</strong>
-					<p>{offer.reemp_motivo}</p>
-				</div>
-			</div>
-
+			<APDGrilla>
+				{detalles.map(([header, value, variantClassName]) => (
+					<APDDetailItem
+						key={header}
+						variantClassName={variantClassName}
+					>
+						<APDDetailHeader>{header}</APDDetailHeader>
+						<PrettyText>{value}</PrettyText>
+					</APDDetailItem>
+				))}
+			</APDGrilla>
 
 
 			{

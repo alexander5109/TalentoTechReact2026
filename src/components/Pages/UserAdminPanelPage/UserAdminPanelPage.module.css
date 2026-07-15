@@ -1,10 +1,10 @@
-.title {
+.bigContent {
 	margin: 0;
 	font-size: 1rem;
 	color: var(--green-800);
 }
 
-.value {
+.bigNumber {
 	margin-top: .8rem;
 	font-size: 2rem;
 	font-weight: bold;

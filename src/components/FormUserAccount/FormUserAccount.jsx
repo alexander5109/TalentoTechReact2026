@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from "./FormUserAccount.module.css"
 import APDButton from '../common/APDButton/APDButton';
-import AvatarPicker from "../AvatarPicker/AvatarPicker"
+import AvatarPicker from "../common/AvatarPicker/AvatarPicker"
 import APDFormField from '../common/APDFormField/APDFormField';
 import APDFeedback from '../common/APDFeedback/APDFeedback';
 

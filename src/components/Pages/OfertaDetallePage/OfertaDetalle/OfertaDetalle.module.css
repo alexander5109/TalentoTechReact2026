@@ -31,36 +31,6 @@
 	align-items: center;
 }
 
-.detailsGrid {
-	display: grid;
-	grid-template-columns:
-		repeat(auto-fit, minmax(240px, 1fr));
-	gap: 1rem;
-	margin-bottom: 2rem;
-}
-
-.detailsGrid div {
-	padding: 1rem;
-	border-radius: 14px;
-	background:
-		rgba(255, 255, 255, 0.28);
-	border:
-		1px solid rgba(255, 255, 255, 0.2);
-}
-
-.detailsGrid strong {
-	display: block;
-	margin-bottom: 0.4rem;
-	font-family: "Albertus", serif;
-	color: #214c3d;
-}
-
-.detailsGrid p {
-	margin: 0;
-	color: #355d4f;
-	line-height: 1.4;
-}
-
 .section {
 	margin-top: 2rem;
 }
@@ -84,7 +54,10 @@
 }
 
 
-.estadoPublicada {
+
+
+
+.backgroundPrimary {
 	background:
 		linear-gradient(to bottom,
 			rgba(70, 140, 100, 0.28),
@@ -93,20 +66,20 @@
 		1px solid rgba(50, 100, 70, 0.25) !important;
 }
 
-.estadoAnulada {
-	background:
-		linear-gradient(to bottom,
-			rgba(180, 70, 70, 0.26),
-			rgba(150, 55, 55, 0.2)) !important;
-	border:
-		1px solid rgba(120, 40, 40, 0.22) !important;
-}
-
-.estadoDesignada {
+.backgroundSecondary {
 	background:
 		linear-gradient(to bottom,
 			rgba(120, 95, 170, 0.24),
 			rgba(95, 75, 145, 0.18)) !important;
 	border:
 		1px solid rgba(90, 70, 130, 0.2) !important;
+}
+
+.backgroundDanger {
+	background:
+		linear-gradient(to bottom,
+			rgba(180, 70, 70, 0.26),
+			rgba(150, 55, 55, 0.2)) !important;
+	border:
+		1px solid rgba(120, 40, 40, 0.22) !important;
 }
