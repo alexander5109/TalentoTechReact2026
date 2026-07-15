@@ -29,9 +29,7 @@ export default function ContactoPage() {
 		<>
 			<APDSection>
 
-				<APDLabelH3
-					upper="Contacto"
-					lower="Realiza tu consulta"
+				<APDLabelH3 upper="Contacto" lower="Realiza tu consulta"
 				/>
 
 				<ApdPrettyP>

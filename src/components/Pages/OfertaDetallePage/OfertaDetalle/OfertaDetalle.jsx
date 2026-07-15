@@ -93,10 +93,7 @@ export default function OfertaDetalle({ offer }) {
 
 		<div className={styles.container}>
 			<div className={styles.header}>
-				<APDLabelH3
-					upper={offer.cargo}
-					lower={offer.descripcioncargo}
-				/>
+				<APDLabelH3 upper={offer.cargo} lower={offer.descripcioncargo} />
 				< img
 					src={cargoImage}
 					onError={

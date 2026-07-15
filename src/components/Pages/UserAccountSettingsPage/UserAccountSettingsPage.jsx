@@ -71,9 +71,7 @@ export default function UserAccountSettingsPage() {
 	return (
 
 		<APDSection>
-			<APDLabelH3
-				upper="Cuenta de Usuario"
-				lower="Mi cuenta"
+			<APDLabelH3 upper="APD Finder" lower="Mi cuenta"
 			></APDLabelH3>
 			<FormUserAccount
 				title="Mi cuenta"

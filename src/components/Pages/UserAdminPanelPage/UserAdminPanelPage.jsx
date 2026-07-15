@@ -46,10 +46,7 @@ export default function UserAdminPanelPage() {
 		<>
 
 			<APDSection>
-				<APDLabelH3
-					upper="Panel de administración"
-					lower="Estadísticas generales"
-				/>
+				<APDLabelH3 upper="Panel de administración" lower="Estadísticas generales" />
 
 				<ApdPrettyP>
 					Este panel reúne información general sobre el uso de la
@@ -73,10 +70,7 @@ export default function UserAdminPanelPage() {
 
 
 			<APDSection>
-				<APDLabelH3
-					upper="Gestión comercial"
-					lower="Promociones"
-				/>
+				<APDLabelH3 upper="Gestión comercial" lower="Promociones" />
 
 				<APDGrilla>
 					{features.map(([promotionName, feature, duration]) => (

@@ -2,8 +2,10 @@ import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
-import APDSection from "../../common/APDSection/APDSection";
+import APDForm from "../../common/APDForm/APDForm";
+import APDInput from "../../common/APDInput/APDInput";
 import APDLabelH3 from "../../common/APDLabelH3/APDLabelH3";
+import APDSection from "../../common/APDSection/APDSection";
 import ApdPrettyP from "../../common/ApdPrettyP/ApdPrettyP";
 import APDButton from "../../common/APDButton/APDButton";
 import APDFormField from "../../common/APDFormField/APDFormField";
@@ -89,9 +91,7 @@ export default function LoginPage() {
 	return (
 
 		<APDSection>
-			<APDLabelH3>
-				Iniciar sesión
-			</APDLabelH3>
+			<APDLabelH3 upper="APD Finder" lower="Iniciar sesión" />
 
 			<ApdPrettyP>
 				¿Todavía no tenés una cuenta?{" "}

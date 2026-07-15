@@ -5,10 +5,7 @@ import APDSection from "../../common/APDSection/APDSection"
 export default function AboutPage() {
 	return (
 		<APDSection>
-			<APDLabelH3
-				upper="Sobre el proyecto"
-				lower="¿Quienes Somos?"
-			/>
+			<APDLabelH3 upper="Sobre el proyecto" lower="¿Quienes Somos?" />
 
 			<ApdPrettyP>
 				Mi nombre es Alexander Seling, soy de La Matanza, Buenos Aires.

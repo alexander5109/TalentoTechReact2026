@@ -11,10 +11,7 @@ export default function HomePage() {
 				imageSide: "left"
 			}}
 			>
-				<APDLabelH3
-					upper="Contexto"
-					lower="¿Qué son los APD?"
-				/>
+				<APDLabelH3 upper="Contexto" lower="¿Qué son los APD?" />
 
 				<ApdPrettyP>
 					Los Actos Públicos Digitales (APD) son el
@@ -41,9 +38,7 @@ export default function HomePage() {
 				imageSide: "right"
 			}}
 			>
-				<APDLabelH3
-					upper="La dificultad"
-					lower="Un sistema útil, pero muy tedioso"
+				<APDLabelH3 upper="La dificultad" lower="Un sistema útil, pero muy tedioso"
 				/>
 
 				<ApdPrettyP>
@@ -75,10 +70,7 @@ export default function HomePage() {
 					imageSide: "left"
 				}}
 			>
-				<APDLabelH3
-					upper="Objetivo"
-					lower="¿Qué busca resolver APD Finder?"
-				/>
+				<APDLabelH3 upper="Objetivo" lower="¿Qué busca resolver APD Finder?" />
 
 				<ApdPrettyP>
 					APD Finder nace como una herramienta

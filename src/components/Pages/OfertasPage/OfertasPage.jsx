@@ -1,7 +1,9 @@
 import { useState } from "react"
 import OfertaListContainer from "./OfertaListContainer/OfertaListContainer"
-import FiltrosOfertas from "./FiltrosOfertas/FiltrosOfertas"
+import FormOfertaFiltros from "./FormOfertaFiltros/FormOfertaFiltros"
 import styles from "./OfertasPage.module.css"
+import APDSection from '../../common/APDSection/APDSection';
+
 
 export default function OfertasPage() {
 	const [filtros, setFiltros] = useState({
@@ -13,12 +15,14 @@ export default function OfertasPage() {
 
 	return (
 		<div className={styles.layout}>
-			<aside className={styles.sidebar}>
-				<FiltrosOfertas
-					filtros={filtros}
-					setFiltros={setFiltros}
-				/>
-			</aside>
+			<APDSection>
+				<aside className={styles.sidebar}>
+					<FormOfertaFiltros
+						filtros={filtros}
+						setFiltros={setFiltros}
+					/>
+				</aside>
+			</APDSection>
 			<section className={styles.content}>
 				<OfertaListContainer
 					filtros={filtros}

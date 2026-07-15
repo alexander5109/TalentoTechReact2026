@@ -108,9 +108,7 @@ export default function UserSearchProfilesPage() {
 	if (loading) {
 		return (
 			<APDSection>
-				<APDLabelH3
-					upper="Mis perfiles"
-					lower="Búsquedas guardadas"
+				<APDLabelH3 upper="Mis perfiles" lower="Búsquedas guardadas"
 				/>
 				Cargando perfiles...
 			</APDSection>
@@ -118,9 +116,7 @@ export default function UserSearchProfilesPage() {
 	}
 	if (!selectedProfile) {
 		return <APDSection>
-			<APDLabelH3
-				upper="Mis perfiles"
-				lower="Búsquedas guardadas"
+			<APDLabelH3 upper="Mis perfiles" lower="Búsquedas guardadas"
 			/>
 			<APDButton onClick={handleCreateProfile}>
 				Crear primer perfil
@@ -128,9 +124,7 @@ export default function UserSearchProfilesPage() {
 		</APDSection>
 	}
 	return <APDSection>
-		<APDLabelH3
-			upper="Mis perfiles"
-			lower="Búsquedas guardadas"
+		<APDLabelH3 upper="Mis perfiles" lower="Búsquedas guardadas"
 		/>
 		<div className={styles.layout}>
 			<aside className={styles.sidebar}>

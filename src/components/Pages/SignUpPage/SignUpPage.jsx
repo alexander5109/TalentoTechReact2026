@@ -3,7 +3,9 @@ import { useNavigate } from "react-router-dom";
 
 import FormUserAccount from "../../FormUserAccount/FormUserAccount";
 import { registrarUsuario } from "../../../services/authService";
+import APDLabelH3 from "../../common/APDLabelH3/APDLabelH3";
 import APDSection from "../../common/APDSection/APDSection";
+import APDForm from "../../common/APDForm/APDForm";
 
 export default function SignUpPage() {
 
@@ -67,9 +69,7 @@ export default function SignUpPage() {
 	return (
 
 		<APDSection>
-			<APDLabelH3
-				upper="Cuenta de Usuario"
-				lower="Registrar nuevo"
+			<APDLabelH3 upper="APD Finder" lower="Crear Usuario"
 			></APDLabelH3>
 			<FormUserAccount
 				title="Crear cuenta"
