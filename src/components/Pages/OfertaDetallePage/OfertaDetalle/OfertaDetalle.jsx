@@ -133,7 +133,7 @@ export default function OfertaDetalle({ offer }) {
 			}
 
 
-			<div className={styles.actions}>
+			<div className={styles.actionsContainer}>
 
 				<ApdLink to="/ofertas" >
 					Volver

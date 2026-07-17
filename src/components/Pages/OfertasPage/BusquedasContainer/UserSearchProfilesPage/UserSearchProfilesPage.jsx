@@ -11,42 +11,6 @@ import ApdPrettyP from "../../../../common/ApdPrettyP/ApdPrettyP";
 
 
 export default function UserSearchProfilesPage() {
-	// -------------------------- state------------------------------- //
-	const { user } = useAuth();
-	const [profiles, setProfiles] = useState([]);
-	const [loading, setLoading] = useState(true);
-	const [selectedProfileId, setSelectedProfileId] = useState(null);
-	const [editingProfile, setEditingProfile] = useState(null);
-
-	const selectedProfile = profiles.find(p => p.id === selectedProfileId) ?? profiles[0];
-	const hasChanges = editingProfile && JSON.stringify(editingProfile) != JSON.stringify(selectedProfile);
-
-	// -------------------------- effects------------------------------- //
-	useEffect(() => {
-		if (selectedProfile) {
-			setEditingProfile({
-				...selectedProfile
-			});
-		}
-	}, [selectedProfile]);
-	useEffect(() => {
-		async function loadProfiles() {
-			if (!user) {
-				setProfiles([]);
-				setLoading(false);
-				return;
-			}
-			const profiles = await getProfiles(user.uid);
-			setProfiles(profiles);
-			if (profiles.length > 0) {
-				setSelectedProfileId(
-					profiles[0].id
-				);
-			}
-			setLoading(false);
-		}
-		loadProfiles();
-	}, [user]);
 
 
 	// -------------------------- handlers------------------------------- //

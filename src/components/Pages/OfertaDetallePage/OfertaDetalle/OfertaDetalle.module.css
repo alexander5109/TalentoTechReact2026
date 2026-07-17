@@ -40,7 +40,7 @@
 	color: #355d4f;
 }
 
-.actions {
+.actionsContainer {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 1rem;

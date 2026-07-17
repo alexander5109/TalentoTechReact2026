@@ -82,14 +82,20 @@ export default function UserAdminPanelPage() {
 							<p className={styles.bigNumber}>
 								{duration} días
 							</p>
-							<p><ApdButton variant="secondary">
-								Editar
-							</ApdButton></p>
-							<p>
+							<div style={{
+								display: "flex",
+								flexDirection: "row",
+								margin: "1rem",
+								gap: "1.5rem",
+								flexShrink: 0,
+							}}>
+								<ApdButton variant="secondary">
+									Editar
+								</ApdButton>
 								<ApdButton variant="danger">
 									Desactivar
 								</ApdButton>
-							</p>
+							</div>
 						</ApdDetailItem>
 
 					))}
@@ -98,7 +104,7 @@ export default function UserAdminPanelPage() {
 					Nueva promoción
 				</ApdButton>
 
-			</ApdSection>
+			</ApdSection >
 		</>
 	);
 }

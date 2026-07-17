@@ -6,6 +6,9 @@ import styles from "./OfertasPage.module.css"
 import { useAuth } from "../../../context/AuthContext";
 import { createProfile } from "../../../firebase/ProfileService";
 import ApdButton from "../../common/ApdButton/ApdButton";
+import ApdPrettyP from "../../common/ApdPrettyP/ApdPrettyP";
+import ApdLabelH3 from "../../common/ApdLabelH3/ApdLabelH3";
+import ApdSection from "../../common/ApdSection/ApdSection";
 
 export default function OfertasPage() {
 	const { user } = useAuth();
@@ -109,8 +112,9 @@ export default function OfertasPage() {
 
 	}
 
-	return <div className={styles.layout}>
-		<section className={styles.content}>
+	return <>
+		<ApdSection>
+			<ApdLabelH3 lower="APD" upper="Actos Publicos Digitales" />
 			<nav className={styles.borderedContent}>
 				<BusquedasContainer
 					profiles={profiles}
@@ -120,18 +124,17 @@ export default function OfertasPage() {
 					onDeleteProfile={handleDeleteProfile}
 				/>
 			</nav>
-			<nav className={styles.borderedContent}>
-				<FiltrosOfertasContainer
-					filtros={filtros}
-					setFiltros={setFiltros}
-				/>
-			</nav>
-		</section>
-		<section className={styles.content}>
-			<OfertaListContainer
-				filtros={filtros}
-			/>
-		</section>
+		</ApdSection >
 
-	</div>
+		<div className={styles.layout}>
+			<section style={{ flex: 1 }}>
+				<nav className={styles.borderedContent}>
+					<FiltrosOfertasContainer filtros={filtros} setFiltros={setFiltros} />
+				</nav>
+			</section>
+			<section style={{ flex: 2 }} >
+				<OfertaListContainer filtros={filtros} />
+			</section>
+
+		</div></>
 }

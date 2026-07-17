@@ -11,6 +11,7 @@
 	color: white;
 	min-width: 110px;
 	transition: transform 0.15s ease, filter 0.2s ease;
+	/* margin: 0.6rem; */
 }
 
 .button:hover {

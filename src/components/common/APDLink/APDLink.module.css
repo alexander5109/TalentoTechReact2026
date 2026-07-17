@@ -26,6 +26,7 @@
 		color .18s ease,
 		transform .15s ease,
 		box-shadow .18s ease;
+	margin: 0;
 }
 
 .link:hover {

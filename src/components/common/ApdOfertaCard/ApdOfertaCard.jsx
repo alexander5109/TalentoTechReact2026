@@ -4,6 +4,7 @@ import styles from './ApdOfertaCard.module.css'
 import ApdButton from '../ApdButton/ApdButton.jsx'
 import ApdLink from '../ApdLink/ApdLink.jsx'
 import ApdH4 from '../ApdH4/ApdH4.jsx'
+import ApdH3 from '../ApdH3/ApdH3.jsx'
 
 export default function ApdOfertaCard({ offer }) {
 	const estadoClase = (
@@ -108,7 +109,7 @@ export default function ApdOfertaCard({ offer }) {
 
 			</div>
 
-			<div className={styles.actions}>
+			<div className={styles.actionsContainer}>
 
 				<ApdLink to={`/ofertas/${offer.idoferta}`}>
 					Detalles
