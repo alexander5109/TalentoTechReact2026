@@ -1,12 +1,13 @@
 import APDSection from "../../common/APDSection/APDSection";
 import APDLabelH3 from "../../common/APDLabelH3/APDLabelH3";
 import SearchProfileForm from "./SearchProfileForm/SearchProfileForm";
-import SearchProfilesPanel from "./SearchProfilesPanel/SearchProfilesPanel";
 import styles from "./UserSearchProfilesPage.module.css"
 import { useState, useEffect } from "react";
 import { useAuth } from "../../../context/AuthContext";
 import { getProfiles, createProfile, updateProfile, deleteProfile } from "../../../firebase/ProfileService";
 import APDButton from "../../common/APDButton/APDButton";
+import ApdPrettyP from "../../common/ApdPrettyP/ApdPrettyP";
+import SearchProfileList from "./SearchProfileList/SearchProfileList";
 
 
 
@@ -105,52 +106,77 @@ export default function UserSearchProfilesPage() {
 
 
 	// -------------------------- ok content------------------------------- //
-	if (loading) {
-		return (
-			<APDSection>
-				<APDLabelH3 upper="Mis perfiles" lower="Búsquedas guardadas"
-				/>
-				Cargando perfiles...
-			</APDSection>
-		);
-	}
-	if (!selectedProfile) {
-		return <APDSection>
-			<APDLabelH3 upper="Mis perfiles" lower="Búsquedas guardadas"
-			/>
-			<APDButton onClick={handleCreateProfile}>
-				Crear primer perfil
-			</APDButton>
-		</APDSection>
-	}
 	return <APDSection>
-		<APDLabelH3 upper="Mis perfiles" lower="Búsquedas guardadas"
+
+		<APDLabelH3
+			upper="Perfiles de búsqueda"
+			lower="Guarde sus filtros para reutilizarlos rápidamente."
 		/>
-		<div className={styles.layout}>
-			<aside className={styles.sidebar}>
-				<APDButton onClick={handleCreateProfile}>
-					+ Nuevo perfil
-				</APDButton>
-				<SearchProfilesPanel
-					profiles={profiles}
-					selectedProfileId={selectedProfileId}
-					setSelectedProfileId={setSelectedProfileId}
-					deleteProfile={handleDeleteProfile}
-				/>
-			</aside>
-			<section className={styles.editor}>
-				{editingProfile && (
-					<SearchProfileForm
-						profile={editingProfile}
-						onChange={(changes) =>
-							setEditingProfile(prev => ({ ...prev, ...changes }))
-						}
+
+		{loading ? (
+
+			<ApdPrettyP>Cargando perfiles...</ApdPrettyP>
+
+		) : (
+
+
+			<div className={styles.layout}>
+				<nav className={styles.sidebar}>
+					<APDButton
+						disabled={!hasChanges}
+						onClick={handleSaveProfile}
+					>
+						Guardar cambios
+					</APDButton>
+
+					<APDButton onClick={handleCreateProfile}>
+						+ Agregar perfil
+					</APDButton>
+
+					<SearchProfileList
+						profiles={profiles}
+						selectedProfileId={selectedProfileId}
+						onSelect={setSelectedProfileId}
+						onDelete={handleDeleteProfile}
 					/>
-				)}
-				<APDButton disabled={!hasChanges} onClick={handleSaveProfile}>
-					Guardar perfil de busqueda
-				</APDButton>
-			</section>
-		</div>
+
+				</nav>
+
+				<section className={styles.editor}>
+
+					{editingProfile ? (
+
+						<>
+							<SearchProfileForm
+								profile={editingProfile}
+								onChange={(changes) =>
+									setEditingProfile(prev => ({
+										...prev,
+										...changes
+									}))
+								}
+							/>
+						</>
+
+					) : (
+
+						<div className={styles.emptyState}>
+							<ApdPrettyP>
+								Todavía no tiene perfiles de búsqueda guardados.
+							</ApdPrettyP>
+
+							<APDButton onClick={handleCreateProfile}>
+								Crear mi primer perfil
+							</APDButton>
+						</div>
+
+					)}
+
+				</section>
+
+			</div>
+
+		)}
+
 	</APDSection>
 }

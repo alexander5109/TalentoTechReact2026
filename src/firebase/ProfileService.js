@@ -1,4 +1,4 @@
-import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc } from "firebase/firestore";
+import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc, arrayUnion, getDoc } from "firebase/firestore";
 import { db } from "./config";
 
 // const snapshot = await getDocs(
@@ -17,71 +17,76 @@ import { db } from "./config";
 // );
 
 
-function ShowThatShit(userId, arg) {
-	console.log(userId);
-	console.log(arg);
-	// alert(JSON.stringify(arg.docs, null, 2));
-	return arg;
+// function ShowThatShit(userId, arg) {
+// 	console.log(userId);
+// 	console.log(arg);
+// 	alert(JSON.stringify(arg.docs, null, 2));
+// 	return arg;
+// }
+async function getUserRefAndData(userId) {
+
+	const userRef = doc(db, "usuarios", userId);
+
+	const snapshot = await getDoc(userRef);
+
+	return {
+		userRef,
+		user: snapshot.data()
+	};
+
 }
-
-
 export async function getProfiles(userId) {
-	return ShowThatShit(userId, (
-		await getDocs(
-			collection(
-				db,
-				"usuarios",
-				userId,
-				"perfiles"
-			)
-		)
-	).docs.map(
-		item => ({
-			id: item.id,
-			...item.data()
-		})
-	)
+
+	const snapshot = await getDoc(
+		doc(db, "usuarios", userId)
 	);
+
+	const user = snapshot.data();
+
+	return user?.profiles ?? [];
+
 }
+
 
 export async function createProfile(userId, profile) {
-	return {
-		id: (
-			await addDoc(
-				collection(
-					db,
-					"usuarios",
-					userId,
-					"perfiles"
-				),
-				profile
-			)
-		).id,
+
+	const newProfile = {
+		id: crypto.randomUUID(),
 		...profile
 	};
+
+	await updateDoc(
+		doc(db, "usuarios", userId),
+		{
+			profiles: arrayUnion(newProfile)
+		}
+	);
+
+	return newProfile;
 }
 
 export async function deleteProfile(userId, profileId) {
-	await deleteDoc(
-		doc(
-			db,
-			"usuarios",
-			userId,
-			"perfiles",
-			profileId
-		)
+
+	const { userRef, user } = await getUserRefAndData(userId);
+
+	const profiles = (user.profiles ?? []).filter(
+		profile => profile.id !== profileId
 	);
+
+	await updateDoc(userRef, { profiles });
+
 }
 
 export async function updateProfile(userId, profileId, changes) {
-	await updateDoc(
-		doc(
-			db,
-			"usuarios",
-			userId,
-			"perfiles",
-			profileId
-		),
-		changes
+
+	const { userRef, user } = await getUserRefAndData(userId);
+
+	const profiles = (user.profiles ?? []).map(profile =>
+		profile.id === profileId
+			? { ...profile, ...changes }
+			: profile
 	);
+
+	await updateDoc(userRef, { profiles });
+
 }

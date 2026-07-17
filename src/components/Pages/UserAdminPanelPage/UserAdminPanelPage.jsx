@@ -45,7 +45,6 @@ export default function UserAdminPanelPage() {
 
 	return (
 		<>
-
 			<APDSection>
 				<APDLabelH3 upper="Panel de administración" lower="Estadísticas generales" />
 

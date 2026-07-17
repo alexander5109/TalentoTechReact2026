@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import { collection, getDocs, getFirestore } from "firebase/firestore";
 // import { getAnalytics } from "firebase/analytics";
 import { getAuth } from "firebase/auth";
 
@@ -20,3 +20,45 @@ const app = initializeApp(firebaseConfig);
 
 export const db = getFirestore(app);
 export const auth = getAuth(app);
+
+
+async function exportFirestore() {
+
+	const collections = [
+		"features",
+		"promotions",
+		"usuarios"
+	];
+
+	const backup = {};
+
+	for (const collectionName of collections) {
+
+		const snapshot = await getDocs(collection(db, collectionName));
+
+		backup[collectionName] = snapshot.docs.map(doc => ({
+			id: doc.id,
+			...doc.data()
+		}));
+
+	}
+
+	console.log(backup);
+
+	const json = JSON.stringify(backup, null, "\t");
+
+	const blob = new Blob([json], {
+		type: "application/json"
+	});
+
+	const url = URL.createObjectURL(blob);
+
+	const a = document.createElement("a");
+	a.href = url;
+	a.download = "firestore-export.json";
+	a.click();
+
+	URL.revokeObjectURL(url);
+}
+
+// await exportFirestore();
