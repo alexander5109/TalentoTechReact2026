@@ -4,7 +4,7 @@ import SearchProfileForm from "./SearchProfileForm/SearchProfileForm";
 import styles from "./UserSearchProfilesPage.module.css"
 import { useState, useEffect } from "react";
 import { useAuth } from "../../../../../context/AuthContext";
-import { getProfiles, createProfile, updateProfile, deleteProfile } from "../../../../../firebase/ProfileService";
+import { getProfiles, createProfile, updateProfile, deleteProfile } from "../../../../../firebase/profileService";
 import ApdButton from "../../../../common/ApdButton/ApdButton";
 import ApdPrettyP from "../../../../common/ApdPrettyP/ApdPrettyP";
 

@@ -14,23 +14,35 @@ const PROMOTION_TYPES = {
 	SAVED_POSTS_LIMIT: "Más postulaciones guardadas"
 }
 function puedeCrearAlerta(usuario) {
-
 	if (usuario.promociones.includes("ALERT_LIMIT"))
 		return usuario.alertas < 5;
-
 	return usuario.alertas < 1;
 }
 
 export default function UserAdminPanelPage() {
 
 	// feature: nombre promocion, feature, duration
-	const features = [
-		["Alertas extendidas", "Límite de alertas11", 30],
-		["Alertas extendidas22", "Límite de alertas2", 30],
-		["Alertas extendidas33", "Límite de alertas2", 30],
-		["Alertas extendidas44", "Límite de alertas33", 30],
-		["Alertas extendidas55", "Límite de alertas44", 30],
-		["Alertas extendidas66", "Límite de alertas55", 30],
+	const featureNames = {
+		alerts_3: "Hasta 3 alertas",
+		remove_ads: "Sin publicidad",
+		school_map: "Mapa de establecimientos",
+		mobile_notifications: "Notificaciones móviles"
+	};
+
+	const promotions = [
+		{
+			id: "premiumDocente2026",
+			nombre: "Premium Docente",
+			codigo: "DOCENTE2026",
+			descripcion: "Beneficio para docentes.",
+			duracionDias: 30,
+			activa: true,
+			features: [
+				"alerts_3",
+				"school_map",
+				"remove_ads"
+			]
+		}
 	];
 
 	// relleno: stat, value
@@ -73,32 +85,60 @@ export default function UserAdminPanelPage() {
 				<ApdLabelH3 upper="Gestión comercial" lower="Promociones" />
 
 				<ApdGrilla>
-					{features.map(([promotionName, feature, duration]) => (
-						<ApdDetailItem key={promotionName}>
+
+					{promotions.map(promotion => (
+
+						<ApdDetailItem key={promotion.id}>
+
 							<ApdDetailHeader>
-								{promotionName}
+								🎁 {promotion.nombre}
 							</ApdDetailHeader>
-							<ApdPrettyP>{feature}</ApdPrettyP>
-							<p className={styles.bigNumber}>
-								{duration} días
+
+							<ApdPrettyP>
+								{promotion.descripcion}
+							</ApdPrettyP>
+
+							<p>
+								<strong>Código:</strong> {promotion.codigo}
 							</p>
-							<div style={{
-								display: "flex",
-								flexDirection: "row",
-								margin: "1rem",
-								gap: "1.5rem",
-								flexShrink: 0,
-							}}>
+
+							<p>
+								<strong>Duración:</strong> {promotion.duracionDias} días
+							</p>
+
+							<p>
+								<strong>Estado:</strong>{" "}
+								{promotion.activa ? "🟢 Activa" : "⚫ Desactivada"}
+							</p>
+
+							<p>
+								<strong>Incluye:</strong>
+							</p>
+
+							<ul>
+								{promotion.features.map(feature => (
+									<li key={feature}>
+										{featureNames[feature]}
+									</li>
+								))}
+							</ul>
+
+							<div className={styles.actions}>
+
 								<ApdButton variant="secondary">
 									Editar
 								</ApdButton>
+
 								<ApdButton variant="danger">
 									Desactivar
 								</ApdButton>
+
 							</div>
+
 						</ApdDetailItem>
 
 					))}
+
 				</ApdGrilla>
 				<ApdButton>
 					Nueva promoción

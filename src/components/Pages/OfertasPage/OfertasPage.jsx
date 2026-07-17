@@ -4,7 +4,7 @@ import BusquedasContainer from "./BusquedasContainer/BusquedasContainer"
 import FiltrosOfertasContainer from "./FiltrosOfertasContainer/FiltrosOfertasContainer"
 import styles from "./OfertasPage.module.css"
 import { useAuth } from "../../../context/AuthContext";
-import { createProfile } from "../../../firebase/ProfileService";
+import { createProfile } from "../../../firebase/profileService";
 import ApdButton from "../../common/ApdButton/ApdButton";
 import ApdPrettyP from "../../common/ApdPrettyP/ApdPrettyP";
 import ApdLabelH3 from "../../common/ApdLabelH3/ApdLabelH3";
