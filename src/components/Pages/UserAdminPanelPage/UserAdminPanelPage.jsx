@@ -25,14 +25,15 @@ export default function UserAdminPanelPage() {
 
 	// feature: nombre promocion, feature, duration
 	const features = [
-		["Alertas extendidas", "Límite de alertas", 30],
-		["Alertas extendidas", "Límite de alertas", 30],
-		["Alertas extendidas", "Límite de alertas", 30],
-		["Alertas extendidas", "Límite de alertas", 30],
-		["Alertas extendidas", "Límite de alertas", 30],
-		["Alertas extendidas", "Límite de alertas", 30],
+		["Alertas extendidas", "Límite de alertas11", 30],
+		["Alertas extendidas22", "Límite de alertas2", 30],
+		["Alertas extendidas33", "Límite de alertas2", 30],
+		["Alertas extendidas44", "Límite de alertas33", 30],
+		["Alertas extendidas55", "Límite de alertas44", 30],
+		["Alertas extendidas66", "Límite de alertas55", 30],
 	];
 
+	// relleno: stat, value
 	const estadisticas = [
 		["👥 Usuarios registrados", 128],
 		["🔔 Alertas activas", 91],
