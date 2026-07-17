@@ -6,7 +6,8 @@ import ApdButton from "../../common/ApdButton/ApdButton";
 import ApdGrilla from "../../common/ApdGrilla/ApdGrilla";
 import ApdDetailHeader from "../../common/ApdDetailHeader/ApdDetailHeader";
 import styles from "./UserAdminPanelPage.module.css";
-
+import { useEffect, useState } from "react";
+import { getPromotions } from "../../../firebase/promotionsService";
 
 const PROMOTION_TYPES = {
 	ALERT_LIMIT: "Más alertas",
@@ -28,22 +29,17 @@ export default function UserAdminPanelPage() {
 		school_map: "Mapa de establecimientos",
 		mobile_notifications: "Notificaciones móviles"
 	};
+	const [promotions, setPromotions] = useState([]);
 
-	const promotions = [
-		{
-			id: "premiumDocente2026",
-			nombre: "Premium Docente",
-			codigo: "DOCENTE2026",
-			descripcion: "Beneficio para docentes.",
-			duracionDias: 30,
-			activa: true,
-			features: [
-				"alerts_3",
-				"school_map",
-				"remove_ads"
-			]
-		}
-	];
+	async function refreshPromotions() {
+		const data = await getPromotions();
+		setPromotions(data);
+	}
+
+	useEffect(() => { refreshPromotions(); }, []);
+
+
+
 
 	// relleno: stat, value
 	const estadisticas = [
@@ -116,9 +112,9 @@ export default function UserAdminPanelPage() {
 							</p>
 
 							<ul>
-								{promotion.features.map(feature => (
+								{promotion.features?.map(feature => (
 									<li key={feature}>
-										{featureNames[feature]}
+										{featureNames[feature] ?? feature}
 									</li>
 								))}
 							</ul>
