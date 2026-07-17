@@ -1,5 +1,6 @@
 import ApdButton from "../../../common/ApdButton/ApdButton";
 import ApdComboBox from "../../../common/ApdComboBox/ApdComboBox";
+import ApdH3 from "../../../common/ApdH3/ApdH3";
 
 import styles from "./BusquedasContainer.module.css";
 
@@ -33,9 +34,9 @@ export default function BusquedasContainer({
 		<div className={styles.container}>
 
 
-			<h3>
+			<ApdH3>
 				🔎 Mis búsquedas
-			</h3>
+			</ApdH3>
 
 
 			<ApdComboBox

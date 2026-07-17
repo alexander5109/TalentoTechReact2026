@@ -2,6 +2,7 @@ import styles from './FiltrosOfertasContainer.module.css'
 import ApdCheckboxFilterGroup from "../../../common/ApdCheckboxFilterGroup/ApdCheckboxFilterGroup";
 import ApdRadioFilterGroup from "../../../common/ApdRadioFilterGroup/ApdRadioFilterGroup";
 import ApdComboBox from "../../../common/ApdComboBox/ApdComboBox";
+import ApdH3 from "../../../common/ApdH3/ApdH3";
 
 
 export default function FiltrosOfertasContainer({
@@ -17,7 +18,7 @@ export default function FiltrosOfertasContainer({
 	}
 	return (
 		<form className={styles.form}>
-			<h3 >Filtrar Ofertas</h3>
+			<ApdH3>Filtrar Ofertas</ApdH3>
 			<div style={{ display: "flex" }}>
 				<ApdCheckboxFilterGroup
 					widgetLabel="Estados:"

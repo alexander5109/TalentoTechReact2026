@@ -3,6 +3,7 @@ import { usePendingPostulations } from "../../../context/PendingPostulationsCont
 import styles from './ApdOfertaCard.module.css'
 import ApdButton from '../ApdButton/ApdButton.jsx'
 import ApdLink from '../ApdLink/ApdLink.jsx'
+import ApdH4 from '../ApdH4/ApdH4.jsx'
 
 export default function ApdOfertaCard({ offer }) {
 	const estadoClase = (
@@ -83,9 +84,9 @@ export default function ApdOfertaCard({ offer }) {
 
 			<div className={styles.mainInfo}>
 
-				<h3>
+				<ApdH4>
 					{offer.cargo}
-				</h3>
+				</ApdH4>
 
 				<div className={styles.meta}>
 					<span className={estadoClase}>

@@ -1,4 +1,5 @@
 import ApdFeedback from '../../../common/ApdFeedback/ApdFeedback'
+import ApdH3 from '../../../common/ApdH3/ApdH3'
 import OfertaList from './OfertaList/OfertaList'
 import styles from './OfertaListContainer.module.css'
 import { useEffect, useState } from 'react'
@@ -69,7 +70,7 @@ export default function OfertaListContainer({ filtros }) {
 		<>
 			{isLoading ? (
 				<div>
-					<h3>Cargando ofertas...</h3>
+					<ApdH3>Cargando ofertas...</ApdH3>
 				</div>
 			) : errorExcept ? (
 				<ApdFeedback feedback={{
