@@ -91,6 +91,7 @@
 		rgba(255, 255, 255, 0.35);
 }
 
+/* ----------------------------------------------- */
 .publicada {
 	background:
 		rgba(70, 140, 100, 0.22) !important;
@@ -107,4 +108,41 @@
 	background:
 		rgba(120, 95, 170, 0.2) !important;
 	color: #503a78;
+}
+
+/* ----------------------------------------------- */
+.mañana {
+	background: rgba(70, 140, 100, 0.22) !important;
+	color: #24503a;
+}
+
+.tarde {
+	background: rgba(214, 156, 55, 0.22) !important;
+	color: #7a4d12;
+}
+
+.vespertino {
+	background: rgba(109, 86, 171, 0.20) !important;
+	color: #4f387c;
+}
+
+/* ----------------------------------------------- */
+.jardin {
+	background: rgba(92, 181, 110, 0.20) !important;
+	color: #2e6b3e;
+}
+
+.primaria {
+	background: rgba(240, 202, 87, 0.22) !important;
+	color: #7a5b10;
+}
+
+.secundaria {
+	background: rgba(94, 149, 219, 0.20) !important;
+	color: #2c5d93;
+}
+
+.terciario {
+	background: rgba(161, 117, 196, 0.20) !important;
+	color: #5f3f82;
 }

@@ -5,20 +5,21 @@ import styles from "./OfertasPage.module.css"
 
 export default function OfertasPage() {
 	const [filtros, setFiltros] = useState({
-		cargo: '',
-		distrito: '',
-		turno: '',
-		estado: ''
+		cargos: [],
+		distritos: [],
+		estados: [],
+		turnos: [],
+		niveles: [],
 	})
 
 	return (
 		<div className={styles.layout}>
-			<aside className={styles.sidebar}>
+			<nav className={styles.sidebar}>
 				<FiltrosOfertas
 					filtros={filtros}
 					setFiltros={setFiltros}
 				/>
-			</aside>
+			</nav>
 			<section className={styles.content}>
 				<OfertaListContainer
 					filtros={filtros}

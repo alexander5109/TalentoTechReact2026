@@ -1,6 +1,6 @@
-import styles from "./RadioFilterGroup.module.css"
+import styles from "./APDRadioFilterGroup.module.css"
 
-export default function RadioFilterGroup({
+export default function APDRadioFilterGroup({
 	label,
 	name,
 	value,

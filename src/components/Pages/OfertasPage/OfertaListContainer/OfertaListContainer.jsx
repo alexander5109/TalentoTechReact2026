@@ -34,33 +34,36 @@ export default function OfertaListContainer({ filtros }) {
 		}, fakeDelay)
 
 	}, [])
-
 	const ofertasFiltradas = ofertas.filter((oferta) => {
-		const coincideCargo = !filtros.cargo ||
-			oferta.cargo
-				.toLowerCase()
-				.includes(
-					filtros.cargo.toLowerCase()
-				)
+
+		const coincideCargo =
+			filtros.cargos.length === 0 ||
+			filtros.cargos.includes(oferta.cargo)
 
 		const coincideDistrito =
-			!filtros.distrito ||
-			oferta.descdistrito === filtros.distrito
+			filtros.distritos.length === 0 ||
+			filtros.distritos.includes(oferta.descdistrito)
 
 		const coincideTurno =
-			!filtros.turno ||
-			oferta.turno === filtros.turno
+			filtros.turnos.length === 0 ||
+			filtros.turnos.includes(oferta.turno)
 
 		const coincideEstado =
-			!filtros.estado ||
-			oferta.estado === filtros.estado
+			filtros.estados.length === 0 ||
+			filtros.estados.includes(oferta.estado)
+
+		const coincideNivel =
+			filtros.niveles.length === 0 ||
+			filtros.niveles.includes(oferta.descnivelmodalidad)
 
 		return (
 			coincideCargo &&
 			coincideDistrito &&
 			coincideEstado &&
-			coincideTurno
+			coincideTurno &&
+			coincideNivel
 		)
+
 	})
 	return (
 		<>

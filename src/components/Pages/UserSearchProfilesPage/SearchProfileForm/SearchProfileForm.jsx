@@ -5,32 +5,6 @@ import EscuelasSelector from "./EscuelasSelector"
 import NivelesSelector from "./NivelesSelector"
 import ApdPrettyP from "../../../common/ApdPrettyP/ApdPrettyP";
 
-const CARGOS = [
-	"MG",
-	"PR",
-	"EMATP",
-	"Bibliotecario",
-	"Preceptor",
-	"Historia",
-	"Ciencias Sociales",
-	"Trabajo y ciudadanía",
-];
-const DISTRITOS = [
-	"La Matanza",
-	"Avellaneda",
-	"Lanús",
-	"Quilmes",
-	"Lomas de Zamora",
-	"Morón"
-];
-
-const NIVELES = [
-	"Inicial",
-	"Primaria",
-	"Secundaria",
-	"Especial",
-	"Adultos"
-];
 
 export default function SearchProfileForm({ profile, onChange }) {
 	return <form className={styles.form} >

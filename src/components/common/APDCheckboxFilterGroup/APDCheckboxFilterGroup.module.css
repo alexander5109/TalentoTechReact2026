@@ -1,0 +1,46 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+.widgetLabel {
+	font-family: "Albertus", serif;
+	font-size: 0.95rem;
+	color: #214c3d;
+}
+
+.options {
+	display: flex;
+	flex-direction: column;
+	gap: 0.55rem;
+}
+
+.option {
+	display: flex;
+	align-items: center;
+	gap: 0.6rem;
+	cursor: pointer;
+	font-size: 0.92rem;
+	color: #214c3d;
+}
+
+.option input[type="checkbox"] {
+	accent-color: #2e6e56;
+	cursor: pointer;
+}
+
+.option span {
+	padding: 0.32rem 0.72rem;
+	border-radius: 999px;
+	font-size: 0.84rem;
+	background: rgba(255, 255, 255, 0.35);
+	transition:
+		transform 0.15s ease,
+		background-color 0.2s ease,
+		color 0.2s ease;
+}
+
+.option:hover span {
+	transform: translateY(-1px);
+}

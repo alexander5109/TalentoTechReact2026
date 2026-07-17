@@ -1,5 +1,127 @@
 import styles from './FiltrosOfertas.module.css'
-import RadioFilterGroup from './RadioFilterGroup/RadioFilterGroup';
+import APDCheckboxFilterGroup from "../../../common/APDCheckboxFilterGroup/APDCheckboxFilterGroup";
+import APDRadioFilterGroup from "../../../common/APDRadioFilterGroup/APDRadioFilterGroup";
+import APDComboBox from "../../../common/APDComboBox/APDComboBox";
+
+const CARGOS = [
+	{
+		label: "Encargados de Medios de Apoyo Técnico-Pedagógico",
+		value: "EMATP",
+	},
+	{
+		label: "Biologia",
+		value: "BIOLOGIA (BLG)",
+	},
+	{
+		label: "Escuela de verano GUARDAVIDA",
+		value: "Escuela de verano GUARDAVIDA (VGU)",
+	},
+	{
+		label: "Ciencias Sociales",
+		value: "CSS",
+	},
+	{
+		label: "Trabajo y ciudadanía",
+		value: "TRABAJO Y CIUDADAN�A (TYC)",
+	},
+	{
+		label: "Bibliotecario",
+		value: "Bibliotecario",
+	},
+];
+
+
+const DISTRITOS = [
+	{
+		label: "La Matanza",
+		value: "LA MATANZA",
+	},
+	{
+		label: "Moreno",
+		value: "MORENO",
+	},
+	{
+		label: "Moron",
+		value: "MORON",
+	},
+	{
+		label: "Ituzaingó",
+		value: "ITUZAINGO",
+	},
+	{
+		label: "Merlo",
+		value: "MERLO",
+	},
+];
+
+const ESTADOS = [
+	{
+		label: "Publicada",
+		value: "Publicada",
+		className: styles.publicada
+	},
+	{
+		label: "Anulada",
+		value: "Anulada",
+		className: styles.anulada
+	},
+	{
+		label: "Designada",
+		value: "Designada",
+		className: styles.designada
+	}
+]
+
+const TURNOS = [
+	{
+		label: "Mañana",
+		value: "M",
+		className: styles.mañana
+	},
+	{
+		label: "Tarde",
+		value: "T",
+		className: styles.tarde
+	},
+	{
+		label: "Vespertino",
+		value: "V",
+		className: styles.vespertino
+	}
+]
+const NIVELES = [
+	{
+		label: "Inicial",
+		value: "INICIAL",
+		className: styles.jardin
+	},
+	{
+		label: "Primaria",
+		value: "PRIMARIA",
+		className: styles.primaria
+	},
+	{
+		label: "Secundaria Adultos",
+		value: "SECUNDARIA ADULTOS",
+		className: styles.secundaria
+	},
+	{
+		label: "Tecnico Profesional",
+		value: "TECNICO PROFESIONAL",
+		className: styles.secundaria
+	},
+	{
+		label: "Superior",
+		value: "SUPERIOR",
+		className: styles.terciario
+	},
+	{
+		label: "Especial",
+		value: "ESPECIAL",
+		className: styles.secundaria
+	}
+]
+
 
 export default function FiltrosOfertas({
 	filtros,
@@ -11,87 +133,52 @@ export default function FiltrosOfertas({
 			...filtros,
 			[name]: value
 		})
-		// console.log("cambia o no cambia?")
-		// console.log(filtros)
 	}
 	return (
 		<form className={styles.form}>
 			<h3 >Filtrar Ofertas</h3>
-			<RadioFilterGroup
-				label="Estado"
-				name="estado"
-				value={filtros.estado}
+
+			<APDCheckboxFilterGroup
+				widgetLabel="Estados:"
+				name="estados"
+				value={filtros.estados}
 				onChange={manejarCambio}
-				options={[
-					{
-						label: "Todos",
-						value: ""
-					},
-					{
-						label: "Publicada",
-						value: "Publicada",
-						className: styles.publicada
-					},
-					{
-						label: "Anulada",
-						value: "Anulada",
-						className: styles.anulada
-					},
-					{
-						label: "Designada",
-						value: "Designada",
-						className: styles.designada
-					}
-				]}
+				options={ESTADOS}
+			/>
+
+			<APDCheckboxFilterGroup
+				widgetLabel="Cargos:"
+				name="cargos"
+				value={filtros.cargos}
+				onChange={manejarCambio}
+				options={CARGOS}
+			/>
+
+			<APDCheckboxFilterGroup
+				widgetLabel="Distritos:"
+				name="distritos"
+				value={filtros.distritos}
+				onChange={manejarCambio}
+				options={DISTRITOS}
+			/>
+
+			<APDCheckboxFilterGroup
+				widgetLabel="Niveles:"
+				name="niveles"
+				value={filtros.niveles}
+				onChange={manejarCambio}
+				options={NIVELES}
+			/>
+
+			<APDCheckboxFilterGroup
+				widgetLabel="Turnos:"
+				name="turnos"
+				value={filtros.turnos}
+				onChange={manejarCambio}
+				options={TURNOS}
 			/>
 
 
-			<div className={styles.field}>
-				<label>Cargo:</label>
-				<input
-					type="text"
-					placeholder="Ej: Biologia"
-					name="cargo"
-					value={filtros.cargo}
-					onChange={manejarCambio}
-				/>
-			</div>
-
-
-			<div className={styles.field} >
-				<label>Distrito:</label>
-				<select name="distrito" value={filtros.distrito} onChange={manejarCambio} >
-					<option value=""> Todos </option>
-					<option value="LA MATANZA"> La Matanza </option>
-					<option value="MORON"> Morón </option>
-				</select>
-			</div>
-
-
-
-			<RadioFilterGroup
-				label="Turno"
-				name="turno"
-				value={filtros.turno}
-				onChange={manejarCambio}
-				options={[{
-					label: "Todos",
-					value: ""
-				},
-				{
-					label: "Mañana",
-					value: "M"
-				},
-				{
-					label: "Tarde",
-					value: "T"
-				},
-				{
-					label: "Vespertino",
-					value: "V"
-				}
-				]}
-			/>
 		</form>
 	)
 }
