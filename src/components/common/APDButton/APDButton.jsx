@@ -1,6 +1,6 @@
-import styles from "./APDButton.module.css";
+import styles from "./ApdButton.module.css";
 
-export default function APDButton({
+export default function ApdButton({
 	children,
 	variant = "primary",
 	type = "button",

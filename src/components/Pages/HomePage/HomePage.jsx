@@ -1,20 +1,20 @@
 import ApdPrettyP from "../../common/ApdPrettyP/ApdPrettyP";
-import APDLabelH3 from "../../common/APDLabelH3/APDLabelH3";
-import APDSection from "../../common/APDSection/APDSection";
+import ApdLabelH3 from "../../common/ApdLabelH3/ApdLabelH3";
+import ApdSection from "../../common/ApdSection/ApdSection";
 
 export default function HomePage() {
 	return (
 		<>
-			<APDSection image={{
+			<ApdSection image={{
 				src: "/images/apd1.jpg",
 				alt: "Actos Publicos Digitales",
 				imageSide: "left"
 			}}
 			>
-				<APDLabelH3 upper="Contexto" lower="¿Qué son los APD?" />
+				<ApdLabelH3 upper="Contexto" lower="¿Qué son los Apd?" />
 
 				<ApdPrettyP>
-					Los Actos Públicos Digitales (APD) son el
+					Los Actos Públicos Digitales (Apd) son el
 					sistema implementado por la Dirección
 					General de Cultura y Educación de la
 					provincia de Buenos Aires para la
@@ -29,16 +29,16 @@ export default function HomePage() {
 					disponibles según su formación, puntaje y
 					situación laboral.
 				</ApdPrettyP>
-			</APDSection >
+			</ApdSection >
 
 
-			<APDSection image={{
+			<ApdSection image={{
 				src: "/images/apd2.jpg",
 				alt: "Actos Publicos Digitales 2",
 				imageSide: "right"
 			}}
 			>
-				<APDLabelH3 upper="La dificultad" lower="Un sistema útil, pero muy tedioso"
+				<ApdLabelH3 upper="La dificultad" lower="Un sistema útil, pero muy tedioso"
 				/>
 
 				<ApdPrettyP>
@@ -60,20 +60,20 @@ export default function HomePage() {
 					evaluar si una oferta realmente resulta
 					conveniente.
 				</ApdPrettyP>
-			</APDSection>
+			</ApdSection>
 
 
-			<APDSection
+			<ApdSection
 				image={{
 					src: "/images/apd3.jpg",
 					alt: "Actos Publicos Digitales 3",
 					imageSide: "left"
 				}}
 			>
-				<APDLabelH3 upper="Objetivo" lower="¿Qué busca resolver APD Finder?" />
+				<ApdLabelH3 upper="Objetivo" lower="¿Qué busca resolver Apd Finder?" />
 
 				<ApdPrettyP>
-					APD Finder nace como una herramienta
+					Apd Finder nace como una herramienta
 					complementaria pensada específicamente
 					para docentes. El objetivo principal es hacer
 					más cómoda y eficiente la búsqueda de
@@ -96,7 +96,7 @@ export default function HomePage() {
 					aparezcan cargos compatibles con el perfil
 					del docente.
 				</ApdPrettyP>
-			</APDSection>
+			</ApdSection>
 		</>
 	)
 }

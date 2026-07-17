@@ -1,14 +1,14 @@
 import { usePendingPostulations } from "../../../context/PendingPostulationsContext"
 
-import OfertaCard from "../OfertasPage/OfertaCard/OfertaCard"
+import ApdOfertaCard from '../../common/ApdOfertaCard/ApdOfertaCard'
 
-import APDLabelH1 from "../../common/APDLabelH1/APDLabelH1"
-import APDSection from "../../common/APDSection/APDSection"
+import ApdLabelH1 from "../../common/ApdLabelH1/ApdLabelH1"
+import ApdSection from "../../common/ApdSection/ApdSection"
 
 import styles from "./UserPendingPostulationsPage.module.css"
 
 import Swal from "sweetalert2"
-import APDButton from "../../common/APDButton/APDButton"
+import ApdButton from "../../common/ApdButton/ApdButton"
 
 export default function UserPendingPostulationsPage() {
 
@@ -18,8 +18,8 @@ export default function UserPendingPostulationsPage() {
 	} = usePendingPostulations()
 
 	return (
-		<APDSection>
-			<APDLabelH1 upper="Gestión de ofertas" lower="Postulaciones Pendientes" />
+		<ApdSection>
+			<ApdLabelH1 upper="Gestión de ofertas" lower="Postulaciones Pendientes" />
 			{
 				pendingPostulations.length === 0 ? (
 					<p className={styles.empty}>
@@ -30,7 +30,7 @@ export default function UserPendingPostulationsPage() {
 						<div className={styles.list}>
 							{
 								pendingPostulations.map((offer) => (
-									<OfertaCard
+									<ApdOfertaCard
 										key={offer.idoferta}
 										offer={offer}
 									/>
@@ -46,7 +46,7 @@ export default function UserPendingPostulationsPage() {
 									{pendingPostulations.length}
 								</strong>
 							</p>
-							<APDButton onClick={() => {
+							<ApdButton onClick={() => {
 								Swal.fire({
 									title: "Exito",
 									text: `Postulaciones enviadas`,
@@ -60,7 +60,7 @@ export default function UserPendingPostulationsPage() {
 							}}
 							>
 								Confirmar postulaciones
-							</APDButton>
+							</ApdButton>
 
 						</div>
 
@@ -68,6 +68,6 @@ export default function UserPendingPostulationsPage() {
 
 				)
 			}
-		</APDSection>
+		</ApdSection>
 	)
 }

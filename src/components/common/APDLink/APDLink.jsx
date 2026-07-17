@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import styles from "./APDLink.module.css";
+import styles from "./ApdLink.module.css";
 
-export default function APDLink({
+export default function ApdLink({
 	to,
 	children,
 	variant = "primary",

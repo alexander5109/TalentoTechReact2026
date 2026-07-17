@@ -3,9 +3,9 @@ import { useEffect, useState } from "react";
 import FormUserAccount from "../../FormUserAccount/FormUserAccount";
 
 import { obtenerUsuarioActual, actualizarUsuario } from "../../../services/userService";
-import APDFeedback from "../../common/APDFeedback/APDFeedback";
-import APDSection from "../../common/APDSection/APDSection";
-import APDLabelH3 from "../../common/APDLabelH3/APDLabelH3";
+import ApdFeedback from "../../common/ApdFeedback/ApdFeedback";
+import ApdSection from "../../common/ApdSection/ApdSection";
+import ApdLabelH3 from "../../common/ApdLabelH3/ApdLabelH3";
 
 export default function UserAccountSettingsPage() {
 
@@ -66,13 +66,13 @@ export default function UserAccountSettingsPage() {
 		return <p>Cargando...</p>;
 
 	if (!usuario && feedback)
-		return <APDFeedback feedback={feedback}></APDFeedback>;
+		return <ApdFeedback feedback={feedback}></ApdFeedback>;
 
 	return (
 
-		<APDSection>
-			<APDLabelH3 upper="APD Finder" lower="Mi cuenta"
-			></APDLabelH3>
+		<ApdSection>
+			<ApdLabelH3 upper="Apd Finder" lower="Mi cuenta"
+			></ApdLabelH3>
 			<FormUserAccount
 				title="Mi cuenta"
 				submitText="Guardar cambios"
@@ -86,7 +86,7 @@ export default function UserAccountSettingsPage() {
 
 			/>
 
-		</APDSection>
+		</ApdSection>
 	);
 
 }

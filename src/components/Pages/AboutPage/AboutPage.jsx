@@ -1,11 +1,11 @@
 import ApdPrettyP from "../../common/ApdPrettyP/ApdPrettyP"
-import APDLabelH3 from "../../common/APDLabelH3/APDLabelH3"
-import APDSection from "../../common/APDSection/APDSection"
+import ApdLabelH3 from "../../common/ApdLabelH3/ApdLabelH3"
+import ApdSection from "../../common/ApdSection/ApdSection"
 
 export default function AboutPage() {
 	return (
-		<APDSection>
-			<APDLabelH3 upper="Sobre el proyecto" lower="¿Quienes Somos?" />
+		<ApdSection>
+			<ApdLabelH3 upper="Sobre el proyecto" lower="¿Quienes Somos?" />
 
 			<ApdPrettyP>
 				Mi nombre es Alexander Seling, soy de La Matanza, Buenos Aires.
@@ -18,12 +18,12 @@ export default function AboutPage() {
 			</ApdPrettyP>
 
 			<ApdPrettyP>
-				APD Finder nace de una necesidad concreta
+				Apd Finder nace de una necesidad concreta
 				observada dentro del ámbito educativo:
 				simplificar la búsqueda diaria de cargos y
 				hacer más accesible la información para los
 				docentes.
 			</ApdPrettyP>
-		</APDSection >
+		</ApdSection >
 	)
 }

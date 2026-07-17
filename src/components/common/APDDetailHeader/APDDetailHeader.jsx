@@ -1,6 +1,6 @@
-import styles from "./APDDetailHeader.module.css";
+import styles from "./ApdDetailHeader.module.css";
 
-export default function APDDetailHeader({ children }) {
+export default function ApdDetailHeader({ children }) {
 
 	return (
 		<div className={styles.header}>

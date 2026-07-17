@@ -1,5 +1,5 @@
 import styles from "./Header.module.css"
-import APDLabelH1 from "../common/APDLabelH1/APDLabelH1"
+import ApdLabelH1 from "../common/ApdLabelH1/ApdLabelH1"
 import { useLocation } from "react-router-dom"
 
 export default function Header() {
@@ -21,9 +21,7 @@ export default function Header() {
 	else if (location.pathname === "/userPendingPostulations") {
 		subtitle = "Mis postulaciones"
 	}
-	else if (location.pathname === "/userSearchProfiles") {
-		subtitle = "Mis perfiles"
-	}
+
 	else if (location.pathname === "/userAccountSettings") {
 		subtitle = "Mi cuenta"
 	}
@@ -33,7 +31,7 @@ export default function Header() {
 
 	return (
 		<header className={styles.header}>
-			<APDLabelH1
+			<ApdLabelH1
 				upper="Buscador de Actos Públicos Digitales"
 				// upper="Mis Actos Públicos Digitales"
 				lower={subtitle}

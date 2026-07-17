@@ -5,7 +5,7 @@ import styles from "./NavBar.module.css"
 import { usePendingPostulations } from "../../context/PendingPostulationsContext"
 
 import { useAuth } from "../../context/AuthContext";
-import APDNavLink from "../common/APDNavLink/APDNavLink";
+import ApdNavLink from "../common/ApdNavLink/ApdNavLink";
 
 
 export default function NavBar() {
@@ -19,10 +19,10 @@ export default function NavBar() {
 
 	function renderCentralLinks() {
 		return <>
-			<APDNavLink to="/"> Inicio </APDNavLink >
-			<APDNavLink to="/about"> About us </APDNavLink>
-			<APDNavLink to="/contacto"> Contacto </APDNavLink>
-			<APDNavLink to="/ofertas"> Ofertas </APDNavLink>
+			<ApdNavLink to="/"> Inicio </ApdNavLink >
+			<ApdNavLink to="/about"> About us </ApdNavLink>
+			<ApdNavLink to="/contacto"> Contacto </ApdNavLink>
+			<ApdNavLink to="/ofertas"> Ofertas </ApdNavLink>
 
 		</>
 	}
@@ -32,18 +32,17 @@ export default function NavBar() {
 		if (!user) {
 			return (
 				<>
-					<APDNavLink to="/iniciarSesion" >Iniciar sesión </APDNavLink>
-					<APDNavLink to="/crearUsuario" > Crear usuario </APDNavLink>
+					<ApdNavLink to="/iniciarSesion" >Iniciar sesión </ApdNavLink>
+					<ApdNavLink to="/crearUsuario" > Crear usuario </ApdNavLink>
 				</>
 			);
 		} else {
 			return (
 				<>
-					<APDNavLink to="/userPendingPostulations" variant="accent"> 📝 Postulaciones ({pendingPostulations.length})</APDNavLink>
-					<APDNavLink to="/userSearchProfiles" variant="accent">🔎 Mis búsquedas</APDNavLink>
-					<APDNavLink to="/userAccountSettings" variant="accent">⚙️ Mi cuenta</APDNavLink>
-					{isAdmin && (<APDNavLink to="/userAdminPanel" variant="accent">🛠️ Admin Panel</APDNavLink>)}
-					<APDNavLink to="" variant="danger" onClick={logout}  >Cerrar sesión</APDNavLink>
+					<ApdNavLink to="/userPendingPostulations" variant="accent"> 📝 Postulaciones ({pendingPostulations.length})</ApdNavLink>
+					<ApdNavLink to="/userAccountSettings" variant="accent">⚙️ Mi cuenta</ApdNavLink>
+					{isAdmin && (<ApdNavLink to="/userAdminPanel" variant="accent">🛠️ Admin Panel</ApdNavLink>)}
+					<ApdNavLink to="" variant="danger" onClick={logout}  >Cerrar sesión</ApdNavLink>
 				</>
 			);
 		}
@@ -51,7 +50,7 @@ export default function NavBar() {
 
 	return (
 		<nav className={styles.navbar}>
-			<APDNavLink to="/" variant="logo" >APD Finder</APDNavLink>
+			<ApdNavLink to="/" variant="logo" >Apd Finder</ApdNavLink>
 			<div className={styles.centralLinks}>{renderCentralLinks()}</div>
 			<div className={styles.rightLinks}>{renderRightLinks()}</div>
 		</nav >

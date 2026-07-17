@@ -1,6 +1,6 @@
-import styles from "./APDLabelH3.module.css"
+import styles from "./ApdLabelH3.module.css"
 
-export default function APDLabelH3({ upper, lower }) {
+export default function ApdLabelH3({ upper, lower }) {
 	return (
 		<h3 className={styles.sectionHeading}>
 			<span className={styles.upper}>

@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom";
 
 import FormUserAccount from "../../FormUserAccount/FormUserAccount";
 import { registrarUsuario } from "../../../services/authService";
-import APDLabelH3 from "../../common/APDLabelH3/APDLabelH3";
-import APDSection from "../../common/APDSection/APDSection";
-import APDForm from "../../common/APDForm/APDForm";
+import ApdLabelH3 from "../../common/ApdLabelH3/ApdLabelH3";
+import ApdSection from "../../common/ApdSection/ApdSection";
+import ApdForm from "../../common/ApdForm/ApdForm";
 
 export default function SignUpPage() {
 
@@ -68,9 +68,9 @@ export default function SignUpPage() {
 
 	return (
 
-		<APDSection>
-			<APDLabelH3 upper="APD Finder" lower="Crear Usuario"
-			></APDLabelH3>
+		<ApdSection>
+			<ApdLabelH3 upper="Apd Finder" lower="Crear Usuario"
+			></ApdLabelH3>
 			<FormUserAccount
 				title="Crear cuenta"
 				submitText="Registrarse"
@@ -84,6 +84,6 @@ export default function SignUpPage() {
 
 			/>
 
-		</APDSection>
+		</ApdSection>
 	);
 }

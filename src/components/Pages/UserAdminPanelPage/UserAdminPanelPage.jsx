@@ -1,10 +1,10 @@
-import APDSection from "../../common/APDSection/APDSection";
-import APDLabelH3 from "../../common/APDLabelH3/APDLabelH3";
+import ApdSection from "../../common/ApdSection/ApdSection";
+import ApdLabelH3 from "../../common/ApdLabelH3/ApdLabelH3";
 import ApdPrettyP from "../../common/ApdPrettyP/ApdPrettyP";
-import APDDetailItem from "../../common/APDDetailItem/APDDetailItem"
-import APDButton from "../../common/APDButton/APDButton";
-import APDGrilla from "../../common/APDGrilla/APDGrilla";
-import APDDetailHeader from "../../common/APDDetailHeader/APDDetailHeader";
+import ApdDetailItem from "../../common/ApdDetailItem/ApdDetailItem"
+import ApdButton from "../../common/ApdButton/ApdButton";
+import ApdGrilla from "../../common/ApdGrilla/ApdGrilla";
+import ApdDetailHeader from "../../common/ApdDetailHeader/ApdDetailHeader";
 import styles from "./UserAdminPanelPage.module.css";
 
 
@@ -45,60 +45,60 @@ export default function UserAdminPanelPage() {
 
 	return (
 		<>
-			<APDSection>
-				<APDLabelH3 upper="Panel de administración" lower="Estadísticas generales" />
+			<ApdSection>
+				<ApdLabelH3 upper="Panel de administración" lower="Estadísticas generales" />
 
 				<ApdPrettyP>
 					Este panel reúne información general sobre el uso de la
 					plataforma. En futuras versiones permitirá administrar
 					usuarios, perfiles de búsqueda y alertas.
 				</ApdPrettyP>
-				<APDGrilla>
+				<ApdGrilla>
 					{estadisticas.map(([header, value]) => (
-						<APDDetailItem key={header}>
-							<APDDetailHeader>
+						<ApdDetailItem key={header}>
+							<ApdDetailHeader>
 								{header}
-							</APDDetailHeader>
+							</ApdDetailHeader>
 							<p className={styles.bigNumber}>
 								{value}
 							</p>
-						</APDDetailItem>
+						</ApdDetailItem>
 
 					))}
-				</APDGrilla>
-			</APDSection>
+				</ApdGrilla>
+			</ApdSection>
 
 
-			<APDSection>
-				<APDLabelH3 upper="Gestión comercial" lower="Promociones" />
+			<ApdSection>
+				<ApdLabelH3 upper="Gestión comercial" lower="Promociones" />
 
-				<APDGrilla>
+				<ApdGrilla>
 					{features.map(([promotionName, feature, duration]) => (
-						<APDDetailItem key={promotionName}>
-							<APDDetailHeader>
+						<ApdDetailItem key={promotionName}>
+							<ApdDetailHeader>
 								{promotionName}
-							</APDDetailHeader>
+							</ApdDetailHeader>
 							<ApdPrettyP>{feature}</ApdPrettyP>
 							<p className={styles.bigNumber}>
 								{duration} días
 							</p>
-							<p><APDButton variant="secondary">
+							<p><ApdButton variant="secondary">
 								Editar
-							</APDButton></p>
+							</ApdButton></p>
 							<p>
-								<APDButton variant="danger">
+								<ApdButton variant="danger">
 									Desactivar
-								</APDButton>
+								</ApdButton>
 							</p>
-						</APDDetailItem>
+						</ApdDetailItem>
 
 					))}
-				</APDGrilla>
-				<APDButton>
+				</ApdGrilla>
+				<ApdButton>
 					Nueva promoción
-				</APDButton>
+				</ApdButton>
 
-			</APDSection>
+			</ApdSection>
 		</>
 	);
 }

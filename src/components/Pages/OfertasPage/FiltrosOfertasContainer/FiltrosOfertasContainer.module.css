@@ -1,28 +1,10 @@
 .form {
-	display: flex;
-	flex-direction: column;
+
 	gap: 1.25rem;
-	padding: 1.4rem;
-	border-radius: 18px;
-	background:
-		linear-gradient(to bottom,
-			#f8efdd,
-			#ead8b8);
-	border: 1px solid #cfb894;
-	box-shadow:
-		0 4px 12px rgba(0, 0, 0, 0.08);
+	padding: 1.2rem;
 }
 
-.form h3 {
-	margin: 0;
-	font-family: "Albertus", serif;
-	font-size: 1.35rem;
-	color: #214c3d;
-	text-align: center;
-	padding-bottom: 0.8rem;
-	border-bottom:
-		1px solid rgba(33, 76, 61, 0.15);
-}
+.form h3 {}
 
 .field {
 	display: flex;
@@ -127,7 +109,7 @@
 }
 
 /* ----------------------------------------------- */
-.jardin {
+/* .jardin {
 	background: rgba(92, 181, 110, 0.20) !important;
 	color: #2e6b3e;
 }
@@ -145,4 +127,4 @@
 .terciario {
 	background: rgba(161, 117, 196, 0.20) !important;
 	color: #5f3f82;
-}
+} */

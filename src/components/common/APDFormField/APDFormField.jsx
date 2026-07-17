@@ -1,6 +1,6 @@
-import styles from "./APDFormField.module.css";
+import styles from "./ApdFormField.module.css";
 
-export default function APDFormField({
+export default function ApdFormField({
 	label,
 	htmlFor,
 	children,

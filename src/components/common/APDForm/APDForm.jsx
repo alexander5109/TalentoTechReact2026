@@ -1,6 +1,6 @@
-import styles from "./APDForm.module.css";
+import styles from "./ApdForm.module.css";
 
-export default function APDForm({
+export default function ApdForm({
 	children,
 	className = "",
 	...props

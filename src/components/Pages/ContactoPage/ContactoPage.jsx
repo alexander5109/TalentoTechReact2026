@@ -1,12 +1,12 @@
-import APDSection from "../../common/APDSection/APDSection";
-import APDLabelH3 from "../../common/APDLabelH3/APDLabelH3";
+import ApdSection from "../../common/ApdSection/ApdSection";
+import ApdLabelH3 from "../../common/ApdLabelH3/ApdLabelH3";
 import ApdPrettyP from "../../common/ApdPrettyP/ApdPrettyP";
 
 import Swal from "sweetalert2"
-import APDButton from "../../common/APDButton/APDButton";
-import APDFormField from "../../common/APDFormField/APDFormField";
-import APDForm from "../../common/APDForm/APDForm";
-import APDInput from "../../common/APDInput/APDInput";
+import ApdButton from "../../common/ApdButton/ApdButton";
+import ApdFormField from "../../common/ApdFormField/ApdFormField";
+import ApdForm from "../../common/ApdForm/ApdForm";
+import ApdInput from "../../common/ApdInput/ApdInput";
 
 export default function ContactoPage() {
 
@@ -26,9 +26,9 @@ export default function ContactoPage() {
 
 	return (
 		<>
-			<APDSection>
+			<ApdSection>
 
-				<APDLabelH3 upper="Contacto" lower="Realiza tu consulta"
+				<ApdLabelH3 upper="Contacto" lower="Realiza tu consulta"
 				/>
 
 				<ApdPrettyP>
@@ -37,7 +37,7 @@ export default function ContactoPage() {
 					para seguir mejorándolo. Si deseas realizar
 					una consulta, reportar un problema,
 					proponer una idea o simplemente compartir
-					tu experiencia utilizando APD Finder,
+					tu experiencia utilizando Apd Finder,
 					puedes hacerlo a través del siguiente
 					formulario.
 				</ApdPrettyP>
@@ -51,55 +51,55 @@ export default function ContactoPage() {
 				</ApdPrettyP>
 
 
-				<APDForm onSubmit={manejarSubmit}>
+				<ApdForm onSubmit={manejarSubmit}>
 
-					<APDFormField
+					<ApdFormField
 						label="Nombre"
 						htmlFor="nombre"
 					>
 
-						<APDInput
+						<ApdInput
 							id="nombre"
 							placeholder="Tu nombre"
 						/>
 
-					</APDFormField>
+					</ApdFormField>
 
-					<APDFormField
+					<ApdFormField
 						label="Email"
 						htmlFor="email"
 					>
 
-						<APDInput
+						<ApdInput
 							id="email"
 							type="email"
 							placeholder="tuemail@gmail.com"
 						/>
 
-					</APDFormField>
+					</ApdFormField>
 
-					<APDFormField
+					<ApdFormField
 						label="Mensaje"
 						htmlFor="mensaje"
 					>
 
-						<APDInput
+						<ApdInput
 							as="textarea"
 							id="mensaje"
 							rows={6}
 							placeholder="Escribe tu mensaje..."
 						/>
 
-					</APDFormField>
+					</ApdFormField>
 
-					<APDButton type="submit">
+					<ApdButton type="submit">
 						Enviar mensaje
-					</APDButton>
+					</ApdButton>
 
-				</APDForm>
+				</ApdForm>
 
 
-			</APDSection>
+			</ApdSection>
 		</>
 	)
 }

@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
-import styles from "./APDNavLink.module.css";
+import styles from "./ApdNavLink.module.css";
 
-export default function APDNavLink({
+export default function ApdNavLink({
 	to,
 	children,
 	variant,

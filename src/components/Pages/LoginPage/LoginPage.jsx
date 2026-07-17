@@ -2,16 +2,16 @@ import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
-import APDForm from "../../common/APDForm/APDForm";
-import APDInput from "../../common/APDInput/APDInput";
-import APDLabelH3 from "../../common/APDLabelH3/APDLabelH3";
-import APDSection from "../../common/APDSection/APDSection";
+import ApdForm from "../../common/ApdForm/ApdForm";
+import ApdInput from "../../common/ApdInput/ApdInput";
+import ApdLabelH3 from "../../common/ApdLabelH3/ApdLabelH3";
+import ApdSection from "../../common/ApdSection/ApdSection";
 import ApdPrettyP from "../../common/ApdPrettyP/ApdPrettyP";
-import APDButton from "../../common/APDButton/APDButton";
-import APDFormField from "../../common/APDFormField/APDFormField";
+import ApdButton from "../../common/ApdButton/ApdButton";
+import ApdFormField from "../../common/ApdFormField/ApdFormField";
 import ApdNavLink from "../../common/ApdNavLink/ApdNavLink";
 
-import APDFeedback from "../../common/APDFeedback/APDFeedback";
+import ApdFeedback from "../../common/ApdFeedback/ApdFeedback";
 
 export default function LoginPage() {
 
@@ -89,8 +89,8 @@ export default function LoginPage() {
 
 	return (
 
-		<APDSection>
-			<APDLabelH3 upper="APD Finder" lower="Iniciar sesión" />
+		<ApdSection>
+			<ApdLabelH3 upper="Apd Finder" lower="Iniciar sesión" />
 
 			<ApdPrettyP>
 				¿Todavía no tenés una cuenta?{" "}
@@ -98,13 +98,13 @@ export default function LoginPage() {
 					Crear usuario
 				</ApdNavLink>
 			</ApdPrettyP>
-			<APDForm onSubmit={handleLogin}>
+			<ApdForm onSubmit={handleLogin}>
 
-				<APDFormField
+				<ApdFormField
 					label="Correo electrónico"
 					htmlFor="email"
 				>
-					<APDInput
+					<ApdInput
 						id="email"
 						name="email"
 						type="email"
@@ -113,13 +113,13 @@ export default function LoginPage() {
 						onChange={(e) => setEmail(e.target.value)}
 						required
 					/>
-				</APDFormField>
+				</ApdFormField>
 
-				<APDFormField
+				<ApdFormField
 					label="Contraseña"
 					htmlFor="password"
 				>
-					<APDInput
+					<ApdInput
 						id="password"
 						name="password"
 						type="password"
@@ -128,22 +128,22 @@ export default function LoginPage() {
 						onChange={(e) => setPassword(e.target.value)}
 						required
 					/>
-				</APDFormField>
+				</ApdFormField>
 
-				<APDFeedback feedback={feedback} />
+				<ApdFeedback feedback={feedback} />
 
-				<APDButton
+				<ApdButton
 					type="submit"
 					disabled={loading}
 				>
 					{loading
 						? "Ingresando..."
 						: "Ingresar"}
-				</APDButton>
+				</ApdButton>
 
-			</APDForm>
+			</ApdForm>
 
-		</APDSection>
+		</ApdSection>
 
 	);
 

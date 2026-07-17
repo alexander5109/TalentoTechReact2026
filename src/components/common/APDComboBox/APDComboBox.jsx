@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 
-import styles from "./APDComboBox.module.css";
+import styles from "./ApdComboBox.module.css";
 
-export default function APDComboBox({
+export default function ApdComboBox({
 	widgetLabel,
 	value,
 	onChange,

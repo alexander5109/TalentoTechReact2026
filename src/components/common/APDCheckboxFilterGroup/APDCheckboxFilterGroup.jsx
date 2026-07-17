@@ -1,6 +1,6 @@
-import styles from "./APDCheckboxFilterGroup.module.css"
+import styles from "./ApdCheckboxFilterGroup.module.css"
 
-export default function APDCheckboxFilterGroup({
+export default function ApdCheckboxFilterGroup({
 	widgetLabel,
 	name,
 	value = [],

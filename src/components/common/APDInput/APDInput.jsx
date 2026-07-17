@@ -1,6 +1,6 @@
-import styles from "./APDInput.module.css";
+import styles from "./ApdInput.module.css";
 
-export default function APDInput({
+export default function ApdInput({
 	as = "input",
 	className = "",
 	...props

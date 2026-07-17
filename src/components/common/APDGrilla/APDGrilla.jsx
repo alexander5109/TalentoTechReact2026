@@ -1,6 +1,6 @@
-import styles from "./APDGrilla.module.css";
+import styles from "./ApdGrilla.module.css";
 
-export default function APDGrilla({
+export default function ApdGrilla({
 	children
 }) {
 	return (

@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import styles from "./FormUserAccount.module.css"
-import APDButton from '../common/APDButton/APDButton';
+import ApdButton from '../common/ApdButton/ApdButton';
 import AvatarPicker from "./AvatarPicker/AvatarPicker"
-import APDInput from '../common/APDInput/APDInput';
-import APDForm from '../common/APDForm/APDForm';
-import APDFormField from '../common/APDFormField/APDFormField';
-import APDFeedback from '../common/APDFeedback/APDFeedback';
-import APDSection from '../common/APDSection/APDSection';
-import APDLabelH3 from '../common/APDLabelH3/APDLabelH3';
+import ApdInput from '../common/ApdInput/ApdInput';
+import ApdForm from '../common/ApdForm/ApdForm';
+import ApdFormField from '../common/ApdFormField/ApdFormField';
+import ApdFeedback from '../common/ApdFeedback/ApdFeedback';
+import ApdSection from '../common/ApdSection/ApdSection';
+import ApdLabelH3 from '../common/ApdLabelH3/ApdLabelH3';
 
 
 export default function FormUserAccount({
@@ -98,13 +98,13 @@ export default function FormUserAccount({
 
 	};
 	return (
-		<APDForm onSubmit={handleSubmit}>
+		<ApdForm onSubmit={handleSubmit}>
 
-			<APDFormField
+			<ApdFormField
 				label="Correo electrónico"
 				htmlFor="email"
 			>
-				<APDInput
+				<ApdInput
 					id="email"
 					name="email"
 					type="email"
@@ -114,39 +114,39 @@ export default function FormUserAccount({
 					required
 					autoComplete="email"
 				/>
-			</APDFormField>
+			</ApdFormField>
 
-			<APDFormField
+			<ApdFormField
 				label="Nombre"
 				htmlFor="nombre"
 			>
-				<APDInput
+				<ApdInput
 					id="nombre"
 					name="nombre"
 					value={formData.nombre}
 					onChange={handleChange}
 					required
 				/>
-			</APDFormField>
+			</ApdFormField>
 
-			<APDFormField
+			<ApdFormField
 				label="Apellido"
 				htmlFor="apellido"
 			>
-				<APDInput
+				<ApdInput
 					id="apellido"
 					name="apellido"
 					value={formData.apellido}
 					onChange={handleChange}
 					required
 				/>
-			</APDFormField>
+			</ApdFormField>
 
-			<APDFormField
+			<ApdFormField
 				label="Contraseña"
 				htmlFor="password"
 			>
-				<APDInput
+				<ApdInput
 					id="password"
 					name="password"
 					type="password"
@@ -157,13 +157,13 @@ export default function FormUserAccount({
 					disabled={!editableEmailAndPassword}
 					required
 				/>
-			</APDFormField>
+			</ApdFormField>
 
-			<APDFormField
+			<ApdFormField
 				label="Confirmar Contraseña"
 				htmlFor="confirmPassword"
 			>
-				<APDInput
+				<ApdInput
 					id="confirmPassword"
 					name="confirmPassword"
 					type="password"
@@ -174,43 +174,43 @@ export default function FormUserAccount({
 					disabled={!editableEmailAndPassword}
 					required
 				/>
-			</APDFormField>
+			</ApdFormField>
 
-			<APDFormField
+			<ApdFormField
 				label="Título"
 				htmlFor="titulo"
 			>
-				<APDInput
+				<ApdInput
 					id="titulo"
 					name="titulo"
 					value={formData.titulo}
 					onChange={handleChange}
 				/>
-			</APDFormField>
+			</ApdFormField>
 
-			<APDFormField
+			<ApdFormField
 				label="Año de Egreso"
 				htmlFor="anioEgreso"
 			>
-				<APDInput
+				<ApdInput
 					id="anioEgreso"
 					name="anioEgreso"
 					value={formData.anioEgreso}
 					onChange={handleChange}
 				/>
-			</APDFormField>
+			</ApdFormField>
 
-			<APDFormField
+			<ApdFormField
 				label="Distrito local"
 				htmlFor="distrito"
 			>
-				<APDInput
+				<ApdInput
 					id="distrito"
 					name="distrito"
 					value={formData.distrito}
 					onChange={handleChange}
 				/>
-			</APDFormField>
+			</ApdFormField>
 
 			<AvatarPicker
 				file={formData.archivo}
@@ -218,15 +218,15 @@ export default function FormUserAccount({
 				onChange={handleImage}
 			/>
 
-			<APDFeedback feedback={feedbackLocal ?? feedback} />
+			<ApdFeedback feedback={feedbackLocal ?? feedback} />
 
-			<APDButton
+			<ApdButton
 				type="submit"
 				disabled={loading}
 			>
 				{loading ? "Procesando..." : submitText}
-			</APDButton>
+			</ApdButton>
 
-		</APDForm>
+		</ApdForm>
 	);
 };

@@ -10,7 +10,6 @@ import OfertaDetallePage from './components/Pages/OfertaDetallePage/OfertaDetall
 import LoginPage from "./components/Pages/LoginPage/LoginPage.jsx"
 import SignUpPage from "./components/Pages/SignUpPage/SignUpPage.jsx"
 // user pages
-import UserSearchProfilesPage from './components/Pages/UserSearchProfilesPage/UserSearchProfilesPage'
 import UserPendingPostulationsPage from './components/Pages/UserPendingPostulationsPage/UserPendingPostulationsPage'
 import UserAccountSettingsPage from './components/Pages/UserAccountSettingsPage/UserAccountSettingsPage.jsx'
 import UserAdminPanelPage from "./components/Pages/UserAdminPanelPage/UserAdminPanelPage.jsx"
@@ -25,7 +24,6 @@ export default function App() {
 				<Route path="/ofertas/:idOferta" element={<OfertaDetallePage />} />
 				<Route path="/about" element={<AboutPage />} />
 				<Route path="/contacto" element={<ContactoPage />} />
-				<Route path="/userSearchProfiles" element={<UserSearchProfilesPage />} />
 				<Route path="/userPendingPostulations" element={<UserPendingPostulationsPage />} />
 				<Route path="/iniciarSesion" element={<LoginPage />} />
 				<Route path="/crearUsuario" element={<SignUpPage />} />

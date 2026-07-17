@@ -1,5 +1,5 @@
-import APDFeedback from '../../../common/APDFeedback/APDFeedback'
-import OfertaList from '../OfertaList/OfertaList'
+import ApdFeedback from '../../../common/ApdFeedback/ApdFeedback'
+import OfertaList from './OfertaList/OfertaList'
 import styles from './OfertaListContainer.module.css'
 import { useEffect, useState } from 'react'
 
@@ -72,7 +72,7 @@ export default function OfertaListContainer({ filtros }) {
 					<h3>Cargando ofertas...</h3>
 				</div>
 			) : errorExcept ? (
-				<APDFeedback feedback={{
+				<ApdFeedback feedback={{
 					type: "error",
 					message: "No fue posible obtener las ofertas.",
 					error: errorExcept

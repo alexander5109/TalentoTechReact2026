@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import PropTypes from "prop-types";
 
-import styles from "./APDFeedback.module.css";
+import styles from "./ApdFeedback.module.css";
 
 const ICONS = {
 	error: "❌",
@@ -10,7 +10,7 @@ const ICONS = {
 	info: "ℹ️"
 };
 
-APDFeedback.propTypes = {
+ApdFeedback.propTypes = {
 	feedback: PropTypes.shape({
 
 		type: PropTypes.oneOf([
@@ -27,7 +27,7 @@ APDFeedback.propTypes = {
 	})
 };
 
-export default function APDFeedback({
+export default function ApdFeedback({
 	feedback = null
 }) {
 

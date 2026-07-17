@@ -1,7 +1,7 @@
 
-import styles from "./APDPanel.module.css";
+import styles from "./ApdPanel.module.css";
 
-export default function APDPanel({
+export default function ApdPanel({
 	children
 }) {
 	return (

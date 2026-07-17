@@ -1,4 +1,4 @@
-import APDLabelH3 from "../../../common/APDLabelH3/APDLabelH3";
+import ApdLabelH3 from "../../../common/ApdLabelH3/ApdLabelH3";
 
 import Swal from "sweetalert2"
 
@@ -7,12 +7,13 @@ import {
 } from "../../../../context/PendingPostulationsContext.jsx"
 
 import styles from "./OfertaDetalle.module.css"
-import APDLink from "../../../common/APDLink/APDLink.jsx";
-import APDButton from "../../../common/APDButton/APDButton.jsx";
-import APDDetailItem from "../../../common/APDDetailItem/APDDetailItem.jsx";
-import APDDetailHeader from "../../../common/APDDetailHeader/APDDetailHeader.jsx";
-import APDGrilla from "../../../common/APDGrilla/APDGrilla.jsx";
+import ApdLink from "../../../common/ApdLink/ApdLink.jsx";
+import ApdButton from "../../../common/ApdButton/ApdButton.jsx";
+import ApdDetailItem from "../../../common/ApdDetailItem/ApdDetailItem.jsx";
+import ApdDetailHeader from "../../../common/ApdDetailHeader/ApdDetailHeader.jsx";
+import ApdGrilla from "../../../common/ApdGrilla/ApdGrilla.jsx";
 import ApdPrettyP from "../../../common/ApdPrettyP/ApdPrettyP.jsx";
+import ApdH3 from "../../../common/ApdH3/ApdH3.jsx";
 
 export default function OfertaDetalle({ offer }) {
 
@@ -93,7 +94,7 @@ export default function OfertaDetalle({ offer }) {
 
 		<div className={styles.container}>
 			<div className={styles.header}>
-				<APDLabelH3 upper={offer.cargo} lower={offer.descripcioncargo} />
+				<ApdLabelH3 upper={offer.cargo} lower={offer.descripcioncargo} />
 				< img
 					src={cargoImage}
 					onError={
@@ -103,17 +104,17 @@ export default function OfertaDetalle({ offer }) {
 					className={styles.image}
 				/>
 			</div>
-			<APDGrilla>
+			<ApdGrilla>
 				{detalles.map(([header, value, variantClassName]) => (
-					<APDDetailItem
+					<ApdDetailItem
 						key={header}
 						variantClassName={variantClassName}
 					>
-						<APDDetailHeader>{header}</APDDetailHeader>
+						<ApdDetailHeader>{header}</ApdDetailHeader>
 						<ApdPrettyP>{value}</ApdPrettyP>
-					</APDDetailItem>
+					</ApdDetailItem>
 				))}
-			</APDGrilla>
+			</ApdGrilla>
 
 
 			{
@@ -121,7 +122,7 @@ export default function OfertaDetalle({ offer }) {
 
 					<div className={styles.section}>
 
-						<h3>Observaciones</h3>
+						<ApdH3>Observaciones</ApdH3>
 
 						<p>
 							{offer.observaciones}
@@ -134,22 +135,22 @@ export default function OfertaDetalle({ offer }) {
 
 			<div className={styles.actions}>
 
-				<APDLink to="/ofertas" >
+				<ApdLink to="/ofertas" >
 					Volver
-				</APDLink>
+				</ApdLink>
 
 				{
 					isAgregada ? (
 
-						<APDButton variant="danger" onClick={connectEliminarPostulacion}>
+						<ApdButton variant="danger" onClick={connectEliminarPostulacion}>
 							Quitar postulación
-						</APDButton>
+						</ApdButton>
 
 					) : (
 
-						<APDButton onClick={connectAgregarAPostulaciones} >
+						<ApdButton onClick={connectAgregarAPostulaciones} >
 							Agregar postulación
-						</APDButton>
+						</ApdButton>
 
 					)
 				}

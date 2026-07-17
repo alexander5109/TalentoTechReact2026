@@ -1,7 +1,7 @@
-import APDSurface from "../APDSurface/APDSurface";
-import styles from "./APDSection.module.css";
+import ApdSurface from "../ApdSurface/ApdSurface";
+import styles from "./ApdSection.module.css";
 
-export default function APDSection({
+export default function ApdSection({
 	children,
 	image = null,
 }) {
@@ -10,7 +10,7 @@ export default function APDSection({
 
 		<section>
 
-			<APDSurface
+			<ApdSurface
 				className={
 					image
 						? `${styles.container} ${imageRight ? styles.reverse : ""}`
@@ -36,7 +36,7 @@ export default function APDSection({
 					{children}
 				</div>
 
-			</APDSurface>
+			</ApdSurface>
 
 		</section>
 

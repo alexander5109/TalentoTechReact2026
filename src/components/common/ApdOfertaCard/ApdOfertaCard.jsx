@@ -1,10 +1,10 @@
 import Swal from 'sweetalert2'
-import { usePendingPostulations } from "../../../../context/PendingPostulationsContext.jsx"
-import styles from './OfertaCard.module.css'
-import APDButton from '../../../common/APDButton/APDButton.jsx'
-import APDLink from '../../../common/APDLink/APDLink.jsx'
+import { usePendingPostulations } from "../../../context/PendingPostulationsContext.jsx"
+import styles from './ApdOfertaCard.module.css'
+import ApdButton from '../ApdButton/ApdButton.jsx'
+import ApdLink from '../ApdLink/ApdLink.jsx'
 
-export default function OfertaCard({ offer }) {
+export default function ApdOfertaCard({ offer }) {
 	const estadoClase = (
 		offer.estado === "Publicada"
 			? styles.estadoPublicada
@@ -109,19 +109,19 @@ export default function OfertaCard({ offer }) {
 
 			<div className={styles.actions}>
 
-				<APDLink to={`/ofertas/${offer.idoferta}`}>
+				<ApdLink to={`/ofertas/${offer.idoferta}`}>
 					Detalles
-				</APDLink>
+				</ApdLink>
 
 				{
 					isAgregada ? (
-						<APDButton variant="danger" onClick={connectEliminarPostulacion} >
+						<ApdButton variant="danger" onClick={connectEliminarPostulacion} >
 							Quitar
-						</APDButton>
+						</ApdButton>
 					) : (
-						<APDButton onClick={connectAgregarAPostulaciones}>
+						<ApdButton onClick={connectAgregarAPostulaciones}>
 							Agregar
-						</APDButton>
+						</ApdButton>
 					)
 				}
 

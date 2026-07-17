@@ -1,12 +1,12 @@
-import OfertaCard from '../OfertaCard/OfertaCard'
+import ApdOfertaCard from '../../../../common/ApdOfertaCard/ApdOfertaCard'
 import styles from './OfertaList.module.css'
 
-export default function OfertaList({ofertas}) {
-	
+export default function OfertaList({ ofertas }) {
+
 	return (
 		<div className={styles.list}>
 			{ofertas.map(oferta => (
-				<OfertaCard
+				<ApdOfertaCard
 					key={oferta.idoferta}
 					offer={oferta}
 				/>

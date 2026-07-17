@@ -14,6 +14,17 @@
 	}
 }
 
+.borderedContent {
+	display: flex;
+	flex-direction: column;
+	border-radius: 18px;
+	background: linear-gradient(to bottom, #f8efdd, #ead8b8);
+	border: 1px solid #cfb894;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+	margin: 0.7rem;
+
+}
+
 .layout {
 	display: flex;
 	gap: 2rem;
@@ -21,12 +32,6 @@
 	margin: 2rem auto;
 	padding: 0 1rem;
 	align-items: flex-start;
-}
-
-.sidebar {
-	position: sticky;
-	top: 1rem;
-	flex: 0 0 320px;
 }
 
 .content {

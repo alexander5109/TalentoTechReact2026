@@ -1,6 +1,6 @@
-import styles from "./APDDetailItem.module.css";
+import styles from "./ApdDetailItem.module.css";
 
-export default function APDDetailItem({
+export default function ApdDetailItem({
 	children,
 	variantClassName = ""
 }) {
