@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-
+import ApdLabel from "../ApdLabel/ApdLabel"
 import styles from "./ApdComboBox.module.css";
 
 export default function ApdComboBox({
@@ -90,9 +90,7 @@ export default function ApdComboBox({
 			className={styles.container}
 		>
 
-			<label className={styles.widgetLabel}>
-				{widgetLabel}
-			</label>
+			<ApdLabel >{widgetLabel}</ApdLabel>
 
 			{
 				isOpen ? (

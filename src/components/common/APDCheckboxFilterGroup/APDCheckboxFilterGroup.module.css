@@ -1,30 +1,3 @@
-.container {
-	display: flex;
-	flex-direction: column;
-	gap: 0.5rem;
-}
-
-.widgetLabel {
-	font-family: "Albertus", serif;
-	font-size: 0.95rem;
-	color: #214c3d;
-}
-
-.options {
-	display: flex;
-	flex-direction: column;
-	gap: 0.55rem;
-}
-
-.option {
-	display: flex;
-	align-items: center;
-	gap: 0.6rem;
-	cursor: pointer;
-	font-size: 0.92rem;
-	color: #214c3d;
-}
-
 .option input[type="checkbox"] {
 	accent-color: #2e6e56;
 	cursor: pointer;

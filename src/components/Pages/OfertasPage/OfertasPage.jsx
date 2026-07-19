@@ -2,13 +2,14 @@ import { useState } from "react"
 import OfertaListContainer from "./OfertaListContainer/OfertaListContainer"
 import BusquedasContainer from "./BusquedasContainer/BusquedasContainer"
 import FiltrosOfertasContainer from "./FiltrosOfertasContainer/FiltrosOfertasContainer"
-import styles from "./OfertasPage.module.css"
 import { useAuth } from "../../../context/AuthContext";
 import { createProfile } from "../../../firebase/profileService";
 import ApdButton from "../../common/ApdButton/ApdButton";
 import ApdPrettyP from "../../common/ApdPrettyP/ApdPrettyP";
-import ApdLabelH3 from "../../common/ApdLabelH3/ApdLabelH3";
-import ApdSection from "../../common/ApdSection/ApdSection";
+import ApdH3TitleSubtitle from "../../common/ApdH3TitleSubtitle/ApdH3TitleSubtitle";
+import ApdH3 from "../../common/ApdH3/ApdH3";
+import ApdPanel from "../../common/ApdPanel/ApdPanel";
+import ApdContainer from "../../common/ApdContainer/ApdContainer"
 
 export default function OfertasPage() {
 	const { user } = useAuth();
@@ -112,29 +113,29 @@ export default function OfertasPage() {
 
 	}
 
-	return <>
-		<ApdSection>
-			<ApdLabelH3 lower="APD" upper="Actos Publicos Digitales" />
-			<nav className={styles.borderedContent}>
-				<BusquedasContainer
-					profiles={profiles}
-					selectedProfileId={selectedProfileId}
-					onSelectProfile={handleLoadProfile}
-					onSaveProfile={handleSaveCurrentFilters}
-					onDeleteProfile={handleDeleteProfile}
-				/>
-			</nav>
-		</ApdSection >
+	{/* <ApdH3TitleSubtitle lower="APD" upper="Actos Publicos Digitales" /> */ }
+	return <ApdContainer direction="row" >
 
-		<div className={styles.layout}>
-			<section style={{ flex: 1 }}>
-				<nav className={styles.borderedContent}>
-					<FiltrosOfertasContainer filtros={filtros} setFiltros={setFiltros} />
-				</nav>
-			</section>
-			<section style={{ flex: 2 }} >
-				<OfertaListContainer filtros={filtros} />
-			</section>
+		<ApdPanel as="nav" flex={1}>
+			<ApdH3>🔎 Mis búsquedas</ApdH3>
+			<BusquedasContainer
+				profiles={profiles}
+				selectedProfileId={selectedProfileId}
+				onSelectProfile={handleLoadProfile}
+				onSaveProfile={handleSaveCurrentFilters}
+				onDeleteProfile={handleDeleteProfile}
+			/>
+		</ApdPanel >
 
-		</div></>
+		<ApdPanel as="nav" flex={1}>
+			<ApdH3>🔎 Filtrar</ApdH3>
+			<FiltrosOfertasContainer filtros={filtros} setFiltros={setFiltros} />
+		</ApdPanel>
+
+		<ApdPanel as="section" flex={1}>
+			<ApdH3>🔎 Listado de Ofertas</ApdH3>
+			<OfertaListContainer filtros={filtros} />
+		</ApdPanel>
+
+	</ApdContainer>
 }

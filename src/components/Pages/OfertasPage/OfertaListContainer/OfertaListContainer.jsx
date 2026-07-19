@@ -1,5 +1,7 @@
+import ApdContainer from '../../../common/ApdContainer/ApdContainer'
 import ApdFeedback from '../../../common/ApdFeedback/ApdFeedback'
 import ApdH3 from '../../../common/ApdH3/ApdH3'
+import ApdPanel from '../../../common/ApdPanel/ApdPanel'
 import OfertaList from './OfertaList/OfertaList'
 import styles from './OfertaListContainer.module.css'
 import { useEffect, useState } from 'react'
@@ -67,11 +69,9 @@ export default function OfertaListContainer({ filtros }) {
 
 	})
 	return (
-		<>
-			{isLoading ? (
-				<div>
-					<ApdH3>Cargando ofertas...</ApdH3>
-				</div>
+		<ApdContainer className={styles.container}>{
+			isLoading ? (
+				<ApdH3> Cargando ofertas...</ApdH3 >
 			) : errorExcept ? (
 				<ApdFeedback feedback={{
 					type: "error",
@@ -80,10 +80,8 @@ export default function OfertaListContainer({ filtros }) {
 				}}
 				/>
 			) : (
-				<div className={styles.container}>
-					<OfertaList ofertas={ofertasFiltradas} />
-				</div>
+				<OfertaList ofertas={ofertasFiltradas} />
 			)}
-		</>
+		</ApdContainer >
 	);
 }

@@ -13,27 +13,37 @@ import SignUpPage from "./components/Pages/SignUpPage/SignUpPage.jsx"
 import UserPendingPostulationsPage from './components/Pages/UserPendingPostulationsPage/UserPendingPostulationsPage'
 import UserAccountSettingsPage from './components/Pages/UserAccountSettingsPage/UserAccountSettingsPage.jsx'
 import UserAdminPanelPage from "./components/Pages/UserAdminPanelPage/UserAdminPanelPage.jsx"
+import UserAdminPromotionCreatePage from "./components/Pages/UserAdminPromotionCreatePage/UserAdminPromotionCreatePage.jsx"
 
 
 export default function App() {
-	return (
-		<Routes>
-			<Route element={<LayoutGeneral />}>
-				<Route path="/" element={<HomePage />} />
-				<Route path="/ofertas" element={<OfertasPage />} />
-				<Route path="/ofertas/:idOferta" element={<OfertaDetallePage />} />
-				<Route path="/about" element={<AboutPage />} />
-				<Route path="/contacto" element={<ContactoPage />} />
-				<Route path="/userPendingPostulations" element={<UserPendingPostulationsPage />} />
-				<Route path="/iniciarSesion" element={<LoginPage />} />
-				<Route path="/crearUsuario" element={<SignUpPage />} />
-				<Route path="/userAccountSettings" element={<UserAccountSettingsPage />} />
-				<Route path="/userAdminPanel" element={
-					<RutaProtegida rolesPermitidos={['admin']}>
-						<UserAdminPanelPage />
-					</RutaProtegida>
-				} />
-			</Route>
-		</Routes>
-	)
+	return <Routes>
+		<Route element={<LayoutGeneral />}>
+			<Route path="/" element={<HomePage />} />
+			<Route path="/ofertas" element={<OfertasPage />} />
+			<Route path="/ofertas/:idOferta" element={<OfertaDetallePage />} />
+			<Route path="/about" element={<AboutPage />} />
+			<Route path="/contacto" element={<ContactoPage />} />
+			<Route path="/userPendingPostulations" element={<UserPendingPostulationsPage />} />
+			<Route path="/iniciarSesion" element={<LoginPage />} />
+			<Route path="/crearUsuario" element={<SignUpPage />} />
+			<Route path="/userAccountSettings" element={<UserAccountSettingsPage />} />
+			<Route path="/userAdminNewPromotion" element={
+				<RutaProtegida rolesPermitidos={['admin']}>
+					<UserAdminPromotionCreatePage />
+				</RutaProtegida>
+			} />
+			<Route path="/userAdminNewPromotion/:promotionId" element={
+				<RutaProtegida rolesPermitidos={["admin"]}>
+					<UserAdminPromotionCreatePage />
+				</RutaProtegida>
+			}
+			/>
+			<Route path="/userAdminPanel" element={
+				<RutaProtegida rolesPermitidos={['admin']}>
+					<UserAdminPanelPage />
+				</RutaProtegida>
+			} />
+		</Route>
+	</Routes>
 }

@@ -1,5 +1,5 @@
-import ApdSection from "../../common/ApdSection/ApdSection";
-import ApdLabelH3 from "../../common/ApdLabelH3/ApdLabelH3";
+import ApdPanel from "../../common/ApdPanel/ApdPanel";
+import ApdH3TitleSubtitle from "../../common/ApdH3TitleSubtitle/ApdH3TitleSubtitle";
 import ApdPrettyP from "../../common/ApdPrettyP/ApdPrettyP";
 import ApdDetailItem from "../../common/ApdDetailItem/ApdDetailItem"
 import ApdButton from "../../common/ApdButton/ApdButton";
@@ -8,6 +8,8 @@ import ApdDetailHeader from "../../common/ApdDetailHeader/ApdDetailHeader";
 import styles from "./UserAdminPanelPage.module.css";
 import { useEffect, useState } from "react";
 import { getPromotions } from "../../../firebase/promotionsService";
+import { Link } from "react-router-dom";
+import ApdContainer from "../../common/ApdContainer/ApdContainer";
 
 const PROMOTION_TYPES = {
 	ALERT_LIMIT: "Más alertas",
@@ -21,7 +23,6 @@ function puedeCrearAlerta(usuario) {
 }
 
 export default function UserAdminPanelPage() {
-
 	// feature: nombre promocion, feature, duration
 	const featureNames = {
 		alerts_3: "Hasta 3 alertas",
@@ -51,96 +52,89 @@ export default function UserAdminPanelPage() {
 		["💸 Cupones aplicados", 63],
 	];
 
-	return (
-		<>
-			<ApdSection>
-				<ApdLabelH3 upper="Panel de administración" lower="Estadísticas generales" />
+	return <>
+		<ApdPanel as="section">
+			<ApdH3TitleSubtitle upper="Panel de administración" lower="Estadísticas generales" />
 
-				<ApdPrettyP>
-					Este panel reúne información general sobre el uso de la
-					plataforma. En futuras versiones permitirá administrar
-					usuarios, perfiles de búsqueda y alertas.
-				</ApdPrettyP>
-				<ApdGrilla>
-					{estadisticas.map(([header, value]) => (
-						<ApdDetailItem key={header}>
-							<ApdDetailHeader>
-								{header}
-							</ApdDetailHeader>
-							<p className={styles.bigNumber}>
-								{value}
-							</p>
-						</ApdDetailItem>
+			<ApdPrettyP>
+				Este panel reúne información general sobre el uso de la
+				plataforma. En futuras versiones permitirá administrar
+				usuarios, perfiles de búsqueda y alertas.
+			</ApdPrettyP>
+			<ApdGrilla>
+				{estadisticas.map(([header, value]) => (
+					<ApdDetailItem key={header}>
+						<ApdDetailHeader>
+							{header}
+						</ApdDetailHeader>
+						<p className={styles.bigNumber}>
+							{value}
+						</p>
+					</ApdDetailItem>
 
-					))}
-				</ApdGrilla>
-			</ApdSection>
+				))}
+			</ApdGrilla>
+		</ApdPanel>
 
 
-			<ApdSection>
-				<ApdLabelH3 upper="Gestión comercial" lower="Promociones" />
+		<ApdPanel as="section">
+			<ApdH3TitleSubtitle upper="Gestión comercial" lower="Promociones" />
 
-				<ApdGrilla>
+			<ApdGrilla>
 
-					{promotions.map(promotion => (
+				{promotions.map(promotion => (
 
-						<ApdDetailItem key={promotion.id}>
+					<ApdDetailItem key={promotion.id}>
 
-							<ApdDetailHeader>
-								🎁 {promotion.nombre}
-							</ApdDetailHeader>
+						<ApdDetailHeader>
+							🎁 {promotion.nombre}
+						</ApdDetailHeader>
 
-							<ApdPrettyP>
-								{promotion.descripcion}
-							</ApdPrettyP>
+						<ApdPrettyP>
+							{promotion.descripcion}
+						</ApdPrettyP>
 
-							<p>
-								<strong>Código:</strong> {promotion.codigo}
-							</p>
+						<p>
+							<strong>Código:</strong> {promotion.codigo}
+						</p>
 
-							<p>
-								<strong>Duración:</strong> {promotion.duracionDias} días
-							</p>
+						<p>
+							<strong>Duración:</strong> {promotion.duracionDias} días
+						</p>
 
-							<p>
-								<strong>Estado:</strong>{" "}
-								{promotion.activa ? "🟢 Activa" : "⚫ Desactivada"}
-							</p>
+						<p>
+							<strong>Estado:</strong>{" "}
+							{promotion.activa ? "🟢 Activa" : "⚫ Desactivada"}
+						</p>
 
-							<p>
-								<strong>Incluye:</strong>
-							</p>
+						<p>
+							<strong>Incluye:</strong>
+						</p>
 
-							<ul>
-								{promotion.features?.map(feature => (
-									<li key={feature}>
-										{featureNames[feature] ?? feature}
-									</li>
-								))}
-							</ul>
-
-							<div className={styles.actions}>
-
+						<ul>
+							{promotion.features?.map(feature => (
+								<li key={feature}>
+									{featureNames[feature] ?? feature}
+								</li>
+							))}
+						</ul>
+						<ApdContainer direction="row">
+							<Link to={`/userAdminNewPromotion/${promotion.id}`}>
 								<ApdButton variant="secondary">
 									Editar
 								</ApdButton>
+							</Link>
+						</ApdContainer>
+					</ApdDetailItem>
 
-								<ApdButton variant="danger">
-									Desactivar
-								</ApdButton>
+				))}
 
-							</div>
+			</ApdGrilla>
+			<Link variant="primary" to="/userAdminNewPromotion">
+				<ApdButton variant="primary" > Nueva promoción</ApdButton>
+			</Link>
 
-						</ApdDetailItem>
 
-					))}
-
-				</ApdGrilla>
-				<ApdButton>
-					Nueva promoción
-				</ApdButton>
-
-			</ApdSection >
-		</>
-	);
+		</ApdPanel >
+	</>
 }

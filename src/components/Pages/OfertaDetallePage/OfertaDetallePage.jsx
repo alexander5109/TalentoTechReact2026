@@ -12,7 +12,7 @@ export default function OfertaDetallePage() {
 		fetch("/data/ofertas.json")
 			.then((respuesta) => respuesta.json())
 			.then((data) => {
-				const ofertaEncontrada = data.find((item) => item.idoferta.toString() === idOferta )
+				const ofertaEncontrada = data.find((item) => item.idoferta.toString() === idOferta)
 				setOferta(ofertaEncontrada)
 			})
 			.finally(() => {
@@ -29,7 +29,5 @@ export default function OfertaDetallePage() {
 		return <h2>No se encontró la oferta</h2>
 	}
 
-	return (
-		<OfertaDetalle offer={oferta} />
-	)
+	return <OfertaDetalle offer={oferta} />
 }

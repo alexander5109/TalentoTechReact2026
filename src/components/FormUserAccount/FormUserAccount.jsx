@@ -4,10 +4,11 @@ import ApdButton from '../common/ApdButton/ApdButton';
 import AvatarPicker from "./AvatarPicker/AvatarPicker"
 import ApdInput from '../common/ApdInput/ApdInput';
 import ApdForm from '../common/ApdForm/ApdForm';
-import ApdFormField from '../common/ApdFormField/ApdFormField';
 import ApdFeedback from '../common/ApdFeedback/ApdFeedback';
-import ApdSection from '../common/ApdSection/ApdSection';
-import ApdLabelH3 from '../common/ApdLabelH3/ApdLabelH3';
+import ApdPanel from '../common/ApdPanel/ApdPanel';
+import ApdH3TitleSubtitle from '../common/ApdH3TitleSubtitle/ApdH3TitleSubtitle';
+import ApdContainer from '../common/ApdContainer/ApdContainer';
+import ApdLabel from '../common/ApdLabel/ApdLabel';
 
 
 export default function FormUserAccount({
@@ -99,11 +100,8 @@ export default function FormUserAccount({
 	};
 	return (
 		<ApdForm onSubmit={handleSubmit}>
-
-			<ApdFormField
-				label="Correo electrónico"
-				htmlFor="email"
-			>
+			<ApdContainer>
+				<ApdLabel htmlFor="email">Correo electrónico</ApdLabel>
 				<ApdInput
 					id="email"
 					name="email"
@@ -114,12 +112,10 @@ export default function FormUserAccount({
 					required
 					autoComplete="email"
 				/>
-			</ApdFormField>
+			</ApdContainer>
 
-			<ApdFormField
-				label="Nombre"
-				htmlFor="nombre"
-			>
+			<ApdContainer>
+				<ApdLabel htmlFor="nombre">Nombre</ApdLabel>
 				<ApdInput
 					id="nombre"
 					name="nombre"
@@ -127,12 +123,10 @@ export default function FormUserAccount({
 					onChange={handleChange}
 					required
 				/>
-			</ApdFormField>
+			</ApdContainer>
 
-			<ApdFormField
-				label="Apellido"
-				htmlFor="apellido"
-			>
+			<ApdContainer>
+				<ApdLabel htmlFor="apellido">Apellido</ApdLabel>
 				<ApdInput
 					id="apellido"
 					name="apellido"
@@ -140,12 +134,10 @@ export default function FormUserAccount({
 					onChange={handleChange}
 					required
 				/>
-			</ApdFormField>
+			</ApdContainer>
 
-			<ApdFormField
-				label="Contraseña"
-				htmlFor="password"
-			>
+			<ApdContainer>
+				<ApdLabel htmlFor="password">Contraseña</ApdLabel>
 				<ApdInput
 					id="password"
 					name="password"
@@ -157,12 +149,10 @@ export default function FormUserAccount({
 					disabled={!editableEmailAndPassword}
 					required
 				/>
-			</ApdFormField>
+			</ApdContainer>
 
-			<ApdFormField
-				label="Confirmar Contraseña"
-				htmlFor="confirmPassword"
-			>
+			<ApdContainer>
+				<ApdLabel htmlFor="confirmPassword">Confirmar Contraseña</ApdLabel>
 				<ApdInput
 					id="confirmPassword"
 					name="confirmPassword"
@@ -174,43 +164,37 @@ export default function FormUserAccount({
 					disabled={!editableEmailAndPassword}
 					required
 				/>
-			</ApdFormField>
+			</ApdContainer>
 
-			<ApdFormField
-				label="Título"
-				htmlFor="titulo"
-			>
+			<ApdContainer>
+				<ApdLabel htmlFor="titulo">Título</ApdLabel>
 				<ApdInput
 					id="titulo"
 					name="titulo"
 					value={formData.titulo}
 					onChange={handleChange}
 				/>
-			</ApdFormField>
+			</ApdContainer>
 
-			<ApdFormField
-				label="Año de Egreso"
-				htmlFor="anioEgreso"
-			>
+			<ApdContainer>
+				<ApdLabel htmlFor="anioEgreso">Año de Egreso</ApdLabel>
 				<ApdInput
 					id="anioEgreso"
 					name="anioEgreso"
 					value={formData.anioEgreso}
 					onChange={handleChange}
 				/>
-			</ApdFormField>
+			</ApdContainer>
 
-			<ApdFormField
-				label="Distrito local"
-				htmlFor="distrito"
-			>
+			<ApdContainer>
+				<ApdLabel htmlFor="distrito">Distrito local</ApdLabel>
 				<ApdInput
 					id="distrito"
 					name="distrito"
 					value={formData.distrito}
 					onChange={handleChange}
 				/>
-			</ApdFormField>
+			</ApdContainer>
 
 			<AvatarPicker
 				file={formData.archivo}
@@ -227,6 +211,6 @@ export default function FormUserAccount({
 				{loading ? "Procesando..." : submitText}
 			</ApdButton>
 
-		</ApdForm>
+		</ApdForm >
 	);
 };

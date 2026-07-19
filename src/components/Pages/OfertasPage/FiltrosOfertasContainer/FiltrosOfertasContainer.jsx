@@ -3,6 +3,8 @@ import ApdCheckboxFilterGroup from "../../../common/ApdCheckboxFilterGroup/ApdCh
 import ApdRadioFilterGroup from "../../../common/ApdRadioFilterGroup/ApdRadioFilterGroup";
 import ApdComboBox from "../../../common/ApdComboBox/ApdComboBox";
 import ApdH3 from "../../../common/ApdH3/ApdH3";
+import ApdContainer from '../../../common/ApdContainer/ApdContainer';
+import ApdForm from '../../../common/ApdForm/ApdForm';
 
 
 export default function FiltrosOfertasContainer({
@@ -16,59 +18,48 @@ export default function FiltrosOfertasContainer({
 			[name]: value
 		})
 	}
-	return (
-		<form className={styles.form}>
-			<ApdH3>Filtrar Ofertas</ApdH3>
-			<div style={{ display: "flex" }}>
-				<ApdCheckboxFilterGroup
-					widgetLabel="Estados:"
-					name="estados"
-					value={filtros.estados}
-					onChange={manejarCambio}
-					options={ESTADOS}
-				/>
+	return <ApdForm>
+		<ApdContainer direction="row" wrap="wrap" gap="2rem">
+			<ApdCheckboxFilterGroup
+				widgetLabel="Estados:"
+				name="estados"
+				value={filtros.estados}
+				onChange={manejarCambio}
+				options={ESTADOS}
+			/>
+			<ApdCheckboxFilterGroup
+				widgetLabel="Distritos:"
+				name="distritos"
+				value={filtros.distritos}
+				onChange={manejarCambio}
+				options={DISTRITOS}
+			/>
+			<ApdCheckboxFilterGroup
+				widgetLabel="Turnos:"
+				name="turnos"
+				value={filtros.turnos}
+				onChange={manejarCambio}
+				options={TURNOS}
+			/>
+			<ApdCheckboxFilterGroup
+				widgetLabel="Niveles:"
+				name="niveles"
+				value={filtros.niveles}
+				onChange={manejarCambio}
+				options={NIVELES}
+			/>
 
-				<ApdCheckboxFilterGroup
-					widgetLabel="Distritos:"
-					name="distritos"
-					value={filtros.distritos}
-					onChange={manejarCambio}
-					options={DISTRITOS}
-				/>
-			</div>
-			<div style={{ display: "flex" }}>
-
-				<ApdCheckboxFilterGroup
-					widgetLabel="Turnos:"
-					name="turnos"
-					value={filtros.turnos}
-					onChange={manejarCambio}
-					options={TURNOS}
-				/>
-
-				<ApdCheckboxFilterGroup
-					widgetLabel="Niveles:"
-					name="niveles"
-					value={filtros.niveles}
-					onChange={manejarCambio}
-					options={NIVELES}
-				/>
-
-			</div>
-			<div>
+			<ApdCheckboxFilterGroup
+				widgetLabel="Cargos:"
+				name="cargos"
+				value={filtros.cargos}
+				onChange={manejarCambio}
+				options={CARGOS}
+			/>
+		</ApdContainer>
 
 
-				<ApdCheckboxFilterGroup
-					widgetLabel="Cargos:"
-					name="cargos"
-					value={filtros.cargos}
-					onChange={manejarCambio}
-					options={CARGOS}
-				/>
-
-			</div>
-		</form >
-	)
+	</ApdForm>
 }
 
 

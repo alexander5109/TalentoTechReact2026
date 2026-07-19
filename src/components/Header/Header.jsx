@@ -1,5 +1,5 @@
 import styles from "./Header.module.css"
-import ApdLabelH1 from "../common/ApdLabelH1/ApdLabelH1"
+import ApdH1TitleSubtitle from "../common/ApdH1TitleSubtitle/ApdH1TitleSubtitle"
 import { useLocation } from "react-router-dom"
 
 export default function Header() {
@@ -31,7 +31,7 @@ export default function Header() {
 
 	return (
 		<header className={styles.header}>
-			<ApdLabelH1
+			<ApdH1TitleSubtitle
 				upper="Buscador de Actos Públicos Digitales"
 				// upper="Mis Actos Públicos Digitales"
 				lower={subtitle}

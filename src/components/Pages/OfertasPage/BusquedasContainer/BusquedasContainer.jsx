@@ -3,21 +3,15 @@ import ApdComboBox from "../../../common/ApdComboBox/ApdComboBox";
 import ApdH3 from "../../../common/ApdH3/ApdH3";
 import { useState, useEffect } from "react";
 
-import styles from "./BusquedasContainer.module.css";
+import ApdContainer from "../../../common/ApdContainer/ApdContainer";
 
 
 export default function BusquedasContainer({
-
 	profiles = [],
-
 	selectedProfileId,
-
 	onSelectProfile,
-
 	onSaveProfile,
-
 	onDeleteProfile
-
 }) {
 
 
@@ -70,14 +64,7 @@ export default function BusquedasContainer({
 
 	return (
 
-		<div className={styles.container}>
-
-
-			<ApdH3>
-				🔎 Mis búsquedas
-			</ApdH3>
-
-
+		<ApdContainer direction="column">
 			<ApdComboBox
 
 				value={selectedProfileId}
@@ -100,7 +87,7 @@ export default function BusquedasContainer({
 				/>
 			))
 			}</>
-			<div className={styles.actionsContainer} >
+			<ApdContainer >
 
 				<ApdButton
 					disabled={!hasChanges}
@@ -122,11 +109,12 @@ export default function BusquedasContainer({
 				<ApdButton
 					onClick={onDeleteProfile}
 					variant="danger"
+					disabled={selectedProfile == null}
 				>
 					🔖 Eliminar perfil
 				</ApdButton>
-			</div>
-		</div >
+			</ApdContainer>
+		</ApdContainer >
 
 	)
 

@@ -51,15 +51,6 @@
 	border-radius: 999px;
 }
 
-.actionsContainer {
-	display: flex;
-	flex-direction: column;
-	gap: 0.5rem;
-	flex-shrink: 0;
-}
-
-
-
 
 .estadoPublicada {
 	background:

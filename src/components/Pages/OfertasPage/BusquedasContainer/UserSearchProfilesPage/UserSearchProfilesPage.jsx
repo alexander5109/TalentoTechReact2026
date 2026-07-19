@@ -1,5 +1,5 @@
-import ApdSection from "../../../../common/ApdSection/ApdSection";
-import ApdLabelH3 from "../../../../common/ApdLabelH3/ApdLabelH3";
+import ApdPanel from "../../../../common/ApdPanel/ApdPanel";
+import ApdH3TitleSubtitle from "../../../../common/ApdH3TitleSubtitle/ApdH3TitleSubtitle";
 import SearchProfileForm from "./SearchProfileForm/SearchProfileForm";
 import styles from "./UserSearchProfilesPage.module.css"
 import { useState, useEffect } from "react";
@@ -16,17 +16,12 @@ export default function UserSearchProfilesPage() {
 	// -------------------------- handlers------------------------------- //
 
 	// -------------------------- ok content------------------------------- //
-	return <ApdSection>
+	return <ApdPanel as="section">
 
-		<ApdLabelH3
-			upper="Perfiles de búsqueda"
-			lower="Guarde sus filtros para reutilizarlos rápidamente."
-		/>
+		<ApdH3TitleSubtitle upper="Perfiles de búsqueda" lower="Guarde sus filtros para reutilizarlos rápidamente." />
 
 		{loading ? (
-
 			<ApdPrettyP>Cargando perfiles...</ApdPrettyP>
-
 		) : (
 
 
@@ -82,5 +77,5 @@ export default function UserSearchProfilesPage() {
 
 		)}
 
-	</ApdSection>
+	</ApdPanel>
 }

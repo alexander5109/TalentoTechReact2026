@@ -1,4 +1,4 @@
-import ApdLabelH3 from "../../../common/ApdLabelH3/ApdLabelH3";
+import ApdH3TitleSubtitle from "../../../common/ApdH3TitleSubtitle/ApdH3TitleSubtitle";
 
 import Swal from "sweetalert2"
 
@@ -14,6 +14,8 @@ import ApdDetailHeader from "../../../common/ApdDetailHeader/ApdDetailHeader.jsx
 import ApdGrilla from "../../../common/ApdGrilla/ApdGrilla.jsx";
 import ApdPrettyP from "../../../common/ApdPrettyP/ApdPrettyP.jsx";
 import ApdH3 from "../../../common/ApdH3/ApdH3.jsx";
+import ApdContainer from "../../../common/ApdContainer/ApdContainer.jsx";
+import ApdPanel from "../../../common/ApdPanel/ApdPanel.jsx";
 
 export default function OfertaDetalle({ offer }) {
 
@@ -90,73 +92,70 @@ export default function OfertaDetalle({ offer }) {
 		})
 	}
 
-	return (
+	return <ApdPanel>
+		<div className={styles.header}>
+			<ApdH3TitleSubtitle upper={offer.cargo} lower={offer.descripcioncargo} />
+			< img
+				src={cargoImage}
+				onError={
+					(e) => { e.target.src = "/images/docente.jpg" }
+				}
+				alt={offer.cargo}
+				className={styles.image}
+			/>
+		</div>
+		<ApdGrilla>
+			{detalles.map(([header, value, variantClassName]) => (
+				<ApdDetailItem
+					key={header}
+					variantClassName={variantClassName}
+				>
+					<ApdDetailHeader>{header}</ApdDetailHeader>
+					<ApdPrettyP>{value}</ApdPrettyP>
+				</ApdDetailItem>
+			))}
+		</ApdGrilla>
 
-		<div className={styles.container}>
-			<div className={styles.header}>
-				<ApdLabelH3 upper={offer.cargo} lower={offer.descripcioncargo} />
-				< img
-					src={cargoImage}
-					onError={
-						(e) => { e.target.src = "/images/docente.jpg" }
-					}
-					alt={offer.cargo}
-					className={styles.image}
-				/>
-			</div>
-			<ApdGrilla>
-				{detalles.map(([header, value, variantClassName]) => (
-					<ApdDetailItem
-						key={header}
-						variantClassName={variantClassName}
-					>
-						<ApdDetailHeader>{header}</ApdDetailHeader>
-						<ApdPrettyP>{value}</ApdPrettyP>
-					</ApdDetailItem>
-				))}
-			</ApdGrilla>
 
+		{
+			offer.observaciones && (
+
+				<div className={styles.section}>
+
+					<ApdH3>Observaciones</ApdH3>
+
+					<p>
+						{offer.observaciones}
+					</p>
+
+				</div>
+			)
+		}
+
+
+		<ApdContainer>
+
+			<ApdLink to="/ofertas" >
+				Volver
+			</ApdLink>
 
 			{
-				offer.observaciones && (
+				isAgregada ? (
 
-					<div className={styles.section}>
+					<ApdButton variant="danger" onClick={connectEliminarPostulacion}>
+						Quitar postulación
+					</ApdButton>
 
-						<ApdH3>Observaciones</ApdH3>
+				) : (
 
-						<p>
-							{offer.observaciones}
-						</p>
+					<ApdButton onClick={connectAgregarAPostulaciones} >
+						Agregar postulación
+					</ApdButton>
 
-					</div>
 				)
 			}
 
+		</ApdContainer>
 
-			<div className={styles.actionsContainer}>
-
-				<ApdLink to="/ofertas" >
-					Volver
-				</ApdLink>
-
-				{
-					isAgregada ? (
-
-						<ApdButton variant="danger" onClick={connectEliminarPostulacion}>
-							Quitar postulación
-						</ApdButton>
-
-					) : (
-
-						<ApdButton onClick={connectAgregarAPostulaciones} >
-							Agregar postulación
-						</ApdButton>
-
-					)
-				}
-
-			</div>
-
-		</div >
-	)
+	</ApdPanel >
 }

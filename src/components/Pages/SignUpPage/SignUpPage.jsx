@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 
 import FormUserAccount from "../../FormUserAccount/FormUserAccount";
 import { registrarUsuario } from "../../../services/authService";
-import ApdLabelH3 from "../../common/ApdLabelH3/ApdLabelH3";
-import ApdSection from "../../common/ApdSection/ApdSection";
+import ApdH3TitleSubtitle from "../../common/ApdH3TitleSubtitle/ApdH3TitleSubtitle";
+import ApdPanel from "../../common/ApdPanel/ApdPanel";
 import ApdForm from "../../common/ApdForm/ApdForm";
 
 export default function SignUpPage() {
@@ -66,24 +66,20 @@ export default function SignUpPage() {
 
 	}
 
-	return (
+	return <ApdPanel as="section">
+		<ApdH3TitleSubtitle upper="Apd Finder" lower="Crear Usuario"></ApdH3TitleSubtitle>
+		<FormUserAccount
+			title="Crear cuenta"
+			submitText="Registrarse"
+			initialData={{}}
+			showPasswordFields={true}
+			loading={loading}
+			feedback={feedback}
+			onFeedbackClear={() => setFeedback(null)}
+			editableEmailAndPassword={true}
+			onSubmit={handleRegister}
 
-		<ApdSection>
-			<ApdLabelH3 upper="Apd Finder" lower="Crear Usuario"
-			></ApdLabelH3>
-			<FormUserAccount
-				title="Crear cuenta"
-				submitText="Registrarse"
-				initialData={{}}
-				showPasswordFields={true}
-				loading={loading}
-				feedback={feedback}
-				onFeedbackClear={() => setFeedback(null)}
-				editableEmailAndPassword={true}
-				onSubmit={handleRegister}
+		/>
 
-			/>
-
-		</ApdSection>
-	);
+	</ApdPanel>
 }

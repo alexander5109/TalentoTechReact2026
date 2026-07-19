@@ -1,3 +1,5 @@
+import ApdContainer from "../ApdContainer/ApdContainer"
+import ApdLabel from "../ApdLabel/ApdLabel"
 import styles from "./ApdCheckboxFilterGroup.module.css"
 
 export default function ApdCheckboxFilterGroup({
@@ -20,34 +22,20 @@ export default function ApdCheckboxFilterGroup({
 		})
 
 	}
-	return <div className={styles.container}>
-		<label className={styles.widgetLabel}>
-			{widgetLabel}
-		</label>
-		<div className={styles.options}>
-			{
-				options.map(option => (
-					<label
-						key={option.value}
-						className={styles.option}
-					>
-						<input
-							type="checkbox"
-							checked={
-								value.includes(option.value)
-							}
-							onChange={() =>
-								manejarCheck(option.value)
-							}
-						/>
-						<span
-							className={option.className || ""}
-						>
-							{option.label}
-						</span>
-					</label>
-				))
-			}
-		</div>
-	</div>
+	return <ApdContainer direction="column">
+		<ApdLabel >{widgetLabel}</ApdLabel>
+		<ApdContainer >{
+			options.map(option => (
+				<ApdLabel key={option.value} className={styles.option} >
+					<input
+						type="checkbox"
+						checked={value.includes(option.value)}
+						onChange={() => manejarCheck(option.value)}
+					/>
+					<span className={option.className || ""} > {option.label} </span>
+				</ApdLabel>
+			))
+		}
+		</ApdContainer>
+	</ApdContainer>
 }

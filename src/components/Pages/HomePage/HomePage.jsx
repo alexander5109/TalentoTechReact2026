@@ -1,17 +1,17 @@
 import ApdPrettyP from "../../common/ApdPrettyP/ApdPrettyP";
-import ApdLabelH3 from "../../common/ApdLabelH3/ApdLabelH3";
-import ApdSection from "../../common/ApdSection/ApdSection";
+import ApdH3TitleSubtitle from "../../common/ApdH3TitleSubtitle/ApdH3TitleSubtitle";
+import ApdPanel from "../../common/ApdPanel/ApdPanel";
 
 export default function HomePage() {
 	return (
 		<>
-			<ApdSection image={{
+			<ApdPanel image={{
 				src: "/images/apd1.jpg",
 				alt: "Actos Publicos Digitales",
 				imageSide: "left"
 			}}
 			>
-				<ApdLabelH3 upper="Contexto" lower="¿Qué son los Apd?" />
+				<ApdH3TitleSubtitle upper="Contexto" lower="¿Qué son los Apd?" />
 
 				<ApdPrettyP>
 					Los Actos Públicos Digitales (Apd) son el
@@ -29,16 +29,16 @@ export default function HomePage() {
 					disponibles según su formación, puntaje y
 					situación laboral.
 				</ApdPrettyP>
-			</ApdSection >
+			</ApdPanel >
 
 
-			<ApdSection image={{
+			<ApdPanel image={{
 				src: "/images/apd2.jpg",
 				alt: "Actos Publicos Digitales 2",
 				imageSide: "right"
 			}}
 			>
-				<ApdLabelH3 upper="La dificultad" lower="Un sistema útil, pero muy tedioso"
+				<ApdH3TitleSubtitle upper="La dificultad" lower="Un sistema útil, pero muy tedioso"
 				/>
 
 				<ApdPrettyP>
@@ -60,17 +60,17 @@ export default function HomePage() {
 					evaluar si una oferta realmente resulta
 					conveniente.
 				</ApdPrettyP>
-			</ApdSection>
+			</ApdPanel>
 
 
-			<ApdSection
+			<ApdPanel
 				image={{
 					src: "/images/apd3.jpg",
 					alt: "Actos Publicos Digitales 3",
 					imageSide: "left"
 				}}
 			>
-				<ApdLabelH3 upper="Objetivo" lower="¿Qué busca resolver Apd Finder?" />
+				<ApdH3TitleSubtitle upper="Objetivo" lower="¿Qué busca resolver Apd Finder?" />
 
 				<ApdPrettyP>
 					Apd Finder nace como una herramienta
@@ -96,7 +96,7 @@ export default function HomePage() {
 					aparezcan cargos compatibles con el perfil
 					del docente.
 				</ApdPrettyP>
-			</ApdSection>
+			</ApdPanel>
 		</>
 	)
 }

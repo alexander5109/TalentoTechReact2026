@@ -4,11 +4,10 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 import ApdForm from "../../common/ApdForm/ApdForm";
 import ApdInput from "../../common/ApdInput/ApdInput";
-import ApdLabelH3 from "../../common/ApdLabelH3/ApdLabelH3";
-import ApdSection from "../../common/ApdSection/ApdSection";
+import ApdH3TitleSubtitle from "../../common/ApdH3TitleSubtitle/ApdH3TitleSubtitle";
+import ApdPanel from "../../common/ApdPanel/ApdPanel";
 import ApdPrettyP from "../../common/ApdPrettyP/ApdPrettyP";
 import ApdButton from "../../common/ApdButton/ApdButton";
-import ApdFormField from "../../common/ApdFormField/ApdFormField";
 import ApdNavLink from "../../common/ApdNavLink/ApdNavLink";
 
 import ApdFeedback from "../../common/ApdFeedback/ApdFeedback";
@@ -87,64 +86,57 @@ export default function LoginPage() {
 
 	}
 
-	return (
+	return <ApdPanel>
+		<ApdH3TitleSubtitle upper="Apd Finder" lower="Iniciar sesión" />
 
-		<ApdSection>
-			<ApdLabelH3 upper="Apd Finder" lower="Iniciar sesión" />
+		<ApdPrettyP>
+			¿Todavía no tenés una cuenta?{" "}
+			<ApdNavLink variant="accent" to="/crearUsuario">
+				Crear usuario
+			</ApdNavLink>
+		</ApdPrettyP>
+		<ApdForm onSubmit={handleLogin}>
+			<ApdContainer>
+				<ApdLabel htmlFor="email">Correo electrónico</ApdLabel>
 
-			<ApdPrettyP>
-				¿Todavía no tenés una cuenta?{" "}
-				<ApdNavLink variant="accent" to="/crearUsuario">
-					Crear usuario
-				</ApdNavLink>
-			</ApdPrettyP>
-			<ApdForm onSubmit={handleLogin}>
+				<ApdInput
+					id="email"
+					name="email"
+					type="email"
+					autoComplete="email"
+					value={email}
+					onChange={(e) => setEmail(e.target.value)}
+					required
+				/>
+			</ApdContainer>
 
-				<ApdFormField
-					label="Correo electrónico"
-					htmlFor="email"
-				>
-					<ApdInput
-						id="email"
-						name="email"
-						type="email"
-						autoComplete="email"
-						value={email}
-						onChange={(e) => setEmail(e.target.value)}
-						required
-					/>
-				</ApdFormField>
+			<ApdContainer>
+				<ApdLabel htmlFor="password">Contraseña</ApdLabel>
 
-				<ApdFormField
-					label="Contraseña"
-					htmlFor="password"
-				>
-					<ApdInput
-						id="password"
-						name="password"
-						type="password"
-						autoComplete="current-password"
-						value={password}
-						onChange={(e) => setPassword(e.target.value)}
-						required
-					/>
-				</ApdFormField>
+				<ApdInput
+					id="password"
+					name="password"
+					type="password"
+					autoComplete="current-password"
+					value={password}
+					onChange={(e) => setPassword(e.target.value)}
+					required
+				/>
+			</ApdContainer>
 
-				<ApdFeedback feedback={feedback} />
+			<ApdFeedback feedback={feedback} />
 
-				<ApdButton
-					type="submit"
-					disabled={loading}
-				>
-					{loading
-						? "Ingresando..."
-						: "Ingresar"}
-				</ApdButton>
+			<ApdButton
+				type="submit"
+				disabled={loading}
+			>
+				{loading
+					? "Ingresando..."
+					: "Ingresar"}
+			</ApdButton>
 
-			</ApdForm>
+		</ApdForm>
 
-		</ApdSection>
-
-	);
+	</ApdPanel>
 
 }

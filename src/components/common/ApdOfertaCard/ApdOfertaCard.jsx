@@ -5,6 +5,7 @@ import ApdButton from '../ApdButton/ApdButton.jsx'
 import ApdLink from '../ApdLink/ApdLink.jsx'
 import ApdH4 from '../ApdH4/ApdH4.jsx'
 import ApdH3 from '../ApdH3/ApdH3.jsx'
+import ApdContainer from '../ApdContainer/ApdContainer.jsx'
 
 export default function ApdOfertaCard({ offer }) {
 	const estadoClase = (
@@ -109,8 +110,7 @@ export default function ApdOfertaCard({ offer }) {
 
 			</div>
 
-			<div className={styles.actionsContainer}>
-
+			<ApdContainer direction="column">
 				<ApdLink to={`/ofertas/${offer.idoferta}`}>
 					Detalles
 				</ApdLink>
@@ -127,7 +127,7 @@ export default function ApdOfertaCard({ offer }) {
 					)
 				}
 
-			</div>
+			</ApdContainer>
 
 		</article >
 	)
