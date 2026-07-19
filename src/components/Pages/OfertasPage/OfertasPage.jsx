@@ -1,7 +1,7 @@
 import { useState } from "react"
 import OfertaListContainer from "./OfertaListContainer/OfertaListContainer"
 import BusquedasContainer from "./BusquedasContainer/BusquedasContainer"
-import FiltrosOfertasContainer from "./FiltrosOfertasContainer/FiltrosOfertasContainer"
+import FiltrosOfertas from "./FiltrosOfertas/FiltrosOfertas"
 import { useAuth } from "../../../context/AuthContext";
 import { createProfile } from "../../../firebase/profileService";
 import ApdButton from "../../common/ApdButton/ApdButton";
@@ -113,26 +113,27 @@ export default function OfertasPage() {
 
 	}
 
-	{/* <ApdH3TitleSubtitle lower="APD" upper="Actos Publicos Digitales" /> */ }
-	return <ApdContainer direction="row" >
+	return <ApdContainer direction="row" gap="1rem" align="flex-start">
+		<ApdContainer gap="1rem" flex="0 0 320px">
+			<ApdPanel as="nav">
+				<ApdH3>🔎 Mis búsquedas</ApdH3>
+				<BusquedasContainer
+					profiles={profiles}
+					selectedProfileId={selectedProfileId}
+					onSelectProfile={handleLoadProfile}
+					onSaveProfile={handleSaveCurrentFilters}
+					onDeleteProfile={handleDeleteProfile}
+				/>
+			</ApdPanel>
+			<ApdPanel as="section">
+				<ApdH3>⚙️ Filtrar</ApdH3>
+				<ApdContainer as="form" direction="row" wrap="wrap" gap="2rem">
+					<FiltrosOfertas filtros={filtros} setFiltros={setFiltros} />
+				</ApdContainer>
+			</ApdPanel>
+		</ApdContainer>
 
-		<ApdPanel as="nav" flex={1}>
-			<ApdH3>🔎 Mis búsquedas</ApdH3>
-			<BusquedasContainer
-				profiles={profiles}
-				selectedProfileId={selectedProfileId}
-				onSelectProfile={handleLoadProfile}
-				onSaveProfile={handleSaveCurrentFilters}
-				onDeleteProfile={handleDeleteProfile}
-			/>
-		</ApdPanel >
-
-		<ApdPanel as="nav" flex={1}>
-			<ApdH3>🔎 Filtrar</ApdH3>
-			<FiltrosOfertasContainer filtros={filtros} setFiltros={setFiltros} />
-		</ApdPanel>
-
-		<ApdPanel as="section" flex={1}>
+		<ApdPanel as="main" flex={1}>
 			<ApdH3>🔎 Listado de Ofertas</ApdH3>
 			<OfertaListContainer filtros={filtros} />
 		</ApdPanel>
