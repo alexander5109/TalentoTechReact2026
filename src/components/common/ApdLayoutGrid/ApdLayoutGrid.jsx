@@ -15,8 +15,6 @@ export default function ApdLayoutGrid({
 	justify = "stretch",
 
 	flex,
-	shrink = 0,
-	grow = 0,
 
 	className = "",
 	style = {},
@@ -36,10 +34,6 @@ export default function ApdLayoutGrid({
 
 				alignItems: align,
 				justifyItems: justify,
-
-				flex,
-				flexGrow: grow,
-				flexShrink: shrink,
 
 				...style
 			}}

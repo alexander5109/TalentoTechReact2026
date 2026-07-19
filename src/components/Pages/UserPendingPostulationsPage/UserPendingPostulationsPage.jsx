@@ -1,6 +1,6 @@
 import { usePendingPostulations } from "../../../context/PendingPostulationsContext"
 
-import ApdOfertaCard from '../../common/ApdOfertaCard/ApdOfertaCard'
+import OfertaCard from '../OfertasPage/OfertaCard/OfertaCard'
 
 import ApdH1TitleSubtitle from "../../common/ApdH1TitleSubtitle/ApdH1TitleSubtitle"
 import ApdPanel from "../../common/ApdPanel/ApdPanel"
@@ -29,7 +29,7 @@ export default function UserPendingPostulationsPage() {
 					<div className={styles.list}>
 						{
 							pendingPostulations.map((offer) => (
-								<ApdOfertaCard
+								<OfertaCard
 									key={offer.idoferta}
 									offer={offer}
 								/>

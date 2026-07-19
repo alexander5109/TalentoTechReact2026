@@ -85,11 +85,7 @@ export default function ApdComboBox({
 
 	return (
 
-		<div
-			ref={containerRef}
-			className={styles.container}
-		>
-
+		<div ref={containerRef} className={styles.container}>
 			<ApdLabel >{widgetLabel}</ApdLabel>
 
 			{

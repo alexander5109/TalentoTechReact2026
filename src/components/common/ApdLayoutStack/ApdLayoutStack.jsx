@@ -9,8 +9,6 @@ export default function ApdLayoutStack({
 	justify = "flex-start",
 	wrap = "nowrap",
 	flex,
-	shrink = 0,
-	grow = 0,
 	className = "",
 	style = {},
 	...props
@@ -25,8 +23,6 @@ export default function ApdLayoutStack({
 				justifyContent: justify,
 				flexWrap: wrap,
 				flex,
-				flexShrink: shrink,
-				flexGrow: grow,
 				...style,
 			}}
 			{...props}

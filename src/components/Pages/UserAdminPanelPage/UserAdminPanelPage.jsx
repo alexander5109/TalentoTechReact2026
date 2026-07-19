@@ -4,7 +4,6 @@ import ApdPrettyP from "../../common/ApdPrettyP/ApdPrettyP";
 import ApdDetailItem from "../../common/ApdDetailItem/ApdDetailItem"
 import ApdButton from "../../common/ApdButton/ApdButton";
 import ApdLayoutGrid from "../../common/ApdLayoutGrid/ApdLayoutGrid";
-import ApdDetailHeader from "../../common/ApdDetailHeader/ApdDetailHeader";
 import styles from "./UserAdminPanelPage.module.css";
 import { useEffect, useState } from "react";
 import { getPromotions } from "../../../firebase/promotionsService";

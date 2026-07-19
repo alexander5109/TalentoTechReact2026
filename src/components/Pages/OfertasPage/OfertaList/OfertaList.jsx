@@ -2,7 +2,7 @@ import ApdLayoutStack from '../../../common/ApdLayoutStack/ApdLayoutStack'
 import ApdFeedback from '../../../common/ApdFeedback/ApdFeedback'
 import ApdH3 from '../../../common/ApdH3/ApdH3'
 import ApdPanel from '../../../common/ApdPanel/ApdPanel'
-import ApdOfertaCard from '../../../common/ApdOfertaCard/ApdOfertaCard'
+import OfertaCard from '../OfertaCard/OfertaCard'
 import { useEffect, useState } from 'react'
 
 export default function OfertaList({ filtros }) {
@@ -96,7 +96,7 @@ export default function OfertaList({ filtros }) {
 	return (
 		<>
 			{ofertasFiltradas.map(oferta => (
-				<ApdOfertaCard
+				<OfertaCard
 					key={oferta.idoferta}
 					offer={oferta}
 				/>

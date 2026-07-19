@@ -6,9 +6,7 @@ export default function SearchProfileCard({
 	onDelete
 }) {
 	return (
-		<div
-			onClick={() => onSelect(profile.id)}
-		>
+		<div onClick={() => onSelect(profile.id)}>
 			<h4>{profile.nombre}</h4>
 
 			<ApdButton onClick={(e) => {

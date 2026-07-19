@@ -10,7 +10,6 @@ import styles from "./OfertaDetalle.module.css"
 import ApdLink from "../../../common/ApdLink/ApdLink.jsx";
 import ApdButton from "../../../common/ApdButton/ApdButton.jsx";
 import ApdDetailItem from "../../../common/ApdDetailItem/ApdDetailItem.jsx";
-import ApdDetailHeader from "../../../common/ApdDetailHeader/ApdDetailHeader.jsx";
 import ApdLayoutGrid from "../../../common/ApdLayoutGrid/ApdLayoutGrid.jsx";
 import ApdPrettyP from "../../../common/ApdPrettyP/ApdPrettyP.jsx";
 import ApdH3 from "../../../common/ApdH3/ApdH3.jsx";

@@ -24,7 +24,7 @@ export default function ApdCheckboxFilterGroup({
 	}
 	return <ApdLayoutStack direction="column">
 		<ApdLabel >{widgetLabel}</ApdLabel>
-		<ApdLayoutStack >{
+		<ApdLayoutStack direction="column">{
 			options.map(option => (
 				<ApdLabel key={option.value} className={styles.option} >
 					<input

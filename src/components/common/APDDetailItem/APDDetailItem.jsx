@@ -6,7 +6,6 @@ export default function ApdDetailItem({
 }) {
 
 	return (
-
 		<div className={`${styles.item} ${variantClassName}`}>
 			{children}
 		</div>

@@ -135,7 +135,7 @@ export default function OfertasPage() {
 		</ApdLayoutStack>
 		<ApdPanel as="main" >
 			<ApdH3>🔎 Listado de Ofertas</ApdH3>
-			<ApdLayoutGrid >
+			<ApdLayoutGrid alignItems="stretch" columnGap="2rem" rowGap="2rem">
 				<OfertaList filtros={filtros} />
 			</ApdLayoutGrid>
 		</ApdPanel>

@@ -19,7 +19,6 @@
 	object-fit: cover;
 	border-radius: 50%;
 	border: 2px solid #e7d6bb;
-	flex-shrink: 0;
 }
 
 .info {
