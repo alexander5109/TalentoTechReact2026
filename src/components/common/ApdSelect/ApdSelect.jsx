@@ -5,11 +5,13 @@ export default function ApdSelect({
 	options = [],
 	placeholder,
 	className = "",
+	onChange,
 	...props
 }) {
 	return (
 		<select
 			className={`${inputStyles.input} ${styles.select} ${className}`}
+			onChange={e => onChange?.(e.target.value)}
 			{...props}
 		>
 			{placeholder && (

@@ -75,11 +75,7 @@ export default function OfertaCard({ offer }) {
 
 
 
-	return <ApdLayoutStack
-		as="article"
-		className={styles.card}
-		justify="center"
-	>
+	return <ApdLayoutStack as="article" className={styles.card} justify="center">
 
 		<ApdH4 style={{ textAlign: "center" }}>
 			{offer.cargo}
