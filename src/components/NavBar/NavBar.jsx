@@ -45,7 +45,7 @@ export default function NavBar() {
 
 			<ApdLayoutStack
 				direction="row"
-				justify="flex-end"
+				justify="center"
 				align="center"
 				wrap="wrap"
 				gap="0.7rem"

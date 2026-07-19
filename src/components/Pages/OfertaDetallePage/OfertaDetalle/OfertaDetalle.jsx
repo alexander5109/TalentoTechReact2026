@@ -104,6 +104,7 @@ export default function OfertaDetalle({ offer }) {
 				className={styles.image}
 			/>
 		</div>
+
 		<ApdLayoutGrid>
 			{detalles.map(([header, value, variantClassName]) => (
 				<ApdDetailItem key={header} variantClassName={variantClassName}>
@@ -111,8 +112,18 @@ export default function OfertaDetalle({ offer }) {
 					<ApdPrettyP>{value}</ApdPrettyP>
 				</ApdDetailItem>
 			))}
+
 		</ApdLayoutGrid>
 
+		<ApdLayoutStack>
+			<ApdH4>📍 Ubicación aproximada: </ApdH4>
+			<iframe
+				className={styles.map}
+				src="https://maps.google.com/maps?q=Obelisco%20Buenos%20Aires&t=&z=15&ie=UTF8&iwloc=&output=embed"
+				width="100%"
+				height="300"
+			></iframe>
+		</ApdLayoutStack>
 
 		{
 			offer.observaciones && (

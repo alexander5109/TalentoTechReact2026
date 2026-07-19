@@ -112,6 +112,7 @@ export default function OfertaCard({ offer }) {
 				{offer.hsmodulos} módulos
 			</ApdChip>
 
+
 		</ApdLayoutGrid>
 
 		<ApdLayoutStack direction="row" justify="center" gap="0.5rem">
