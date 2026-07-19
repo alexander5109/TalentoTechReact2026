@@ -3,13 +3,13 @@ import ApdH3TitleSubtitle from "../../common/ApdH3TitleSubtitle/ApdH3TitleSubtit
 import ApdPrettyP from "../../common/ApdPrettyP/ApdPrettyP";
 import ApdDetailItem from "../../common/ApdDetailItem/ApdDetailItem"
 import ApdButton from "../../common/ApdButton/ApdButton";
-import ApdGrilla from "../../common/ApdGrilla/ApdGrilla";
+import ApdLayoutGrid from "../../common/ApdLayoutGrid/ApdLayoutGrid";
 import ApdDetailHeader from "../../common/ApdDetailHeader/ApdDetailHeader";
 import styles from "./UserAdminPanelPage.module.css";
 import { useEffect, useState } from "react";
 import { getPromotions } from "../../../firebase/promotionsService";
 import { Link } from "react-router-dom";
-import ApdContainer from "../../common/ApdContainer/ApdContainer";
+import ApdLayoutStack from "../../common/ApdLayoutStack/ApdLayoutStack";
 
 const PROMOTION_TYPES = {
 	ALERT_LIMIT: "Más alertas",
@@ -61,7 +61,7 @@ export default function UserAdminPanelPage() {
 				plataforma. En futuras versiones permitirá administrar
 				usuarios, perfiles de búsqueda y alertas.
 			</ApdPrettyP>
-			<ApdGrilla>
+			<ApdLayoutGrid>
 				{estadisticas.map(([header, value]) => (
 					<ApdDetailItem key={header}>
 						<ApdDetailHeader>
@@ -73,14 +73,14 @@ export default function UserAdminPanelPage() {
 					</ApdDetailItem>
 
 				))}
-			</ApdGrilla>
+			</ApdLayoutGrid>
 		</ApdPanel>
 
 
 		<ApdPanel as="section">
 			<ApdH3TitleSubtitle upper="Gestión comercial" lower="Promociones" />
 
-			<ApdGrilla>
+			<ApdLayoutGrid>
 
 				{promotions.map(promotion => (
 
@@ -118,18 +118,18 @@ export default function UserAdminPanelPage() {
 								</li>
 							))}
 						</ul>
-						<ApdContainer direction="row">
+						<ApdLayoutStack direction="row">
 							<Link to={`/userAdminNewPromotion/${promotion.id}`}>
 								<ApdButton variant="secondary">
 									Editar
 								</ApdButton>
 							</Link>
-						</ApdContainer>
+						</ApdLayoutStack>
 					</ApdDetailItem>
 
 				))}
 
-			</ApdGrilla>
+			</ApdLayoutGrid>
 			<Link variant="primary" to="/userAdminNewPromotion">
 				<ApdButton variant="primary" > Nueva promoción</ApdButton>
 			</Link>

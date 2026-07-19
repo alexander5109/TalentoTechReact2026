@@ -4,7 +4,7 @@ import ApdPanel from "../../common/ApdPanel/ApdPanel";
 import ApdH3TitleSubtitle from "../../common/ApdH3TitleSubtitle/ApdH3TitleSubtitle";
 
 import ApdForm from "../../common/ApdForm/ApdForm";
-import ApdContainer from "../../common/ApdContainer/ApdContainer";
+import ApdLayoutStack from "../../common/ApdLayoutStack/ApdLayoutStack";
 
 import ApdInput from "../../common/ApdInput/ApdInput";
 import ApdButton from "../../common/ApdButton/ApdButton";
@@ -76,7 +76,7 @@ export default function PromotionCreatePage() {
 			lower="Nueva promoción"
 		/>
 		<ApdForm onSubmit={handleSubmit}>
-			<ApdContainer>
+			<ApdLayoutStack>
 				<ApdLabel htmlFor="nombre">Nombre</ApdLabel>
 				<ApdInput
 					id="nombre"
@@ -85,9 +85,9 @@ export default function PromotionCreatePage() {
 					onChange={handleChange}
 					required
 				/>
-			</ApdContainer>
+			</ApdLayoutStack>
 
-			<ApdContainer>
+			<ApdLayoutStack>
 				<ApdLabel htmlFor="codigo">Código</ApdLabel>
 				<ApdInput
 					id="codigo"
@@ -96,9 +96,9 @@ export default function PromotionCreatePage() {
 					onChange={handleChange}
 					required
 				/>
-			</ApdContainer>
+			</ApdLayoutStack>
 
-			<ApdContainer>
+			<ApdLayoutStack>
 				<ApdLabel htmlFor="descripcion">Descripción</ApdLabel>
 				<ApdInput
 					as="textarea"
@@ -108,9 +108,9 @@ export default function PromotionCreatePage() {
 					onChange={handleChange}
 					rows={4}
 				/>
-			</ApdContainer>
+			</ApdLayoutStack>
 
-			<ApdContainer>
+			<ApdLayoutStack>
 				<ApdLabel htmlFor="duracionDias">Duración (días)</ApdLabel>
 				<ApdInput
 					id="duracionDias"
@@ -120,9 +120,9 @@ export default function PromotionCreatePage() {
 					value={formData.duracionDias}
 					onChange={handleChange}
 				/>
-			</ApdContainer>
+			</ApdLayoutStack>
 
-			<ApdContainer>
+			<ApdLayoutStack>
 				<ApdLabel>Beneficios</ApdLabel>
 
 				<ApdLabel>
@@ -161,13 +161,13 @@ export default function PromotionCreatePage() {
 					Notificaciones móviles
 				</ApdLabel>
 
-			</ApdContainer>
+			</ApdLayoutStack>
 
-			<ApdContainer >
+			<ApdLayoutStack >
 				<ApdButton type="submit"> Guardar promoción </ApdButton>
 				<ApdButton variant="danger"> Desactivar </ApdButton>
 				<ApdButton variant="secondary"> Volver </ApdButton>
-			</ApdContainer>
+			</ApdLayoutStack>
 
 		</ApdForm>
 

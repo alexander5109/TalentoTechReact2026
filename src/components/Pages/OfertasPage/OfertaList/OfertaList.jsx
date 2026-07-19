@@ -1,18 +1,16 @@
-import ApdContainer from '../../../common/ApdContainer/ApdContainer'
+import ApdLayoutStack from '../../../common/ApdLayoutStack/ApdLayoutStack'
 import ApdFeedback from '../../../common/ApdFeedback/ApdFeedback'
 import ApdH3 from '../../../common/ApdH3/ApdH3'
 import ApdPanel from '../../../common/ApdPanel/ApdPanel'
-import OfertaList from './OfertaList/OfertaList'
-import styles from './OfertaListContainer.module.css'
+import ApdOfertaCard from '../../../common/ApdOfertaCard/ApdOfertaCard'
 import { useEffect, useState } from 'react'
 
-export default function OfertaListContainer({ filtros }) {
+export default function OfertaList({ filtros }) {
 	// console.log(filtros)
 	const [errorExcept, setError] = useState(null)
 	const [isLoading, setCargando] = useState(true)
 	const [ofertas, setOfertas] = useState([])
 	useEffect(() => {
-
 		setError(null)
 		setCargando(true)
 		//TIMEOUT PARA SIMULAR FETCHEO PESADO...
@@ -68,20 +66,41 @@ export default function OfertaListContainer({ filtros }) {
 		)
 
 	})
-	return (
-		<ApdContainer className={styles.container}>{
-			isLoading ? (
-				<ApdH3> Cargando ofertas...</ApdH3 >
-			) : errorExcept ? (
-				<ApdFeedback feedback={{
+	if (isLoading) {
+		return <ApdH3>Cargando ofertas...</ApdH3>;
+	}
+
+	if (errorExcept) {
+		return (
+			<ApdFeedback
+				feedback={{
 					type: "error",
 					message: "No fue posible obtener las ofertas.",
 					error: errorExcept
 				}}
+			/>
+		);
+	}
+
+	if (ofertasFiltradas.length === 0) {
+		return (
+			<ApdFeedback
+				feedback={{
+					type: "info",
+					message: "No se encontraron ofertas con esos filtros."
+				}}
+			/>
+		);
+	}
+
+	return (
+		<>
+			{ofertasFiltradas.map(oferta => (
+				<ApdOfertaCard
+					key={oferta.idoferta}
+					offer={oferta}
 				/>
-			) : (
-				<OfertaList ofertas={ofertasFiltradas} />
-			)}
-		</ApdContainer >
+			))}
+		</>
 	);
 }

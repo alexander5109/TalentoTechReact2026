@@ -1,4 +1,4 @@
-import ApdButton from "../../../../common/ApdButton/ApdButton";
+import ApdButton from "../ApdButton/ApdButton";
 
 export default function SearchProfileCard({
 	profile,

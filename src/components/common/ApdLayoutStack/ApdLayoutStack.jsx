@@ -1,7 +1,6 @@
-// ApdContainer.jsx
-import styles from "./ApdContainer.module.css";
+import styles from "./ApdLayoutStack.module.css";
 
-export default function ApdContainer({
+export default function ApdLayoutStack({
 	as: Component = "div",
 	children,
 	direction = "column",

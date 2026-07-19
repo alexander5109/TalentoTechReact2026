@@ -7,7 +7,7 @@ import ApdForm from '../common/ApdForm/ApdForm';
 import ApdFeedback from '../common/ApdFeedback/ApdFeedback';
 import ApdPanel from '../common/ApdPanel/ApdPanel';
 import ApdH3TitleSubtitle from '../common/ApdH3TitleSubtitle/ApdH3TitleSubtitle';
-import ApdContainer from '../common/ApdContainer/ApdContainer';
+import ApdLayoutStack from '../common/ApdLayoutStack/ApdLayoutStack';
 import ApdLabel from '../common/ApdLabel/ApdLabel';
 
 
@@ -100,7 +100,7 @@ export default function FormUserAccount({
 	};
 	return (
 		<ApdForm onSubmit={handleSubmit}>
-			<ApdContainer>
+			<ApdLayoutStack>
 				<ApdLabel htmlFor="email">Correo electrónico</ApdLabel>
 				<ApdInput
 					id="email"
@@ -112,9 +112,9 @@ export default function FormUserAccount({
 					required
 					autoComplete="email"
 				/>
-			</ApdContainer>
+			</ApdLayoutStack>
 
-			<ApdContainer>
+			<ApdLayoutStack>
 				<ApdLabel htmlFor="nombre">Nombre</ApdLabel>
 				<ApdInput
 					id="nombre"
@@ -123,9 +123,9 @@ export default function FormUserAccount({
 					onChange={handleChange}
 					required
 				/>
-			</ApdContainer>
+			</ApdLayoutStack>
 
-			<ApdContainer>
+			<ApdLayoutStack>
 				<ApdLabel htmlFor="apellido">Apellido</ApdLabel>
 				<ApdInput
 					id="apellido"
@@ -134,9 +134,9 @@ export default function FormUserAccount({
 					onChange={handleChange}
 					required
 				/>
-			</ApdContainer>
+			</ApdLayoutStack>
 
-			<ApdContainer>
+			<ApdLayoutStack>
 				<ApdLabel htmlFor="password">Contraseña</ApdLabel>
 				<ApdInput
 					id="password"
@@ -149,9 +149,9 @@ export default function FormUserAccount({
 					disabled={!editableEmailAndPassword}
 					required
 				/>
-			</ApdContainer>
+			</ApdLayoutStack>
 
-			<ApdContainer>
+			<ApdLayoutStack>
 				<ApdLabel htmlFor="confirmPassword">Confirmar Contraseña</ApdLabel>
 				<ApdInput
 					id="confirmPassword"
@@ -164,9 +164,9 @@ export default function FormUserAccount({
 					disabled={!editableEmailAndPassword}
 					required
 				/>
-			</ApdContainer>
+			</ApdLayoutStack>
 
-			<ApdContainer>
+			<ApdLayoutStack>
 				<ApdLabel htmlFor="titulo">Título</ApdLabel>
 				<ApdInput
 					id="titulo"
@@ -174,9 +174,9 @@ export default function FormUserAccount({
 					value={formData.titulo}
 					onChange={handleChange}
 				/>
-			</ApdContainer>
+			</ApdLayoutStack>
 
-			<ApdContainer>
+			<ApdLayoutStack>
 				<ApdLabel htmlFor="anioEgreso">Año de Egreso</ApdLabel>
 				<ApdInput
 					id="anioEgreso"
@@ -184,9 +184,9 @@ export default function FormUserAccount({
 					value={formData.anioEgreso}
 					onChange={handleChange}
 				/>
-			</ApdContainer>
+			</ApdLayoutStack>
 
-			<ApdContainer>
+			<ApdLayoutStack>
 				<ApdLabel htmlFor="distrito">Distrito local</ApdLabel>
 				<ApdInput
 					id="distrito"
@@ -194,7 +194,7 @@ export default function FormUserAccount({
 					value={formData.distrito}
 					onChange={handleChange}
 				/>
-			</ApdContainer>
+			</ApdLayoutStack>
 
 			<AvatarPicker
 				file={formData.archivo}

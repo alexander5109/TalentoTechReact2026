@@ -6,7 +6,7 @@ import Swal from "sweetalert2"
 import ApdButton from "../../common/ApdButton/ApdButton";
 import ApdForm from "../../common/ApdForm/ApdForm";
 import ApdInput from "../../common/ApdInput/ApdInput";
-import ApdContainer from "../../common/ApdContainer/ApdContainer";
+import ApdLayoutStack from "../../common/ApdLayoutStack/ApdLayoutStack";
 import ApdLabel from "../../common/ApdLabel/ApdLabel";
 
 export default function ContactoPage() {
@@ -51,16 +51,16 @@ export default function ContactoPage() {
 
 		<ApdForm onSubmit={manejarSubmit}>
 
-			<ApdContainer>
+			<ApdLayoutStack>
 				<ApdLabel htmlFor="nombre">Nombre</ApdLabel>
 
 				<ApdInput
 					id="nombre"
 					placeholder="Tu nombre"
 				/>
-			</ApdContainer>
+			</ApdLayoutStack>
 
-			<ApdContainer>
+			<ApdLayoutStack>
 				<ApdLabel htmlFor="email">Email</ApdLabel>
 
 				<ApdInput
@@ -68,9 +68,9 @@ export default function ContactoPage() {
 					type="email"
 					placeholder="tuemail@gmail.com"
 				/>
-			</ApdContainer>
+			</ApdLayoutStack>
 
-			<ApdContainer>
+			<ApdLayoutStack>
 				<ApdLabel htmlFor="mensaje">Mensaje</ApdLabel>
 
 				<ApdInput
@@ -79,7 +79,7 @@ export default function ContactoPage() {
 					rows={6}
 					placeholder="Escribe tu mensaje..."
 				/>
-			</ApdContainer>
+			</ApdLayoutStack>
 
 			<ApdButton type="submit">
 				Enviar mensaje

@@ -1,4 +1,4 @@
-import ApdContainer from "../ApdContainer/ApdContainer"
+import ApdLayoutStack from "../ApdLayoutStack/ApdLayoutStack"
 import ApdLabel from "../ApdLabel/ApdLabel"
 import styles from "./ApdCheckboxFilterGroup.module.css"
 
@@ -22,9 +22,9 @@ export default function ApdCheckboxFilterGroup({
 		})
 
 	}
-	return <ApdContainer direction="column">
+	return <ApdLayoutStack direction="column">
 		<ApdLabel >{widgetLabel}</ApdLabel>
-		<ApdContainer >{
+		<ApdLayoutStack >{
 			options.map(option => (
 				<ApdLabel key={option.value} className={styles.option} >
 					<input
@@ -36,6 +36,6 @@ export default function ApdCheckboxFilterGroup({
 				</ApdLabel>
 			))
 		}
-		</ApdContainer>
-	</ApdContainer>
+		</ApdLayoutStack>
+	</ApdLayoutStack>
 }

@@ -1,7 +1,7 @@
 import { useState } from "react"
-import OfertaListContainer from "./OfertaListContainer/OfertaListContainer"
+import OfertaList from "./OfertaList/OfertaList"
 import BusquedasContainer from "./BusquedasContainer/BusquedasContainer"
-import FiltrosOfertas from "./FiltrosOfertas/FiltrosOfertas"
+import FiltrosList from "./FiltrosList/FiltrosList"
 import { useAuth } from "../../../context/AuthContext";
 import { createProfile } from "../../../firebase/profileService";
 import ApdButton from "../../common/ApdButton/ApdButton";
@@ -9,7 +9,8 @@ import ApdPrettyP from "../../common/ApdPrettyP/ApdPrettyP";
 import ApdH3TitleSubtitle from "../../common/ApdH3TitleSubtitle/ApdH3TitleSubtitle";
 import ApdH3 from "../../common/ApdH3/ApdH3";
 import ApdPanel from "../../common/ApdPanel/ApdPanel";
-import ApdContainer from "../../common/ApdContainer/ApdContainer"
+import ApdLayoutStack from "../../common/ApdLayoutStack/ApdLayoutStack"
+import ApdLayoutGrid from "../../common/ApdLayoutGrid/ApdLayoutGrid"
 
 export default function OfertasPage() {
 	const { user } = useAuth();
@@ -113,8 +114,8 @@ export default function OfertasPage() {
 
 	}
 
-	return <ApdContainer direction="row" gap="1rem" align="flex-start">
-		<ApdContainer gap="1rem" flex="0 0 320px">
+	return <ApdLayoutStack direction="row" gap="1rem" align="flex-start">
+		<ApdLayoutStack gap="1rem" flex="0 0 320px">
 			<ApdPanel as="nav">
 				<ApdH3>🔎 Mis búsquedas</ApdH3>
 				<BusquedasContainer
@@ -127,16 +128,17 @@ export default function OfertasPage() {
 			</ApdPanel>
 			<ApdPanel as="section">
 				<ApdH3>⚙️ Filtrar</ApdH3>
-				<ApdContainer as="form" direction="row" wrap="wrap" gap="2rem">
-					<FiltrosOfertas filtros={filtros} setFiltros={setFiltros} />
-				</ApdContainer>
+				<ApdLayoutStack as="form" direction="row" wrap="wrap" gap="2rem">
+					<FiltrosList filtros={filtros} setFiltros={setFiltros} />
+				</ApdLayoutStack>
 			</ApdPanel>
-		</ApdContainer>
-
-		<ApdPanel as="main" flex={1}>
+		</ApdLayoutStack>
+		<ApdPanel as="main" >
 			<ApdH3>🔎 Listado de Ofertas</ApdH3>
-			<OfertaListContainer filtros={filtros} />
+			<ApdLayoutGrid >
+				<OfertaList filtros={filtros} />
+			</ApdLayoutGrid>
 		</ApdPanel>
 
-	</ApdContainer>
+	</ApdLayoutStack>
 }

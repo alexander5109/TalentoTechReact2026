@@ -1,9 +1,10 @@
 import ApdButton from "../../../common/ApdButton/ApdButton";
 import ApdComboBox from "../../../common/ApdComboBox/ApdComboBox";
+import SearchProfileCard from "../../../common/SearchProfileCard/SearchProfileCard";
 import ApdH3 from "../../../common/ApdH3/ApdH3";
 import { useState, useEffect } from "react";
 
-import ApdContainer from "../../../common/ApdContainer/ApdContainer";
+import ApdLayoutStack from "../../../common/ApdLayoutStack/ApdLayoutStack";
 
 
 export default function BusquedasContainer({
@@ -13,28 +14,6 @@ export default function BusquedasContainer({
 	onSaveProfile,
 	onDeleteProfile
 }) {
-
-
-	// -------------------------- effects------------------------------- //
-	// useEffect(() => {
-	// 	async function loadProfiles() {
-	// 		if (!user) {
-	// 			setProfiles([]);
-	// 			setLoading(false);
-	// 			return;
-	// 		}
-	// 		const profiles = await getProfiles(user.uid);
-	// 		setProfiles(profiles);
-	// 		if (profiles.length > 0) {
-	// 			setSelectedProfileId(
-	// 				profiles[0].id
-	// 			);
-	// 		}
-	// 		setLoading(false);
-	// 	}
-	// 	loadProfiles();
-	// }, [user]);
-
 	// -------------------------- state------------------------------- //
 	// const [profiles, setProfiles] = useState([]);
 	const [loading, setLoading] = useState(true);
@@ -62,22 +41,15 @@ export default function BusquedasContainer({
 	}));
 
 
-	return (
-
-		<ApdContainer direction="column">
-			<ApdComboBox
-
-				value={selectedProfileId}
-
-				onChange={onSelectProfile}
-
-				options={profileOptions}
-
-				placeholder="Seleccionar perfil"
-
-			/>
-
-			<>{profiles.map(profile => (
+	return <>
+		<ApdComboBox
+			value={selectedProfileId}
+			onChange={onSelectProfile}
+			options={profileOptions}
+			placeholder="Seleccionar perfil"
+		/>
+		{/* <>
+			{profiles.map(profile => (
 				<SearchProfileCard
 					key={profile.id}
 					profile={profile}
@@ -86,36 +58,18 @@ export default function BusquedasContainer({
 					onDelete={onDeleteProfile}
 				/>
 			))
-			}</>
-			<ApdContainer >
-
-				<ApdButton
-					disabled={!hasChanges}
-					onClick={onSaveProfile}
-					variant="primary"
-				>
-					🔖 Crear nuevo
-				</ApdButton>
-
-
-				<ApdButton
-					disabled={!hasChanges}
-					onClick={onSaveProfile}
-					variant="secondary"
-				>
-					🔖 Guardar perfil de búsqueda
-				</ApdButton>
-
-				<ApdButton
-					onClick={onDeleteProfile}
-					variant="danger"
-					disabled={selectedProfile == null}
-				>
-					🔖 Eliminar perfil
-				</ApdButton>
-			</ApdContainer>
-		</ApdContainer >
-
-	)
-
+			}
+		</> */}
+		<ApdLayoutStack >
+			<ApdButton disabled={!hasChanges} onClick={onSaveProfile} variant="primary">
+				🔖 Crear nuevo
+			</ApdButton>
+			<ApdButton disabled={!hasChanges} onClick={onSaveProfile} variant="secondary">
+				🔖 Guardar perfil de búsqueda
+			</ApdButton>
+			<ApdButton onClick={onDeleteProfile} variant="danger" disabled={selectedProfile == null}>
+				🔖 Eliminar perfil
+			</ApdButton>
+		</ApdLayoutStack>
+	</ >
 }

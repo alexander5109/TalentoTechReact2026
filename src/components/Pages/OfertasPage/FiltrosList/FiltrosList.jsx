@@ -1,13 +1,13 @@
-import styles from './FiltrosOfertas.module.css'
+import styles from './FiltrosList.module.css'
 import ApdCheckboxFilterGroup from "../../../common/ApdCheckboxFilterGroup/ApdCheckboxFilterGroup";
 import ApdRadioFilterGroup from "../../../common/ApdRadioFilterGroup/ApdRadioFilterGroup";
 import ApdComboBox from "../../../common/ApdComboBox/ApdComboBox";
 import ApdH3 from "../../../common/ApdH3/ApdH3";
-import ApdContainer from '../../../common/ApdContainer/ApdContainer';
+import ApdLayoutStack from '../../../common/ApdLayoutStack/ApdLayoutStack';
 import ApdForm from '../../../common/ApdForm/ApdForm';
 
 
-export default function FiltrosOfertas({
+export default function FiltrosList({
 	filtros,
 	setFiltros
 }) {

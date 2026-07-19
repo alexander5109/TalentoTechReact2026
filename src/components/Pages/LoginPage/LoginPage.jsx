@@ -96,7 +96,7 @@ export default function LoginPage() {
 			</ApdNavLink>
 		</ApdPrettyP>
 		<ApdForm onSubmit={handleLogin}>
-			<ApdContainer>
+			<ApdLayoutStack>
 				<ApdLabel htmlFor="email">Correo electrónico</ApdLabel>
 
 				<ApdInput
@@ -108,9 +108,9 @@ export default function LoginPage() {
 					onChange={(e) => setEmail(e.target.value)}
 					required
 				/>
-			</ApdContainer>
+			</ApdLayoutStack>
 
-			<ApdContainer>
+			<ApdLayoutStack>
 				<ApdLabel htmlFor="password">Contraseña</ApdLabel>
 
 				<ApdInput
@@ -122,7 +122,7 @@ export default function LoginPage() {
 					onChange={(e) => setPassword(e.target.value)}
 					required
 				/>
-			</ApdContainer>
+			</ApdLayoutStack>
 
 			<ApdFeedback feedback={feedback} />
 

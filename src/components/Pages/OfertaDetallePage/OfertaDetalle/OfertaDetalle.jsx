@@ -11,10 +11,10 @@ import ApdLink from "../../../common/ApdLink/ApdLink.jsx";
 import ApdButton from "../../../common/ApdButton/ApdButton.jsx";
 import ApdDetailItem from "../../../common/ApdDetailItem/ApdDetailItem.jsx";
 import ApdDetailHeader from "../../../common/ApdDetailHeader/ApdDetailHeader.jsx";
-import ApdGrilla from "../../../common/ApdGrilla/ApdGrilla.jsx";
+import ApdLayoutGrid from "../../../common/ApdLayoutGrid/ApdLayoutGrid.jsx";
 import ApdPrettyP from "../../../common/ApdPrettyP/ApdPrettyP.jsx";
 import ApdH3 from "../../../common/ApdH3/ApdH3.jsx";
-import ApdContainer from "../../../common/ApdContainer/ApdContainer.jsx";
+import ApdLayoutStack from "../../../common/ApdLayoutStack/ApdLayoutStack.jsx";
 import ApdPanel from "../../../common/ApdPanel/ApdPanel.jsx";
 
 export default function OfertaDetalle({ offer }) {
@@ -104,7 +104,7 @@ export default function OfertaDetalle({ offer }) {
 				className={styles.image}
 			/>
 		</div>
-		<ApdGrilla>
+		<ApdLayoutGrid>
 			{detalles.map(([header, value, variantClassName]) => (
 				<ApdDetailItem
 					key={header}
@@ -114,7 +114,7 @@ export default function OfertaDetalle({ offer }) {
 					<ApdPrettyP>{value}</ApdPrettyP>
 				</ApdDetailItem>
 			))}
-		</ApdGrilla>
+		</ApdLayoutGrid>
 
 
 		{
@@ -133,7 +133,7 @@ export default function OfertaDetalle({ offer }) {
 		}
 
 
-		<ApdContainer>
+		<ApdLayoutStack>
 
 			<ApdLink to="/ofertas" >
 				Volver
@@ -155,7 +155,7 @@ export default function OfertaDetalle({ offer }) {
 				)
 			}
 
-		</ApdContainer>
+		</ApdLayoutStack>
 
 	</ApdPanel >
 }

@@ -17,16 +17,6 @@ export default function NavBar() {
 
 	const { pendingPostulations } = usePendingPostulations()
 
-	function renderCentralLinks() {
-		return <>
-			<ApdNavLink to="/"> Inicio </ApdNavLink >
-			<ApdNavLink to="/about"> About us </ApdNavLink>
-			<ApdNavLink to="/contacto"> Contacto </ApdNavLink>
-			<ApdNavLink to="/ofertas"> Ofertas </ApdNavLink>
-
-		</>
-	}
-
 
 	function renderRightLinks() {
 		if (!user) {
@@ -51,7 +41,12 @@ export default function NavBar() {
 	return (
 		<nav className={styles.navbar}>
 			<ApdNavLink to="/" variant="logo" >Apd Finder</ApdNavLink>
-			<div className={styles.centralLinks}>{renderCentralLinks()}</div>
+			<div className={styles.centralLinks}>
+				<ApdNavLink to="/"> Inicio </ApdNavLink >
+				<ApdNavLink to="/about"> About us </ApdNavLink>
+				<ApdNavLink to="/contacto"> Contacto </ApdNavLink>
+				<ApdNavLink to="/ofertas"> Ofertas </ApdNavLink>
+			</div>
 			<div className={styles.rightLinks}>{renderRightLinks()}</div>
 		</nav >
 	)
