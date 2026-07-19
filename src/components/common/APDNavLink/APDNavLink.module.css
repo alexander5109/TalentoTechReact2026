@@ -9,7 +9,7 @@
 
 .link {
 	color: var(--parchment);
-	font-family: "Albertus", serif;
+	font-family: var(--font-heading);
 	text-decoration: none;
 	padding: .55rem 1rem;
 	border-radius: 12px;

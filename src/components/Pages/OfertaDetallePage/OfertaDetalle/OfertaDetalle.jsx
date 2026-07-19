@@ -14,6 +14,7 @@ import ApdDetailHeader from "../../../common/ApdDetailHeader/ApdDetailHeader.jsx
 import ApdLayoutGrid from "../../../common/ApdLayoutGrid/ApdLayoutGrid.jsx";
 import ApdPrettyP from "../../../common/ApdPrettyP/ApdPrettyP.jsx";
 import ApdH3 from "../../../common/ApdH3/ApdH3.jsx";
+import ApdH4 from "../../../common/ApdH4/ApdH4.jsx";
 import ApdLayoutStack from "../../../common/ApdLayoutStack/ApdLayoutStack.jsx";
 import ApdPanel from "../../../common/ApdPanel/ApdPanel.jsx";
 
@@ -106,11 +107,8 @@ export default function OfertaDetalle({ offer }) {
 		</div>
 		<ApdLayoutGrid>
 			{detalles.map(([header, value, variantClassName]) => (
-				<ApdDetailItem
-					key={header}
-					variantClassName={variantClassName}
-				>
-					<ApdDetailHeader>{header}</ApdDetailHeader>
+				<ApdDetailItem key={header} variantClassName={variantClassName}>
+					<ApdH4>{header}</ApdH4>
 					<ApdPrettyP>{value}</ApdPrettyP>
 				</ApdDetailItem>
 			))}

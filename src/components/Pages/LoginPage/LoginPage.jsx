@@ -2,7 +2,6 @@ import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
-import ApdForm from "../../common/ApdForm/ApdForm";
 import ApdInput from "../../common/ApdInput/ApdInput";
 import ApdH3TitleSubtitle from "../../common/ApdH3TitleSubtitle/ApdH3TitleSubtitle";
 import ApdPanel from "../../common/ApdPanel/ApdPanel";
@@ -95,7 +94,7 @@ export default function LoginPage() {
 				Crear usuario
 			</ApdNavLink>
 		</ApdPrettyP>
-		<ApdForm onSubmit={handleLogin}>
+		<ApdLayoutStack as="form" onSubmit={handleLogin}>
 			<ApdLayoutStack>
 				<ApdLabel htmlFor="email">Correo electrónico</ApdLabel>
 
@@ -135,7 +134,7 @@ export default function LoginPage() {
 					: "Ingresar"}
 			</ApdButton>
 
-		</ApdForm>
+		</ApdLayoutStack>
 
 	</ApdPanel>
 

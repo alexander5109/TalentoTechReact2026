@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import styles from "./FormUserAccount.module.css"
 import ApdButton from '../common/ApdButton/ApdButton';
 import AvatarPicker from "./AvatarPicker/AvatarPicker"
 import ApdInput from '../common/ApdInput/ApdInput';
-import ApdForm from '../common/ApdForm/ApdForm';
 import ApdFeedback from '../common/ApdFeedback/ApdFeedback';
 import ApdPanel from '../common/ApdPanel/ApdPanel';
 import ApdH3TitleSubtitle from '../common/ApdH3TitleSubtitle/ApdH3TitleSubtitle';
@@ -99,7 +97,7 @@ export default function FormUserAccount({
 
 	};
 	return (
-		<ApdForm onSubmit={handleSubmit}>
+		<ApdLayoutStack as="form" onSubmit={handleSubmit}>
 			<ApdLayoutStack>
 				<ApdLabel htmlFor="email">Correo electrónico</ApdLabel>
 				<ApdInput
@@ -211,6 +209,6 @@ export default function FormUserAccount({
 				{loading ? "Procesando..." : submitText}
 			</ApdButton>
 
-		</ApdForm >
+		</ApdLayoutStack >
 	);
 };

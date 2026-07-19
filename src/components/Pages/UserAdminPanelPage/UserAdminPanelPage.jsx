@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import { getPromotions } from "../../../firebase/promotionsService";
 import { Link } from "react-router-dom";
 import ApdLayoutStack from "../../common/ApdLayoutStack/ApdLayoutStack";
+import ApdH4 from "../../common/ApdH4/ApdH4";
 
 const PROMOTION_TYPES = {
 	ALERT_LIMIT: "Más alertas",
@@ -64,9 +65,9 @@ export default function UserAdminPanelPage() {
 			<ApdLayoutGrid>
 				{estadisticas.map(([header, value]) => (
 					<ApdDetailItem key={header}>
-						<ApdDetailHeader>
+						<ApdH4>
 							{header}
-						</ApdDetailHeader>
+						</ApdH4>
 						<p className={styles.bigNumber}>
 							{value}
 						</p>
@@ -86,9 +87,9 @@ export default function UserAdminPanelPage() {
 
 					<ApdDetailItem key={promotion.id}>
 
-						<ApdDetailHeader>
+						<ApdH4>
 							🎁 {promotion.nombre}
-						</ApdDetailHeader>
+						</ApdH4>
 
 						<ApdPrettyP>
 							{promotion.descripcion}

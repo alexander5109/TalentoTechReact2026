@@ -14,7 +14,7 @@
 
 	font: inherit;
 
-	color: #214c3d;
+	color: var(--green-main);
 
 	background:
 		linear-gradient(to bottom,

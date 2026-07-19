@@ -16,17 +16,11 @@
 	--text-dark: #2d2418;
 	--text-soft: #5b5145;
 
-	--shadow:
-		0 4px 12px rgba(0, 0, 0, 0.08);
+	--shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 
-	--font-body:
-		system-ui,
-		Segoe UI,
-		sans-serif;
+	--font-body: system-ui, Segoe UI, sans-serif;
 
-	--font-heading:
-		"Albertus",
-		serif;
+	--font-heading: "Albertus", serif;
 }
 
 * {

@@ -4,7 +4,6 @@ import ApdPrettyP from "../../common/ApdPrettyP/ApdPrettyP";
 
 import Swal from "sweetalert2"
 import ApdButton from "../../common/ApdButton/ApdButton";
-import ApdForm from "../../common/ApdForm/ApdForm";
 import ApdInput from "../../common/ApdInput/ApdInput";
 import ApdLayoutStack from "../../common/ApdLayoutStack/ApdLayoutStack";
 import ApdLabel from "../../common/ApdLabel/ApdLabel";
@@ -49,7 +48,7 @@ export default function ContactoPage() {
 			resultan especialmente valiosas.
 		</ApdPrettyP>
 
-		<ApdForm onSubmit={manejarSubmit}>
+		<ApdLayoutStack as="form" onSubmit={manejarSubmit}>
 
 			<ApdLayoutStack>
 				<ApdLabel htmlFor="nombre">Nombre</ApdLabel>
@@ -85,7 +84,7 @@ export default function ContactoPage() {
 				Enviar mensaje
 			</ApdButton>
 
-		</ApdForm>
+		</ApdLayoutStack>
 
 
 	</ApdPanel>

@@ -1,3 +1,4 @@
+import ApdLayoutStack from "../ApdLayoutStack/ApdLayoutStack"
 import styles from "./ApdRadioFilterGroup.module.css"
 
 export default function ApdRadioFilterGroup({
@@ -10,8 +11,7 @@ export default function ApdRadioFilterGroup({
 
 	return (
 
-		<div className={styles.container}>
-
+		<ApdLayoutStack>
 			<label className={styles.groupLabel}>
 				{label}
 			</label>
@@ -50,6 +50,6 @@ export default function ApdRadioFilterGroup({
 
 			</div>
 
-		</div>
+		</ApdLayoutStack>
 	)
 }

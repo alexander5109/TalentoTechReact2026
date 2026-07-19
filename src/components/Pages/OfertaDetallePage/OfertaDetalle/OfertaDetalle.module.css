@@ -23,7 +23,7 @@
 
 .section p {
 	line-height: 1.7;
-	color: #355d4f;
+	color: var(--green-soft);
 }
 
 

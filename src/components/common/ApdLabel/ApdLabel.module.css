@@ -1,6 +1,6 @@
 .label {
-	font-family: "Albertus", serif;
+	font-family: var(--font-heading);
 	font-size: 0.95rem;
-	color: #214c3d;
+	color: var(--green-main);
 	letter-spacing: .5px;
 }

@@ -6,7 +6,7 @@
 	border: none;
 	border-radius: 10px;
 	font-size: 0.85rem;
-	font-family: "Albertus", serif;
+	font-family: var(--font-heading);
 	cursor: pointer;
 	color: white;
 	min-width: 110px;

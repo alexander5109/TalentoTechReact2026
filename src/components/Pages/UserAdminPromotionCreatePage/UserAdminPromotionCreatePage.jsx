@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import ApdPanel from "../../common/ApdPanel/ApdPanel";
 import ApdH3TitleSubtitle from "../../common/ApdH3TitleSubtitle/ApdH3TitleSubtitle";
 
-import ApdForm from "../../common/ApdForm/ApdForm";
 import ApdLayoutStack from "../../common/ApdLayoutStack/ApdLayoutStack";
 
 import ApdInput from "../../common/ApdInput/ApdInput";
@@ -75,7 +74,7 @@ export default function PromotionCreatePage() {
 			upper="Gestión comercial"
 			lower="Nueva promoción"
 		/>
-		<ApdForm onSubmit={handleSubmit}>
+		<ApdLayoutStack as="form" onSubmit={handleSubmit}>
 			<ApdLayoutStack>
 				<ApdLabel htmlFor="nombre">Nombre</ApdLabel>
 				<ApdInput
@@ -169,7 +168,7 @@ export default function PromotionCreatePage() {
 				<ApdButton variant="secondary"> Volver </ApdButton>
 			</ApdLayoutStack>
 
-		</ApdForm>
+		</ApdLayoutStack>
 
 	</ApdPanel >
 

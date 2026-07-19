@@ -5,7 +5,6 @@ import FormUserAccount from "../../FormUserAccount/FormUserAccount";
 import { registrarUsuario } from "../../../services/authService";
 import ApdH3TitleSubtitle from "../../common/ApdH3TitleSubtitle/ApdH3TitleSubtitle";
 import ApdPanel from "../../common/ApdPanel/ApdPanel";
-import ApdForm from "../../common/ApdForm/ApdForm";
 
 export default function SignUpPage() {
 
