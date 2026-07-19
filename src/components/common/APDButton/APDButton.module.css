@@ -20,15 +20,15 @@
 }
 
 .primary {
-	background: linear-gradient(to bottom, #3b8467, #2e6e56);
+	background: linear-gradient(to bottom, var(--primary), color-mix(in srgb, var(--verde-claro), var(--verde-oscuro) 50%));
 }
 
 .secondary {
-	background: linear-gradient(to bottom, #b29a3c, #9a8530);
+	background: linear-gradient(to bottom, var(--secondary), color-mix(in srgb, var(--secondary), skyblue 30%));
 }
 
 .danger {
-	background: linear-gradient(to bottom, #cf5b56, #b54844);
+	background: linear-gradient(to bottom, var(--danger), color-mix(in srgb, var(--danger), maroon 40%));
 }
 
 .button:hover:not(:disabled) {

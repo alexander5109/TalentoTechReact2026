@@ -6,13 +6,11 @@ export default function ApdButton({
 	type = "button",
 	...props
 }) {
-	return (
-		<button
-			type={type}
-			className={`${styles.button} ${styles[variant]}`}
-			{...props}
-		>
-			{children}
-		</button>
-	);
+	return <button
+		type={type}
+		className={`${styles.button} ${styles[variant]}`}
+		{...props}
+	>
+		{children}
+	</button>
 }

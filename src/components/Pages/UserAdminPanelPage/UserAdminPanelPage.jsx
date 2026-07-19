@@ -53,29 +53,6 @@ export default function UserAdminPanelPage() {
 	];
 
 	return <>
-		<ApdPanel as="section">
-			<ApdH3TitleSubtitle upper="Panel de administración" lower="Estadísticas generales" />
-
-			<ApdPrettyP>
-				Este panel reúne información general sobre el uso de la
-				plataforma. En futuras versiones permitirá administrar
-				usuarios, perfiles de búsqueda y alertas.
-			</ApdPrettyP>
-			<ApdLayoutGrid>
-				{estadisticas.map(([header, value]) => (
-					<ApdDetailItem key={header}>
-						<ApdH4>
-							{header}
-						</ApdH4>
-						<p className={styles.bigNumber}>
-							{value}
-						</p>
-					</ApdDetailItem>
-
-				))}
-			</ApdLayoutGrid>
-		</ApdPanel>
-
 
 		<ApdPanel as="section">
 			<ApdH3TitleSubtitle upper="Gestión comercial" lower="Promociones" />
@@ -136,5 +113,30 @@ export default function UserAdminPanelPage() {
 
 
 		</ApdPanel >
+
+
+		<ApdPanel as="section">
+			<ApdH3TitleSubtitle upper="Panel de administración" lower="Estadísticas generales" />
+
+			<ApdPrettyP>
+				Este panel reúne información general sobre el uso de la
+				plataforma. En futuras versiones permitirá administrar
+				usuarios, perfiles de búsqueda y alertas.
+			</ApdPrettyP>
+			<ApdLayoutGrid>
+				{estadisticas.map(([header, value]) => (
+					<ApdDetailItem key={header}>
+						<ApdH4>
+							{header}
+						</ApdH4>
+						<p className={styles.bigNumber}>
+							{value}
+						</p>
+					</ApdDetailItem>
+
+				))}
+			</ApdLayoutGrid>
+		</ApdPanel>
+
 	</>
 }

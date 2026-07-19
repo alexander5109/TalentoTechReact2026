@@ -1,5 +1,6 @@
 import { useAuth } from '../../context/AuthContext';
 import { Navigate } from 'react-router-dom';
+import ApdPrettyP from '../common/ApdPrettyP/ApdPrettyP';
 export default function RutaProtegida({
 	children,
 	rolesPermitidos = []
@@ -8,7 +9,7 @@ export default function RutaProtegida({
 	const { user, loading } = useAuth();
 
 	if (loading) {
-		return <div>Cargando...</div>;
+		return <ApdPrettyP>Cargando...</ApdPrettyP>;
 	}
 
 	if (!user) {

@@ -202,10 +202,7 @@ export default function FormUserAccount({
 
 			<ApdFeedback feedback={feedbackLocal ?? feedback} />
 
-			<ApdButton
-				type="submit"
-				disabled={loading}
-			>
+			<ApdButton type="submit" disabled={loading}>
 				{loading ? "Procesando..." : submitText}
 			</ApdButton>
 

@@ -3,9 +3,9 @@ export default function ApdH3({
 }) {
 	return <h3 style={{
 		margin: "1rem",
-		fontFamily: "Albertus,serif",
+		fontFamily: "var(--font-heading)",
 		fontSize: "1.35rem",
-		color: "var(--green-main)",
+		color: "var(--verde)",
 		// textAlign: "center",
 		paddingBottom: "0.4rem",
 		borderBottom: "1px solid rgba(33, 76, 61, 0.15)",

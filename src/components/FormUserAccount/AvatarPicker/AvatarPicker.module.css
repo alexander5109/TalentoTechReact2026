@@ -12,9 +12,9 @@
 
 	border-radius: 50%;
 
-	border: 3px solid var(--green-soft);
+	border: 3px solid var(--verde-claro);
 
-	box-shadow: var(--shadow);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 
 	cursor: pointer;
 }
@@ -34,9 +34,9 @@
 
 	border-radius: 50%;
 
-	border: 3px dashed var(--green-soft);
+	border: 3px dashed var(--verde-claro);
 
-	background: var(--parchment-light);
+	background: var(--superficie-clara);
 
 	cursor: pointer;
 
@@ -44,7 +44,7 @@
 }
 
 .avatarPlaceholder:hover {
-	background: var(--parchment);
+	background: var(--superficie);
 }
 
 .avatarIcon {
@@ -52,7 +52,7 @@
 }
 
 .avatarPlaceholder small {
-	color: var(--text-soft);
+	color: var(--texto-secundario);
 	text-align: center;
 	font-size: .8rem;
 }

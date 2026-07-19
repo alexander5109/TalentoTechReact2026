@@ -1,12 +1,10 @@
 .bigContent {
 	margin: 0;
 	font-size: 1rem;
-	color: var(--green-800);
 }
 
 .bigNumber {
 	margin-top: .8rem;
 	font-size: 2rem;
 	font-weight: bold;
-	color: var(--green-700);
 }

@@ -3,11 +3,11 @@ export default function ApdH4({
 }) {
 	return <h4 style={{
 		margin: "0.3rem",
-		fontFamily: "Albertus,serif",
+		fontFamily: "var(--font-heading)",
 		fontSize: "1.10rem",
-		color: "var(--green-main)",
+		color: "var(--verde)",
 		paddingBottom: "0.3rem",
 		marginBottom: "0.6rem",
-	}}>{children}</h4>
+	}}> {children}</h4 >
 }
 

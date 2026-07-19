@@ -9,11 +9,11 @@
 	display: block;
 	margin-bottom: .4rem;
 	font-family: var(--font-heading);
-	color: var(--green-main);
+	color: var(--verde);
 }
 
 .item p {
 	margin: 0;
 	line-height: 1.4;
-	color: var(--green-soft);
+	color: var(--verde-claro);
 }

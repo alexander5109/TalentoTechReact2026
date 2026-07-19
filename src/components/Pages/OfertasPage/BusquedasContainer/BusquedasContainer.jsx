@@ -48,7 +48,7 @@ export default function BusquedasContainer({
 			options={profileOptions}
 			placeholder="Seleccionar perfil"
 		/>
-		{/* <>
+		<>
 			{profiles.map(profile => (
 				<SearchProfileCard
 					key={profile.id}
@@ -59,7 +59,7 @@ export default function BusquedasContainer({
 				/>
 			))
 			}
-		</> */}
+		</>
 		<ApdLayoutStack >
 			<ApdButton disabled={!hasChanges} onClick={onSaveProfile} variant="primary">
 				🔖 Crear nuevo
