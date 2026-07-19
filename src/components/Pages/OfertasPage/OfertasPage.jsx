@@ -1,6 +1,6 @@
 import { useState } from "react"
 import OfertaList from "./OfertaList/OfertaList"
-import BusquedasContainer from "./BusquedasContainer/BusquedasContainer"
+import ProfilesWidgetLists from "./ProfilesWidgetLists/ProfilesWidgetLists"
 import FiltrosList from "./FiltrosList/FiltrosList"
 import { useAuth } from "../../../context/AuthContext";
 import { createProfile } from "../../../firebase/profileService";
@@ -118,13 +118,15 @@ export default function OfertasPage() {
 		<ApdLayoutStack gap="1rem" flex="0 0 320px">
 			<ApdPanel as="nav">
 				<ApdH3>🔎 Mis búsquedas</ApdH3>
-				<BusquedasContainer
-					profiles={profiles}
-					selectedProfileId={selectedProfileId}
-					onSelectProfile={handleLoadProfile}
-					onSaveProfile={handleSaveCurrentFilters}
-					onDeleteProfile={handleDeleteProfile}
-				/>
+				<ApdLayoutStack as="nav">
+					<ProfilesWidgetLists
+						profiles={profiles}
+						selectedProfileId={selectedProfileId}
+						onSelectProfile={handleLoadProfile}
+						onSaveProfile={handleSaveCurrentFilters}
+						onDeleteProfile={handleDeleteProfile}
+					/>
+				</ApdLayoutStack>
 			</ApdPanel>
 			<ApdPanel as="section">
 				<ApdH3>⚙️ Filtrar</ApdH3>

@@ -1,5 +1,6 @@
 import ApdButton from "../../../common/ApdButton/ApdButton";
 import ApdComboBox from "../../../common/ApdComboBox/ApdComboBox";
+import ApdSelect from "../../../common/ApdSelect/ApdSelect";
 import SearchProfileCard from "../../../common/SearchProfileCard/SearchProfileCard";
 import ApdH3 from "../../../common/ApdH3/ApdH3";
 import { useState, useEffect } from "react";
@@ -7,7 +8,7 @@ import { useState, useEffect } from "react";
 import ApdLayoutStack from "../../../common/ApdLayoutStack/ApdLayoutStack";
 
 
-export default function BusquedasContainer({
+export default function ProfilesWidgetLists({
 	profiles = [],
 	selectedProfileId,
 	onSelectProfile,
@@ -42,7 +43,7 @@ export default function BusquedasContainer({
 
 
 	return <>
-		<ApdComboBox
+		<ApdSelect
 			value={selectedProfileId}
 			onChange={onSelectProfile}
 			options={profileOptions}
