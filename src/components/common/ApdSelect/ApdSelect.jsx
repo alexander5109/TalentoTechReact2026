@@ -11,7 +11,7 @@ export default function ApdSelect({
 	return (
 		<select
 			className={`${inputStyles.input} ${styles.select} ${className}`}
-			onChange={e => onChange?.(e.target.value)}
+			onChange={e => onChange?.(e)}
 			{...props}
 		>
 			{placeholder && (

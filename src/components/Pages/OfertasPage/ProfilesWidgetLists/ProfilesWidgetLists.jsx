@@ -51,7 +51,7 @@ export default function ProfilesWidgetLists({
 			value={selectedProfileId}
 			options={profileOptions}
 			placeholder="Nueva búsqueda..."
-			onChange={onSelectProfile}
+			onChange={(e) => onSelectProfile(e.target.value)}
 		/>
 		<ApdLayoutStack direction="row">
 			<ApdLayoutStack >
