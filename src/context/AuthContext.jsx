@@ -23,36 +23,14 @@ export function useAuth() {
 export const AuthProvider = ({ children }) => {
 	const [user, setUser] = useState(null);
 	const [loading, setLoading] = useState(true);
-	const [promotions, setPromotions] = useState(null);
+	const [promotions, setPromotions] = useState([]);
 
 
 	const [availableFeatures, setAvailableFeatures] = useState([]);
 	const [availableFeaturesByIdMap, setAvailableFeaturesByIdMap] = useState({});
 	const [userFeatures, setUserFeatures] = useState({});
 
-	async function getAvailablePromotions() {
 
-		if (promotions)
-			return promotions;
-
-		const data = await getAllPromotions();
-
-		setPromotions(data);
-
-		return data;
-	}
-
-	// async function getAvailablePromotionsFromUser(userId) {
-
-	// 	if (promotions)
-	// 		return promotions.filter();
-
-	// 	const data = await getAllPromotions();
-
-	// 	setPromotions(data);
-
-	// 	return data;
-	// }
 
 
 	useEffect(() => {
@@ -83,8 +61,15 @@ export const AuthProvider = ({ children }) => {
 					try {
 
 						// cargar catálogo de features
-						const features = await getFeatures();
-
+						// const features = await getFeatures();
+						const [
+							features,
+							promotions
+						] = await Promise.all([
+							getFeatures(),
+							getAllPromotions()
+						]);
+						setPromotions(promotions);
 						setAvailableFeatures(features);
 
 						const featureMap = features.reduce((acc, feature) => {
@@ -191,7 +176,7 @@ export const AuthProvider = ({ children }) => {
 			signup,
 			login,
 			logout,
-			getAvailablePromotions,
+			promotions,
 		}}>
 			{!loading && children}
 		</AuthContext.Provider >

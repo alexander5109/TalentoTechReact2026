@@ -26,19 +26,13 @@ function puedeCrearAlerta(usuario) {
 }
 
 export default function UserAdminPanelPage() {
-	const { getAvailablePromotions, availableFeaturesMap } = useAuth();
 
 
-	const [promotions, setPromotions] = useState([]);
-	useEffect(() => {
-		async function loadPromotions() {
-			const data = await getAvailablePromotions();
-			setPromotions(data);
-		}
-		loadPromotions();
-	}, []);
+	const {
+		promotions,
+		availableFeaturesMap
+	} = useAuth();
 
-	// relleno: stat, value
 	const estadisticas = [
 		["👥 Usuarios registrados", 128],
 		["🔔 Alertas activas", 91],

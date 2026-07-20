@@ -18,10 +18,14 @@ import SearchProfileCard from "../../common/SearchProfileCard/SearchProfileCard"
 
 import Swal from "sweetalert2";
 import { useAuth } from "../../../context/AuthContext";
+import { activatePromotion } from "../../../firebase/profileService";
 
 
 export default function UserAccountSettingsPage() {
-	const { getAvailablePromotions } = useAuth();
+	const {
+		promotions,
+		availableFeaturesMap
+	} = useAuth();
 	const [usuario, setUsuario] = useState(null);
 	const [loading, setLoading] = useState(true);
 	const [saving, setSaving] = useState(false);
@@ -32,8 +36,6 @@ export default function UserAccountSettingsPage() {
 	async function handleSubmit(e) {
 		e.preventDefault();
 
-		const promotions = await getAvailablePromotions();
-		// const promocionesDelUsuario = promotions.filter((x) => x.codigo != userCodigoDeCoso)
 
 		const now = new Date();
 
@@ -41,16 +43,16 @@ export default function UserAccountSettingsPage() {
 			if (item == null) {
 				return false;
 			}
-			console.log(item.codigo)
-			console.log(userCodigoDeCoso)
+			// console.log(item.codigo)
+			// console.log(userCodigoDeCoso)
 			if (item.codigo !== userCodigoDeCoso.trim().toUpperCase())
 				return false;
 
 			if (!item.activa)
 				return false;
 
-			console.log(item?.vigenciaHasta)
-			console.log(item?.vigenciaDesde)
+			// console.log(item?.vigenciaHasta)
+			// console.log(item?.vigenciaDesde)
 
 			const desde = item?.vigenciaDesde?.toDate();
 			const hasta = item?.vigenciaHasta?.toDate();
@@ -69,7 +71,6 @@ export default function UserAccountSettingsPage() {
 			return;
 		}
 		try {
-
 			await activatePromotion(usuario, promotion);
 
 			Swal.fire({

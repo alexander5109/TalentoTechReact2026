@@ -10,6 +10,8 @@ export async function getProfiles(userId) {
 
 export async function activatePromotion(user, promotion) {
 
+	console.log(usuario)
+	console.log(promotion)
 	if (!user)
 		throw new Error("No hay usuario autenticado.");
 
