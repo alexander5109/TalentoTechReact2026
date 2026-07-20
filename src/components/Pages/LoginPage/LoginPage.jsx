@@ -2,16 +2,16 @@ import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
-import ApdInput from "../../common/ApdInput/ApdInput";
-import ApdH3TitleSubtitle from "../../common/ApdH3TitleSubtitle/ApdH3TitleSubtitle";
+import ApdInput from "./../../common/ApdInput/ApdInput";
+import ApdH3TitleSubtitle from "./../../common/ApdH3TitleSubtitle/ApdH3TitleSubtitle";
 import ApdPanel from "../../common/ApdPanel/ApdPanel";
-import ApdPrettyP from "../../common/ApdPrettyP/ApdPrettyP";
-import ApdButton from "../../common/ApdButton/ApdButton";
+import ApdPrettyP from "./../../common/ApdPrettyP/ApdPrettyP";
+import ApdButton from "./../../common/ApdButton/ApdButton";
 import ApdNavLink from "../../common/ApdNavLink/ApdNavLink";
-import ApdLayoutStack from "../../common/ApdLayoutStack/ApdLayoutStack";
-import ApdLabel from "../../common/ApdLabel/ApdLabel";
+import ApdLayoutStack from "./../../common/ApdLayoutStack/ApdLayoutStack";
+import ApdLabel from "./../../common/ApdLabel/ApdLabel";
 
-import ApdFeedback from "../../common/ApdFeedback/ApdFeedback";
+import ApdFeedback from "./../../common/ApdFeedback/ApdFeedback";
 
 export default function LoginPage() {
 

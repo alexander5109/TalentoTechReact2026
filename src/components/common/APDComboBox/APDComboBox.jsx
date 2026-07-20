@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import ApdLabel from "../ApdLabel/ApdLabel"
+import ApdLabel from "./../ApdLabel/ApdLabel"
 import styles from "./ApdComboBox.module.css";
 
 export default function ApdComboBox({

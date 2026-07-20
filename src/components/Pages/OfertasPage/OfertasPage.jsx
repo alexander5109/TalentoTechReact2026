@@ -2,15 +2,15 @@ import { useState, useEffect } from "react";
 import OfertaList from "./OfertaList/OfertaList"
 import ProfilesWidgetLists from "./ProfilesWidgetLists/ProfilesWidgetLists"
 import FiltrosList from "./FiltrosList/FiltrosList"
-import { useAuth } from "../../../context/AuthContext";
-import { getProfiles, createProfile, deleteProfile, updateProfile } from "../../../firebase/profileService";
-import ApdButton from "../../common/ApdButton/ApdButton";
-import ApdPrettyP from "../../common/ApdPrettyP/ApdPrettyP";
-import ApdH3TitleSubtitle from "../../common/ApdH3TitleSubtitle/ApdH3TitleSubtitle";
-import ApdH3 from "../../common/ApdH3/ApdH3";
+import { useAuth } from "./../../../context/AuthContext";
+import { getProfiles, createProfile, deleteProfile, updateProfile } from "./../../../firebase/profileService";
+import ApdButton from "./../../common/ApdButton/ApdButton";
+import ApdPrettyP from "./../../common/ApdPrettyP/ApdPrettyP";
+import ApdH3TitleSubtitle from "./../../common/ApdH3TitleSubtitle/ApdH3TitleSubtitle";
+import ApdH3 from "./../../common/ApdH3/ApdH3";
 import ApdPanel from "../../common/ApdPanel/ApdPanel";
-import ApdLayoutStack from "../../common/ApdLayoutStack/ApdLayoutStack"
-import ApdLayoutGrid from "../../common/ApdLayoutGrid/ApdLayoutGrid"
+import ApdLayoutStack from "./../../common/ApdLayoutStack/ApdLayoutStack"
+import ApdLayoutGrid from "./../../common/ApdLayoutGrid/ApdLayoutGrid"
 import Swal from "sweetalert2";
 const EMPTY_FILTERS = {
 	cargos: [],

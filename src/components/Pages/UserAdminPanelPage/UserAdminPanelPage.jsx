@@ -1,15 +1,15 @@
 import ApdPanel from "../../common/ApdPanel/ApdPanel";
-import ApdH3TitleSubtitle from "../../common/ApdH3TitleSubtitle/ApdH3TitleSubtitle";
-import ApdPrettyP from "../../common/ApdPrettyP/ApdPrettyP";
-import ApdDetailItem from "../../common/ApdDetailItem/ApdDetailItem"
-import ApdButton from "../../common/ApdButton/ApdButton";
-import ApdLayoutGrid from "../../common/ApdLayoutGrid/ApdLayoutGrid";
+import ApdH3TitleSubtitle from "./../../common/ApdH3TitleSubtitle/ApdH3TitleSubtitle";
+import ApdPrettyP from "./../../common/ApdPrettyP/ApdPrettyP";
+import ApdDetailItem from "./../../common/ApdDetailItem/ApdDetailItem"
+import ApdButton from "./../../common/ApdButton/ApdButton";
+import ApdLayoutGrid from "./../../common/ApdLayoutGrid/ApdLayoutGrid";
 import styles from "./UserAdminPanelPage.module.css";
 import { useEffect, useState } from "react";
-import { getAllPromotions, getFeatures } from "../../../firebase/promotionsService";
+import { getAllPromotions, getFeatures } from "./../../../firebase/promotionsService";
 import { Link } from "react-router-dom";
-import ApdLayoutStack from "../../common/ApdLayoutStack/ApdLayoutStack";
-import ApdH4 from "../../common/ApdH4/ApdH4";
+import ApdLayoutStack from "./../../common/ApdLayoutStack/ApdLayoutStack";
+import ApdH4 from "./../../common/ApdH4/ApdH4";
 
 const PROMOTION_TYPES = {
 	ALERT_LIMIT: "Más alertas",

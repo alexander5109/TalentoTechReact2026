@@ -1,12 +1,12 @@
 import ApdPanel from "../../common/ApdPanel/ApdPanel";
-import ApdH3TitleSubtitle from "../../common/ApdH3TitleSubtitle/ApdH3TitleSubtitle";
-import ApdPrettyP from "../../common/ApdPrettyP/ApdPrettyP";
+import ApdH3TitleSubtitle from "./../../common/ApdH3TitleSubtitle/ApdH3TitleSubtitle";
+import ApdPrettyP from "./../../common/ApdPrettyP/ApdPrettyP";
 
 import Swal from "sweetalert2"
-import ApdButton from "../../common/ApdButton/ApdButton";
-import ApdInput from "../../common/ApdInput/ApdInput";
-import ApdLayoutStack from "../../common/ApdLayoutStack/ApdLayoutStack";
-import ApdLabel from "../../common/ApdLabel/ApdLabel";
+import ApdButton from "./../../common/ApdButton/ApdButton";
+import ApdInput from "./../../common/ApdInput/ApdInput";
+import ApdLayoutStack from "./../../common/ApdLayoutStack/ApdLayoutStack";
+import ApdLabel from "./../../common/ApdLabel/ApdLabel";
 
 export default function ContactoPage() {
 

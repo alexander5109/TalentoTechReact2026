@@ -1,14 +1,14 @@
-import { usePendingPostulations } from "../../../context/PendingPostulationsContext"
+import { usePendingPostulations } from "./../../../context/PendingPostulationsContext"
 
 import OfertaCard from '../OfertasPage/OfertaCard/OfertaCard'
 
-import ApdH1TitleSubtitle from "../../common/ApdH1TitleSubtitle/ApdH1TitleSubtitle"
+import ApdH1TitleSubtitle from "./../../common/ApdH1TitleSubtitle/ApdH1TitleSubtitle"
 import ApdPanel from "../../common/ApdPanel/ApdPanel"
 
 import styles from "./UserPendingPostulationsPage.module.css"
 
 import Swal from "sweetalert2"
-import ApdButton from "../../common/ApdButton/ApdButton"
+import ApdButton from "./../../common/ApdButton/ApdButton"
 
 export default function UserPendingPostulationsPage() {
 

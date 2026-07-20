@@ -1,10 +1,10 @@
 import styles from "./NavBar.module.css";
 
-import { usePendingPostulations } from "../../context/PendingPostulationsContext";
-import { useAuth } from "../../context/AuthContext";
+import { usePendingPostulations } from "./../../context/PendingPostulationsContext";
+import { useAuth } from "./../../context/AuthContext";
 
-import ApdLayoutStack from "../common/ApdLayoutStack/ApdLayoutStack";
-import ApdNavLink from "../common/ApdNavLink/ApdNavLink";
+import ApdLayoutStack from "./../common/ApdLayoutStack/ApdLayoutStack";
+import ApdNavLink from "./../common/ApdNavLink/ApdNavLink";
 
 export default function NavBar() {
 

@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 
-import FormUserAccount from "../../FormUserAccount/FormUserAccount";
+import FormUserAccount from "./../../FormUserAccount/FormUserAccount";
 
-import { obtenerUsuarioActual, actualizarUsuario } from "../../../services/userService";
-import ApdFeedback from "../../common/ApdFeedback/ApdFeedback";
+import { obtenerUsuarioActual, actualizarUsuario } from "./../../../services/userService";
+import ApdFeedback from "./../../common/ApdFeedback/ApdFeedback";
 import ApdPanel from "../../common/ApdPanel/ApdPanel";
-import ApdH3TitleSubtitle from "../../common/ApdH3TitleSubtitle/ApdH3TitleSubtitle";
-import ApdSpinner from "../../common/ApdSpinner/ApdSpinner";
+import ApdH3TitleSubtitle from "./../../common/ApdH3TitleSubtitle/ApdH3TitleSubtitle";
+import ApdSpinner from "./../../common/ApdSpinner/ApdSpinner";
 
 export default function UserAccountSettingsPage() {
 

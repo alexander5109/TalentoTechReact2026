@@ -1,5 +1,5 @@
 import Swal from 'sweetalert2'
-import { usePendingPostulations } from "../../../../context/PendingPostulationsContext.jsx"
+import { usePendingPostulations } from "./../../../../context/PendingPostulationsContext.jsx"
 import styles from './OfertaCard.module.css'
 import ApdButton from '../../../common/ApdButton/ApdButton.jsx'
 import ApdLink from '../../../common/ApdLink/ApdLink.jsx'

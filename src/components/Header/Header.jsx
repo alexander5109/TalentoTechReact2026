@@ -1,7 +1,7 @@
 import styles from "./Header.module.css"
-import ApdH1TitleSubtitle from "../common/ApdH1TitleSubtitle/ApdH1TitleSubtitle"
+import ApdH1TitleSubtitle from "./../common/ApdH1TitleSubtitle/ApdH1TitleSubtitle"
 import { useLocation } from "react-router-dom"
-import { useAuth } from "../../context/AuthContext";
+import { useAuth } from "./../../context/AuthContext";
 
 export default function Header() {
 

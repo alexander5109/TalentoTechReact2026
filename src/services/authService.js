@@ -5,7 +5,7 @@ import {
 	setDoc
 } from "firebase/firestore";
 
-import { auth, db } from "../firebase/config";
+import { auth, db } from "./../firebase/config";
 import { subirAvatar } from "./subirAvatar";
 
 export async function registrarUsuario({

@@ -1,19 +1,19 @@
 import { useEffect, useState } from "react";
 
 import ApdPanel from "../../common/ApdPanel/ApdPanel";
-import ApdH3TitleSubtitle from "../../common/ApdH3TitleSubtitle/ApdH3TitleSubtitle";
+import ApdH3TitleSubtitle from "./../../common/ApdH3TitleSubtitle/ApdH3TitleSubtitle";
 
-import { getFeatures, getPromotion, createPromotion, updatePromotion, deletePromotion } from "../../../firebase/promotionsService";
+import { getFeatures, getPromotion, createPromotion, updatePromotion, deletePromotion } from "./../../../firebase/promotionsService";
 
-import ApdLayoutStack from "../../common/ApdLayoutStack/ApdLayoutStack";
+import ApdLayoutStack from "./../../common/ApdLayoutStack/ApdLayoutStack";
 
-// import ApdRadioFilterGroup from "../../common/ApdRadioFilterGroup/ApdRadioFilterGroup";
-import ApdSelect from "../../common/ApdSelect/ApdSelect";
-import ApdInput from "../../common/ApdInput/ApdInput";
-import ApdButton from "../../common/ApdButton/ApdButton";
+// import ApdRadioFilterGroup from "./../../common/ApdRadioFilterGroup/ApdRadioFilterGroup";
+import ApdSelect from "./../../common/ApdSelect/ApdSelect";
+import ApdInput from "./../../common/ApdInput/ApdInput";
+import ApdButton from "./../../common/ApdButton/ApdButton";
 import { useNavigate, useParams } from "react-router-dom";
-import ApdLabel from "../../common/ApdLabel/ApdLabel";
-import ApdLink from "../../common/ApdLink/ApdLink";
+import ApdLabel from "./../../common/ApdLabel/ApdLabel";
+import ApdLink from "./../../common/ApdLink/ApdLink";
 import Swal from "sweetalert2";
 
 export default function PromotionCreatePage() {

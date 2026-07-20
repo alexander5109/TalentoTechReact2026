@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
-import ApdSpinner from "../../common/ApdSpinner/ApdSpinner";
+import ApdSpinner from "./../../common/ApdSpinner/ApdSpinner";
 
 import OfertaDetalle from "./OfertaDetalle/OfertaDetalle"
 

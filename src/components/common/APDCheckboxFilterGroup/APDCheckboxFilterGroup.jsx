@@ -1,5 +1,5 @@
-import ApdLayoutStack from "../ApdLayoutStack/ApdLayoutStack"
-import ApdLabel from "../ApdLabel/ApdLabel"
+import ApdLayoutStack from "./../ApdLayoutStack/ApdLayoutStack"
+import ApdLabel from "./../ApdLabel/ApdLabel"
 import styles from "./ApdCheckboxFilterGroup.module.css"
 
 export default function ApdCheckboxFilterGroup({

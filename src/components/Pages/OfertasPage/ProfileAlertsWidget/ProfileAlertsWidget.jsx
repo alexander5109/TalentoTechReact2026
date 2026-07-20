@@ -1,5 +1,5 @@
-import ApdH4 from "../../../common/ApdH4/ApdH4";
-import ApdLayoutStack from "../../../common/ApdLayoutStack/ApdLayoutStack";
+import ApdH4 from "./../../../common/ApdH4/ApdH4";
+import ApdLayoutStack from "./../../../common/ApdLayoutStack/ApdLayoutStack";
 
 export default function ProfileAlertsWidget({
 	value,

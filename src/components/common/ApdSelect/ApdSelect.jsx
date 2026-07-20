@@ -1,5 +1,5 @@
 import styles from "./ApdSelect.module.css";
-import inputStyles from "../ApdInput/ApdInput.module.css";
+import inputStyles from "./../ApdInput/ApdInput.module.css";
 
 export default function ApdSelect({
 	options = [],

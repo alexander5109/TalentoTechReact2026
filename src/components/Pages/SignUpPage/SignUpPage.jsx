@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import FormUserAccount from "../../FormUserAccount/FormUserAccount";
-import { registrarUsuario } from "../../../services/authService";
-import ApdH3TitleSubtitle from "../../common/ApdH3TitleSubtitle/ApdH3TitleSubtitle";
+import FormUserAccount from "./../../FormUserAccount/FormUserAccount";
+import { registrarUsuario } from "./../../../services/authService";
+import ApdH3TitleSubtitle from "./../../common/ApdH3TitleSubtitle/ApdH3TitleSubtitle";
 import ApdPanel from "../../common/ApdPanel/ApdPanel";
 
 export default function SignUpPage() {

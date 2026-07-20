@@ -1,20 +1,20 @@
-import ApdH3TitleSubtitle from "../../../common/ApdH3TitleSubtitle/ApdH3TitleSubtitle";
+import ApdH3TitleSubtitle from "./../../../common/ApdH3TitleSubtitle/ApdH3TitleSubtitle";
 
 import Swal from "sweetalert2"
 
 import {
 	usePendingPostulations
-} from "../../../../context/PendingPostulationsContext.jsx"
+} from "./../../../../context/PendingPostulationsContext.jsx"
 
 import styles from "./OfertaDetalle.module.css"
-import ApdLink from "../../../common/ApdLink/ApdLink.jsx";
-import ApdButton from "../../../common/ApdButton/ApdButton.jsx";
-import ApdDetailItem from "../../../common/ApdDetailItem/ApdDetailItem.jsx";
-import ApdLayoutGrid from "../../../common/ApdLayoutGrid/ApdLayoutGrid.jsx";
-import ApdPrettyP from "../../../common/ApdPrettyP/ApdPrettyP.jsx";
-import ApdH3 from "../../../common/ApdH3/ApdH3.jsx";
-import ApdH4 from "../../../common/ApdH4/ApdH4.jsx";
-import ApdLayoutStack from "../../../common/ApdLayoutStack/ApdLayoutStack.jsx";
+import ApdLink from "./../../../common/ApdLink/ApdLink.jsx";
+import ApdButton from "./../../../common/ApdButton/ApdButton.jsx";
+import ApdDetailItem from "./../../../common/ApdDetailItem/ApdDetailItem.jsx";
+import ApdLayoutGrid from "./../../../common/ApdLayoutGrid/ApdLayoutGrid.jsx";
+import ApdPrettyP from "./../../../common/ApdPrettyP/ApdPrettyP.jsx";
+import ApdH3 from "./../../../common/ApdH3/ApdH3.jsx";
+import ApdH4 from "./../../../common/ApdH4/ApdH4.jsx";
+import ApdLayoutStack from "./../../../common/ApdLayoutStack/ApdLayoutStack.jsx";
 import ApdPanel from "../../../common/ApdPanel/ApdPanel.jsx";
 
 export default function OfertaDetalle({ offer }) {

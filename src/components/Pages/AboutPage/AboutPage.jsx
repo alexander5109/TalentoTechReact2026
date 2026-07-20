@@ -1,5 +1,5 @@
-import ApdPrettyP from "../../common/ApdPrettyP/ApdPrettyP"
-import ApdH3TitleSubtitle from "../../common/ApdH3TitleSubtitle/ApdH3TitleSubtitle"
+import ApdPrettyP from "./../../common/ApdPrettyP/ApdPrettyP"
+import ApdH3TitleSubtitle from "./../../common/ApdH3TitleSubtitle/ApdH3TitleSubtitle"
 import ApdPanel from "../../common/ApdPanel/ApdPanel"
 
 export default function AboutPage() {
