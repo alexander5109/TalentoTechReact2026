@@ -2,7 +2,7 @@ import { useEffect, createContext, useState, useContext } from 'react';
 import { onAuthStateChanged, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { auth, db } from "./../firebase/config";
-import { getFeatures, getPromotion } from '../firebase/promotionsService';
+import { getFeatures } from '../firebase/promotionsService';
 import { getAllPromotions } from "../firebase/promotionsService";
 
 
@@ -24,6 +24,7 @@ export const AuthProvider = ({ children }) => {
 	const [user, setUser] = useState(null);
 	const [loading, setLoading] = useState(true);
 	const [promotions, setPromotions] = useState([]);
+	const [promotionsMap, setPromotionsMap] = useState({});
 
 
 	const [availableFeatures, setAvailableFeatures] = useState([]);
@@ -32,23 +33,29 @@ export const AuthProvider = ({ children }) => {
 
 
 
-
 	useEffect(() => {
-		async function resolveUserFeatures(activePromotions = []) {
+		async function resolveUserFeatures(activePromotions = [], promotionsMap) {
 			const result = {};
+			const now = new Date();
+
 			for (const active of activePromotions) {
-				const promotion = await getPromotion(active.promotionId);
+
+				const promotion = promotionsMap[active.promotionId];
+
 				if (!promotion)
 					continue;
-				const now = new Date();
-				const from = active.from.toDate();
-				const to = active.to.toDate();
-				if (now < from || now > to)
+
+				const desde = new Date(promotion.vigenciaDesde);
+				const hasta = new Date(promotion.vigenciaHasta);
+
+				if (now < desde || now > hasta)
 					continue;
+
 				for (const feature of promotion.features ?? []) {
 					result[feature] = true;
 				}
 			}
+
 			return result;
 		}
 
@@ -69,7 +76,17 @@ export const AuthProvider = ({ children }) => {
 							getFeatures(),
 							getAllPromotions()
 						]);
+
+
+
+						const promotionsMap = promotions.reduce((acc, promotion) => {
+							acc[promotion.id] = promotion;
+							return acc;
+						}, {});
 						setPromotions(promotions);
+						setPromotionsMap(promotionsMap);
+
+
 						setAvailableFeatures(features);
 
 						const featureMap = features.reduce((acc, feature) => {
@@ -105,10 +122,7 @@ export const AuthProvider = ({ children }) => {
 							const userData = userDocSnap.data();
 
 
-							const activeFeatures =
-								await resolveUserFeatures(
-									userData.activePromotions
-								);
+							const activeFeatures = await resolveUserFeatures(userData.activePromotions, promotionsMap);
 
 
 							setUserFeatures(activeFeatures);

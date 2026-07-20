@@ -9,8 +9,8 @@ export default function Header() {
 
 
 
-	const { hasFeature } = useAuth();
-
+	const { hasFeature, userFeatures } = useAuth();
+	console.log(userFeatures)
 	const removeAds = hasFeature("remove_ads");
 
 
