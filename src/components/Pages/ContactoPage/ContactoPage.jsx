@@ -10,7 +10,7 @@ import ApdLabel from "./../../common/ApdLabel/ApdLabel";
 
 export default function ContactoPage() {
 
-	function manejarSubmit(e) {
+	function handleSubmit(e) {
 		e.preventDefault()
 		Swal.fire({
 			title: "Mensaje enviado",
@@ -48,7 +48,7 @@ export default function ContactoPage() {
 			resultan especialmente valiosas.
 		</ApdPrettyP>
 
-		<ApdLayoutStack as="form" onSubmit={manejarSubmit}>
+		<ApdLayoutStack as="form" onSubmit={handleSubmit}>
 
 			<ApdLayoutStack>
 				<ApdLabel htmlFor="nombre">Nombre</ApdLabel>

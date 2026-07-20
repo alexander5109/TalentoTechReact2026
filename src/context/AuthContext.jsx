@@ -2,7 +2,7 @@ import { useEffect, createContext, useState, useContext } from 'react';
 import { onAuthStateChanged, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { auth, db } from "./../firebase/config";
-import { getFeatures, getPromotion, getAllPromotions } from '../firebase/promotionsService';
+import { getFeatures, getPromotion } from '../firebase/promotionsService';
 
 
 
@@ -22,6 +22,9 @@ export function useAuth() {
 export const AuthProvider = ({ children }) => {
 	const [user, setUser] = useState(null);
 	const [loading, setLoading] = useState(true);
+
+
+
 	const [availableFeatures, setAvailableFeatures] = useState([]);
 	const [availableFeaturesByIdMap, setAvailableFeaturesByIdMap] = useState({});
 	const [userFeatures, setUserFeatures] = useState({});

@@ -28,17 +28,15 @@ function puedeCrearAlerta(usuario) {
 
 export default function UserAdminPanelPage() {
 	const { availableFeaturesMap } = useAuth();
+
+
 	const [promotions, setPromotions] = useState([]);
-
 	useEffect(() => {
-
 		async function loadPromotions() {
 			const data = await getAllPromotions();
 			setPromotions(data);
 		}
-
 		loadPromotions();
-
 	}, []);
 
 	// relleno: stat, value

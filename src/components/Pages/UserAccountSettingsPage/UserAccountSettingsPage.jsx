@@ -14,6 +14,9 @@ import ApdH4 from "../../common/ApdH4/ApdH4";
 import ApdLayoutGrid from "../../common/ApdLayoutGrid/ApdLayoutGrid";
 import ApdButton from "../../common/ApdButton/ApdButton";
 import SearchProfileCard from "../../common/SearchProfileCard/SearchProfileCard";
+import { getAllPromotions } from "../../../firebase/promotionsService";
+import Swal from "sweetalert2";
+
 
 export default function UserAccountSettingsPage() {
 
@@ -24,6 +27,52 @@ export default function UserAccountSettingsPage() {
 	const [saving, setSaving] = useState(false);
 
 	const [feedback, setFeedback] = useState(null);
+
+	const [userCodigoDeCoso, setUserCodigoDeCoso] = useState("");
+
+
+
+	const [existingPromotions, setExistingPromotions] = useState([]);
+
+	async function handleSubmit(e) {
+		e.preventDefault();
+
+		const promotions = await getAllPromotions();
+
+		const now = new Date();
+
+		const promotion = promotions.find(item => {
+
+			if (item.codigo !== userCodigoDeCoso.trim().toUpperCase())
+				return false;
+
+			if (!item.activa)
+				return false;
+
+			const desde = item.vigenciaDesde.toDate();
+			const hasta = item.vigenciaHasta.toDate();
+
+			return now >= desde && now <= hasta;
+		});
+
+		if (!promotion) {
+
+			Swal.fire({
+				title: "Código inválido",
+				text: "El código no existe o ya no se encuentra vigente.",
+				icon: "error"
+			});
+
+			return;
+		}
+
+		Swal.fire({
+			title: "Código correcto",
+			text: `Se activará la promoción "${promotion.nombre}".`,
+			icon: "success"
+		});
+	}
+
 
 	useEffect(() => {
 		async function cargarUsuario() {
@@ -96,11 +145,14 @@ export default function UserAccountSettingsPage() {
 			</ApdPanel >
 			<ApdPanel flex="5 1 500px" as="section">
 				<ApdH3>Beneficios</ApdH3>
-				<ApdLayoutStack as="form">
+				<ApdLayoutStack as="form" onSubmit={handleSubmit}>
 					<ApdH4>Ingresar código de promoción</ApdH4>
-					<ApdInput type="text"></ApdInput>
+					<ApdInput type="text"
+						value={userCodigoDeCoso}
+						onChange={(e) => setUserCodigoDeCoso(e.target.value)}
+					></ApdInput>
 					<ApdLayoutStack direction="row" align="center">
-						<ApdButton >Ingresar</ApdButton>
+						<ApdButton type="submit" >Ingresar</ApdButton>
 					</ApdLayoutStack>
 				</ApdLayoutStack>
 
@@ -108,10 +160,6 @@ export default function UserAccountSettingsPage() {
 					<ApdPanel>Sin publicidad</ApdPanel>
 					<ApdPanel>Sin asdasd</ApdPanel>
 					<ApdPanel>Sin asdas</ApdPanel>
-					<ApdPanel>asdasd asd</ApdPanel>
-					<ApdPanel>asdasd asd</ApdPanel>
-					<ApdPanel>asdasd asd</ApdPanel>
-					<ApdPanel>asdasd asd</ApdPanel>
 					<ApdPanel>asdasd asd</ApdPanel>
 				</ApdLayoutGrid>
 			</ApdPanel>
