@@ -27,42 +27,19 @@ function puedeCrearAlerta(usuario) {
 }
 
 export default function UserAdminPanelPage() {
-	// feature: nombre promocion, feature, duration
-
-
-
-	const [availableFeaturesMap, setFeatures] = useState({});
-
+	const { availableFeaturesMap } = useAuth();
+	const [promotions, setPromotions] = useState([]);
 
 	useEffect(() => {
 
-		async function loadFeatures() {
-
-			const { availableFeatures } = useAuth()
-
-			const featureMap = availableFeatures.reduce((acc, feature) => {
-				acc[feature.id] = feature;
-				return acc;
-			}, {});
-			setFeatures(featureMap);
+		async function loadPromotions() {
+			const data = await getAllPromotions();
+			setPromotions(data);
 		}
 
-		loadFeatures();
+		loadPromotions();
 
 	}, []);
-
-
-	const [promotions, setPromotions] = useState([]);
-
-	async function refreshPromotions() {
-		const data = await getAllPromotions();
-		setPromotions(data);
-	}
-
-	useEffect(() => { refreshPromotions(); }, []);
-
-
-
 
 	// relleno: stat, value
 	const estadisticas = [
