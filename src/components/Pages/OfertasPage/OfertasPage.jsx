@@ -3,7 +3,7 @@ import OfertaList from "./OfertaList/OfertaList"
 import ProfilesWidgetLists from "./ProfilesWidgetLists/ProfilesWidgetLists"
 import FiltrosList from "./FiltrosList/FiltrosList"
 import { useAuth } from "./../../../context/AuthContext";
-import { getProfiles, createProfile, deleteProfile, updateProfile } from "./../../../firebase/profileService";
+import { getProfiles, createProfile, deleteProfile, updateProfile } from "../../../firebase/profileService";
 import ApdButton from "./../../common/ApdButton/ApdButton";
 import ApdPrettyP from "./../../common/ApdPrettyP/ApdPrettyP";
 import ApdH3TitleSubtitle from "./../../common/ApdH3TitleSubtitle/ApdH3TitleSubtitle";
