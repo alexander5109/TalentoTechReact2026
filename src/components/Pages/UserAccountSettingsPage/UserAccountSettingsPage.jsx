@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import styles from "./UserAccountSettingsPage.module.css";
 import FormUserAccount from "./../../FormUserAccount/FormUserAccount";
 
 import { obtenerUsuarioActual, actualizarUsuario } from "./../../../services/userService";
@@ -12,6 +12,8 @@ import ApdH3 from "../../common/ApdH3/ApdH3";
 import ApdInput from "../../common/ApdInput/ApdInput";
 import ApdH4 from "../../common/ApdH4/ApdH4";
 import ApdLayoutGrid from "../../common/ApdLayoutGrid/ApdLayoutGrid";
+import ApdButton from "../../common/ApdButton/ApdButton";
+import SearchProfileCard from "../../common/SearchProfileCard/SearchProfileCard";
 
 export default function UserAccountSettingsPage() {
 
@@ -74,11 +76,10 @@ export default function UserAccountSettingsPage() {
 	if (!usuario && feedback)
 		return <ApdFeedback feedback={feedback}></ApdFeedback>;
 
-	return <>
+	return <ApdLayoutStack as="main" margin="2rem">
 		<ApdH3TitleSubtitle upper="Apd Finder" lower="Mi cuenta"></ApdH3TitleSubtitle>
-
-		<ApdLayoutStack direction="row">
-			<ApdPanel as="section">
+		<ApdLayoutStack direction="row" gap="2rem" wrap="wrap">
+			<ApdPanel flex="4 1 300px" as="section">
 				<ApdH3>Datos Personales</ApdH3>
 				<FormUserAccount
 					title="Mi cuenta"
@@ -93,18 +94,25 @@ export default function UserAccountSettingsPage() {
 
 				/>
 			</ApdPanel >
-			<ApdPanel as="section">
+			<ApdPanel flex="5 1 500px" as="section">
 				<ApdH3>Beneficios</ApdH3>
 				<ApdLayoutStack>
 					<ApdH4>Incresar código de promoción</ApdH4>
 					<ApdInput type="text"></ApdInput>
 				</ApdLayoutStack>
-				<ApdLayoutGrid>
 
-
+				<ApdLayoutGrid >
+					<ApdPanel>Sin publicidad</ApdPanel>
+					<ApdPanel>Sin asdasd</ApdPanel>
+					<ApdPanel>Sin asdas</ApdPanel>
+					<ApdPanel>asdasd asd</ApdPanel>
+					<ApdPanel>asdasd asd</ApdPanel>
+					<ApdPanel>asdasd asd</ApdPanel>
+					<ApdPanel>asdasd asd</ApdPanel>
+					<ApdPanel>asdasd asd</ApdPanel>
 				</ApdLayoutGrid>
 			</ApdPanel>
 		</ApdLayoutStack>
-	</>
+	</ApdLayoutStack>
 
 }

@@ -61,4 +61,4 @@ async function exportFirestore() {
 	URL.revokeObjectURL(url);
 }
 
-await exportFirestore();
+// await exportFirestore();
