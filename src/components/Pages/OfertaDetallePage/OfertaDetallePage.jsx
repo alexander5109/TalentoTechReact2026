@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
+import ApdSpinner from "../../common/ApdSpinner/ApdSpinner";
 
 import OfertaDetalle from "./OfertaDetalle/OfertaDetalle"
 
@@ -12,7 +13,7 @@ export default function OfertaDetallePage() {
 		fetch("/data/ofertas.json")
 			.then((respuesta) => respuesta.json())
 			.then((data) => {
-				const ofertaEncontrada = data.find((item) => item.idoferta.toString() === idOferta )
+				const ofertaEncontrada = data.find((item) => item.idoferta.toString() === idOferta)
 				setOferta(ofertaEncontrada)
 			})
 			.finally(() => {
@@ -22,6 +23,7 @@ export default function OfertaDetallePage() {
 	}, [idOferta])
 
 	if (loading) {
+		<ApdSpinner />;
 		return <h2>Cargando detalle...</h2>
 	}
 
@@ -29,7 +31,5 @@ export default function OfertaDetallePage() {
 		return <h2>No se encontró la oferta</h2>
 	}
 
-	return (
-		<OfertaDetalle offer={oferta} />
-	)
+	return <OfertaDetalle offer={oferta} />
 }

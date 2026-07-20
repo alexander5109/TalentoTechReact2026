@@ -1,72 +1,109 @@
-import { NavLink } from "react-router-dom"
+import styles from "./NavBar.module.css";
 
-import styles from "./NavBar.module.css"
+import { usePendingPostulations } from "../../context/PendingPostulationsContext";
+import { useAuth } from "../../context/AuthContext";
 
-import { usePendingPostulations } from "../../context/PendingPostulationsContext"
+import ApdLayoutStack from "../common/ApdLayoutStack/ApdLayoutStack";
+import ApdNavLink from "../common/ApdNavLink/ApdNavLink";
 
 export default function NavBar() {
 
-	const { pendingPostulations } = usePendingPostulations()
+	const { user, logout } = useAuth();
+	const { pendingPostulations } = usePendingPostulations();
 
-	function navClass(isActive) {
-		return isActive
-			? `${styles.link} ${styles.active}`
-			: styles.link
-	}
+	const isAdmin = user?.role === "admin";
 
 	return (
-		<nav className={styles.navbar}>
 
-			<NavLink
-				to="/"
-				className={styles.logo}
+		<ApdLayoutStack
+			as="nav"
+			direction="row"
+			align="center"
+			justify="space-between"
+			wrap="wrap"
+			gap="1rem"
+			className={styles.navbar}
+		>
+
+			<ApdNavLink to="/" variant="logo">
+				Apd Finder
+			</ApdNavLink>
+
+			<ApdLayoutStack
+				direction="row"
+				justify="center"
+				align="center"
+				wrap="wrap"
+				gap="0.7rem"
 			>
-				APD Finder
-			</NavLink>
 
-			<div className={styles.links}>
+				<ApdNavLink to="/about">About us</ApdNavLink>
+				<ApdNavLink to="/contacto">Contacto</ApdNavLink>
+				<ApdNavLink to="/ofertas">Ofertas</ApdNavLink>
 
-				<NavLink
-					to="/"
-					className={({ isActive }) => navClass(isActive)}
-				>
-					Inicio
-				</NavLink>
+			</ApdLayoutStack>
 
-				<NavLink
-					to="/about"
-					className={({ isActive }) => navClass(isActive)}
-				>
-					About us
-				</NavLink>
-
-				<NavLink
-					to="/contacto"
-					className={({ isActive }) => navClass(isActive)}
-				>
-					Contacto
-				</NavLink>
-
-				<NavLink
-					to="/ofertas"
-					className={({ isActive }) => navClass(isActive)}
-				>
-					Ofertas
-				</NavLink>
-
-			</div>
-
-			<NavLink
-				to="/pendingPostulations"
-				className={({ isActive }) =>
-					isActive
-						? `${styles.pendingButton} ${styles.activePending}`
-						: styles.pendingButton
-				}
+			<ApdLayoutStack
+				direction="row"
+				justify="center"
+				align="center"
+				wrap="wrap"
+				gap="0.7rem"
 			>
-				📝 Postulaciones ({pendingPostulations.length})
-			</NavLink>
 
-		</nav>
-	)
+				{!user ? (
+					<>
+
+						<ApdNavLink to="/iniciarSesion">
+							Iniciar sesión
+						</ApdNavLink>
+
+						<ApdNavLink to="/crearUsuario">
+							Crear usuario
+						</ApdNavLink>
+
+					</>
+				) : (
+					<>
+
+						<ApdNavLink
+							to="/userPendingPostulations"
+							variant="accent"
+						>
+							📝 Postulaciones ({pendingPostulations.length})
+						</ApdNavLink>
+
+						<ApdNavLink
+							to="/userAccountSettings"
+							variant="accent"
+						>
+							⚙️ Mi cuenta
+						</ApdNavLink>
+
+						{isAdmin && (
+							<ApdNavLink
+								to="/userAdminPanel"
+								variant="accent"
+							>
+								🛠️ Admin Panel
+							</ApdNavLink>
+						)}
+
+						<ApdNavLink
+							to=""
+							variant="danger"
+							onClick={logout}
+						>
+							Cerrar sesión
+						</ApdNavLink>
+
+					</>
+				)}
+
+			</ApdLayoutStack>
+
+		</ApdLayoutStack>
+
+	);
+
 }

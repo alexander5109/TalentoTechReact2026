@@ -1,52 +1,72 @@
 @font-face {
-  font-family: "Albertus";
-  src: url("/fonts/albertusmt.otf") format("opentype");
+	font-family: "Albertus";
+	src: url("/fonts/albertusmt.otf") format("opentype");
 }
 
 :root {
+	/* Identidad principal */
+	--verde-oscuro: #18392d;
+	--verde: #214c3d;
+	--verde-claro: #2f6a55;
 
-  --green-dark: #18392d;
-  --green-main: #214c3d;
-  --green-soft: #2f6a55;
 
-  --parchment: #f5ecd9;
-  --parchment-light: #f8f3e8;
-  --parchment-dark: #dbc8a0;
 
-  --text-dark: #2d2418;
-  --text-soft: #5b5145;
+	/* Estados */
+	--primary: #3b8467;
+	--secondary: #3b71a3;
+	--warning: #b29a3c;
+	--danger: #cf5b56;
 
-  --shadow:
-    0 4px 12px rgba(0, 0, 0, 0.08);
 
-  --font-body:
-    system-ui,
-    Segoe UI,
-    sans-serif;
+	/* Fondos generales */
+	--fondo-papel: #f8f3e8;
+	--fondo-papel-oscuro: #efe5d1;
 
-  --font-heading:
-    "Albertus",
-    serif;
+	/* Superficies / tarjetas */
+	--superficie-clara-clara: #f7f2ea;
+	--superficie-clara: #f8efdd;
+	--superficie: #f5ecd9;
+	--superficie-oscura: #ead8b8;
+	/* Bordes */
+	--borde-suave: #d2c2a2;
+	--borde-dorado: #c7b08a;
+
+
+	/* Texto */
+	--texto: #2d2418;
+	--texto-secundario: #5b5145;
+
+
+	/* Acentos cálidos */
+	--madera-clara: #e7d6bb;
+	--madera: #c9ab84;
+	--madera-oscura: #b08a63;
+
+
+
+
+	--font-body: system-ui, Segoe UI, sans-serif;
+	--font-heading: "Albertus", serif;
 }
 
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 html,
 body,
 #root {
-  margin: 0;
-  min-height: 100vh;
+	margin: 0;
+	min-height: 100vh;
 }
 
 body {
-  font-family: var(--font-body);
+	font-family: var(--font-body);
 
-  color: var(--text-dark);
+	color: var(--texto);
 
-  background:
-    linear-gradient(180deg,
-      #1b2f28,
-      #243d33);
+	background:
+		linear-gradient(180deg,
+			#1b2f28,
+			#243d33);
 }

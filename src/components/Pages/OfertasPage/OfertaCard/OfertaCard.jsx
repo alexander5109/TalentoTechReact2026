@@ -1,7 +1,13 @@
-import { Link } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import { usePendingPostulations } from "../../../../context/PendingPostulationsContext.jsx"
 import styles from './OfertaCard.module.css'
+import ApdButton from '../../../common/ApdButton/ApdButton.jsx'
+import ApdLink from '../../../common/ApdLink/ApdLink.jsx'
+import ApdH4 from '../../../common/ApdH4/ApdH4.jsx'
+import ApdH3 from '../../../common/ApdH3/ApdH3.jsx'
+import ApdLayoutStack from '../../../common/ApdLayoutStack/ApdLayoutStack.jsx'
+import ApdLayoutGrid from '../../../common/ApdLayoutGrid/ApdLayoutGrid.jsx'
+import ApdChip from '../../../common/ApdChip/ApdChip.jsx'
 
 export default function OfertaCard({ offer }) {
 	const estadoClase = (
@@ -66,88 +72,70 @@ export default function OfertaCard({ offer }) {
 			.toLowerCase()
 		}.jpg`
 
-	return (
 
-		<article className={styles.card}>
 
-			<img
-				src={cargoImage}
-				onError={(e) => {
-					e.target.src =
-						"/images/docente.jpg"
-				}}
-				alt={offer.cargo}
-				className={styles.image}
-			/>
 
-			<div className={styles.mainInfo}>
+	return <ApdLayoutStack as="article" className={styles.card} justify="center">
 
-				<h3>
-					{offer.cargo}
-				</h3>
+		<ApdH4 style={{ textAlign: "center" }}>
+			{offer.cargo}
+		</ApdH4>
 
-				<div className={styles.meta}>
-					<span className={estadoClase}>
-						{offer.estado}
-					</span>
+		<img
+			src={cargoImage}
+			onError={(e) => {
+				e.target.src = "/images/docente.jpg";
+			}}
+			alt={offer.cargo}
+			className={styles.image}
+		/>
 
-					<span>
-						{offer.descdistrito}
-					</span>
+		<ApdLayoutGrid
+			columns="repeat(auto-fit, minmax(120px, max-content))"
+			columnGap="0.5rem"
+			rowGap="0.5rem"
+		>
 
-					<span>
-						Turno {offer.turno}
-					</span>
+			<ApdChip className={estadoClase}>
+				{offer.estado}
+			</ApdChip>
 
-					<span>
-						{offer.hsmodulos} módulos
-					</span>
-				</div>
+			<ApdChip>
+				{offer.descdistrito}
+			</ApdChip>
 
-			</div>
+			<ApdChip>
+				Turno {offer.turno}
+			</ApdChip>
 
-			<div className={styles.actions}>
+			<ApdChip>
+				{offer.hsmodulos} módulos
+			</ApdChip>
 
-				<Link
-					to={`/ofertas/${offer.idoferta}`}
-					className={
-						`${styles.button}
-						${styles.secondary}`
-					}
+
+		</ApdLayoutGrid>
+
+		<ApdLayoutStack direction="row" justify="center" gap="0.5rem">
+			<ApdLink to={`/ofertas/${offer.idoferta}`}>
+				Detalles
+			</ApdLink>
+
+			{isAgregada ? (
+				<ApdButton
+					variant="danger"
+					onClick={connectEliminarPostulacion}
 				>
-					Detalles
-				</Link>
+					Quitar
+				</ApdButton>
+			) : (
+				<ApdButton
+					onClick={connectAgregarAPostulaciones}
+				>
+					Agregar
+				</ApdButton>
+			)}
 
-				{
-					isAgregada ? (
-						<button
-							className={
-								`${styles.button}
-								${styles.danger}`
-							}
-							onClick={
-								connectEliminarPostulacion
-							}
-						>
-							Quitar
-						</button>
-					) : (
-						<button
-							className={
-								`${styles.button}
-								${styles.primary}`
-							}
-							onClick={
-								connectAgregarAPostulaciones
-							}
-						>
-							Agregar
-						</button>
-					)
-				}
+		</ApdLayoutStack>
 
-			</div>
-
-		</article>
-	)
+	</ApdLayoutStack>
 }

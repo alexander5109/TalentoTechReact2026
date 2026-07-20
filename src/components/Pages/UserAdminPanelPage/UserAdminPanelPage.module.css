@@ -1,0 +1,10 @@
+.bigContent {
+	margin: 0;
+	font-size: 1rem;
+}
+
+.bigNumber {
+	margin-top: .8rem;
+	font-size: 2rem;
+	font-weight: bold;
+}

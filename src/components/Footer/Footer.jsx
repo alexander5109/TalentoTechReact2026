@@ -4,7 +4,7 @@ import EmpresaMemberTarjeta from "./EmpresaMemberTarjeta/EmpresaMemberTarjeta"
 export default function Footer() {
 	return (
 		<footer className={styles.footer}>
-			<h3>APD Finder</h3>
+			<h3>Apd Finder</h3>
 			<p>
 				Sistema de búsqueda de Actos Públicos Digitales
 			</p>

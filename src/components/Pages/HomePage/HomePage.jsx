@@ -1,57 +1,56 @@
-import PrettyText from "../../common/PrettyText/PrettyText";
-import SectionTitleH3 from "../../common/SectionTitleH3/SectionTitleH3";
-import TextContainerConImage from "../../common/TextContainerConImage/TextContainerConImage";
+import ApdPrettyP from "../../common/ApdPrettyP/ApdPrettyP";
+import ApdH3TitleSubtitle from "../../common/ApdH3TitleSubtitle/ApdH3TitleSubtitle";
+import ApdPanel from "../../common/ApdPanel/ApdPanel";
 
 export default function HomePage() {
 	return (
 		<>
-			<TextContainerConImage
-				image="/images/apd1.jpg"
-				imageSide="left"
+			<ApdPanel image={{
+				src: "/images/apd1.jpg",
+				alt: "Actos Publicos Digitales",
+				imageSide: "left"
+			}}
 			>
-				<SectionTitleH3
-					upper="Contexto"
-					lower="¿Qué son los APD?"
-				/>
+				<ApdH3TitleSubtitle upper="Contexto" lower="¿Qué son los Apd?" />
 
-				<PrettyText>
-					Los Actos Públicos Digitales (APD) son el
+				<ApdPrettyP>
+					Los Actos Públicos Digitales (Apd) son el
 					sistema implementado por la Dirección
 					General de Cultura y Educación de la
 					provincia de Buenos Aires para la
 					publicación y asignación de cargos
 					docentes de manera virtual.
-				</PrettyText>
+				</ApdPrettyP>
 
-				<PrettyText>
+				<ApdPrettyP>
 					A través de la plataforma oficial, los
 					docentes pueden consultar ofertas,
 					postularse y realizar seguimiento de cargos
 					disponibles según su formación, puntaje y
 					situación laboral.
-				</PrettyText>
-			</TextContainerConImage>
+				</ApdPrettyP>
+			</ApdPanel >
 
 
-			<TextContainerConImage
-				image="/images/apd2.jpg"
-				imageSide="right"
+			<ApdPanel image={{
+				src: "/images/apd2.jpg",
+				alt: "Actos Publicos Digitales 2",
+				imageSide: "right"
+			}}
 			>
-				<SectionTitleH3
-					upper="La dificultad"
-					lower="Un sistema útil, pero muy tedioso"
+				<ApdH3TitleSubtitle upper="La dificultad" lower="Un sistema útil, pero muy tedioso"
 				/>
 
-				<PrettyText>
+				<ApdPrettyP>
 					Aunque el sistema oficial funciona
 					correctamente, la búsqueda diaria de cargos
 					suele resultar lenta y repetitiva. Muchas
 					veces es necesario volver a cargar filtros,
 					distritos, materias y horarios cada vez que
 					se realiza una consulta.
-				</PrettyText>
+				</ApdPrettyP>
 
-				<PrettyText>
+				<ApdPrettyP>
 					Además, un mismo docente puede estar
 					habilitado para varias materias distintas, lo
 					que obliga a realizar múltiples búsquedas por
@@ -60,44 +59,44 @@ export default function HomePage() {
 					existen postulantes con mayor puntaje para
 					evaluar si una oferta realmente resulta
 					conveniente.
-				</PrettyText>
-			</TextContainerConImage>
+				</ApdPrettyP>
+			</ApdPanel>
 
 
-			<TextContainerConImage
-				image="/images/apd3.png"
-				imageSide="left"
+			<ApdPanel
+				image={{
+					src: "/images/apd3.jpg",
+					alt: "Actos Publicos Digitales 3",
+					imageSide: "left"
+				}}
 			>
-				<SectionTitleH3
-					upper="Objetivo"
-					lower="¿Qué busca resolver APD Finder?"
-				/>
+				<ApdH3TitleSubtitle upper="Objetivo" lower="¿Qué busca resolver Apd Finder?" />
 
-				<PrettyText>
-					APD Finder nace como una herramienta
+				<ApdPrettyP>
+					Apd Finder nace como una herramienta
 					complementaria pensada específicamente
 					para docentes. El objetivo principal es hacer
 					más cómoda y eficiente la búsqueda de
 					Actos Públicos Digitales mediante filtros
 					personalizados y configuraciones adaptadas
 					a cada usuario.
-				</PrettyText>
+				</ApdPrettyP>
 
-				<PrettyText>
+				<ApdPrettyP>
 					La aplicación permite crear perfiles de
 					búsqueda basados en oblea, títulos o áreas
 					de incumbencia, además de configurar
 					horarios y cargos incompatibles para reducir
 					la cantidad de resultados irrelevantes.
-				</PrettyText>
+				</ApdPrettyP>
 
-				<PrettyText>
+				<ApdPrettyP>
 					A futuro, también se planea incorporar un
 					sistema de notificaciones para avisar cuando
 					aparezcan cargos compatibles con el perfil
 					del docente.
-				</PrettyText>
-			</TextContainerConImage>
+				</ApdPrettyP>
+			</ApdPanel>
 		</>
 	)
 }

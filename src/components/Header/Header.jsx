@@ -1,8 +1,19 @@
 import styles from "./Header.module.css"
-import SectionTitle from "../common/SectionTitle/SectionTitle"
+import ApdH1TitleSubtitle from "../common/ApdH1TitleSubtitle/ApdH1TitleSubtitle"
 import { useLocation } from "react-router-dom"
+import { useAuth } from "../../context/AuthContext";
 
 export default function Header() {
+
+
+
+
+
+	const { user } = useAuth();
+
+	const hasPremium = user?.premium === true;
+
+
 	const location = useLocation()
 	let subtitle = ""
 
@@ -18,19 +29,23 @@ export default function Header() {
 	else if (location.pathname === "/contacto") {
 		subtitle = "Contacto"
 	}
-	else if (location.pathname === "/pendingPostulations") {
+	else if (location.pathname === "/userPendingPostulations") {
 		subtitle = "Mis postulaciones"
 	}
-	else if (location.pathname === "/miPerfil") {
-		subtitle = "Mi perfil"
+
+	else if (location.pathname === "/userAccountSettings") {
+		subtitle = "Mi cuenta"
 	}
 	else {
 		subtitle = "Ruta sin cabecera"
 	}
 
 	return (
-		<header className={styles.header}>
-			<SectionTitle
+		<header
+			className={`${styles.header} ${!hasPremium ? styles.premiumPromo : ""
+				}`}
+		>
+			<ApdH1TitleSubtitle
 				upper="Buscador de Actos Públicos Digitales"
 				// upper="Mis Actos Públicos Digitales"
 				lower={subtitle}

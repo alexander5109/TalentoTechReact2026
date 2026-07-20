@@ -1,0 +1,59 @@
+/* ---------------------------------------------------------------- */
+/* Base */
+/* ---------------------------------------------------------------- */
+
+.link {
+	color: var(--superficie);
+	font-family: var(--font-heading);
+	text-decoration: none;
+	padding: .55rem 1rem;
+	border-radius: 12px;
+	transition:
+		transform .15s ease,
+		filter .20s ease,
+		background-color .20s ease,
+		color .20s ease,
+		box-shadow .20s ease;
+}
+
+.link:hover {
+	filter: brightness(1.08);
+	transform: translateY(-1px);
+}
+
+.link:focus-visible {
+	box-shadow:
+		0 0 0 3px rgba(216, 199, 162, .45);
+}
+
+/* ---------------------------------------------------------------- */
+/* Logo */
+/* ---------------------------------------------------------------- */
+
+.logo {
+	font-size: 1.6rem;
+	letter-spacing: 1px;
+	color: var(--superficie);
+}
+
+
+/* ---------------------------------------------------------------- */
+/* Variantes */
+/* ---------------------------------------------------------------- */
+
+.accent {
+	background: linear-gradient(180deg, #6d9d91, #53796f);
+}
+
+.danger {
+	background: linear-gradient(to bottom, var(--danger), color-mix(in srgb, var(--danger), black 50%));
+}
+
+/* ---------------------------------------------------------------- */
+/* Estado */
+/* ---------------------------------------------------------------- */
+
+.active {
+	color: var(--verde-oscuro);
+	background: linear-gradient(180deg, #d8c7a2, #c9b38b);
+}

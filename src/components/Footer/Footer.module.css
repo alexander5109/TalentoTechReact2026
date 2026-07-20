@@ -4,14 +4,12 @@
 	margin-top: 2rem;
 	padding: 1.2rem 1rem 0.8rem;
 	text-align: center;
-	background: linear-gradient(
-		to top,
-		#b08a63 0%,
-		#c9ab84 20%,
-		#e7d6bb 55%,
-		#f5ecd9 100%
-	);
-	color: #214c3d;
+	background: linear-gradient(to top,
+			var(--madera-oscura) 0%,
+			var(--madera) 20%,
+			var(--madera-clara) 55%,
+			var(--superficie) 100%);
+	color: var(--verde);
 	border-top: 2px solid rgba(80, 50, 20, 0.2);
 }
 
@@ -21,8 +19,7 @@
 	inset: 0;
 	opacity: 0.04;
 	pointer-events: none;
-	background-image:
-		radial-gradient(#000 0.5px, transparent 0.5px);
+	background-image: radial-gradient(#000 0.5px, transparent 0.5px);
 	background-size: 6px 6px;
 }
 
@@ -31,7 +28,7 @@
 	font-size: 1.25rem;
 }
 
-.footer > p {
+.footer>p {
 	margin: 0.15rem 0;
 	font-size: 0.95rem;
 }

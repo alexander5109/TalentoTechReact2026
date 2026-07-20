@@ -1,6 +1,6 @@
-# APD Finder
+# Apd Finder
 
-Aplicación web desarrollada con React para la búsqueda y gestión de Actos Públicos Digitales (APD) de la Provincia de Buenos Aires.
+Aplicación web desarrollada con React para la búsqueda y gestión de Actos Públicos Digitales (Apd) de la Provincia de Buenos Aires.
 
 El proyecto fue realizado como entrega integradora para la cursada:
 
@@ -22,7 +22,7 @@ Alexander Seling
 
 ## Descripción del proyecto
 
-APD Finder es una aplicación frontend inspirada en los sistemas oficiales de Actos Públicos Digitales utilizados por docentes de la Provincia de Buenos Aires.
+Apd Finder es una aplicación frontend inspirada en los sistemas oficiales de Actos Públicos Digitales utilizados por docentes de la Provincia de Buenos Aires.
 
 La aplicación permite:
 
@@ -80,7 +80,7 @@ Rutas implementadas:
 - `/ofertas/:id`
 - `/about`
 - `/contacto`
-- `/pendingPostulations`
+- `/userPendingPostulations`
 
 ### Estado global
 
@@ -130,12 +130,22 @@ npm run build
 
 ## Estado del proyecto
 
-Proyecto académico funcional desarrollado como pre-entrega/final integrador del curso de React.
-
-Actualmente el estado global se mantiene únicamente en memoria (sin persistencia en localStorage o backend).
+Proyecto académico funcional desarrollado como entrega final integrador del curso de React.
 
 ---
 
 ## Observaciones
 
 El proyecto toma como inspiración los sistemas reales de Actos Públicos Digitales utilizados en educación pública bonaerense, reinterpretando varias funcionalidades tradicionales de e-commerce hacia una lógica orientada a postulaciones docentes.
+
+
+
+
+#CUENTAS DE PRUEBA:
+ADMIN:
+contraseñas:
+correo: alexanderseling@outlook.com
+pass: 123456
+
+correo: admin@gmail.com
+pass: admin1234

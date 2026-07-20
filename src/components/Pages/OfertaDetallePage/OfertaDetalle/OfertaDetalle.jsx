@@ -1,5 +1,4 @@
-import { Link } from "react-router-dom"
-import SectionTitleH3 from "../../../common/SectionTitleH3/SectionTitleH3";
+import ApdH3TitleSubtitle from "../../../common/ApdH3TitleSubtitle/ApdH3TitleSubtitle";
 
 import Swal from "sweetalert2"
 
@@ -8,15 +7,47 @@ import {
 } from "../../../../context/PendingPostulationsContext.jsx"
 
 import styles from "./OfertaDetalle.module.css"
+import ApdLink from "../../../common/ApdLink/ApdLink.jsx";
+import ApdButton from "../../../common/ApdButton/ApdButton.jsx";
+import ApdDetailItem from "../../../common/ApdDetailItem/ApdDetailItem.jsx";
+import ApdLayoutGrid from "../../../common/ApdLayoutGrid/ApdLayoutGrid.jsx";
+import ApdPrettyP from "../../../common/ApdPrettyP/ApdPrettyP.jsx";
+import ApdH3 from "../../../common/ApdH3/ApdH3.jsx";
+import ApdH4 from "../../../common/ApdH4/ApdH4.jsx";
+import ApdLayoutStack from "../../../common/ApdLayoutStack/ApdLayoutStack.jsx";
+import ApdPanel from "../../../common/ApdPanel/ApdPanel.jsx";
 
 export default function OfertaDetalle({ offer }) {
-	const estadoClase = (
+
+	const backgroundClassEstado = (
 		offer.estado === "Publicada"
-			? styles.estadoPublicada
+			? styles.backgroundPrimary
 			: offer.estado === "Anulada"
-				? styles.estadoAnulada
-				: styles.estadoDesignada
+				? styles.backgroundDanger
+				: styles.backgroundSecondary
 	)
+
+	const detalles = [
+		["Escuela", offer.escuela],
+		["Estado", offer.estado, backgroundClassEstado],
+		["Curso", offer.cursodivision],
+		["Nivel", offer.descnivelmodalidad],
+		["Inicio oferta", offer.iniciooferta],
+		["Fin oferta", offer.finoferta],
+		["Toma de posesión", offer.tomaposesion],
+		["Suplencia desde", offer.supl_desde],
+		["Suplencia hasta", offer.supl_hasta],
+		["Reemplaza a", offer.reemp_apeynom ?? "-"],
+		["Motivo", offer.reemp_motivo ?? "-"],
+	];
+
+	const cargoImage = `/images/${offer.cargo
+		.trim()
+		.split(" ")[0]
+		.toLowerCase()
+		}.jpg`
+
+
 	const {
 		pendingPostulations,
 		addToPendingPostulations,
@@ -61,139 +92,78 @@ export default function OfertaDetalle({ offer }) {
 		})
 	}
 
-	return (
+	return <ApdPanel>
+		<div className={styles.header}>
+			<ApdH3TitleSubtitle upper={offer.cargo} lower={offer.descripcioncargo} />
+			< img
+				src={cargoImage}
+				onError={
+					(e) => { e.target.src = "/images/docente.jpg" }
+				}
+				alt={offer.cargo}
+				className={styles.image}
+			/>
+		</div>
 
-		<div className={styles.container}>
-			<div className={styles.header}>
-				<SectionTitleH3
-					upper={offer.cargo}
-					lower={offer.descripcioncargo}
-				/>
-			</div>
+		<ApdLayoutGrid>
+			{detalles.map(([header, value, variantClassName]) => (
+				<ApdDetailItem key={header} variantClassName={variantClassName}>
+					<ApdH4>{header}</ApdH4>
+					<ApdPrettyP>{value}</ApdPrettyP>
+				</ApdDetailItem>
+			))}
 
+		</ApdLayoutGrid>
 
-			<div className={styles.detailsGrid}>
+		<ApdLayoutStack>
+			<ApdH4>📍 Ubicación aproximada: </ApdH4>
+			<iframe
+				className={styles.map}
+				src="https://maps.google.com/maps?q=Obelisco%20Buenos%20Aires&t=&z=15&ie=UTF8&iwloc=&output=embed"
+				width="100%"
+				height="300"
+			></iframe>
+		</ApdLayoutStack>
 
-				<div>
-					<strong>Escuela</strong>
-					<p>{offer.escuela}</p>
+		{
+			offer.observaciones && (
+
+				<div className={styles.section}>
+
+					<ApdH3>Observaciones</ApdH3>
+
+					<p>
+						{offer.observaciones}
+					</p>
+
 				</div>
-
-				<div>
-					<strong>Curso</strong>
-					<p>{offer.cursodivision}</p>
-				</div>
-
-				<div>
-					<strong>Nivel</strong>
-					<p>{offer.descnivelmodalidad}</p>
-				</div>
-
-				<div className={estadoClase}>
-					<strong>Estado</strong>
-					<p>{offer.estado}</p>
-				</div>
-
-				<div>
-					<strong>Inicio oferta</strong>
-					<p>{offer.iniciooferta}</p>
-				</div>
-
-				<div>
-					<strong>Fin oferta</strong>
-					<p>{offer.finoferta}</p>
-				</div>
-
-				<div>
-					<strong>Toma de posesión</strong>
-					<p>{offer.tomaposesion}</p>
-				</div>
-
-				<div>
-					<strong>Suplencia desde</strong>
-					<p>{offer.supl_desde}</p>
-				</div>
-
-				<div>
-					<strong>Suplencia hasta</strong>
-					<p>{offer.supl_hasta}</p>
-				</div>
-
-				<div>
-					<strong>Reemplaza a</strong>
-					<p>{offer.reemp_apeynom}</p>
-				</div>
-
-				<div>
-					<strong>Motivo</strong>
-					<p>{offer.reemp_motivo}</p>
-				</div>
-			</div>
+			)
+		}
 
 
+		<ApdLayoutStack>
+
+			<ApdLink variant="secondary" to="/ofertas" >
+				Volver
+			</ApdLink>
 
 			{
-				offer.observaciones && (
+				isAgregada ? (
 
-					<div className={styles.section}>
+					<ApdButton variant="danger" onClick={connectEliminarPostulacion}>
+						Quitar postulación
+					</ApdButton>
 
-						<h3>Observaciones</h3>
+				) : (
 
-						<p>
-							{offer.observaciones}
-						</p>
+					<ApdButton onClick={connectAgregarAPostulaciones} >
+						Agregar postulación
+					</ApdButton>
 
-					</div>
 				)
 			}
 
+		</ApdLayoutStack>
 
-			<div className={styles.actions}>
-
-				<Link
-					to="/ofertas"
-					className={
-						`${styles.button}
-						${styles.secondary}`
-					}
-				>
-					Volver
-				</Link>
-
-				{
-					isAgregada ? (
-
-						<button
-							className={
-								`${styles.button}
-								${styles.danger}`
-							}
-							onClick={
-								connectEliminarPostulacion
-							}
-						>
-							Quitar postulación
-						</button>
-
-					) : (
-
-						<button
-							className={
-								`${styles.button}
-								${styles.primary}`
-							}
-							onClick={
-								connectAgregarAPostulaciones
-							}
-						>
-							Agregar postulación
-						</button>
-
-					)
-				}
-
-			</div>
-
-		</div>
-	)
+	</ApdPanel >
 }

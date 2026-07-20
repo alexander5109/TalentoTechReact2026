@@ -1,0 +1,122 @@
+.field {
+	display: flex;
+	flex-direction: column;
+	gap: 0.45rem;
+}
+
+.field label {
+	font-family: var(--font-heading);
+	font-size: 0.95rem;
+	color: var(--verde);
+}
+
+.field input,
+.field select {
+	padding: 0.75rem 0.9rem;
+	font-size: 0.95rem;
+	color: var(--verde);
+	background:
+		linear-gradient(to bottom,
+			#fffaf2,
+			#f3e6cf);
+	border: 1px solid #c7b08a;
+	border-radius: 10px;
+	box-shadow:
+		inset 0 1px 2px rgba(0, 0, 0, 0.06);
+	transition:
+		border-color 0.2s ease,
+		box-shadow 0.2s ease;
+}
+
+.field input:focus,
+.field select:focus {
+	outline: none;
+	border-color: #2e6e56;
+	box-shadow:
+		0 0 0 3px rgba(46, 110, 86, 0.14);
+}
+
+
+.radioGroup {
+	display: flex;
+	flex-direction: column;
+	gap: 0.55rem;
+}
+
+.radioOption {
+	display: flex;
+	align-items: center;
+	gap: 0.6rem;
+	cursor: pointer;
+	font-size: 0.92rem;
+	color: var(--verde);
+}
+
+.radioOption input[type="radio"] {
+	accent-color: #2e6e56;
+	cursor: pointer;
+}
+
+.radioOption span {
+	padding: 0.3rem 0.7rem;
+	border-radius: 999px;
+	font-size: 0.85rem;
+	background:
+		rgba(255, 255, 255, 0.35);
+}
+
+/* ----------------------------------------------- */
+.publicada {
+	background:
+		rgba(70, 140, 100, 0.22) !important;
+	color: #24503a;
+}
+
+.anulada {
+	background:
+		rgba(180, 70, 70, 0.2) !important;
+	color: #6e2e2e;
+}
+
+.designada {
+	background:
+		rgba(120, 95, 170, 0.2) !important;
+	color: #503a78;
+}
+
+/* ----------------------------------------------- */
+.mañana {
+	background: rgba(70, 140, 100, 0.22) !important;
+	color: #24503a;
+}
+
+.tarde {
+	background: rgba(214, 156, 55, 0.22) !important;
+	color: #7a4d12;
+}
+
+.vespertino {
+	background: rgba(109, 86, 171, 0.20) !important;
+	color: #4f387c;
+}
+
+/* ----------------------------------------------- */
+/* .jardin {
+	background: rgba(92, 181, 110, 0.20) !important;
+	color: #2e6b3e;
+}
+
+.primaria {
+	background: rgba(240, 202, 87, 0.22) !important;
+	color: #7a5b10;
+}
+
+.secundaria {
+	background: rgba(94, 149, 219, 0.20) !important;
+	color: #2c5d93;
+}
+
+.terciario {
+	background: rgba(161, 117, 196, 0.20) !important;
+	color: #5f3f82;
+} */

@@ -1,85 +1,91 @@
-import TextContainer from "../../common/TextContainer/TextContainer";
-import SectionTitleH3 from "../../common/SectionTitleH3/SectionTitleH3";
-import PrettyText from "../../common/PrettyText/PrettyText";
+import ApdPanel from "../../common/ApdPanel/ApdPanel";
+import ApdH3TitleSubtitle from "../../common/ApdH3TitleSubtitle/ApdH3TitleSubtitle";
+import ApdPrettyP from "../../common/ApdPrettyP/ApdPrettyP";
 
-import styles from "./ContactoPage.module.css"
+import Swal from "sweetalert2"
+import ApdButton from "../../common/ApdButton/ApdButton";
+import ApdInput from "../../common/ApdInput/ApdInput";
+import ApdLayoutStack from "../../common/ApdLayoutStack/ApdLayoutStack";
+import ApdLabel from "../../common/ApdLabel/ApdLabel";
 
 export default function ContactoPage() {
 
 	function manejarSubmit(e) {
 		e.preventDefault()
-		alert("Mensaje enviado")
+		Swal.fire({
+			title: "Mensaje enviado",
+			text:
+				`Mentira. No se envió nada. \n Salu2`,
+			icon: "success",
+			timer: 1000,
+			showConfirmButton: false,
+			toast: true,
+			position: "center"
+		})
 	}
 
-	return (
-		<>
-			<TextContainer>
+	return <ApdPanel>
 
-				<SectionTitleH3
-					upper="Contacto"
-					lower="Realiza tu consulta"
+		<ApdH3TitleSubtitle upper="Contacto" lower="Realiza tu consulta"
+		/>
+
+		<ApdPrettyP>
+			Este proyecto se encuentra en desarrollo
+			constante y toda devolución resulta útil
+			para seguir mejorándolo. Si deseas realizar
+			una consulta, reportar un problema,
+			proponer una idea o simplemente compartir
+			tu experiencia utilizando Apd Finder,
+			puedes hacerlo a través del siguiente
+			formulario.
+		</ApdPrettyP>
+
+		<ApdPrettyP>
+			El objetivo de esta herramienta es ayudar
+			a docentes a encontrar cargos de forma
+			más cómoda y eficiente, por lo que las
+			opiniones y sugerencias de la comunidad
+			resultan especialmente valiosas.
+		</ApdPrettyP>
+
+		<ApdLayoutStack as="form" onSubmit={manejarSubmit}>
+
+			<ApdLayoutStack>
+				<ApdLabel htmlFor="nombre">Nombre</ApdLabel>
+
+				<ApdInput
+					id="nombre"
+					placeholder="Tu nombre"
 				/>
+			</ApdLayoutStack>
 
-				<PrettyText>
-					Este proyecto se encuentra en desarrollo
-					constante y toda devolución resulta útil
-					para seguir mejorándolo. Si deseas realizar
-					una consulta, reportar un problema,
-					proponer una idea o simplemente compartir
-					tu experiencia utilizando APD Finder,
-					puedes hacerlo a través del siguiente
-					formulario.
-				</PrettyText>
+			<ApdLayoutStack>
+				<ApdLabel htmlFor="email">Email</ApdLabel>
 
-				<PrettyText>
-					El objetivo de esta herramienta es ayudar
-					a docentes a encontrar cargos de forma
-					más cómoda y eficiente, por lo que las
-					opiniones y sugerencias de la comunidad
-					resultan especialmente valiosas.
-				</PrettyText>
+				<ApdInput
+					id="email"
+					type="email"
+					placeholder="tuemail@gmail.com"
+				/>
+			</ApdLayoutStack>
 
-				<form
-					className={styles.form}
-					onSubmit={manejarSubmit}
-				>
+			<ApdLayoutStack>
+				<ApdLabel htmlFor="mensaje">Mensaje</ApdLabel>
 
-					<div className={styles.field}>
-						<label>Nombre</label>
+				<ApdInput
+					as="textarea"
+					id="mensaje"
+					rows={6}
+					placeholder="Escribe tu mensaje..."
+				/>
+			</ApdLayoutStack>
 
-						<input
-							type="text"
-							placeholder="Tu nombre"
-						/>
-					</div>
+			<ApdButton type="submit">
+				Enviar mensaje
+			</ApdButton>
+
+		</ApdLayoutStack>
 
 
-					<div className={styles.field}>
-						<label>Email</label>
-
-						<input
-							type="email"
-							placeholder="tuemail@gmail.com"
-						/>
-					</div>
-
-
-					<div className={styles.field}>
-						<label>Mensaje</label>
-
-						<textarea
-							rows="6"
-							placeholder="Escribe tu mensaje..."
-						/>
-					</div>
-
-					<button type="submit">
-						Enviar mensaje
-					</button>
-
-				</form>
-
-			</TextContainer>
-		</>
-	)
+	</ApdPanel>
 }

@@ -1,0 +1,102 @@
+.container {
+
+	position: relative;
+
+}
+
+
+.button,
+.input {
+
+	width: 100%;
+
+	padding: .8rem 1rem;
+
+	font: inherit;
+
+	color: var(--verde);
+
+	background:
+		linear-gradient(to bottom,
+			#fffaf2,
+			#f3e6cf);
+
+	border: 1px solid #c7b08a;
+
+	border-radius: 10px;
+
+}
+
+.button {
+
+	display: flex;
+
+	justify-content: space-between;
+
+	align-items: center;
+
+	cursor: pointer;
+
+}
+
+.input:focus {
+
+	outline: none;
+
+	border-color: #2e6e56;
+
+	box-shadow:
+		0 0 0 3px rgba(46, 110, 86, .15);
+
+}
+
+.dropdown {
+
+	position: absolute;
+
+	left: 0;
+
+	right: 0;
+
+	top: calc(100% + 4px);
+
+	max-height: 240px;
+
+	overflow-y: auto;
+
+	background: white;
+
+	border-radius: 10px;
+
+	border: 1px solid #c7b08a;
+
+	box-shadow:
+		0 8px 20px rgba(0, 0, 0, .12);
+
+	z-index: 50;
+
+}
+
+.option {
+
+	padding: .8rem 1rem;
+
+	cursor: pointer;
+
+}
+
+.option:hover {
+
+	background: #f5efe2;
+
+}
+
+.empty {
+
+	padding: 1rem;
+
+	color: #777;
+
+	text-align: center;
+
+}
