@@ -4,8 +4,6 @@ import { doc, getDoc } from "firebase/firestore";
 import { auth, db } from "./../firebase/config";
 import { getFeatures } from '../firebase/promotionsService';
 
-
-// 1. Crear el contexto
 export const AuthContext = createContext();
 export const useAuth = () => {
 	// Hook personalizado
@@ -16,88 +14,71 @@ export const useAuth = () => {
 	return context;
 };
 
-
-
-
-
-
-
-
-// 2. Crear el proveedor del contexto
 export const AuthProvider = ({ children }) => {
-	const availableFeatures = await getFeatures();
-
-
 	const [user, setUser] = useState(null);
 	const [loading, setLoading] = useState(true);
-	// const auth = getAuth(); // Obtenemos la instancia de auth una sola vez
-	// const db = getFirestore(); // Inicializamos Firestore
-	// Función para registrar un nuevo usuario
-	const signup = (email, password) => {
+	const availableFeatures = await getFeatures();
+	function signup(email, password) {
 		return createUserWithEmailAndPassword(auth, email, password);
 	};
-
-	// Función para iniciar sesión
-	const login = (email, password) => {
+	function login(email, password) {
 		return signInWithEmailAndPassword(auth, email, password);
 	};
-
-	// Función para cerrar sesión
-	const logout = () => {
+	function logout() {
 		signOut(auth);
 	};
+	function hasFeature(featureId) {
+		return !!availableFeatures[featureId];
+	}
+
+	async function resolveUserFeatures(userData) {
+		const result = {};
+		for (const active of userData.activePromotions ?? []) {
+			const promotion = await getPromotion(active.promotionId);
+			if (!promotion) continue;
+			const now = new Date();
+			const from = promotion.vigenciaDesde.toDate();
+			const to = promotion.vigenciaHasta.toDate();
+			if (now < from || now > to)
+				continue;
+			promotion.features.forEach(feature => {
+				result[feature] = true;
+			});
+		}
+		return result;
+	}
 
 	useEffect(() => {
-		// onAuthStateChanged es el observador de Firebase
 		const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
 			if (currentUser) {
-				// Si hay un usuario, buscamos su rol en Firestore.
 				const userDocRef = doc(db, "usuarios", currentUser.uid);
 				const userDocSnap = await getDoc(userDocRef);
 				if (userDocSnap.exists() && userDocSnap.data().role ===
 					'admin') {
-					// Si el documento existe y tiene rol de admin, lo asignamos.
 					setUser({ ...currentUser, role: 'admin' });
-
 				} else {
-					// Para cualquier otro caso, es un usuario regular.
 					setUser({ ...currentUser, role: 'user' });
 				}
-
 			} else {
 				setUser(null);
 			}
 			setLoading(false);
 		});
-
-		// Limpiamos el observador al desmontar
-
 		return () => unsubscribe();
+	}, [auth, db]);
 
-	}, [auth, db]); // Agregamos 'auth' como dependencia
-
-	// Crear el objeto 'value' con TODAS las funciones definidas
-	function hasFeature(featureId) {
-		return !!availableFeatures[featureId];
-	}
-
-	const value = {
-		user,
-		availableFeatures,
-		hasFeature,
-		loading,
-		signup,
-		login,
-		logout
-	};
-
-	// Retornar el Provider, asegurándonos de no renderizar hasta que cargue
-	// Esto evita que los componentes hijos puedan acceder a 'user' cuando es null
 
 	return (
-		<AuthContext.Provider value={value}>
+		<AuthContext.Provider value={{
+			user,
+			availableFeatures,
+			hasFeature,
+			loading,
+			signup,
+			login,
+			logout
+		}}>
 			{!loading && children}
-		</AuthContext.Provider>
-
+		</AuthContext.Provider >
 	);
 };
