@@ -5,6 +5,7 @@ import FormUserAccount from "./../../FormUserAccount/FormUserAccount";
 import { registrarUsuario } from "./../../../services/authService";
 import ApdH3TitleSubtitle from "./../../common/ApdH3TitleSubtitle/ApdH3TitleSubtitle";
 import ApdPanel from "../../common/ApdPanel/ApdPanel";
+import ApdSpinner from "../../common/ApdSpinner/ApdSpinner";
 
 export default function SignUpPage() {
 
@@ -64,8 +65,10 @@ export default function SignUpPage() {
 		}
 
 	}
+	if (loading)
+		return <ApdSpinner />;
 
-	return <ApdPanel as="section">
+	return (<ApdPanel as="section">
 		<ApdH3TitleSubtitle upper="Apd Finder" lower="Crear Usuario"></ApdH3TitleSubtitle>
 		<FormUserAccount
 			title="Crear cuenta"
@@ -77,8 +80,7 @@ export default function SignUpPage() {
 			onFeedbackClear={() => setFeedback(null)}
 			editableEmailAndPassword={true}
 			onSubmit={handleRegister}
-
 		/>
 
-	</ApdPanel>
+	</ApdPanel>)
 }

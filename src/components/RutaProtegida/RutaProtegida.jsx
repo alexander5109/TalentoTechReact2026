@@ -10,7 +10,7 @@ export default function RutaProtegida({
 	const { user, loading } = useAuth();
 
 	if (loading) {
-		return <ApdSpinner />;
+		return <ApdSpinner />
 	}
 
 	if (!user) {

@@ -10,6 +10,7 @@ import ApdButton from "./../../common/ApdButton/ApdButton";
 import ApdNavLink from "../../common/ApdNavLink/ApdNavLink";
 import ApdLayoutStack from "./../../common/ApdLayoutStack/ApdLayoutStack";
 import ApdLabel from "./../../common/ApdLabel/ApdLabel";
+import ApdSpinner from "./../../common/ApdSpinner/ApdSpinner";
 
 import ApdFeedback from "./../../common/ApdFeedback/ApdFeedback";
 
@@ -135,6 +136,7 @@ export default function LoginPage() {
 					? "Ingresando..."
 					: "Ingresar"}
 			</ApdButton>
+			{loading && <ApdSpinner />}
 
 		</ApdLayoutStack>
 

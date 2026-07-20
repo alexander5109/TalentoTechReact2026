@@ -7,6 +7,7 @@ import ApdPanel from '../common/ApdPanel/ApdPanel';
 import ApdH3TitleSubtitle from '../common/ApdH3TitleSubtitle/ApdH3TitleSubtitle';
 import ApdLayoutStack from '../common/ApdLayoutStack/ApdLayoutStack';
 import ApdLabel from '../common/ApdLabel/ApdLabel';
+import ApdSpinner from '../common/ApdSpinner/ApdSpinner';
 
 
 export default function FormUserAccount({
@@ -96,6 +97,8 @@ export default function FormUserAccount({
 		onSubmit(formData);
 
 	};
+	if (loading)
+		return <ApdSpinner></ApdSpinner>
 	return (
 		<ApdLayoutStack as="form" onSubmit={handleSubmit}>
 			<ApdLayoutStack>
@@ -205,6 +208,7 @@ export default function FormUserAccount({
 			<ApdButton type="submit" disabled={loading}>
 				{loading ? "Procesando..." : submitText}
 			</ApdButton>
+			{loading && <ApdSpinner></ApdSpinner>}
 
 		</ApdLayoutStack >
 	);
