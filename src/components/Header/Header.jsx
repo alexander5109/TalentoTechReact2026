@@ -9,9 +9,9 @@ export default function Header() {
 
 
 
-	const { user } = useAuth();
+	const { hasFeature } = useAuth();
 
-	const hasPremium = user?.premium === true;
+	const removeAds = hasFeature("remove_ads");
 
 
 	const location = useLocation()
@@ -42,7 +42,7 @@ export default function Header() {
 
 	return (
 		<header
-			className={`${styles.header} ${!hasPremium ? styles.premiumPromo : ""
+			className={`${styles.header} ${!removeAds ? styles.premiumPromo : ""
 				}`}
 		>
 			<ApdH1TitleSubtitle
