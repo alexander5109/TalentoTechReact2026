@@ -14,3 +14,15 @@
 	overflow: hidden;
 	text-align: center;
 }
+
+.premiumPromo {
+	background:
+		linear-gradient(rgba(0, 0, 0, .35),
+			rgba(0, 0, 0, .35)),
+		url("/images/publicidad.webp");
+
+	background-size: cover;
+	background-position: center;
+
+	cursor: pointer;
+}

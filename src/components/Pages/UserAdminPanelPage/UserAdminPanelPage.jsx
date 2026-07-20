@@ -6,7 +6,7 @@ import ApdButton from "../../common/ApdButton/ApdButton";
 import ApdLayoutGrid from "../../common/ApdLayoutGrid/ApdLayoutGrid";
 import styles from "./UserAdminPanelPage.module.css";
 import { useEffect, useState } from "react";
-import { getPromotions } from "../../../firebase/promotionsService";
+import { getPromotions, getFeatures } from "../../../firebase/promotionsService";
 import { Link } from "react-router-dom";
 import ApdLayoutStack from "../../common/ApdLayoutStack/ApdLayoutStack";
 import ApdH4 from "../../common/ApdH4/ApdH4";
@@ -16,6 +16,9 @@ const PROMOTION_TYPES = {
 	PROFILE_FEATURE: "Perfil destacado",
 	SAVED_POSTS_LIMIT: "Más postulaciones guardadas"
 }
+
+
+
 function puedeCrearAlerta(usuario) {
 	if (usuario.promociones.includes("ALERT_LIMIT"))
 		return usuario.alertas < 5;
@@ -24,12 +27,32 @@ function puedeCrearAlerta(usuario) {
 
 export default function UserAdminPanelPage() {
 	// feature: nombre promocion, feature, duration
-	const featureNames = {
-		alerts_3: "Hasta 3 alertas",
-		remove_ads: "Sin publicidad",
-		school_map: "Mapa de establecimientos",
-		mobile_notifications: "Notificaciones móviles"
-	};
+
+
+
+	const [availableFeatures, setFeatures] = useState({});
+
+
+	useEffect(() => {
+
+		async function loadFeatures() {
+
+			const data = await getFeatures();
+
+			const featureMap = data.reduce((acc, feature) => {
+				acc[feature.id] = feature;
+				return acc;
+			}, {});
+			// alert(featureMap)
+			setFeatures(featureMap);
+			// alert(availableFeatures)
+		}
+
+		loadFeatures();
+
+	}, []);
+
+
 	const [promotions, setPromotions] = useState([]);
 
 	async function refreshPromotions() {
@@ -87,11 +110,10 @@ export default function UserAdminPanelPage() {
 						<p>
 							<strong>Incluye:</strong>
 						</p>
-
 						<ul>
 							{promotion.features?.map(feature => (
 								<li key={feature}>
-									{featureNames[feature] ?? feature}
+									{availableFeatures[feature]?.nombre ?? feature}
 								</li>
 							))}
 						</ul>

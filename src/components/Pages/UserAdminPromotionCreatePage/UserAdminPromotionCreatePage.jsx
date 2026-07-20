@@ -3,12 +3,15 @@ import { useEffect, useState } from "react";
 import ApdPanel from "../../common/ApdPanel/ApdPanel";
 import ApdH3TitleSubtitle from "../../common/ApdH3TitleSubtitle/ApdH3TitleSubtitle";
 
+import { getFeatures, getPromotions, getPromotion, createPromotion, updatePromotion, disablePromotion } from "../../../firebase/promotionsService";
+
 import ApdLayoutStack from "../../common/ApdLayoutStack/ApdLayoutStack";
 
 import ApdInput from "../../common/ApdInput/ApdInput";
 import ApdButton from "../../common/ApdButton/ApdButton";
 import { useParams } from "react-router-dom";
 import ApdLabel from "../../common/ApdLabel/ApdLabel";
+import ApdLink from "../../common/ApdLink/ApdLink";
 
 export default function PromotionCreatePage() {
 	const { id } = useParams();
@@ -26,6 +29,55 @@ export default function PromotionCreatePage() {
 		activa: true,
 		features: []
 	});
+
+
+
+	async function handleDesactivatePromotion(id) {
+
+		const result = await Swal.fire({
+			title: "Desactivar promoción?",
+			text: "Esta acción no afectará a los usuarios que ya cuentan con la promocion.",
+			icon: "question",
+			showCancelButton: true,
+			confirmButtonText: "Sí, desactivar",
+			cancelButtonText: "Cancelar",
+			reverseButtons: true
+		});
+
+		if (!result.isConfirmed) return;
+
+		await disablePromotion(user.uid);
+		await getPromotions();
+
+		Swal.fire({
+			title: "Promocion desactivada",
+			icon: 'info',
+			timer: 1500,
+			showConfirmButton: false,
+			toast: true,
+			position: 'top-end'
+		})
+	}
+
+
+	const [currentPromotion, setCurrentPromotion] = useState(null);
+	const [availableFeatures, setAvailableFeatures] = useState([]);
+
+
+	useEffect(() => {
+
+		async function loadFeatures() {
+			const data = await getFeatures();
+			setFeatures(data);
+			const data2 = await getPromotion();
+			setAvailableFeatures(data2);
+		}
+
+		loadFeatures();
+
+	}, []);
+
+
 
 	function handleChange(e) {
 
@@ -120,52 +172,34 @@ export default function PromotionCreatePage() {
 					onChange={handleChange}
 				/>
 			</ApdLayoutStack>
-
 			<ApdLayoutStack>
-				<ApdLabel>Beneficios</ApdLabel>
 
 				<ApdLabel>
-					<input
-						type="checkbox"
-						checked={formData.features.includes("alerts_3")}
-						onChange={() => handleFeatureChange("alerts_3")}
-					/>
-					Hasta 3 alertas
+					Beneficios
 				</ApdLabel>
 
-				<ApdLabel>
-					<input
-						type="checkbox"
-						checked={formData.features.includes("school_map")}
-						onChange={() => handleFeatureChange("school_map")}
-					/>
-					Mapa de establecimientos
-				</ApdLabel>
+				{availableFeatures.map(feature => (
+					<ApdLabel key={feature.id}>
 
-				<ApdLabel>
-					<input
-						type="checkbox"
-						checked={formData.features.includes("remove_ads")}
-						onChange={() => handleFeatureChange("remove_ads")}
-					/>
-					Sin publicidad
-				</ApdLabel>
+						<input
+							type="checkbox"
+							checked={formData.features.includes(feature.id)}
+							onChange={() => handleFeatureChange(feature.id)}
+						/>
 
-				<ApdLabel>
-					<input
-						type="checkbox"
-						checked={formData.features.includes("mobile_notifications")}
-						onChange={() => handleFeatureChange("mobile_notifications")}
-					/>
-					Notificaciones móviles
-				</ApdLabel>
+						{feature.nombre}
+
+					</ApdLabel>
+				))}
 
 			</ApdLayoutStack>
 
 			<ApdLayoutStack >
 				<ApdButton type="submit"> Guardar promoción </ApdButton>
-				<ApdButton variant="danger"> Desactivar </ApdButton>
-				<ApdButton variant="secondary"> Volver </ApdButton>
+				<ApdButton variant="danger" onClick={() => handleDesactivatePromotion(currentPromotion.id)}> Desactivar </ApdButton>
+				<ApdLink variant="secondary" to="/userAdminPanel" >
+					Volver
+				</ApdLink>
 			</ApdLayoutStack>
 
 		</ApdLayoutStack>

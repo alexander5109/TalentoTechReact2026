@@ -143,7 +143,7 @@ export default function OfertaDetalle({ offer }) {
 
 		<ApdLayoutStack>
 
-			<ApdLink to="/ofertas" >
+			<ApdLink variant="secondary" to="/ofertas" >
 				Volver
 			</ApdLink>
 

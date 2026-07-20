@@ -155,7 +155,9 @@ export default function OfertasPage() {
 			toast: true,
 			position: 'top-end'
 		})
-	} async function handleSelectProfile(profileId) {
+	}
+
+	async function handleSelectProfile(profileId) {
 
 		if (profileId === selectedProfileId)
 			return;

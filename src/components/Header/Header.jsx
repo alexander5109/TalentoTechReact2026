@@ -1,8 +1,19 @@
 import styles from "./Header.module.css"
 import ApdH1TitleSubtitle from "../common/ApdH1TitleSubtitle/ApdH1TitleSubtitle"
 import { useLocation } from "react-router-dom"
+import { useAuth } from "../../context/AuthContext";
 
 export default function Header() {
+
+
+
+
+
+	const { user } = useAuth();
+
+	const hasPremium = user?.premium === true;
+
+
 	const location = useLocation()
 	let subtitle = ""
 
@@ -30,7 +41,10 @@ export default function Header() {
 	}
 
 	return (
-		<header className={styles.header}>
+		<header
+			className={`${styles.header} ${!hasPremium ? styles.premiumPromo : ""
+				}`}
+		>
 			<ApdH1TitleSubtitle
 				upper="Buscador de Actos Públicos Digitales"
 				// upper="Mis Actos Públicos Digitales"

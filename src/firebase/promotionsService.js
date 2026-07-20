@@ -2,6 +2,15 @@ import { collection, getDocs, addDoc, updateDoc, doc, getDoc } from "firebase/fi
 import { db } from "./config";
 
 const promotionsCollection = collection(db, "promotions");
+const featuresCollection = collection(db, "features");
+
+export async function getFeatures() {
+	const snapshot = await getDocs(featuresCollection);
+	return snapshot.docs.map(doc => ({
+		id: doc.id,
+		...doc.data()
+	}));
+}
 
 export async function getPromotions() {
 	const snapshot = await getDocs(promotionsCollection);
@@ -10,6 +19,7 @@ export async function getPromotions() {
 		...doc.data()
 	}));
 }
+
 
 export async function getPromotion(promotionId) {
 	const snapshot = await getDoc(doc(db, "promotions", promotionId));
