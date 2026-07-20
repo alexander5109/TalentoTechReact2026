@@ -6,10 +6,11 @@ import ApdButton from "./../../common/ApdButton/ApdButton";
 import ApdLayoutGrid from "./../../common/ApdLayoutGrid/ApdLayoutGrid";
 import styles from "./UserAdminPanelPage.module.css";
 import { useEffect, useState } from "react";
-import { getAllPromotions, getFeatures } from "./../../../firebase/promotionsService";
+import { getAllPromotions } from "./../../../firebase/promotionsService";
 import { Link } from "react-router-dom";
 import ApdLayoutStack from "./../../common/ApdLayoutStack/ApdLayoutStack";
 import ApdH4 from "./../../common/ApdH4/ApdH4";
+import { useAuth } from "../../../context/AuthContext";
 
 const PROMOTION_TYPES = {
 	ALERT_LIMIT: "Más alertas",
@@ -30,22 +31,20 @@ export default function UserAdminPanelPage() {
 
 
 
-	const [availableFeatures, setFeatures] = useState({});
+	const [availableFeaturesMap, setFeatures] = useState({});
 
 
 	useEffect(() => {
 
 		async function loadFeatures() {
 
-			const data = await getFeatures();
+			const { availableFeatures } = useAuth()
 
-			const featureMap = data.reduce((acc, feature) => {
+			const featureMap = availableFeatures.reduce((acc, feature) => {
 				acc[feature.id] = feature;
 				return acc;
 			}, {});
-			// alert(featureMap)
 			setFeatures(featureMap);
-			// alert(availableFeatures)
 		}
 
 		loadFeatures();
@@ -136,7 +135,7 @@ export default function UserAdminPanelPage() {
 
 									<li key={feature}>
 
-										✅ {availableFeatures[feature]?.nombre ?? feature}
+										✅ {availableFeaturesMap[feature]?.nombre ?? feature}
 
 									</li>
 

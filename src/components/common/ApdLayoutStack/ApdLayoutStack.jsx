@@ -4,7 +4,7 @@ export default function ApdLayoutStack({
 	as: Component = "div",
 	children,
 	padding = "0",
-	margin = "1rem",
+	margin = "0",
 	direction = "column",
 	gap = "0.5rem",
 	align = "stretch",

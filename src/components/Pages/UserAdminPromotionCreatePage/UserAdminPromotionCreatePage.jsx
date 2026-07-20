@@ -3,8 +3,7 @@ import { useEffect, useState } from "react";
 import ApdPanel from "../../common/ApdPanel/ApdPanel";
 import ApdH3TitleSubtitle from "./../../common/ApdH3TitleSubtitle/ApdH3TitleSubtitle";
 
-import { getFeatures, getPromotion, createPromotion, updatePromotion, deletePromotion } from "./../../../firebase/promotionsService";
-
+import { getPromotion, createPromotion, updatePromotion, deletePromotion } from "./../../../firebase/promotionsService";
 import ApdLayoutStack from "./../../common/ApdLayoutStack/ApdLayoutStack";
 
 // import ApdRadioFilterGroup from "./../../common/ApdRadioFilterGroup/ApdRadioFilterGroup";
@@ -15,10 +14,13 @@ import { useNavigate, useParams } from "react-router-dom";
 import ApdLabel from "./../../common/ApdLabel/ApdLabel";
 import ApdLink from "./../../common/ApdLink/ApdLink";
 import Swal from "sweetalert2";
+import { useAuth } from "../../../context/AuthContext";
 
 export default function PromotionCreatePage() {
 	const { promotionId } = useParams();
 	const navigate = useNavigate();
+
+	const { availableFeatures } = useAuth();
 	const today = new Date().toISOString().split("T")[0];
 
 	const [formData, setFormData] = useState({
@@ -32,14 +34,10 @@ export default function PromotionCreatePage() {
 	});
 
 
-	const [availableFeatures, setAvailableFeatures] = useState([]);
-
 	useEffect(() => {
 
 		async function loadData() {
 
-			const features = await getFeatures();
-			setAvailableFeatures(features);
 
 
 			if (promotionId) {

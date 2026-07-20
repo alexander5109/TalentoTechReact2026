@@ -2,6 +2,7 @@ import { useEffect, createContext, useState, useContext } from 'react';
 import { onAuthStateChanged, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { auth, db } from "./../firebase/config";
+import { getFeatures } from '../firebase/promotionsService';
 
 
 // 1. Crear el contexto
@@ -24,7 +25,7 @@ export const useAuth = () => {
 
 // 2. Crear el proveedor del contexto
 export const AuthProvider = ({ children }) => {
-	const [features, setFeatures] = useState({});
+	const availableFeatures = await getFeatures();
 
 
 	const [user, setUser] = useState(null);
@@ -77,12 +78,12 @@ export const AuthProvider = ({ children }) => {
 
 	// Crear el objeto 'value' con TODAS las funciones definidas
 	function hasFeature(featureId) {
-		return !!features[featureId];
+		return !!availableFeatures[featureId];
 	}
 
 	const value = {
 		user,
-		features,
+		availableFeatures,
 		hasFeature,
 		loading,
 		signup,

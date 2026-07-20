@@ -96,9 +96,12 @@ export default function UserAccountSettingsPage() {
 			</ApdPanel >
 			<ApdPanel flex="5 1 500px" as="section">
 				<ApdH3>Beneficios</ApdH3>
-				<ApdLayoutStack>
-					<ApdH4>Incresar código de promoción</ApdH4>
+				<ApdLayoutStack as="form">
+					<ApdH4>Ingresar código de promoción</ApdH4>
 					<ApdInput type="text"></ApdInput>
+					<ApdLayoutStack direction="row" align="center">
+						<ApdButton >Ingresar</ApdButton>
+					</ApdLayoutStack>
 				</ApdLayoutStack>
 
 				<ApdLayoutGrid >
