@@ -6,7 +6,7 @@ import ApdButton from "../../common/ApdButton/ApdButton";
 import ApdLayoutGrid from "../../common/ApdLayoutGrid/ApdLayoutGrid";
 import styles from "./UserAdminPanelPage.module.css";
 import { useEffect, useState } from "react";
-import { getPromotions, getFeatures } from "../../../firebase/promotionsService";
+import { getAllPromotions, getFeatures } from "../../../firebase/promotionsService";
 import { Link } from "react-router-dom";
 import ApdLayoutStack from "../../common/ApdLayoutStack/ApdLayoutStack";
 import ApdH4 from "../../common/ApdH4/ApdH4";
@@ -56,7 +56,7 @@ export default function UserAdminPanelPage() {
 	const [promotions, setPromotions] = useState([]);
 
 	async function refreshPromotions() {
-		const data = await getPromotions();
+		const data = await getAllPromotions();
 		setPromotions(data);
 	}
 

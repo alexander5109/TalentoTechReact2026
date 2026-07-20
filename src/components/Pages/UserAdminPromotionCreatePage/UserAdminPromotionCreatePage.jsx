@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import ApdPanel from "../../common/ApdPanel/ApdPanel";
 import ApdH3TitleSubtitle from "../../common/ApdH3TitleSubtitle/ApdH3TitleSubtitle";
 
-import { getFeatures, getPromotions, getPromotion, createPromotion, updatePromotion, disablePromotion } from "../../../firebase/promotionsService";
+import { getFeatures, getAllPromotions, getPromotion, createPromotion, updatePromotion, disablePromotion } from "../../../firebase/promotionsService";
 
 import ApdLayoutStack from "../../common/ApdLayoutStack/ApdLayoutStack";
 
@@ -12,14 +12,10 @@ import ApdButton from "../../common/ApdButton/ApdButton";
 import { useParams } from "react-router-dom";
 import ApdLabel from "../../common/ApdLabel/ApdLabel";
 import ApdLink from "../../common/ApdLink/ApdLink";
+import Swal from "sweetalert2";
 
 export default function PromotionCreatePage() {
-	const { id } = useParams();
-	useEffect(() => {
-		if (!id)
-			return;
-		loadPromotion(id);
-	}, [id]);
+	const { id: currentPromotionId } = useParams();
 
 	const [formData, setFormData] = useState({
 		nombre: "",
@@ -32,50 +28,41 @@ export default function PromotionCreatePage() {
 
 
 
-	async function handleDesactivatePromotion(id) {
-
-		const result = await Swal.fire({
-			title: "Desactivar promoción?",
-			text: "Esta acción no afectará a los usuarios que ya cuentan con la promocion.",
-			icon: "question",
-			showCancelButton: true,
-			confirmButtonText: "Sí, desactivar",
-			cancelButtonText: "Cancelar",
-			reverseButtons: true
-		});
-
-		if (!result.isConfirmed) return;
-
-		await disablePromotion(user.uid);
-		await getPromotions();
-
-		Swal.fire({
-			title: "Promocion desactivada",
-			icon: 'info',
-			timer: 1500,
-			showConfirmButton: false,
-			toast: true,
-			position: 'top-end'
-		})
-	}
-
-
 	const [currentPromotion, setCurrentPromotion] = useState(null);
 	const [availableFeatures, setAvailableFeatures] = useState([]);
 
-
 	useEffect(() => {
 
-		async function loadFeatures() {
-			const data = await getFeatures();
-			setFeatures(data);
-			const data2 = await getPromotion();
-			setAvailableFeatures(data2);
+		async function loadData() {
+
+			const features = await getFeatures();
+			setAvailableFeatures(features);
+
+
+			if (currentPromotionId) {
+
+				const promotion = await getPromotion(currentPromotionId);
+
+				setCurrentPromotion(promotion);
+
+				setFormData({
+					nombre: promotion.nombre ?? "",
+					codigo: promotion.codigo ?? "",
+					descripcion: promotion.descripcion ?? "",
+					duracionDias: promotion.duracionDias ?? 30,
+					activa: promotion.activa ?? true,
+					features: promotion.features ?? []
+				});
+			}
+
 		}
 
-		loadFeatures();
 
-	}, []);
+		loadData();
+
+	}, [id]);
+
+
 
 
 
@@ -103,22 +90,42 @@ export default function PromotionCreatePage() {
 		}));
 
 	}
-	async function handleDisable() {
 
-		await disablePromotion(id);
+	async function handleUpdatePromotion() {
 
-		navigate("/userAdmin");
+
+		await updatePromotion(currentPromotionId);
+		Swal.fire({
+			title: "Cambios guardados",
+			icon: 'info',
+			timer: 1500,
+			showConfirmButton: false,
+			toast: true,
+			position: 'top-end'
+		})
 
 	}
+
 	async function handleSubmit(e) {
-		if (id) {
-			await updatePromotion(id, formData);
+		if (currentPromotionId) {
+			action = "Promocion modificada"
+			await updatePromotion(currentPromotionId, formData);
 		}
 		else {
+			action = "Promocion creada"
 			await createPromotion(formData);
 		}
-		console.log(formData);
-		navigate("/userAdmin");
+
+		Swal.fire({
+			title: action,
+			icon: 'info',
+			timer: 1500,
+			showConfirmButton: false,
+			toast: true,
+			position: 'top-end'
+		})
+
+
 	}
 
 	return <ApdPanel as="section">
@@ -196,7 +203,7 @@ export default function PromotionCreatePage() {
 
 			<ApdLayoutStack >
 				<ApdButton type="submit"> Guardar promoción </ApdButton>
-				<ApdButton variant="danger" onClick={() => handleDesactivatePromotion(currentPromotion.id)}> Desactivar </ApdButton>
+				<ApdButton variant="danger" onClick={handleDisablePromotion}> Desactivar </ApdButton>
 				<ApdLink variant="secondary" to="/userAdminPanel" >
 					Volver
 				</ApdLink>

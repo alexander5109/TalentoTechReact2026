@@ -12,7 +12,7 @@ export async function getFeatures() {
 	}));
 }
 
-export async function getPromotions() {
+export async function getAllPromotions() {
 	const snapshot = await getDocs(promotionsCollection);
 	return snapshot.docs.map(doc => ({
 		id: doc.id,
