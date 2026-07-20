@@ -15,6 +15,7 @@ import ApdLabel from "./../../common/ApdLabel/ApdLabel";
 import ApdLink from "./../../common/ApdLink/ApdLink";
 import Swal from "sweetalert2";
 import { useAuth } from "../../../context/AuthContext";
+import { Timestamp } from "firebase/firestore";
 
 export default function PromotionCreatePage() {
 	const { promotionId } = useParams();
@@ -123,8 +124,8 @@ export default function PromotionCreatePage() {
 		const promotion = {
 			...formData,
 			codigo: formData.codigo.trim().toUpperCase(),
-			vigenciaDesde: formData.vigenciaDesde ?? new Date(formData.vigenciaDesde),
-			vigenciaHasta: formData.vigenciaHasta ?? new Date(formData.vigenciaHasta)
+			vigenciaDesde: Timestamp.fromDate(new Date(formData.vigenciaDesde)),
+			vigenciaHasta: Timestamp.fromDate(new Date(formData.vigenciaHasta))
 		};
 
 		if (promotionId) {

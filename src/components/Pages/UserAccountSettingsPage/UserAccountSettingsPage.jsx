@@ -14,43 +14,46 @@ import ApdH4 from "../../common/ApdH4/ApdH4";
 import ApdLayoutGrid from "../../common/ApdLayoutGrid/ApdLayoutGrid";
 import ApdButton from "../../common/ApdButton/ApdButton";
 import SearchProfileCard from "../../common/SearchProfileCard/SearchProfileCard";
-import { getAllPromotions } from "../../../firebase/promotionsService";
+
+
 import Swal from "sweetalert2";
+import { useAuth } from "../../../context/AuthContext";
 
 
 export default function UserAccountSettingsPage() {
-
+	const { getAvailablePromotions } = useAuth();
 	const [usuario, setUsuario] = useState(null);
-
 	const [loading, setLoading] = useState(true);
-
 	const [saving, setSaving] = useState(false);
-
 	const [feedback, setFeedback] = useState(null);
-
 	const [userCodigoDeCoso, setUserCodigoDeCoso] = useState("");
 
-
-
-	const [existingPromotions, setExistingPromotions] = useState([]);
 
 	async function handleSubmit(e) {
 		e.preventDefault();
 
-		const promotions = await getAllPromotions();
+		const promotions = await getAvailablePromotions();
+		// const promocionesDelUsuario = promotions.filter((x) => x.codigo != userCodigoDeCoso)
 
 		const now = new Date();
 
 		const promotion = promotions.find(item => {
-
+			if (item == null) {
+				return false;
+			}
+			console.log(item.codigo)
+			console.log(userCodigoDeCoso)
 			if (item.codigo !== userCodigoDeCoso.trim().toUpperCase())
 				return false;
 
 			if (!item.activa)
 				return false;
 
-			const desde = item.vigenciaDesde.toDate();
-			const hasta = item.vigenciaHasta.toDate();
+			console.log(item?.vigenciaHasta)
+			console.log(item?.vigenciaDesde)
+
+			const desde = item?.vigenciaDesde?.toDate();
+			const hasta = item?.vigenciaHasta?.toDate();
 
 			return now >= desde && now <= hasta;
 		});
@@ -65,12 +68,29 @@ export default function UserAccountSettingsPage() {
 
 			return;
 		}
+		try {
 
-		Swal.fire({
-			title: "Código correcto",
-			text: `Se activará la promoción "${promotion.nombre}".`,
-			icon: "success"
-		});
+			await activatePromotion(usuario, promotion);
+
+			Swal.fire({
+				title: "Promoción activada",
+				icon: "success",
+				timer: 1500,
+				showConfirmButton: false,
+				toast: true,
+				position: "top-end"
+			});
+
+		}
+		catch (err) {
+
+			Swal.fire({
+				title: "No fue posible activar la promoción",
+				text: err.message,
+				icon: "error"
+			});
+
+		}
 	}
 
 

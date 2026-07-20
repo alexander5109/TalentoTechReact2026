@@ -6,7 +6,6 @@ import ApdButton from "./../../common/ApdButton/ApdButton";
 import ApdLayoutGrid from "./../../common/ApdLayoutGrid/ApdLayoutGrid";
 import styles from "./UserAdminPanelPage.module.css";
 import { useEffect, useState } from "react";
-import { getAllPromotions } from "./../../../firebase/promotionsService";
 import { Link } from "react-router-dom";
 import ApdLayoutStack from "./../../common/ApdLayoutStack/ApdLayoutStack";
 import ApdH4 from "./../../common/ApdH4/ApdH4";
@@ -27,13 +26,13 @@ function puedeCrearAlerta(usuario) {
 }
 
 export default function UserAdminPanelPage() {
-	const { availableFeaturesMap } = useAuth();
+	const { getAvailablePromotions, availableFeaturesMap } = useAuth();
 
 
 	const [promotions, setPromotions] = useState([]);
 	useEffect(() => {
 		async function loadPromotions() {
-			const data = await getAllPromotions();
+			const data = await getAvailablePromotions();
 			setPromotions(data);
 		}
 		loadPromotions();
