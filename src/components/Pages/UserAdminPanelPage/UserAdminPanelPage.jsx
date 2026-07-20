@@ -85,38 +85,59 @@ export default function UserAdminPanelPage() {
 				{promotions.map(promotion => (
 
 					<ApdDetailItem key={promotion.id}>
+						<div className={styles.header}>
 
-						<ApdH4>
-							Nombre: {promotion.nombre}
-						</ApdH4>
+							<ApdH3TitleSubtitle
+								upper={promotion.nombre}
+								lower={promotion.codigo}
+							/>
 
-						<ApdPrettyP>
-							Descripcion: {promotion.descripcion}
-						</ApdPrettyP>
+						</div>
+						<ApdLayoutGrid>
 
-						<p>
-							Codigo: <strong>{promotion.codigo}</strong>
-						</p>
+							{[
+								["Descripción", promotion.descripcion],
+								["Codigo", promotion.codigo],
+								["Duración", `${promotion.duracionDias} días`],
+								["Estado", promotion.activa ? "🟢 Activa" : "⚫ Desactivada"]
+							].map(([header, value]) => (
 
-						<p>
-							<strong>Duración:</strong> {promotion.duracionDias} días
-						</p>
+								<ApdDetailItem key={header}>
 
-						<p>
-							<strong>Estado:</strong>{" "}
-							{promotion.activa ? "🟢 Activa" : "⚫ Desactivada"}
-						</p>
+									<ApdH4>
+										{header}
+									</ApdH4>
 
-						<p>
-							<strong>Incluye:</strong>
-						</p>
-						<ul>
-							{promotion.features?.map(feature => (
-								<li key={feature}>
-									{availableFeatures[feature]?.nombre ?? feature}
-								</li>
+									<ApdPrettyP>
+										{value}
+									</ApdPrettyP>
+
+								</ApdDetailItem>
+
 							))}
-						</ul>
+
+						</ApdLayoutGrid>
+						<ApdLayoutStack>
+
+							<ApdH4>
+								Beneficios incluidos
+							</ApdH4>
+
+							<ul>
+
+								{promotion.features.map(feature => (
+
+									<li key={feature}>
+
+										✅ {availableFeatures[feature]?.nombre ?? feature}
+
+									</li>
+
+								))}
+
+							</ul>
+
+						</ApdLayoutStack>
 						<ApdLayoutStack direction="row">
 							<Link to={`/userAdminNewPromotion/${promotion.id}`}>
 								<ApdButton variant="secondary">

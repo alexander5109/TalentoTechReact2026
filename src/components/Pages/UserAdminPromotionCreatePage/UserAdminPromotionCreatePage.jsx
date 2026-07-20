@@ -3,10 +3,12 @@ import { useEffect, useState } from "react";
 import ApdPanel from "../../common/ApdPanel/ApdPanel";
 import ApdH3TitleSubtitle from "../../common/ApdH3TitleSubtitle/ApdH3TitleSubtitle";
 
-import { getFeatures, getPromotion, createPromotion, updatePromotion, disablePromotion } from "../../../firebase/promotionsService";
+import { getFeatures, getPromotion, createPromotion, updatePromotion, deletePromotion } from "../../../firebase/promotionsService";
 
 import ApdLayoutStack from "../../common/ApdLayoutStack/ApdLayoutStack";
 
+// import ApdRadioFilterGroup from "../../common/ApdRadioFilterGroup/ApdRadioFilterGroup";
+import ApdSelect from "../../common/ApdSelect/ApdSelect";
 import ApdInput from "../../common/ApdInput/ApdInput";
 import ApdButton from "../../common/ApdButton/ApdButton";
 import { useNavigate, useParams } from "react-router-dom";
@@ -15,7 +17,7 @@ import ApdLink from "../../common/ApdLink/ApdLink";
 import Swal from "sweetalert2";
 
 export default function PromotionCreatePage() {
-	const { id: currentPromotionId } = useParams();
+	const { promotionId } = useParams();
 	const navigate = useNavigate();
 
 
@@ -39,9 +41,9 @@ export default function PromotionCreatePage() {
 			setAvailableFeatures(features);
 
 
-			if (currentPromotionId) {
+			if (promotionId) {
 
-				const currentPromotion = await getPromotion(currentPromotionId);
+				const currentPromotion = await getPromotion(promotionId);
 
 				setFormData({
 					nombre: currentPromotion.nombre ?? "",
@@ -58,9 +60,7 @@ export default function PromotionCreatePage() {
 
 		loadData();
 
-	}, [currentPromotionId]);
-
-
+	}, [promotionId]);
 
 
 
@@ -70,7 +70,9 @@ export default function PromotionCreatePage() {
 
 		setFormData(prev => ({
 			...prev,
-			[name]: value
+			[name]: name === "codigo"
+				? value.trim().toUpperCase()
+				: value
 		}));
 
 	}
@@ -89,36 +91,41 @@ export default function PromotionCreatePage() {
 
 	}
 
-	async function handleDisablePromotion() {
+	async function handleDeletePromotion() {
 		const result = await Swal.fire({
-			title: "Desactivar promoción?",
-			text: "Esta acción no afectará a los usuarios que ya cuentan con la promocion.",
-			icon: "question",
+			title: "Eliminar la promoción?",
+			text: "Esta acción eliminará la promoción de forma permanente y romperá las descripciones de usuarios. \nUtilize con precaución",
+			icon: "warning",
 			showCancelButton: true,
-			confirmButtonText: "Sí, desactivar",
+			confirmButtonText: "Sí, eliminar",
 			cancelButtonText: "Cancelar",
 			reverseButtons: true
 		});
 
 		if (!result.isConfirmed) return;
 
-		await disablePromotion(currentPromotionId);
+		await deletePromotion(promotionId);
 		Swal.fire({
-			title: "Promocion desactivada",
+			title: "Promocion eliminada",
 			icon: 'info',
 			timer: 1500,
 			showConfirmButton: false,
 			toast: true,
 			position: 'top-end'
 		})
-		await getAllPromotions(user.uid);
+		navigate("/userAdminPanel");
 
 	}
 
 	async function handleSubmit(e) {
 		e.preventDefault();
-		if (currentPromotionId) {
-			await updatePromotion(currentPromotionId, formData);
+
+		const promotion = {
+			...formData,
+			codigo: formData.codigo.trim().toUpperCase()
+		};
+		if (promotionId) {
+			await updatePromotion(promotionId, formData);
 			Swal.fire({
 				title: "Promocion modificada",
 				icon: 'info',
@@ -148,7 +155,7 @@ export default function PromotionCreatePage() {
 		<ApdH3TitleSubtitle
 			upper="Gestión comercial"
 			lower={
-				currentPromotionId
+				promotionId
 					? "Editar promoción"
 					: "Nueva promoción"
 			}
@@ -172,6 +179,7 @@ export default function PromotionCreatePage() {
 					name="codigo"
 					value={formData.codigo}
 					onChange={handleChange}
+					style={{ textTransform: "uppercase" }}
 					required
 				/>
 			</ApdLayoutStack>
@@ -221,9 +229,31 @@ export default function PromotionCreatePage() {
 
 			</ApdLayoutStack>
 
-			<ApdLayoutStack >
-				<ApdButton variant="primary" type="submit"> Guardar promoción </ApdButton>
-				{currentPromotionId && <ApdButton variant="danger" onClick={handleDisablePromotion}> Desactivar </ApdButton>}
+
+
+			<ApdLayoutStack>
+				<ApdLabel htmlFor="estadoPromocion">Estado (días)</ApdLabel>
+				<ApdSelect
+					id="activa"
+					name="activa"
+					value={String(formData.activa)}
+					onChange={(e) =>
+						setFormData(prev => ({
+							...prev,
+							activa: e.target.value === "true"
+						}))
+					}
+					options={[
+						{ value: "true", label: "🟢 Activa" },
+						{ value: "false", label: "⚫ Desactivada" }
+					]}
+				/>
+
+			</ApdLayoutStack>
+
+			<ApdLayoutStack direction="row" align="center">
+				<ApdButton variant="primary" type="submit"> Guardar </ApdButton>
+				{promotionId && <ApdButton variant="danger" onClick={handleDeletePromotion}> Eliminar </ApdButton>}
 				<ApdLink variant="secondary" to="/userAdminPanel" >
 					Volver
 				</ApdLink>

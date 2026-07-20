@@ -1,4 +1,4 @@
-import { collection, getDocs, addDoc, updateDoc, doc, getDoc } from "firebase/firestore";
+import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc, getDoc } from "firebase/firestore";
 import { db } from "./config";
 
 const promotionsCollection = collection(db, "promotions");
@@ -39,7 +39,6 @@ export async function updatePromotion(promotionId, changes) {
 	await updateDoc(doc(db, "promotions", promotionId), changes);
 }
 
-export async function disablePromotion(promotionId) {
-	await updateDoc(doc(db, "promotions", promotionId), { activa: false });
-
+export async function deletePromotion(promotionId) {
+	await deleteDoc(doc(db, "promotions", promotionId));
 }
