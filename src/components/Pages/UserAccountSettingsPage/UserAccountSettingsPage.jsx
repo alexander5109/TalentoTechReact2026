@@ -41,7 +41,7 @@ export default function UserAccountSettingsPage() {
 		setSaving(true);
 		setFeedback(null);
 		try {
-			console.log("Datos enviados a actualizar:", data);
+			// console.log("Datos enviados a actualizar:", data);
 			await actualizarUsuario(data);
 
 			const actualizado = await obtenerUsuarioActual();

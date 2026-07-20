@@ -57,19 +57,27 @@ export default function ProfilesWidgetLists({
 			<ApdLayoutStack >
 				<ApdLayoutStack >
 					<ApdLabel>🔔 Alertas</ApdLabel>
-					<ProfileAlertsWidget value={selectedProfile?.alerta?.freq}></ProfileAlertsWidget>
+					<ProfileAlertsWidget value={selectedProfile?.alerta?.frecuenciaHoras}
+						onChange={(freq) =>
+							onUpdateProfile({
+								alerta: {
+									...selectedProfile.alerta,
+									freq
+								}
+							})
+						}></ProfileAlertsWidget>
 				</ApdLayoutStack>
 				<ApdLayoutStack >
 					<ApdCheckboxFilterGroup
 						widgetLabel="🔔 Modo de alerta:"
 						name="alertaModes"
-						value={selectedProfile?.alerta?.dest}
+						value={selectedProfile?.alerta?.canales}
 						onChange={onUpdateProfile}
 						options={ALERTA_TYPES}
 					/>
 				</ApdLayoutStack>
 			</ApdLayoutStack>
-		</ApdLayoutStack>
+		</ApdLayoutStack >
 		<ApdLayoutStack >
 			<ApdButton onClick={onCreateProfile} disabled={!hasFilters} variant="primary">
 				➕ Guardar como nuevo

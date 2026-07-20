@@ -1,11 +1,6 @@
 import ApdH3TitleSubtitle from "./../../../common/ApdH3TitleSubtitle/ApdH3TitleSubtitle";
-
 import Swal from "sweetalert2"
-
-import {
-	usePendingPostulations
-} from "./../../../../context/PendingPostulationsContext.jsx"
-
+import { usePendingPostulations } from "./../../../../context/PendingPostulationsContext.jsx"
 import styles from "./OfertaDetalle.module.css"
 import ApdLink from "./../../../common/ApdLink/ApdLink.jsx";
 import ApdButton from "./../../../common/ApdButton/ApdButton.jsx";
@@ -16,8 +11,12 @@ import ApdH3 from "./../../../common/ApdH3/ApdH3.jsx";
 import ApdH4 from "./../../../common/ApdH4/ApdH4.jsx";
 import ApdLayoutStack from "./../../../common/ApdLayoutStack/ApdLayoutStack.jsx";
 import ApdPanel from "../../../common/ApdPanel/ApdPanel.jsx";
+import { useAuth } from "../../../../context/AuthContext.jsx";
 
 export default function OfertaDetalle({ offer }) {
+
+	const { hasFeature } = useAuth();
+
 
 	const backgroundClassEstado = (
 		offer.estado === "Publicada"
@@ -39,6 +38,7 @@ export default function OfertaDetalle({ offer }) {
 		["Suplencia hasta", offer.supl_hasta],
 		["Reemplaza a", offer.reemp_apeynom ?? "-"],
 		["Motivo", offer.reemp_motivo ?? "-"],
+		["Observaciones", offer.observaciones ?? "-"],
 	];
 
 	const cargoImage = `/images/${offer.cargo
@@ -105,6 +105,30 @@ export default function OfertaDetalle({ offer }) {
 			/>
 		</div>
 
+
+		{hasFeature("school_map")
+			? (
+				<ApdPanel>
+					<ApdH4>📍 Ubicación aproximada:</ApdH4>
+
+					<iframe
+						className={styles.map}
+						src="https://maps.google.com/maps?q=Obelisco%20Buenos%20Aires&t=&z=15&ie=UTF8&iwloc=&output=embed"
+						width="100%"
+						height="300"
+					></iframe>
+				</ApdPanel>
+			)
+			: (
+				<ApdPanel className={styles.backgroundDanger}>
+					<ApdH4>📍 Ubicación aproximada:</ApdH4>
+
+					<ApdPrettyP>
+						Necesitas activar la feature con un código de promoción.
+					</ApdPrettyP>
+				</ApdPanel>
+			)
+		}
 		<ApdLayoutGrid>
 			{detalles.map(([header, value, variantClassName]) => (
 				<ApdDetailItem key={header} variantClassName={variantClassName}>
@@ -115,30 +139,6 @@ export default function OfertaDetalle({ offer }) {
 
 		</ApdLayoutGrid>
 
-		<ApdLayoutStack>
-			<ApdH4>📍 Ubicación aproximada: </ApdH4>
-			<iframe
-				className={styles.map}
-				src="https://maps.google.com/maps?q=Obelisco%20Buenos%20Aires&t=&z=15&ie=UTF8&iwloc=&output=embed"
-				width="100%"
-				height="300"
-			></iframe>
-		</ApdLayoutStack>
-
-		{
-			offer.observaciones && (
-
-				<div className={styles.section}>
-
-					<ApdH3>Observaciones</ApdH3>
-
-					<p>
-						{offer.observaciones}
-					</p>
-
-				</div>
-			)
-		}
 
 
 		<ApdLayoutStack>

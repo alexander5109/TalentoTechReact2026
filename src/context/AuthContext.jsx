@@ -15,8 +15,18 @@ export const useAuth = () => {
 	return context;
 };
 
+
+
+
+
+
+
+
 // 2. Crear el proveedor del contexto
 export const AuthProvider = ({ children }) => {
+	const [features, setFeatures] = useState({});
+
+
 	const [user, setUser] = useState(null);
 	const [loading, setLoading] = useState(true);
 	// const auth = getAuth(); // Obtenemos la instancia de auth una sola vez
@@ -66,14 +76,18 @@ export const AuthProvider = ({ children }) => {
 	}, [auth, db]); // Agregamos 'auth' como dependencia
 
 	// Crear el objeto 'value' con TODAS las funciones definidas
+	function hasFeature(featureId) {
+		return !!features[featureId];
+	}
 
 	const value = {
 		user,
-		loading, // Es buena práctica pasar el estado de carga también
+		features,
+		hasFeature,
+		loading,
 		signup,
 		login,
-		// Ahora 'login' sí existe y se puede pasar
-		logout,
+		logout
 	};
 
 	// Retornar el Provider, asegurándonos de no renderizar hasta que cargue

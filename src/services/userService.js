@@ -48,7 +48,7 @@ export async function actualizarUsuario({
 		const url = await subirAvatar(archivo);
 
 		data.avatarUrl = url;
-		console.log(data.avatarUrl);
+		// console.log(data.avatarUrl);
 
 	}
 

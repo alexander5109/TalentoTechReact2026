@@ -74,7 +74,13 @@ export default function UserAdminPanelPage() {
 		["📊 Peticiones por minuto", 5354],
 		["💸 Cupones aplicados", 63],
 	];
+	function formatDate(date) {
+		if (!date) return "-";
 
+		return date.toDate
+			? date.toDate().toLocaleDateString("es-AR")
+			: new Date(date).toLocaleDateString("es-AR");
+	}
 	return <>
 
 		<ApdPanel as="section">
@@ -97,8 +103,9 @@ export default function UserAdminPanelPage() {
 
 							{[
 								["Descripción", promotion.descripcion],
-								["Codigo", promotion.codigo],
-								["Duración", `${promotion.duracionDias} días`],
+								["Código", promotion.codigo],
+								["Vigente desde", formatDate(promotion.vigenciaDesde)],
+								["Vigente hasta", formatDate(promotion.vigenciaHasta)],
 								["Estado", promotion.activa ? "🟢 Activa" : "⚫ Desactivada"]
 							].map(([header, value]) => (
 

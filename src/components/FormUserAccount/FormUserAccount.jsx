@@ -21,7 +21,7 @@ export default function FormUserAccount({
 	editableEmailAndPassword = false,
 	onSubmit
 }) {
-	console.log("Form render", initialData);
+	// console.log("Form render", initialData);
 
 	const [formData, setFormData] = useState({
 		email: initialData.email ?? "",

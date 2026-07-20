@@ -43,7 +43,7 @@ async function exportFirestore() {
 
 	}
 
-	console.log(backup);
+	// console.log(backup);
 
 	const json = JSON.stringify(backup, null, "\t");
 
@@ -61,4 +61,4 @@ async function exportFirestore() {
 	URL.revokeObjectURL(url);
 }
 
-// await exportFirestore();
+await exportFirestore();

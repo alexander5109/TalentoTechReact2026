@@ -20,8 +20,8 @@ export default function Header() {
 	if (location.pathname === "/") {
 		subtitle = "Home"
 	}
-	else if (location.pathname === "/ofertas") {
-		subtitle = "Ofertas"
+	else if (location.pathname.startsWith("/ofertas")) {
+		subtitle = "Ofertas";
 	}
 	else if (location.pathname === "/about") {
 		subtitle = "About us"

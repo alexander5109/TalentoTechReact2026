@@ -19,13 +19,14 @@ import Swal from "sweetalert2";
 export default function PromotionCreatePage() {
 	const { promotionId } = useParams();
 	const navigate = useNavigate();
-
+	const today = new Date().toISOString().split("T")[0];
 
 	const [formData, setFormData] = useState({
 		nombre: "",
 		codigo: "",
 		descripcion: "",
-		duracionDias: 30,
+		vigenciaDesde: today,
+		vigenciaHasta: "",
 		activa: true,
 		features: []
 	});
@@ -49,7 +50,8 @@ export default function PromotionCreatePage() {
 					nombre: currentPromotion.nombre ?? "",
 					codigo: currentPromotion.codigo ?? "",
 					descripcion: currentPromotion.descripcion ?? "",
-					duracionDias: currentPromotion.duracionDias ?? 30,
+					vigenciaDesde: currentPromotion.vigenciaDesde ?? today,
+					vigenciaHasta: currentPromotion.vigenciaHasta ?? "",
 					activa: currentPromotion.activa ?? true,
 					features: currentPromotion.features ?? []
 				});
@@ -122,10 +124,13 @@ export default function PromotionCreatePage() {
 
 		const promotion = {
 			...formData,
-			codigo: formData.codigo.trim().toUpperCase()
+			codigo: formData.codigo.trim().toUpperCase(),
+			vigenciaDesde: formData.vigenciaDesde ?? new Date(formData.vigenciaDesde),
+			vigenciaHasta: formData.vigenciaHasta ?? new Date(formData.vigenciaHasta)
 		};
+
 		if (promotionId) {
-			await updatePromotion(promotionId, formData);
+			await updatePromotion(promotionId, promotion);
 			Swal.fire({
 				title: "Promocion modificada",
 				icon: 'info',
@@ -136,7 +141,7 @@ export default function PromotionCreatePage() {
 			})
 		}
 		else {
-			await createPromotion(formData);
+			await createPromotion(promotion);
 			Swal.fire({
 				title: "Promocion creada",
 				icon: 'info',
@@ -195,18 +200,38 @@ export default function PromotionCreatePage() {
 					rows={4}
 				/>
 			</ApdLayoutStack>
-
 			<ApdLayoutStack>
-				<ApdLabel htmlFor="duracionDias">Duración (días)</ApdLabel>
+				<ApdLabel htmlFor="vigenciaDesde">
+					Vigente desde
+				</ApdLabel>
+
 				<ApdInput
-					id="duracionDias"
-					name="duracionDias"
-					type="number"
-					min={1}
-					value={formData.duracionDias}
+					id="vigenciaDesde"
+					name="vigenciaDesde"
+					type="date"
+					required
+					value={formData.vigenciaDesde}
 					onChange={handleChange}
 				/>
 			</ApdLayoutStack>
+
+			<ApdLayoutStack>
+				<ApdLabel htmlFor="vigenciaHasta">
+					Vigente hasta
+				</ApdLabel>
+
+				<ApdInput
+					id="vigenciaHasta"
+					name="vigenciaHasta"
+					type="date"
+					required
+					min={formData.vigenciaDesde}
+					value={formData.vigenciaHasta}
+					onChange={handleChange}
+				/>
+			</ApdLayoutStack>
+
+
 			<ApdLayoutStack>
 
 				<ApdLabel>
