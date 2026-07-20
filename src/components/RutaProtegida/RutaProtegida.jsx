@@ -1,6 +1,7 @@
 import { useAuth } from '../../context/AuthContext';
 import { Navigate } from 'react-router-dom';
 import ApdPrettyP from '../common/ApdPrettyP/ApdPrettyP';
+import ApdSpinner from '../common/ApdSpinner/ApdSpinner';
 export default function RutaProtegida({
 	children,
 	rolesPermitidos = []
@@ -9,7 +10,7 @@ export default function RutaProtegida({
 	const { user, loading } = useAuth();
 
 	if (loading) {
-		return <ApdPrettyP>Cargando...</ApdPrettyP>;
+		return <ApdSpinner />;
 	}
 
 	if (!user) {

@@ -6,6 +6,7 @@ import { obtenerUsuarioActual, actualizarUsuario } from "../../../services/userS
 import ApdFeedback from "../../common/ApdFeedback/ApdFeedback";
 import ApdPanel from "../../common/ApdPanel/ApdPanel";
 import ApdH3TitleSubtitle from "../../common/ApdH3TitleSubtitle/ApdH3TitleSubtitle";
+import ApdSpinner from "../../common/ApdSpinner/ApdSpinner";
 
 export default function UserAccountSettingsPage() {
 
@@ -63,7 +64,7 @@ export default function UserAccountSettingsPage() {
 	}
 
 	if (loading)
-		return <p>Cargando...</p>;
+		return <ApdSpinner />;
 
 	if (!usuario && feedback)
 		return <ApdFeedback feedback={feedback}></ApdFeedback>;

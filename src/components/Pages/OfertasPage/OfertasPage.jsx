@@ -226,27 +226,31 @@ export default function OfertasPage() {
 
 	return <ApdLayoutStack direction="row" gap="1rem" align="flex-start">
 		<ApdLayoutStack gap="1rem" flex="0 0 320px">
-			<ApdPanel as="nav">
-				<ApdH3>🔎 Mis búsquedas</ApdH3>
-				<ApdLayoutStack as="nav">
-					<ProfilesWidgetLists
 
-						profiles={profiles}
-						selectedProfileId={selectedProfileId}
+			{user &&
+				<ApdPanel as="nav">
+					<ApdH3>🔎 Mis búsquedas</ApdH3>
+					<ApdLayoutStack as="nav">
+						<ProfilesWidgetLists
 
-						hasFilters={hasFilters}
-						hasChanges={hasChanges}
+							profiles={profiles}
+							selectedProfileId={selectedProfileId}
 
-						onSelectProfile={handleSelectProfile}
-						onUpdateProfile={handleUpdateProfile}
-						onCreateProfile={handleCreateProfile}
-						onDeleteProfile={handleDeleteProfile}
-					/>
-					{/* <ApdButton disabled={!hasChanges} variant="primary">
+							hasFilters={hasFilters}
+							hasChanges={hasChanges}
+
+							onSelectProfile={handleSelectProfile}
+							onUpdateProfile={handleUpdateProfile}
+							onCreateProfile={handleCreateProfile}
+							onDeleteProfile={handleDeleteProfile}
+						/>
+						{/* <ApdButton disabled={!hasChanges} variant="primary">
 						🔖 Crear nuevo
 					</ApdButton> */}
-				</ApdLayoutStack>
-			</ApdPanel>
+					</ApdLayoutStack>
+				</ApdPanel>}
+
+
 			<ApdPanel as="section">
 				<ApdH3>⚙️ Filtrar</ApdH3>
 				<ApdLayoutStack as="form" direction="row" wrap="wrap" gap="2rem">
@@ -254,6 +258,10 @@ export default function OfertasPage() {
 				</ApdLayoutStack>
 			</ApdPanel>
 		</ApdLayoutStack>
+
+
+
+
 		<ApdPanel as="main" >
 			<ApdH3>🔎 Listado de Ofertas</ApdH3>
 			<ApdLayoutGrid align="stretch" columnGap="2rem" rowGap="2rem">

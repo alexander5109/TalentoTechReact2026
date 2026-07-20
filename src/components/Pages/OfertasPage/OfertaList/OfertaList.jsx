@@ -3,18 +3,19 @@ import ApdFeedback from '../../../common/ApdFeedback/ApdFeedback'
 import ApdH3 from '../../../common/ApdH3/ApdH3'
 import ApdPanel from '../../../common/ApdPanel/ApdPanel'
 import OfertaCard from '../OfertaCard/OfertaCard'
+import ApdSpinner from '../../../common/ApdSpinner/ApdSpinner'
 import { useEffect, useState } from 'react'
 
 export default function OfertaList({ filtros }) {
 	// console.log(filtros)
 	const [errorExcept, setError] = useState(null)
-	const [isLoading, setCargando] = useState(true)
+	const [loading, setCargando] = useState(true)
 	const [ofertas, setOfertas] = useState([])
 	useEffect(() => {
 		setError(null)
 		setCargando(true)
 		//TIMEOUT PARA SIMULAR FETCHEO PESADO...
-		const fakeDelay = 0; // 350; // 1500;
+		const fakeDelay = 1000 // ;,, ; 4220; // 350; // 1500;
 		setTimeout(() => {
 			fetch('/data/ofertas.json')
 				.then((respuesta) => {
@@ -66,8 +67,8 @@ export default function OfertaList({ filtros }) {
 		)
 
 	})
-	if (isLoading) {
-		return <ApdH3>Cargando ofertas...</ApdH3>;
+	if (loading) {
+		return <ApdSpinner />;
 	}
 
 	if (errorExcept) {

@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
+import ApdSpinner from "../../common/ApdSpinner/ApdSpinner";
 
 import OfertaDetalle from "./OfertaDetalle/OfertaDetalle"
 
@@ -22,6 +23,7 @@ export default function OfertaDetallePage() {
 	}, [idOferta])
 
 	if (loading) {
+		<ApdSpinner />;
 		return <h2>Cargando detalle...</h2>
 	}
 
