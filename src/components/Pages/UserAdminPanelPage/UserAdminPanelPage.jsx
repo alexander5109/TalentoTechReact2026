@@ -87,15 +87,15 @@ export default function UserAdminPanelPage() {
 					<ApdDetailItem key={promotion.id}>
 
 						<ApdH4>
-							🎁 {promotion.nombre}
+							Nombre: {promotion.nombre}
 						</ApdH4>
 
 						<ApdPrettyP>
-							{promotion.descripcion}
+							Descripcion: {promotion.descripcion}
 						</ApdPrettyP>
 
 						<p>
-							<strong>Código:</strong> {promotion.codigo}
+							Codigo: <strong>{promotion.codigo}</strong>
 						</p>
 
 						<p>

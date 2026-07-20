@@ -3,19 +3,21 @@ import { useEffect, useState } from "react";
 import ApdPanel from "../../common/ApdPanel/ApdPanel";
 import ApdH3TitleSubtitle from "../../common/ApdH3TitleSubtitle/ApdH3TitleSubtitle";
 
-import { getFeatures, getAllPromotions, getPromotion, createPromotion, updatePromotion, disablePromotion } from "../../../firebase/promotionsService";
+import { getFeatures, getPromotion, createPromotion, updatePromotion, disablePromotion } from "../../../firebase/promotionsService";
 
 import ApdLayoutStack from "../../common/ApdLayoutStack/ApdLayoutStack";
 
 import ApdInput from "../../common/ApdInput/ApdInput";
 import ApdButton from "../../common/ApdButton/ApdButton";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import ApdLabel from "../../common/ApdLabel/ApdLabel";
 import ApdLink from "../../common/ApdLink/ApdLink";
 import Swal from "sweetalert2";
 
 export default function PromotionCreatePage() {
 	const { id: currentPromotionId } = useParams();
+	const navigate = useNavigate();
+
 
 	const [formData, setFormData] = useState({
 		nombre: "",
@@ -27,8 +29,6 @@ export default function PromotionCreatePage() {
 	});
 
 
-
-	const [currentPromotion, setCurrentPromotion] = useState(null);
 	const [availableFeatures, setAvailableFeatures] = useState([]);
 
 	useEffect(() => {
@@ -41,17 +41,15 @@ export default function PromotionCreatePage() {
 
 			if (currentPromotionId) {
 
-				const promotion = await getPromotion(currentPromotionId);
-
-				setCurrentPromotion(promotion);
+				const currentPromotion = await getPromotion(currentPromotionId);
 
 				setFormData({
-					nombre: promotion.nombre ?? "",
-					codigo: promotion.codigo ?? "",
-					descripcion: promotion.descripcion ?? "",
-					duracionDias: promotion.duracionDias ?? 30,
-					activa: promotion.activa ?? true,
-					features: promotion.features ?? []
+					nombre: currentPromotion.nombre ?? "",
+					codigo: currentPromotion.codigo ?? "",
+					descripcion: currentPromotion.descripcion ?? "",
+					duracionDias: currentPromotion.duracionDias ?? 30,
+					activa: currentPromotion.activa ?? true,
+					features: currentPromotion.features ?? []
 				});
 			}
 
@@ -60,7 +58,7 @@ export default function PromotionCreatePage() {
 
 		loadData();
 
-	}, [id]);
+	}, [currentPromotionId]);
 
 
 
@@ -91,39 +89,57 @@ export default function PromotionCreatePage() {
 
 	}
 
-	async function handleUpdatePromotion() {
+	async function handleDisablePromotion() {
+		const result = await Swal.fire({
+			title: "Desactivar promoción?",
+			text: "Esta acción no afectará a los usuarios que ya cuentan con la promocion.",
+			icon: "question",
+			showCancelButton: true,
+			confirmButtonText: "Sí, desactivar",
+			cancelButtonText: "Cancelar",
+			reverseButtons: true
+		});
 
+		if (!result.isConfirmed) return;
 
-		await updatePromotion(currentPromotionId);
+		await disablePromotion(currentPromotionId);
 		Swal.fire({
-			title: "Cambios guardados",
+			title: "Promocion desactivada",
 			icon: 'info',
 			timer: 1500,
 			showConfirmButton: false,
 			toast: true,
 			position: 'top-end'
 		})
+		await getAllPromotions(user.uid);
 
 	}
 
 	async function handleSubmit(e) {
+		e.preventDefault();
 		if (currentPromotionId) {
-			action = "Promocion modificada"
 			await updatePromotion(currentPromotionId, formData);
+			Swal.fire({
+				title: "Promocion modificada",
+				icon: 'info',
+				timer: 1500,
+				showConfirmButton: false,
+				toast: true,
+				position: 'top-end'
+			})
 		}
 		else {
-			action = "Promocion creada"
 			await createPromotion(formData);
+			Swal.fire({
+				title: "Promocion creada",
+				icon: 'info',
+				timer: 1500,
+				showConfirmButton: false,
+				toast: true,
+				position: 'top-end'
+			})
+			navigate("/userAdminPanel");
 		}
-
-		Swal.fire({
-			title: action,
-			icon: 'info',
-			timer: 1500,
-			showConfirmButton: false,
-			toast: true,
-			position: 'top-end'
-		})
 
 
 	}
@@ -131,7 +147,11 @@ export default function PromotionCreatePage() {
 	return <ApdPanel as="section">
 		<ApdH3TitleSubtitle
 			upper="Gestión comercial"
-			lower="Nueva promoción"
+			lower={
+				currentPromotionId
+					? "Editar promoción"
+					: "Nueva promoción"
+			}
 		/>
 		<ApdLayoutStack as="form" onSubmit={handleSubmit}>
 			<ApdLayoutStack>
@@ -202,8 +222,8 @@ export default function PromotionCreatePage() {
 			</ApdLayoutStack>
 
 			<ApdLayoutStack >
-				<ApdButton type="submit"> Guardar promoción </ApdButton>
-				<ApdButton variant="danger" onClick={handleDisablePromotion}> Desactivar </ApdButton>
+				<ApdButton variant="primary" type="submit"> Guardar promoción </ApdButton>
+				{currentPromotionId && <ApdButton variant="danger" onClick={handleDisablePromotion}> Desactivar </ApdButton>}
 				<ApdLink variant="secondary" to="/userAdminPanel" >
 					Volver
 				</ApdLink>
