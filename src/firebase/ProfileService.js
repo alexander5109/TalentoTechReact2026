@@ -8,14 +8,14 @@ export async function getProfiles(userId) {
 
 }
 
-export async function activatePromotion(user, promotion) {
+export async function activatePromotion(usuario, promotion) {
 
 	console.log(usuario)
 	console.log(promotion)
-	if (!user)
+	if (!usuario)
 		throw new Error("No hay usuario autenticado.");
 
-	const userRef = doc(db, "usuarios", user.uid);
+	const userRef = doc(db, "usuarios", usuario.id);
 	const userSnap = await getDoc(userRef);
 
 	if (!userSnap.exists())

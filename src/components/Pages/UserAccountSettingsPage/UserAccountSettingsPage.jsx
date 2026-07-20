@@ -71,6 +71,8 @@ export default function UserAccountSettingsPage() {
 			return;
 		}
 		try {
+			console.log(usuario)
+			console.log(promotion)
 			await activatePromotion(usuario, promotion);
 
 			Swal.fire({
@@ -85,6 +87,7 @@ export default function UserAccountSettingsPage() {
 		}
 		catch (err) {
 
+			console.log(err)
 			Swal.fire({
 				title: "No fue posible activar la promoción",
 				text: err.message,
