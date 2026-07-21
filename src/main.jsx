@@ -6,11 +6,11 @@ import { PendingPostulationsProvider } from './context/PendingPostulationsContex
 import { AuthProvider } from './context/AuthContext.jsx'
 
 createRoot(document.getElementById('root')).render(
-  <BrowserRouter>
-    <AuthProvider>
-      <PendingPostulationsProvider>
-        <App />
-      </PendingPostulationsProvider>
-    </AuthProvider>
-  </BrowserRouter>,
+	<BrowserRouter>
+		<AuthProvider>
+			<PendingPostulationsProvider>
+				<App />
+			</PendingPostulationsProvider>
+		</AuthProvider>
+	</BrowserRouter>
 )

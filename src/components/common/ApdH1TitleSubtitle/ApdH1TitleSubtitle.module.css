@@ -13,6 +13,7 @@
 	font-weight: 200;
 	letter-spacing: 3px;
 	padding-bottom: 0.7rem;
+	text-shadow: -1px -1px 2px;
 }
 
 .lower {
@@ -21,4 +22,6 @@
 	font-weight: 800;
 	/* line-height: 1.1; */
 	padding-bottom: 1.1rem;
+	/* color: red; */
+	text-shadow: -2px -2px 2px;
 }
