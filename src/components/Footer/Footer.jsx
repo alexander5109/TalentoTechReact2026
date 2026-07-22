@@ -1,5 +1,5 @@
 import styles from "./Footer.module.css"
-import EmpresaMemberTarjeta from "./EmpresaMemberTarjeta/EmpresaMemberTarjeta"
+import EmpresaMemberTarjeta from "../common/EmpresaMemberTarjeta/EmpresaMemberTarjeta"
 
 export default function Footer() {
 	return (

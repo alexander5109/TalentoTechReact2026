@@ -1,7 +1,6 @@
 import ApdButton from "./../../../common/ApdButton/ApdButton";
 import ApdComboBox from "./../../../common/ApdComboBox/ApdComboBox";
 import ApdSelect from "./../../../common/ApdSelect/ApdSelect";
-import SearchProfileCard from "./../../../common/SearchProfileCard/SearchProfileCard";
 import ApdH3 from "./../../../common/ApdH3/ApdH3";
 import ApdH4 from "./../../../common/ApdH4/ApdH4";
 import { useState } from "react";

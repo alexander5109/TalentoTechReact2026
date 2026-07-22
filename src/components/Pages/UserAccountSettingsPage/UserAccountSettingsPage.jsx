@@ -13,7 +13,6 @@ import ApdInput from "../../common/ApdInput/ApdInput";
 import ApdH4 from "../../common/ApdH4/ApdH4";
 import ApdLayoutGrid from "../../common/ApdLayoutGrid/ApdLayoutGrid";
 import ApdButton from "../../common/ApdButton/ApdButton";
-import SearchProfileCard from "../../common/SearchProfileCard/SearchProfileCard";
 
 
 import Swal from "sweetalert2";

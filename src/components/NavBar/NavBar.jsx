@@ -1,10 +1,10 @@
 import styles from "./NavBar.module.css";
 
-import { usePendingPostulations } from "./../../context/PendingPostulationsContext";
-import { useAuth } from "./../../context/AuthContext";
+import { usePendingPostulations } from "../../context/PendingPostulationsContext";
+import { useAuth } from "../../context/AuthContext";
 
-import ApdLayoutStack from "./../common/ApdLayoutStack/ApdLayoutStack";
-import ApdNavLink from "./../common/ApdNavLink/ApdNavLink";
+import ApdLayoutStack from "../common/ApdLayoutStack/ApdLayoutStack";
+import ApdNavLink from "../common/ApdNavLink/ApdNavLink";
 
 export default function NavBar() {
 
@@ -13,8 +13,44 @@ export default function NavBar() {
 
 	const isAdmin = user?.role === "admin";
 
-	return (
+	const publicLinks = [
+		{ to: "/about", label: "About us" },
+		{ to: "/contacto", label: "Contacto" },
+		{ to: "/ofertas", label: "Ofertas" },
+	];
 
+	const guestLinks = [
+		{ to: "/iniciarSesion", label: "Iniciar sesión" },
+		{ to: "/crearUsuario", label: "Crear usuario" },
+	];
+
+	const userLinks = [
+		{
+			to: "/userPendingPostulations",
+			label: `📝 Postulaciones (${pendingPostulations.length})`,
+			variant: "accent",
+		},
+		{
+			to: "/userAccountSettings",
+			label: "⚙️ Mi cuenta",
+			variant: "accent",
+		},
+		...(isAdmin
+			? [{
+				to: "/userAdminPanel",
+				label: "🛠️ Admin Panel",
+				variant: "accent",
+			}]
+			: []),
+		{
+			to: "",
+			label: "Cerrar sesión",
+			variant: "danger",
+			onClick: logout,
+		},
+	];
+
+	return (
 		<ApdLayoutStack
 			as="nav"
 			direction="row"
@@ -36,11 +72,16 @@ export default function NavBar() {
 				wrap="wrap"
 				gap="0.7rem"
 			>
-
-				<ApdNavLink to="/about">About us</ApdNavLink>
-				<ApdNavLink to="/contacto">Contacto</ApdNavLink>
-				<ApdNavLink to="/ofertas">Ofertas</ApdNavLink>
-
+				{publicLinks.map(link => (
+					<ApdNavLink
+						key={link.to}
+						to={link.to}
+						variant={link.variant}
+						onClick={link.onClick}
+					>
+						{link.label}
+					</ApdNavLink>
+				))}
 			</ApdLayoutStack>
 
 			<ApdLayoutStack
@@ -50,60 +91,19 @@ export default function NavBar() {
 				wrap="wrap"
 				gap="0.7rem"
 			>
-
-				{!user ? (
-					<>
-
-						<ApdNavLink to="/iniciarSesion">
-							Iniciar sesión
-						</ApdNavLink>
-
-						<ApdNavLink to="/crearUsuario">
-							Crear usuario
-						</ApdNavLink>
-
-					</>
-				) : (
-					<>
-
-						<ApdNavLink
-							to="/userPendingPostulations"
-							variant="accent"
-						>
-							📝 Postulaciones ({pendingPostulations.length})
-						</ApdNavLink>
-
-						<ApdNavLink
-							to="/userAccountSettings"
-							variant="accent"
-						>
-							⚙️ Mi cuenta
-						</ApdNavLink>
-
-						{isAdmin && (
-							<ApdNavLink
-								to="/userAdminPanel"
-								variant="accent"
-							>
-								🛠️ Admin Panel
-							</ApdNavLink>
-						)}
-
-						<ApdNavLink
-							to=""
-							variant="danger"
-							onClick={logout}
-						>
-							Cerrar sesión
-						</ApdNavLink>
-
-					</>
-				)}
-
+				{(user ? userLinks : guestLinks).map(link => (
+					<ApdNavLink
+						key={link.label}
+						to={link.to}
+						variant={link.variant}
+						onClick={link.onClick}
+					>
+						{link.label}
+					</ApdNavLink>
+				))}
 			</ApdLayoutStack>
 
 		</ApdLayoutStack>
-
 	);
 
 }
